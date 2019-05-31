@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+  <title>Admin Panel</title>
+  <meta charset="utf-8">
+ <link rel="shortcut icon" href="assets/images/mini-logo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+   <a href="#" class="btn-expand-collapse"><i class="fa fa-bars"></i></a>
+      <a class="navbar-brand" id="brandname" href="#"> Sri Venkatachalapathy & Co</a>
+    </div>
+    <div class="collapse navbar-collapse " id="myNavbar">
+      <div class="nav navbar-nav padleft">
+       <div class="row">
+<div class="col-md-12">
+  </div>
+       </div>
+    </div>
+       
+      <ul class="nav navbar-nav navbar-right navextra" >
+        <li><a data-toggle="tooltip" data-placement="bottom" title="Settings" href="#"><span class="fa fa-gear"></span> Settings</a></li>
+        <li><a data-toggle="tooltip" data-placement="bottom" title="Logout" href="#"><span class="fa fa-power-off"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav class="navbar-primary">
+  
+  <ul class="navbar-primary-menu">
+    <li>
+      <a href="index.html">Dashboard</a>
+            <a class="dropdown-btn">Company Management <i class="fa fa-caret-down"></i></a>
+              <div class="dropdown-container">
+                  <a href="./empdata">Employee Data</a>
+                <a href="attendance">Attendance</a>
+                <a href="prolist.html">Employee Benefits</a>
+                <a href="cprofit.html">Site Details</a>
+              </div>
+         <a class="dropdown-btn"> Stock Management<i class="fa fa-caret-down"></i></a>
+              <div class="dropdown-container">
+                  <a href="dlist.html">Inward Stock</a>
+                <a href="adriver.html">Closing Stock</a>
+                <a href="danalytics.html">Site Purchase</a>
+                <a href="payments.html">Stock Requirement</a>
+              </div>
+       <a href="./task">Task Monitor</a>    
+       <a href="bquote.html">Dealers Data</a>
+       <a href="./bills">Bills & Receipts</a>
+        <a href="webupload.html">Payments</a>
+        <a href="settings.html"><i class="fa fa-gear"></i>Settings</a>
+
+    </li>
+    </ul>
+</nav>
+
+ 
+    <div class="main-content">
+           <div class="container1">
+          <div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
+                <div id="my_div">
+                    <h4>Employee Database</h4>
+                  <div class="row">
+                    <div class="col-xs-9">
+          <input type="text" id="myInput" class="controls" onkeyup="myFunction()" placeholder=" Search for Employees.." style="width:100%;margin-bottom:10px;" >
+        </div><div class="col-xs-3 hidden-xs"><br>Showing 281 Records</div> </div>
+             <table >
+                      <thead class="header">
+                        <th style="width:5%;">Id</th>
+                        <th style="width:15%;">Employee Name</th>
+                        <th style="width:15%;">Number</th>
+                           <th style="width:15%;">Email</th>
+                        <th style="width:20%;">Resident Address</th>
+                        <th style="width:15%;">Designation</th>
+                        <th style="width:8%;">Status</th>
+                        <th style="width:5%;">Action</th>
+                      </thead>
+                      <tbody id="myTable">
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                           <tr>
+                          <td>SV456</td>
+                          <td>Saicharan</td>
+                          <td>9551936390</td>
+                          <td>saicharan@gmail.com</td>
+                          <td>No:30a, poniamman koil street hastinapuram, chennai-600064</td>
+                          <td>Administration work</td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Active</span></td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
+                        </tr>
+                     
+                          </tbody> </table>
+        </div>       
+            </div>
+          
+
+<!--right modal-content starts here-->
+
+  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title title" id="myModalLabel2">Employee Information<span class="green"> (SV456)</span><span class="btn btn-default" style="float:right;margin:0px 10px;">Update</span></h4>
+          </div>
+  
+          <div class="modal-body">
+               <img class="empimg" src="../images/team1.jpg" > <br><br>
+              <table class="table table-user-information">
+                  <tbody>
+                    
+                    <tr>
+                      <td class="first">Employee Name :</td>
+                      <td class="first"><input typ="text" class="text" value="saicharan"></td>
+                      </tr>
+                    <tr>
+                      <td>Employee Contact :</td>
+                      <td><input typ="text" class="text" value="+44 7344546748"></td>
+                    </tr>
+    
+                           <tr>
+                      <td>Employee Email:</td>
+                      <td><input typ="text" class="text" value="saicharan@gmail.com"></td>
+                    </tr>
+                      <tr>
+                      <td>Resident Address : </td>
+                          <td><teaxtarea typ="text" class="text">No:30a, Poniamman koil street, hastinapuram, chennia- 6000064</teaxtarea></td>
+                    </tr>
+                    <tr>
+                      <td>Joined Date :</td>
+                      <td><input typ="text" class="text" value="14/09/2016"></td>
+                    </tr>
+                    <tr>
+                        <td>Designation :</td>
+                        <td><input typ="text" class="text" value="site Engineer "></td>
+                      </tr>
+                      <tr>
+                          <td>Years in Experince :</td>
+                          <td><input typ="text" class="text" value="1 year"></td>
+                        </tr>
+                    <td><button class="buttongreen" style="margin-top:10px;">Activate</button></td>
+                  
+</tbody></table>  
+    
+              
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+      </div><!-- modal --></div></div>
+
+<script>$('.btn-expand-collapse').click(function(e) {
+				$('.navbar-primary').toggleClass('collapsed');
+});</script>
+      <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+        
+        for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+            } else {
+              dropdownContent.style.display = "block";
+            }
+          });
+        }
+        </script>
+    
+    <script>$(window).on('load', function() { // makes sure the whole site is loaded 
+  $('#status').fadeOut(); // will first fade out the loading animation 
+  $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+  $('body').delay(350).css({'overflow':'visible'});
+})</script>
+    
+      <script>
+                              $(document).ready(function(){
+                                $("#myInput").on("keyup", function() {
+                                  var value = $(this).val().toLowerCase();
+                                  $("#myTable tr").filter(function() {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                  });
+                                });
+                              });
+                              </script>
+    </body></html>
