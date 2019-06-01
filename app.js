@@ -3,11 +3,22 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var ejs = require('ejs');
 var path = require('path');
+var mysql = require('mysql');
 var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname+'/assets')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "startersup@2019"
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
 app.get('/index',function (req,res) {  
     res.redirect('/') ;
 });
