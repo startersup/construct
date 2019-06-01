@@ -10,9 +10,9 @@ app.use(express.static(path.join(__dirname+'/assets')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var con = mysql.createConnection({
-    host: "localhost",
+    host: "13.233.163.72",
     user: "root",
-    password: ""
+    password: "root"
   });
   
   con.connect(function(err) {
