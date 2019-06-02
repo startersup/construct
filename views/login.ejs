@@ -1,0 +1,131 @@
+
+<html lang="en" id="html">
+<head>
+  <title>Admin Panel</title>
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-image: linear-gradient(61deg,#401c5d,#51339f 49%,#6741ca);">
+    <div class="container">
+    <div class="topper">
+<div class="row">        
+<div class="col-md-7">
+    
+    <h1>Smart Construction </h1>
+    <h5>A Single Software for smarter Business Management with all the business suit softwares available with cutomization support.</h5><br>
+    <p>A Product by <span>GOLD N' BELL</span> </p>
+</div>  
+<div class="col-md-5">
+  <div class="card">
+      <center><img class="small" src="./images/logo.png"></center>
+       <div class="tab-content">
+           <form action='/login' method="POST">
+       <div id="home" class="tab-pane fade in active">
+      <input  class="controls" type="id" placeholder="Employee Id/Phone" name="id" required>
+      <input   class="controls" type="password" placeholder="Password " name="password" required >
+      <center><button type="submit" class="buttonlogin">Login In Now</button></center>
+      <a data-toggle="tab" href="#changepass"><p class="forget" >Forget Password ?</p></a>
+       </form>
+      </div>
+      </div>
+       <div id="changepass" class="tab-pane fade">
+      <input  class="controls" type="text" placeholder="Enter Email Address " name="id" required>
+      <center><button class="buttonlogin">Send Reset Link</button></center>
+    </div>
+      </div>
+ </div>  
+</div> 
+</div>
+    </div></div>
+    <style>.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+     padding:15px;
+    border-radius: 50px 5px;
+  width: 100%;
+        background-color:#ffffff;
+}
+        .forget
+        {
+            color:#000000 !important;font-size:14px !important;font-weight:400 !important;padding:10px;text-align: center;
+        }
+        .topper
+        {
+           padding-top:130px;
+            font-family: 'Lato', sans-serif;
+        }
+        .topper h1
+        {
+           font-size: 55px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 80px;
+    color:#ffffff;
+        }
+        .topper h5
+        {
+           font-size:25px;
+           letter-spacing:1px;
+           line-height:48px;
+            font-weight:500;
+            color:#ffffff;
+        }
+        .small
+        {
+            max-width:180px;
+            width:100%;
+        }
+        .topper p
+        {
+            font-size:18px;
+            font-weight:600;
+            color:#ffffff;
+        }
+        .topper span
+        {
+          font-size: 18px;
+            color:#74f235;
+            font-weight:700;
+        }
+        input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    min-height: 45px;
+    margin: 8px 0;
+    color: #212529;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    box-sizing: border-box;
+    background-color: #E2E2E2;
+font-family: 'Lato', sans-serif;
+}
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 40px;
+    outline: none;
+font-family: 'Lato', sans-serif;
+}
+        .buttonlogin {
+    background-color: #28b42a;
+    border: none;
+    margin-top: 10px;
+    color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+   font-family: 'Lato', sans-serif;
+}
+    </style>
+    </body></html>

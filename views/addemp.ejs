@@ -1,9 +1,13 @@
-<!DOCTYPE html>
 <html lang="en" id="html">
 <head>
   <title>Admin Panel</title>
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+ <link rel="shortcut icon" href="assets/images/mini-logo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/index.css">
   <script src="../js/jquery.min.js"></script>
@@ -12,95 +16,65 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-   <a href="#" class="btn-expand-collapse"><i class="fa fa-bars"></i></a>
-      <a class="navbar-brand" id="brandname" href="#"> Sri Venkatachalapathy & Co</a>
-    </div>
-    <div class="collapse navbar-collapse " id="myNavbar">
-      <div class="nav navbar-nav padleft">
-       <div class="row">
-<div class="col-md-12">
-  </div>
-       </div>
-    </div>
-       
-      <ul class="nav navbar-nav navbar-right navextra" >
-        <li><a data-toggle="tooltip" data-placement="bottom" title="Settings" href="#"><span class="fa fa-gear"></span> Settings</a></li>
-        <li><a data-toggle="tooltip" data-placement="bottom" title="Logout" href="#"><span class="fa fa-power-off"></span> Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<nav class="navbar-primary">
-  
-  <ul class="navbar-primary-menu">
-    <li>
-      <a href="#">Dashboard</a>
-            <a class="dropdown-btn">Company Management <i class="fa fa-caret-down"></i></a>
-              <div class="dropdown-container">
-                  <a href="bookanal.html">Employee Data</a>
-                <a href="staffacc.html">Attendance</a>
-                <a href="prolist.html">Employee Benefits</a>
-                <a href="cprofit.html">Site Details</a>
-              </div>
-         <a class="dropdown-btn"> Stock Management<i class="fa fa-caret-down"></i></a>
-              <div class="dropdown-container">
-                  <a href="dlist.html">Inward Stock</a>
-                <a href="adriver.html">Closing Stock</a>
-                <a href="danalytics.html">Site Purchase</a>
-                <a href="payments.html">Stock Requirement</a>
-              </div>
-       <a href="bookrecord.html">Task Monitor</a>    
-       <a href="bquote.html">Dealers Data</a>
-       <a href="qrecords.html">Bills & Receipts</a>
-        <a href="webupload.html">Payments</a>
-        <a href="settings.html"><i class="fa fa-gear"></i>Settings</a>
 
-    </li>
-    </ul>
-</nav>
-
- 
     <div class="main-content">
            <div class="container1">
           <div id="preloader">
   <div id="status">&nbsp;</div>
 </div>
                 <div id="my_div">
-                    <h4>Employee Attendance</h4>
-                  <div class="row">
-                    <div class="col-xs-9">
-          <input type="text" id="myInput" class="controls" onkeyup="myFunction()" placeholder=" Search for Employees.." style="width:30%;margin-bottom:10px;" >
-        </div><div class="col-xs-3"><br>Showing 281 Records</div> </div>
-             <table >
-                      <thead class="header">
-                        <th style="width:5%;">Id</th>
-                        <th style="width:15%;">Employee Name</th>
-                        <th style="width:15%;">Number</th>
-                           <th style="width:15%;">Email</th>
-                        <th style="width:20%;">Designation</th>
-                         <th style="width:10%;">In-Time</th> 
-                          <th style="width:10%;">Out-Time</th> 
-                        <th style="width:5%;">Action</th>
-                      </thead>
-                      <tbody id="myTable">
-                           <tr>
-                          <td>SV456</td>
-                          <td>Saicharan</td>
-                          <td>9551936390</td>
-                          <td>saicharan@gmail.com</td>
-                          <td>Administration work</td>
-                               <td>8:30</td>
-                               <td>16:30</td>
-                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
-                        </tr>
-                         
-                          </tbody> </table>
-        </div>       
+                    
+               <form action="../upload/upload.php" method="Post" enctype="multipart/form-data" >     
+                    <h4>Add Employee</h4>
+      <table class="table table-user-information passtab drivetab">
+          <tbody>
+            <thead>
+              <td style="width:25%;"></td>
+              <td style="width:75%;"></td>
+            </thead>
+                   <tr>
+              <td>Employee Photo :</td>
+              <td>
+                  <input type="file" class="controls" name="file" accept="image/*">
+                  </td>
+            </tr>
+            <tr>
+              <td>Employee Name :</td>
+              <td><input class="controls" name="name" type="text" placeholder="Enter Employee Name"></td>
+            </tr>
+            <tr>
+              <td>Employee Email :</td>
+              <td><input class="controls" name="mail" type="email"  placeholder="Enter Employee Email"></td>
+            </tr>
+            <tr>
+              <td>Employee Contact :</td>
+              <td><input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number"></td>
+            </tr>
+ <tr>
+              <td>Employee Address :</td>
+              <td><textarea class="controls" type="text" name="address"> </textarea>  </td>
+            </tr>
+                   <tr>
+              <td>Employee Designation :</td>
+              <td><input class="controls" type="text" name="designation"  placeholder="Enter Employee Designation"></td>
+            </tr>
+              <tr>
+              <td>CTC Package: </td>
+              <td><input class="controls" type="text" name="ctc" onkeypress="return isNumber(event)" placeholder="Enter Employee CTC"></td>
+            </tr>
+            <tr>
+              <td>Joining Date :</td>
+              <td>
+                  <input type="date"  value="<?php echo $today; ?>" id="datepicker" name="joindate"class="controls" >
+                  </td>
+            </tr>
+            
+           
+</tbody></table> 
+               <button class="buttonblue">Add Employee</button>
+</form>
             </div>
-          
+          </div>
 
 <!--right modal-content starts here-->
 
@@ -152,7 +126,8 @@
               
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
-      </div><!-- modal --></div></div>
+      </div><!-- modal --></div>
+      </div>
 
 <script>$('.btn-expand-collapse').click(function(e) {
 				$('.navbar-primary').toggleClass('collapsed');
@@ -190,4 +165,5 @@
                                 });
                               });
                               </script>
+
     </body></html>

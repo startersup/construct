@@ -1,9 +1,14 @@
-<!DOCTYPE html>
+
 <html lang="en" id="html">
 <head>
   <title>Admin Panel</title>
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+ <link rel="shortcut icon" href="assets/images/mini-logo.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/index.css">
   <script src="../js/jquery.min.js"></script>
@@ -11,58 +16,11 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<body>>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-   <a href="#" class="btn-expand-collapse"><i class="fa fa-bars"></i></a>
-      <a class="navbar-brand" id="brandname" href="#"> Sri Venkatachalapathy & Co</a>
-    </div>
-    <div class="collapse navbar-collapse " id="myNavbar">
-      <div class="nav navbar-nav padleft">
-       <div class="row">
-<div class="col-md-12">
-  </div>
-       </div>
-    </div>
-       
-      <ul class="nav navbar-nav navbar-right navextra" >
-        <li><a data-toggle="tooltip" data-placement="bottom" title="Settings" href="#"><span class="fa fa-gear"></span> Settings</a></li>
-        <li><a data-toggle="tooltip" data-placement="bottom" title="Logout" href="#"><span class="fa fa-power-off"></span> Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<nav class="navbar-primary">
-  
-  <ul class="navbar-primary-menu">
-    <li>
-      <a href="#">Dashboard</a>
-            <a class="dropdown-btn">Company Management <i class="fa fa-caret-down"></i></a>
-              <div class="dropdown-container">
-                  <a href="bookanal.html">Employee Data</a>
-                <a href="staffacc.html">Attendance</a>
-                <a href="prolist.html">Employee Benefits</a>
-                <a href="cprofit.html">Site Details</a>
-              </div>
-         <a class="dropdown-btn"> Stock Management<i class="fa fa-caret-down"></i></a>
-              <div class="dropdown-container">
-                  <a href="dlist.html">Inward Stock</a>
-                <a href="adriver.html">Closing Stock</a>
-                <a href="danalytics.html">Site Purchase</a>
-                <a href="payments.html">Stock Requirement</a>
-              </div>
-       <a href="bookrecord.html">Task Monitor</a>    
-       <a href="bquote.html">Dealers Data</a>
-       <a href="qrecords.html">Bills & Receipts</a>
-        <a href="webupload.html">Payments</a>
-        <a href="settings.html"><i class="fa fa-gear"></i>Settings</a>
 
-    </li>
-    </ul>
-</nav>
-
- 
+ <!--<input type="text" class="textfield" value="" id="extra7" name="extra7" onkeypress="return isNumber(event)" />
+-->
     <div class="main-content">
            <div class="container1">
           <div id="preloader">
@@ -71,9 +29,9 @@
                 <div id="my_div">
                     <h4>Task Monitor</h4>
                   <div class="row">
-                    <div class="col-xs-9">
-      <input type="text" id="myInput" class="controls" onkeyup="myFunction()" placeholder=" Search for Tasks.." style="width:30%;margin-bottom:10px;" >
-        </div><div class="col-xs-3"><br>Showing 281 Records</div> </div>
+                    <div class="col-xs-10">
+      <input type="text" id="myInput" class="controls" onkeyup="myFunction()" placeholder=" Search for Tasks.." style="width:60%;margin-bottom:10px;" >
+        </div> <div class="col-xs-2"><button class="buttonblue" data-toggle="modal" data-target="#myModal3" class="btn btn-default" style="margin-top:10px;"> + Add Task</button></div></div>
              <table >
                       <thead class="header">
                         <th style="width:5%;">Id</th>
@@ -85,16 +43,15 @@
                         <th style="width:5%;">Action</th>
                       </thead>
                       <tbody id="myTable">
+                                       
                            <tr>
-                          <td>TA456</td>
-                          <td>Site Checking</td>
-                          <td>14/09/2019 | 13:20</td>
-                          <td>9551936390</td>
-                          <td>Move on to the bank and deposit 25 lakhs in the name of company and submit it before today.</td>
-                                     <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;">Assingned</span></td>
-                          <td><button data-toggle="modal" data-target="#myModal2" class="btn btn-default">Edit</button></td>
-                        </tr>
-                         
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                                     <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:2px;"></span></td>
+                          <td><button data-toggle="modal" data-target="#" class="btn btn-default">Edit</button></td>
+
                           </tbody> </table>
         </div>       
             </div>
@@ -102,51 +59,203 @@
 
 <!--right modal-content starts here-->
 
-  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal right fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
   
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title title" id="myModalLabel2">Task Information<span class="green"> (SV456)</span><span class="btn btn-default" style="float:right;margin:0px 10px;">Update</span></h4>
+            <h4 class="modal-title title" id="myModalLabel2">Task Information<span class="green">(  )</span>
+            
+           
           </div>
   
           <div class="modal-body">
+             <form action="update.php" method="Post" enctype="multipart/form-data" >    
+             <input type="hidden" class="text" name="taskid" value="">
               <table class="table table-user-information">
                   <tbody>
                     <tr>
                       <td class="first">Task Name :</td>
-                      <td class="first"><input typ="text" class="text" value="site Checking"></td>
+                      <td class="first"><input type="text" class="text" name="tname" value=""></td>
                       </tr>
                     <tr>
                       <td>Deadline :</td>
-                      <td><input typ="text" class="text" value="10/04/19 | 23:30 "></td>
+                      <td><input type="text" name="deadline" class="text" id="" value=""></td>
                     </tr>
     
                            <tr>
                       <td>	Person Contact :</td>
-                      <td><input typ="text" class="text" value="+91 9657589588"></td>
+                      <td><input type="text" class="text" name="person_contact"  value=""  onkeypress="return isNumber(event)"></td>
                     </tr>
                       <tr>
                       <td>	Description : </td>
-                          <td><textarea typ="text" class="text" >Move on to the bank and deposit 25 lakhs in the name of company and submit it before today.</textarea></td>
+                          <td><textarea type="text" name="tdescription" class="text" ></textarea></td>
                     </tr>
-                    <tr>
-                      <td>Status :</td>
-                      <td><input typ="text" class="text" value="Created"></td>
-                    </tr>
-                    <tr>
-                        <td>Task Assigned to :</td>
-                        <td><input typ="text" class="text" value=""></td>
-                      </tr>
-                    <td><button class="buttongreen" style="margin-top:10px;">Assign Task</button></td>
+                   
+                      <tr>
+              <td>Assigned To  :</td>
+              <td>
+                  <!--<input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number">-->
                   
-</tbody></table>  
+                  
+                  <Select class="controls" name="assignedto"  >
+                      
+                  <option value="">
+                  <option value=""></option>    
+          
+                      
+                  </Select>
+                  
+                  </td>
+            </tr>
+           <tr>
+                      <td class="first">Task Status :</td>
+                      
+                      <td>
+                          <select class="controls"  name="status" >
+                              
+                              <option value=""></option>
+                               <option value="Cancel">Cancel</option>
+  
+                               <option value="Completed">Completed</option>
+                          </select>
+                         
+                          </td>
+                      </tr>
+                    <td><button class="buttongreen" style="margin-top:10px;">Update Task</button></td>
+                  
+</tbody></table> 
+</form>
+<hr>
+
+<div class="top">
+   <h3>Task Completion Details</h3> 
+   <br><br>
+    <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td class="first">Completition Date & Time:</td>
+                      <td class="first"><input type="text" class="text" name="tname" value=""></td>
+                      </tr>
+                          <tr>
+                      <td class="first">Short Description:</td>
+                      <td class="first"><input type="text" class="text" name="tname" value=""></td>
+                      </tr>
+                       <tr>
+                      <td class="first">Proof Attached:</td>
+                      <td class="first"><img class="subimage" src="https://images.template.net/wp-content/uploads/2017/02/01002012/Resignation-Letter-Sample-Doc-with-Reason.jpg" onerror="this.src='../assets/images/docalt.png';" /></td>
+                      </tr>
+   </tbody>
+   </table>
+        </div><!-- modal-content -->
+
+        
+      </div><!-- modal-dialog -->
+      </div><!-- modal --></div>
+      </div>
+
+      </div>
+      
+      
+      
+      
+       <div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title title" id="myModalLabel2">Adding Task<span class="green"></span>
+         
+            <!--<span class="btn btn-default" style="float:right;margin:0px 10px;">Update</span>-->
+            
+            </h4>
+          </div>
+  
+          <div class="modal-body">
+              <form action="upload.php" method="Post" enctype="multipart/form-data" >     
+      <table class="table table-user-information passtab drivetab">
+          <tbody>
+            <thead>
+              <td style="width:25%;"></td>
+              <td style="width:75%;"></td>
+            </thead>
+            <tr>
+              <td>Task Name :</td>
+              <td><input class="controls" name="tname" type="text" placeholder="Enter Task Name" required></td>
+            </tr>
+            <tr>
+              <td>Task Description :</td>
+              <td><Textarea style="width:70%;" class="controls textarea" type="text" name="tdescription" required></Textarea> </td>
+            </tr>
+            <tr>
+              <td>Assigned To  :</td>
+              <td>
+                  <!--<input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number">-->
+                  
+                  
+                  <Select type="text" class="controls selectit" name="assignedto"  >
+                  
+                    <option value="">--- Select ---</option> 
+                    
+                                            
+                  <option value=""></option>    
+        
+                      
+                  </Select>
+                  
+                  </td>
+            </tr>
+               <tr>
+              <td>Assigned By  :</td>
+              <td>
+                  <!--<input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number">-->
+                  <Select type="text" class="controls selectit" name="assignedby" required>
+                  
+                    <option value="">--- Select ---</option> 
+                                                         
+                  <option value=""></option>    
+  
+                      
+                  </Select>
+                  
+                  </td>
+            </tr>
+ <tr>
+              <td>Person To Contact  :</td>
+               <td><input class="controls" onkeypress="return isNumber(event)" type="text"   name="person_contact"  placeholder="" required></td>
+            </tr>
+                   <tr>
+              <td>Task Deadline :</td>
+              <td><input class="controls" type="text" id="datetimepicker2" name="deadline"  placeholder="" required></td>
+            </tr>
+             
+          
+           
+</tbody></table> 
+               <button class="buttonblue">Add Task</button>
+</form>
     
               
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
       </div><!-- modal --></div></div>
+      
+      
+  <style>
+     .selectit {
+    width: 70% !important;
+    min-height: 45px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #E2E2E2;
+}
+}
+      
+  </style>    
 
 <script>$('.btn-expand-collapse').click(function(e) {
 				$('.navbar-primary').toggleClass('collapsed');
@@ -173,7 +282,36 @@
   $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
   $('body').delay(350).css({'overflow':'visible'});
 })</script>
-    
+    <script>
+      $(document).ready(function() {
+        	$.datetimepicker.setLocale('pt-EN');
+       	$('#datetimepicker').datetimepicker(
+     {
+        // var u="60:00";
+ datepicker:true,
+ allowTimes:[
+ '00:00','00:15', '00:30', '00:45','01:00','01:15','01:30','01:45','02:00','02:15','02:30','02:45','03:00','03:15','03:30','03:45','04:00','04:15','04:30','04:45','05:00','05:15','05:30','05:45','06:00','06:15','06:30','06:45','07:00','07:15','07:30','07:45','08:00','08:15','08:30','08:45','09:00','09:15','09:30','09:45','10:00','10:15','10:30','10:45','11:00','11:15','11:30','11:45','12:00','12:15','12:30','12:45','13:00','13:15','13:30','13:45','14:00','14:15','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15','16:30','16:45','17:00','17:15','17:30','17:45','18:00','18:15','18:30','18:45','19:00','19:15','19:30','19:45','20:00','20:15','20:30','20:45','21:00','21:15','21:30','21:45','22:00','22:15','22:30','22:45','23:00','23:15','23:30','23:45'
+ ]
+});
+            
+      });
+</script>
+
+<script>
+      $(document).ready(function() {
+        	$.datetimepicker.setLocale('pt-EN');
+       	$('#datetimepicker2').datetimepicker(
+     {
+        // var u="60:00";
+ datepicker:true,
+ allowTimes:[
+ '00:00','00:15', '00:30', '00:45','01:00','01:15','01:30','01:45','02:00','02:15','02:30','02:45','03:00','03:15','03:30','03:45','04:00','04:15','04:30','04:45','05:00','05:15','05:30','05:45','06:00','06:15','06:30','06:45','07:00','07:15','07:30','07:45','08:00','08:15','08:30','08:45','09:00','09:15','09:30','09:45','10:00','10:15','10:30','10:45','11:00','11:15','11:30','11:45','12:00','12:15','12:30','12:45','13:00','13:15','13:30','13:45','14:00','14:15','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15','16:30','16:45','17:00','17:15','17:30','17:45','18:00','18:15','18:30','18:45','19:00','19:15','19:30','19:45','20:00','20:15','20:30','20:45','21:00','21:15','21:30','21:45','22:00','22:15','22:30','22:45','23:00','23:15','23:30','23:45'
+ ]
+});
+            
+      });
+</script>
+
       <script>
                               $(document).ready(function(){
                                 $("#myInput").on("keyup", function() {
@@ -184,4 +322,18 @@
                                 });
                               });
                               </script>
+                              <style>
+                                 .subimage
+                                 {
+                                     max-width:500px;
+                                     width:100%;
+                                 }
+                                 modal
+                                 {
+                                     max-height:100vh;
+                                     overflow-y:scroll;
+                                 }
+                                 }
+                                 
+                              </style>
     </body></html>
