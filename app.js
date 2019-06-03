@@ -26,7 +26,8 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
-
+adminController(app,con);
+taskController(app,con);
 app.get('/login',function (req,res) {  
   res.render('login') ;
 });
@@ -36,17 +37,19 @@ app.get('/logout',function (req,res) {
 });
 app.get('/',function (req,res) {  
  if(credential.isAdmin(req)){
-   if(req.session.level==1){
      res.redirect('admin');
      return;
-   }
+ }
+ else if(credential.isLabor(req)){
+    res.redirect('mytask');
+    return;
  }
   res.redirect('/login') ;
 });
 app.post('/login',function (req,res) {  
   var id=req.body.id;
   var password =req.body.password;
-  var sql = "select empid,password,auth_level from employeedata where (empid ='"+id+"' OR number = '"+id+"' ) AND password = '"+password+"'";
+  var sql = "select empid,auth_level from employeedata where (empid ='"+id+"' OR number = '"+id+"' ) AND password = '"+password+"'";
   con.query(sql,function(err,result,fields){
     if (err) throw err;
     if(result.length > 0){
@@ -55,11 +58,14 @@ app.post('/login',function (req,res) {
       res.redirect('admin') ;
       return;
       }
+      else if(result[0].auth_level==2){
+      req.session.level=2;
+      res.redirect('mytask');
+        return;
+      }
     }
     res.render('login');
   });
 });
-adminController(app,con);
-taskController(app,con);
 console.log("Listening on 3000");
 app.listen(3000);
