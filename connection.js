@@ -10,7 +10,7 @@ var pool  = mysql.createPool({
 module.exports.executeQuery=function(query,callback){
         pool.query(query,function(err,result){
             if(err){
-                callback(true);
+                callback(err);
                 return;
             }
                 callback(false, result);          

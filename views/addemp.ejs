@@ -2,21 +2,22 @@
 <head>
   <title>Admin Panel</title>
   <meta charset="utf-8">
- <link rel="shortcut icon" href="assets/images/mini-logo.png" type="image/x-icon">
+ <link rel="shortcut icon" href="images/mini-logo.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/index.css">
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
+    <% include header.ejs %>
+<% include side_bar.ejs %>
     <div class="main-content">
            <div class="container1">
           <div id="preloader">
@@ -24,7 +25,7 @@
 </div>
                 <div id="my_div">
                     
-               <form action="../upload/upload.php" method="Post" enctype="multipart/form-data" >     
+               <form action="/addemp" method="Post" enctype="multipart/form-data" >     
                     <h4>Add Employee</h4>
       <table class="table table-user-information passtab drivetab">
           <tbody>
@@ -35,12 +36,12 @@
                    <tr>
               <td>Employee Photo :</td>
               <td>
-                  <input type="file" class="controls" name="file" accept="image/*">
+                  <input type="file" class="controls" name="EMP" accept="image/*">
                   </td>
             </tr>
             <tr>
               <td>Employee Name :</td>
-              <td><input class="controls" name="name" type="text" placeholder="Enter Employee Name"></td>
+              <td><input class="controls" name="name" type="text" placeholder="Enter Employee Name" required></td>
             </tr>
             <tr>
               <td>Employee Email :</td>
@@ -48,24 +49,31 @@
             </tr>
             <tr>
               <td>Employee Contact :</td>
-              <td><input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number"></td>
+              <td><input class="controls" type="number" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number" required></td>
             </tr>
  <tr>
               <td>Employee Address :</td>
-              <td><textarea class="controls" type="text" name="address"> </textarea>  </td>
+              <td><textarea class="controls" type="text" name="address"> </textarea>  </td> 
             </tr>
                    <tr>
               <td>Employee Designation :</td>
-              <td><input class="controls" type="text" name="designation"  placeholder="Enter Employee Designation"></td>
+              <td><input class="controls" type="text" name="designation"  placeholder="Enter Employee Designation" required></td>
+            </tr>
+            <tr>
+              <td>Authorization Level :</td>
+              <td><select class="controls" name="auth" required>
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+              </select></td>
             </tr>
               <tr>
               <td>CTC Package: </td>
-              <td><input class="controls" type="text" name="ctc" onkeypress="return isNumber(event)" placeholder="Enter Employee CTC"></td>
+              <td><input class="controls" type="number" name="ctc" onkeypress="return isNumber(event)" placeholder="Enter Employee CTC"></td>
             </tr>
             <tr>
               <td>Joining Date :</td>
               <td>
-                  <input type="date"  value="<?php echo $today; ?>" id="datepicker" name="joindate"class="controls" >
+                  <input type="date"  id="datepicker" name="joindate"class="controls" >
                   </td>
             </tr>
             
@@ -92,32 +100,32 @@
                   <tbody>
                     <tr>
                       <td class="first">Employee Name :</td>
-                      <td class="first"><input typ="text" class="text" value="saicharan"></td>
+                      <td class="first"><input type="text" class="text" value="saicharan"></td>
                       </tr>
                     <tr>
                       <td>Employee Contact :</td>
-                      <td><input typ="text" class="text" value="+44 7344546748"></td>
+                      <td><input type="text" class="text" value="+44 7344546748"></td>
                     </tr>
     
                            <tr>
                       <td>Employee Email Address:</td>
-                      <td><input typ="text" class="text" value="saicharan@gmail.com"></td>
+                      <td><input type="text" class="text" value="saicharan@gmail.com"></td>
                     </tr>
                       <tr>
                       <td>Resident Address : </td>
-                      <td><input typ="text" class="text" value="No:30a, Poniamman koil street, hastinapuram, chennia- 6000064"></td>
+                      <td><input type="text" class="text" value="No:30a, Poniamman koil street, hastinapuram, chennia- 6000064"></td>
                     </tr>
                     <tr>
                       <td>Joined Date :</td>
-                      <td><input typ="text" class="text" value="14/09/2016"></td>
+                      <td><input type="text" class="text" value="14/09/2016"></td>
                     </tr>
                     <tr>
                         <td>Designation :</td>
-                        <td><input typ="text" class="text" value="site Engineer "></td>
+                        <td><input type="text" class="text" value="site Engineer "></td>
                       </tr>
                       <tr>
                           <td>Years in Experince :</td>
-                          <td><input typ="text" class="text" value="1 year"></td>
+                          <td><input type="text" class="text" value="1 year"></td>
                         </tr>
                     <td><button class="buttongreen" style="margin-top:10px;">Activate</button></td>
                   
@@ -165,5 +173,6 @@
                                 });
                               });
                               </script>
-
+<script src="/customjs/onlynumbers.js"></script>
+<script src="/customjs/onlyalphabets.js"></script>
     </body></html>
