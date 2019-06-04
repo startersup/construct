@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var path = require('path');
-var mysql = require('mysql');
 var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname+'/assets')));
@@ -14,20 +13,11 @@ app.use(session({
 var taskController = require('./controllers/taskController');
 var adminController = require('./controllers/adminController');
 var credential = require('./credential');
+var connection = require('./connection');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var con = mysql.createConnection({
-  host: "13.233.163.72",
-  user: "root",
-  password: "root",
-  database : "construction"
-});
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
-adminController(app,con);
-taskController(app,con);
+adminController(app);
+taskController(app);
 app.get('/login',function (req,res) {  
   res.render('login') ;
 });
@@ -50,7 +40,7 @@ app.post('/login',function (req,res) {
   var id=req.body.id;
   var password =req.body.password;
   var sql = "select empid,auth_level from employeedata where (empid ='"+id+"' OR number = '"+id+"' ) AND password = '"+password+"'";
-  con.query(sql,function(err,result,fields){
+  connection.executeQuery(sql,function(err,result){
     if (err) throw err;
     if(result.length > 0){
       if(result[0].auth_level==1){
