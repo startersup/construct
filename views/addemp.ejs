@@ -53,7 +53,7 @@
             </tr>
  <tr>
               <td>Employee Address :</td>
-              <td><textarea class="controls" type="text" name="address"> </textarea>  </td> 
+              <td><textarea class="controls textarea" type="text" name="address" style="width:70%;"> </textarea>  </td> 
             </tr>
                    <tr>
               <td>Employee Designation :</td>
@@ -61,9 +61,9 @@
             </tr>
             <tr>
               <td>Authorization Level :</td>
-              <td><select class="controls" name="auth" required>
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
+              <td><select class="controls selectit" name="auth" style="width:70%;" required>
+                <option value="1">Superadmin Level</option>
+                <option value="2" selected>Employee Level</option>
               </select></td>
             </tr>
               <tr>
@@ -83,60 +83,6 @@
 </form>
             </div>
           </div>
-
-<!--right modal-content starts here-->
-
-  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-  
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title title" id="myModalLabel2">Employee Information<span class="green"> (SV456)</span><span class="btn btn-default" style="float:right;margin:0px 10px;">Update</span></h4>
-          </div>
-  
-          <div class="modal-body">
-              <table class="table table-user-information">
-                  <tbody>
-                    <tr>
-                      <td class="first">Employee Name :</td>
-                      <td class="first"><input type="text" class="text" value="saicharan"></td>
-                      </tr>
-                    <tr>
-                      <td>Employee Contact :</td>
-                      <td><input type="text" class="text" value="+44 7344546748"></td>
-                    </tr>
-    
-                           <tr>
-                      <td>Employee Email Address:</td>
-                      <td><input type="text" class="text" value="saicharan@gmail.com"></td>
-                    </tr>
-                      <tr>
-                      <td>Resident Address : </td>
-                      <td><input type="text" class="text" value="No:30a, Poniamman koil street, hastinapuram, chennia- 6000064"></td>
-                    </tr>
-                    <tr>
-                      <td>Joined Date :</td>
-                      <td><input type="text" class="text" value="14/09/2016"></td>
-                    </tr>
-                    <tr>
-                        <td>Designation :</td>
-                        <td><input type="text" class="text" value="site Engineer "></td>
-                      </tr>
-                      <tr>
-                          <td>Years in Experince :</td>
-                          <td><input type="text" class="text" value="1 year"></td>
-                        </tr>
-                    <td><button class="buttongreen" style="margin-top:10px;">Activate</button></td>
-                  
-</tbody></table>  
-    
-              
-        </div><!-- modal-content -->
-      </div><!-- modal-dialog -->
-      </div><!-- modal --></div>
-      </div>
-
 <script>$('.btn-expand-collapse').click(function(e) {
 				$('.navbar-primary').toggleClass('collapsed');
 });</script>

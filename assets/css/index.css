@@ -105,7 +105,7 @@ letter-spacing: 0.8px;
     color: #000000;
 }
 .navbar-primary-menu li a:hover{
-     background-color: #37474f;
+  background-image: linear-gradient(61deg,#401c5d,#51339f 49%,#6741ca);
     color: #ffffff;
 }
 .btn-expand-collapse {
@@ -219,6 +219,17 @@ input[type="file"] {
     height: 40px;
     outline: none;
      font-family: 'Poppins', sans-serif;
+}
+.textarea {
+  width: 100%;
+  padding: 12px 20px;
+  min-height: 45px;
+  margin: 8px 0;
+  min-height: 100px;
+  color: #000000;
+  box-sizing: border-box;
+  background-color: #E2E2E2;
+  font-family: 'Poppins', sans-serif;
 }
     .title
     {
