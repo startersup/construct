@@ -31,7 +31,7 @@ body{
 
 .navbar {
     border-radius: 0px;
-    background-color:#232F3E;
+    background-image: linear-gradient(61deg,#401c5d,#51339f 49%,#6741ca);
     border:none;
     padding:5px;
     }
