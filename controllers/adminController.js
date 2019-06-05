@@ -40,11 +40,36 @@ module.exports = function(app){
         var auth = req.body.auth;
         var ctc = req.body.ctc;
         var joindate = req.body.joindate;
-        var sql = "INSERT into employeedata(empid,name,mail,number,designation,auth_level,password,ctc,joining_date,address,photo) VALUES \
-                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"','"+filename+"')";
+        var sql = "INSERT into employeedata(empid,name,mail,number,designation,auth_level,password,ctc,joining_date,address,photo,status) VALUES \
+                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"','"+filename+"','Active')";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;
-            res.render('addemp.ejs');
+            res.render('addemp');
+        })
+    });
+    app.get('/empdata', function(req,res){
+        var sql = "Select * from employeedata";
+        connection.executeQuery(sql,function(err,result){
+            if(err) throw err;
+            console.log(result);
+            res.render('empdata',{result : result});
+        })
+    });
+    app.post('/empdata', function(req,res){
+        var empid = req.body.empid;
+        var name =req.body.name;
+        var mail = req.body.mail;
+        var address =  req.body.address;
+        var number = req.body.number;
+        var designation = req.body.designation;
+        var auth = req.body.auth;
+        var ctc = req.body.ctc;
+        var status = req.body.status;
+        var sql = "UPDATE employeedata SET name='"+name+"', mail='"+mail+"', number='"+number+"', designation='"+designation+"', \
+                   auth_level='"+auth+"', ctc='"+ctc+"', address='"+address+"', status='"+status+"' where empid = '"+empid+"' ";
+        connection.executeQuery(sql,function(err,result){
+            if(err) throw err;
+            res.redirect('/empdata');
         })
     });
 }

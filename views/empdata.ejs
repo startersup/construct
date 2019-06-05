@@ -2,21 +2,22 @@
 <head>
   <title>Admin Panel</title>
   <meta charset="utf-8">
- <link rel="shortcut icon" href="assets/images/mini-logo.png" type="image/x-icon">
+ <link rel="shortcut icon" href="/images/mini-logo.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/index.css">
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
+    <% include side_bar.ejs %>
+    <% include header.ejs %>
     <div class="main-content">
            <div class="container1">
           <div id="preloader">
@@ -40,24 +41,26 @@
                         <th style="width:5%;">Action</th>
                       </thead>
                       <tbody id="myTable">
+                        <% if(typeof result !== 'undefined') {result.forEach(function(row){ %>
                            <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;"></span></td>
-                          <td><button data-toggle="modal" data-target="" class="btn btn-default">Edit</button></td>
+                          <td><%= row.empid %></td>
+                          <td><%= row.name %></td>
+                          <td><%= row.mail %></td>
+                          <td><%= row.number %></td>
+                          <td><%= row.address %></td>
+                          <td><%= row.designation %></td>
+                          <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;"><%= row.status %></span></td>
+                          <td><button data-toggle="modal" data-target="#<%= row.empid %>" class="btn btn-default">Edit</button></td>
                         </tr>
+                        <% });} %>
                           </tbody> </table>
         </div>       
             </div>
           
 
 <!--right modal-content starts here-->
-
-  <div class="modal right fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+<% if(typeof result != 'undefined'){result.forEach(function(row){ %>
+  <div class="modal right fade" id="<%= row.empid %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
   
@@ -67,41 +70,41 @@
           </div>
   
           <div class="modal-body">
-               <img class="empimg" src="../upload/" > <br><br>
+               <img class="empimg" src="/emp_photo/<%= row.photo %>" > <br><br>
                
-              <form action="update.php" method="post" > 
-               <input type="hidden" name="empid" class="text" value="">
+              <form action="/empdata" method="post" > 
+               <input type="hidden" name="empid" class="text" value="<%= row.empid %>">
               <table class="table table-user-information">
                   <tbody>
                     
                     <tr>
                       <td class="first">Employee Name :</td>
-                      <td class="first"><input type="text" name="name" class="text" value=""></td>
+                      <td class="first"><input type="text" name="name" class="text" value="<%= row.name %>"></td>
                       </tr>
                     <tr>
                       <td>Employee Contact :</td>
-                      <td><input type="text" class="text" onkeypress="return isNumber(event)" name="number" value=""></td>
+                      <td><input type="text" class="text" onkeypress="return isNumber(event)" name="number" value="<%= row.number %>"></td>
                     </tr>
     
                            <tr>
                       <td>Employee Email:</td>
-                      <td><input type="text" class="text" name="mail" value=""></td>
+                      <td><input type="text" class="text" name="mail" value="<%= row.mail %>"></td>
                     </tr>
                       <tr>
                       <td>Resident Address : </td>
-                          <td><textarea name="address" class="text"></textarea></td>
+                          <td><textarea name="address" class="text"><%= row.address %></textarea></td>
                     </tr>
                     <tr>
                       <td>Joined Date :</td>
-                      <td><input type="text" id="datetimepicker" class="text" name="joining_date" value=""></td>
+                      <td><input type="text" id="datetimepicker" class="text" name="joindate" value="<%= row.joining_date %>"></td>
                     </tr>
                      <tr>
                       <td>CTC :</td>
-                      <td><input type="text" onkeypress="return isNumber(event)" class="text" name="ctc" value=""></td>
+                      <td><input type="text" onkeypress="return isNumber(event)" class="text" name="ctc" value="<%= row.ctc %>"></td>
                     </tr>
                     <tr>
                         <td>Designation :</td>
-                        <td><input type="text" class="text" name="designation" value=""></td>
+                        <td><input type="text" class="text" name="designation" value="<%= row.designation %>"></td>
                       </tr>
                       <!--<tr>-->
                       <!--    <td>Years in Experince :</td>-->
@@ -111,15 +114,18 @@
                         <tr>
                             <td>Employee Status</td>
                     <td>
-
-                        <select name="status" class="selectit" >
-                            
-                         <option value=""></option>  
-                          <option value=""></option> 
-                            
+                        <select name="status" class="selectit" > 
+                         <option value="Active">Active</option>  
+                          <option value="Inactive">Inactive</option> 
                         </select>
-                      
-                        
+                        </td> </tr>
+                        <tr>
+                            <td>Authorization Level</td>
+                    <td>
+                        <select name="auth" class="selectit" > 
+                         <option value="1">Super Admin</option>  
+                          <option value="2">Labor</option> 
+                        </select>
                         </td> </tr>
                         <td>
                             
@@ -132,7 +138,7 @@
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
       </div><!-- modal --></div>
-   
+   <% });} %>
       </div>
 
 <script>$('.btn-expand-collapse').click(function(e) {
@@ -218,6 +224,8 @@
                                 });
                               });
                               </script>
+                               <script src="/customjs/onlynumbers.js"></script>
+                               <script src="/customjs/onlyalphabets.js"></script>
                               <style>
                                  .subimage
                                  {
