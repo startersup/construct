@@ -21,6 +21,9 @@ taskController(app);
 app.get('/login',function (req,res) {  
   res.render('login') ;
 });
+app.get('/error',function (req,res) {  
+  res.render('error') ;
+});
 app.get('/logout',function (req,res) {  
   req.session.destroy();
   res.redirect('login') ;
@@ -41,7 +44,11 @@ app.post('/login',function (req,res) {
   var password =req.body.password;
   var sql = "select empid,auth_level from employeedata where (empid ='"+id+"' OR number = '"+id+"' ) AND password = '"+password+"'";
   connection.executeQuery(sql,function(err,result){
-    if (err) throw err;
+    if (err){
+      console.log(err);
+      res.render('error');
+      return;
+    };
     if(result.length > 0){
       if(result[0].auth_level==1){
       req.session.level=1;

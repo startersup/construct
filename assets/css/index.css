@@ -257,6 +257,13 @@ font-weight:600;
     margin-left:2px;
     background-color: #ffffff;
 }
+.container2
+{
+  padding:10px;
+    margin-right:10px;
+    margin-left:10px;
+    background-color: #ffffff; 
+}
 .textarea {
     width: 100%;
     padding: 12px 20px;
@@ -321,6 +328,11 @@ padding-top:30px;
     max-height: 450px;
     max-width: 500px;
     width: 100%;
+}
+.medium
+{
+  max-width:1000px;
+  width:100%;
 }
   <!--tab-panel-->
 

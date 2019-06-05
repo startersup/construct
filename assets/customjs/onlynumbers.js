@@ -1,9 +1,4 @@
-<!--
-<input type="text" class="textfield" value="" id="extra7" name="extra7" onkeypress="return isNumber(event)" />
 
--->
-
-<script language="Javascript" type="text/javascript">
 
 function isNumber(evt) {
     evt = (evt) ? evt : window.event;
@@ -14,4 +9,4 @@ function isNumber(evt) {
     return true;
 }
 
-    </script>
+

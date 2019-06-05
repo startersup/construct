@@ -1,29 +1,29 @@
 <html lang="en" id="html">
-<head>
-  <title>Admin Panel</title>
-  <meta charset="utf-8">
- <link rel="shortcut icon" href="/images/mini-logo.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/index.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
+  <head>
+      <title>Admin Panel</title>
+      <meta charset="utf-8">
+     <link rel="shortcut icon" href="images/mini-logo.png" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="/css/bootstrap.css">
+      <link rel="stylesheet" href="/css/index.css">
+      <script src="/js/jquery.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <% include header.ejs %>
     <% include side_bar.ejs %>
-    <% include header.ejs %>
-    <div class="main-content">
-           <div class="container1">
-          <div id="preloader">
-  <div id="status">&nbsp;</div>
-</div>
-                <div id="my_div">
+        <div class="main-content">
+               <div class="container1">
+              <div id="preloader">
+      <div id="status">&nbsp;</div>
+    </div>
+                    <div id="my_div">
                     <h4>Employee Database</h4>
                   <div class="row">
                     <div class="col-xs-9">
@@ -70,7 +70,7 @@
           </div>
   
           <div class="modal-body">
-               <img class="empimg" src="/emp_photo/<%= row.photo %>" > <br><br>
+               <img class="empimg" src="/emp_photo/<%= row.photo %>"  onerror="this.src='/images/team1.jpg';"> <br><br>
                
               <form action="/empdata" method="post" > 
                <input type="hidden" name="empid" class="text" value="<%= row.empid %>">
@@ -140,107 +140,45 @@
       </div><!-- modal --></div>
    <% });} %>
       </div>
-
-<script>$('.btn-expand-collapse').click(function(e) {
-				$('.navbar-primary').toggleClass('collapsed');
-});</script>
-      <script>
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-        
-        for (i = 0; i < dropdown.length; i++) {
-          dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-              dropdownContent.style.display = "none";
-            } else {
-              dropdownContent.style.display = "block";
-            }
-          });
-        }
-        </script>
-    
-    <script>$(window).on('load', function() { // makes sure the whole site is loaded 
-  $('#status').fadeOut(); // will first fade out the loading animation 
-  $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
-  $('body').delay(350).css({'overflow':'visible'});
-})</script>
-    
-      <script>
-                              $(document).ready(function(){
-                                $("#myInput").on("keyup", function() {
-                                  var value = $(this).val().toLowerCase();
-                                  $("#myTable tr").filter(function() {
-                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+ 
+      <script>$('.btn-expand-collapse').click(function(e) {
+          $('.navbar-primary').toggleClass('collapsed');
+  });</script>
+        <script>
+          var dropdown = document.getElementsByClassName("dropdown-btn");
+          var i;
+          
+          for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+              } else {
+                dropdownContent.style.display = "block";
+              }
+            });
+          }
+          </script>
+      
+      <script>$(window).on('load', function() { // makes sure the whole site is loaded 
+    $('#status').fadeOut(); // will first fade out the loading animation 
+    $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+    $('body').delay(350).css({'overflow':'visible'});
+  })</script>
+      
+        <script>
+                                $(document).ready(function(){
+                                  $("#myInput").on("keyup", function() {
+                                    var value = $(this).val().toLowerCase();
+                                    $("#myTable tr").filter(function() {
+                                      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                    });
                                   });
                                 });
-                              });
-                              </script>
-                              
-    
-    <script>$(window).on('load', function() { // makes sure the whole site is loaded 
-  $('#status').fadeOut(); // will first fade out the loading animation 
-  $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
-  $('body').delay(350).css({'overflow':'visible'});
-})</script>
-    <script>
-      $(document).ready(function() {
-        	$.datetimepicker.setLocale('pt-EN');
-       	$('#datetimepicker').datetimepicker(
-     {
-        // var u="60:00";
- datepicker:true,
- allowTimes:[
- '00:00','00:15', '00:30', '00:45','01:00','01:15','01:30','01:45','02:00','02:15','02:30','02:45','03:00','03:15','03:30','03:45','04:00','04:15','04:30','04:45','05:00','05:15','05:30','05:45','06:00','06:15','06:30','06:45','07:00','07:15','07:30','07:45','08:00','08:15','08:30','08:45','09:00','09:15','09:30','09:45','10:00','10:15','10:30','10:45','11:00','11:15','11:30','11:45','12:00','12:15','12:30','12:45','13:00','13:15','13:30','13:45','14:00','14:15','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15','16:30','16:45','17:00','17:15','17:30','17:45','18:00','18:15','18:30','18:45','19:00','19:15','19:30','19:45','20:00','20:15','20:30','20:45','21:00','21:15','21:30','21:45','22:00','22:15','22:30','22:45','23:00','23:15','23:30','23:45'
- ]
-});
-            
-      });
-</script>
-
-<script>
-      $(document).ready(function() {
-        	$.datetimepicker.setLocale('pt-EN');
-       	$('#datetimepicker2').datetimepicker(
-     {
-        // var u="60:00";
- datepicker:true,
- allowTimes:[
- '00:00','00:15', '00:30', '00:45','01:00','01:15','01:30','01:45','02:00','02:15','02:30','02:45','03:00','03:15','03:30','03:45','04:00','04:15','04:30','04:45','05:00','05:15','05:30','05:45','06:00','06:15','06:30','06:45','07:00','07:15','07:30','07:45','08:00','08:15','08:30','08:45','09:00','09:15','09:30','09:45','10:00','10:15','10:30','10:45','11:00','11:15','11:30','11:45','12:00','12:15','12:30','12:45','13:00','13:15','13:30','13:45','14:00','14:15','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15','16:30','16:45','17:00','17:15','17:30','17:45','18:00','18:15','18:30','18:45','19:00','19:15','19:30','19:45','20:00','20:15','20:30','20:45','21:00','21:15','21:30','21:45','22:00','22:15','22:30','22:45','23:00','23:15','23:30','23:45'
- ]
-});
-            
-      });
-</script>
-
-      <script>
-                              $(document).ready(function(){
-                                $("#myInput").on("keyup", function() {
-                                  var value = $(this).val().toLowerCase();
-                                  $("#myTable tr").filter(function() {
-                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                                  });
-                                });
-                              });
-                              </script>
-                               <script src="/customjs/onlynumbers.js"></script>
-                               <script src="/customjs/onlyalphabets.js"></script>
-                              <style>
-                                 .subimage
-                                 {
-                                     max-width:500px;
-                                     width:100%;
-                                 }
-                                 modal
-                                 {
-                                     max-height:100vh;
-                                     overflow-y:scroll;
-                                 }
-                            
-                                 
-                              </style>
-                               
+                                </script>
+  <script src="/customjs/onlynumbers.js"></script>
+  <script src="/customjs/onlyalphabets.js"></script>
                                 <!--<input class="controls" type="text" name="number"  onkeypress="return isNumber(event)"  placeholder="Enter Employee Contact Number">-->                           
                               
                               

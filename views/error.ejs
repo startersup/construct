@@ -16,17 +16,52 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
+        <% include header.ejs %>
+        <% include side_bar.ejs %>
     <div class="main-content">
            <div class="container1">
-          <div id="preloader">
-  <div id="status">&nbsp;</div>
-</div>
-<img src="../assets/images/404.jpg">
+<center><img class="medium" src="/images/404.jpg"></center>
         </div>       
             </div>
           
-
+            <script>$('.btn-expand-collapse').click(function(e) {
+                    $('.navbar-primary').toggleClass('collapsed');
+            });</script>
+                  <script>
+                    var dropdown = document.getElementsByClassName("dropdown-btn");
+                    var i;
+                    
+                    for (i = 0; i < dropdown.length; i++) {
+                      dropdown[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                          dropdownContent.style.display = "none";
+                        } else {
+                          dropdownContent.style.display = "block";
+                        }
+                      });
+                    }
+                    </script>
+                
+                <script>$(window).on('load', function() { // makes sure the whole site is loaded 
+              $('#status').fadeOut(); // will first fade out the loading animation 
+              $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+              $('body').delay(350).css({'overflow':'visible'});
+            })</script>
+                
+                  <script>
+                                          $(document).ready(function(){
+                                            $("#myInput").on("keyup", function() {
+                                              var value = $(this).val().toLowerCase();
+                                              $("#myTable tr").filter(function() {
+                                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                              });
+                                            });
+                                          });
+                                          </script>
+            <script src="/customjs/onlynumbers.js"></script>
+            <script src="/customjs/onlyalphabets.js"></script>
 
                               
     </body></html>

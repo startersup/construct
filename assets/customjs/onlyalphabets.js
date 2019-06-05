@@ -1,6 +1,4 @@
-<!--    <input type="text" onkeypress="return onlyAlphabets(event,this);" />-->
-   
-   <script language="Javascript" type="text/javascript">
+
 
         function onlyAlphabets(e, t) {
             try {
@@ -20,5 +18,3 @@
                 alert(err.Description);
             }
         }
-
-    </script>
