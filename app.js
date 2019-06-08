@@ -10,6 +10,12 @@ app.use(session({
   resave : false,
   saveUninitialized: false
 }));
+// app.router.map(function()
+// {
+
+// this.route('addemp');
+// }
+// )
 var taskController = require('./controllers/taskController');
 var adminController = require('./controllers/adminController');
 var credential = require('./credential');
