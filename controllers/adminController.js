@@ -48,15 +48,17 @@ module.exports = function(app){
         })
     });
     app.get('/empdata', function(req,res){
-        var sql = "Select * from employeedata";
+        var sql = "Select empid,name,mail,number,designation,auth_level,password,ctc,address,photo,status,DATE_FORMAT(joining_date,\'%Y-%m-%d\') as joining_date from employeedata";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;
-            console.log(result);
             res.render('empdata',{result : result});
         })
     });
-    app.post('/empdata', function(req,res){
+    app.post('/empdata',upload.single('EMP'), function(req,res){
+        var filename = req.file.filename;
         var empid = req.body.empid;
+        var photo = empid+filename.substr(filename.length-4);
+        console.log(photo);
         var name =req.body.name;
         var mail = req.body.mail;
         var address =  req.body.address;
@@ -65,7 +67,7 @@ module.exports = function(app){
         var auth = req.body.auth;
         var ctc = req.body.ctc;
         var status = req.body.status;
-        var sql = "UPDATE employeedata SET name='"+name+"', mail='"+mail+"', number='"+number+"', designation='"+designation+"', \
+        var sql = "UPDATE employeedata SET photo='"+photo+"', name='"+name+"', mail='"+mail+"', number='"+number+"', designation='"+designation+"', \
                    auth_level='"+auth+"', ctc='"+ctc+"', address='"+address+"', status='"+status+"' where empid = '"+empid+"' ";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;

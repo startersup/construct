@@ -31,22 +31,21 @@
         </div><div class="col-xs-3 hidden-xs"><br>Showing 281 Records</div> </div>
              <table >
                       <thead class="header">
-                        <th style="width:5%;">Id</th>
-                        <th style="width:15%;">Employee Name</th>
-                        <th style="width:15%;">Number</th>
-                           <th style="width:15%;">Email</th>
-                        <th style="width:20%;">Resident Address</th>
-                        <th style="width:15%;">Designation</th>
-                        <th style="width:8%;">Status</th>
-                        <th style="width:5%;">Action</th>
+                    
+                        <th>Name</th>
+                        <th>Number</th>
+                           <th>Email</th>
+                        <th>Address</th>
+                        <th>Designation</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </thead>
                       <tbody id="myTable">
                         <% if(typeof result !== 'undefined') {result.forEach(function(row){ %>
                            <tr>
-                          <td><%= row.empid %></td>
                           <td><%= row.name %></td>
-                          <td><%= row.mail %></td>
                           <td><%= row.number %></td>
+                          <td><%= row.mail %></td>
                           <td><%= row.address %></td>
                           <td><%= row.designation %></td>
                           <td><span style="color:#ffffff;background-color:green;font-weight:500;letter-spacing:0.5px;padding:5px;border-radius:4px;"><%= row.status %></span></td>
@@ -66,17 +65,21 @@
   
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title title" id="myModalLabel2">Employee Information<span class="green"> (SV456)</span></h4>
+            <h4 class="modal-title title" id="myModalLabel2">Employee Information<span class="green">&nbsp;&nbsp;(<%= row.empid %>)</span></h4>
           </div>
   
           <div class="modal-body">
-               <img class="empimg" src="/emp_photo/<%= row.photo %>"  onerror="this.src='/images/team1.jpg';"> <br><br>
-               
-              <form action="/empdata" method="post" > 
+               <img class="empimg" src="/emp_photo/<%= row.photo %>"  > <br><br>
+              <form action="/empdata" method="post"  enctype="multipart/form-data" > 
                <input type="hidden" name="empid" class="text" value="<%= row.empid %>">
               <table class="table table-user-information">
                   <tbody>
-                    
+                    <tr>
+                      <td>Employee Photo :</td>
+                      <td>
+                          <input type="file" class="controls" name="EMP" accept="image/*">
+                          </td>
+                    </tr>
                     <tr>
                       <td class="first">Employee Name :</td>
                       <td class="first"><input type="text" name="name" class="text" value="<%= row.name %>"></td>
@@ -92,11 +95,11 @@
                     </tr>
                       <tr>
                       <td>Resident Address : </td>
-                          <td><textarea name="address" class="text"><%= row.address %></textarea></td>
+                          <td><textarea name="address" class="text address"><%= row.address %></textarea></td>
                     </tr>
                     <tr>
                       <td>Joined Date :</td>
-                      <td><input type="datetime" id="datetimepicker" class="text" name="joindate" value="<%= row.joining_date %>"></td>
+                      <td><input type="date" format="mm-dd-yyyy" class="text"  name="joindate" value="<%= row.joining_date %>"></td>
                     </tr>
                      <tr>
                       <td>CTC :</td>

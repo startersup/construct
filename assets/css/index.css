@@ -286,6 +286,10 @@ font-weight:600;
     max-width: 100%;
     margin-bottom: 20px;
 }
+.address
+{
+  min-height:100px;
+}
 <!--datatables-->
 
   #myTable {
