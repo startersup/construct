@@ -31,13 +31,16 @@ module.exports = function(app){
     });
     app.post('/addemp',function(req,res){
         var empid = "EMP"+Date.now();
-        var filename =  req.files.EMP.name ;
-        var ext = filename.substr(filename.length-4);
-        var EMP = req.files.EMP;
-        EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
-            if (err) throw err;
-          });
-        var photo = empid+ ext;
+        var filename,ext,photo="";
+        if (req.files) {
+            var EMP = req.files.EMP;
+            filename =  req.files.EMP.name ;
+            ext = filename.substr(filename.length-4);
+            EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
+                if (err) throw err;
+            });
+             photo = empid+ ext;
+          } 
         var name =req.body.name;
         var mail = req.body.mail;
         var address =  req.body.address;
@@ -46,8 +49,17 @@ module.exports = function(app){
         var auth = req.body.auth;
         var ctc = req.body.ctc;
         var joindate = req.body.joindate;
-        var sql = "INSERT into employeedata(empid,name,mail,number,designation,auth_level,password,ctc,joining_date,address,photo,status) VALUES \
-                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"','"+photo+"','Active')";
+        var dynamic,dynamic1;
+        if(!photo==""){
+        dynamic = ",photo,status";
+        dynamic1 = ",'"+photo+"','Active'";
+        }
+        else{
+        dynamic = ",status";
+        dynamic1 = ",'Active'";
+        }
+        var sql = "INSERT into employeedata(empid,name,mail,number,designation,auth_level,password,ctc,joining_date,address"+dynamic+") VALUES \
+                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"'"+dynamic1+")";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;
             res.render('addemp');
@@ -61,14 +73,17 @@ module.exports = function(app){
         })
     });
     app.post('/empdata', function(req,res){
-        var EMP = req.files.EMP;
         var empid = req.body.empid;
-        var filename =  req.files.EMP.name ;
-        var ext = filename.substr(filename.length-4);
-        EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
-            if (err) throw err;
-          });
-        var photo = empid+ ext;
+        var filename,ext,photo="";
+        if (req.files) {
+            var EMP = req.files.EMP;
+            filename =  req.files.EMP.name ;
+            ext = filename.substr(filename.length-4);
+            EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
+                if (err) throw err;
+            });
+             photo = empid+ ext;
+          }        
         var name =req.body.name;
         var mail = req.body.mail;
         var address =  req.body.address;
@@ -77,7 +92,12 @@ module.exports = function(app){
         var auth = req.body.auth;
         var ctc = req.body.ctc;
         var status = req.body.status;
-        var sql = "UPDATE employeedata SET photo='"+photo+"', name='"+name+"', mail='"+mail+"', number='"+number+"', designation='"+designation+"', \
+        var dynamic;
+        if(!photo=="")
+        dynamic = "photo='"+photo+"', name='"+name+"',";
+        else
+        dynamic = "name='"+name+"',";
+        var sql = "UPDATE employeedata SET "+dynamic+" mail='"+mail+"', number='"+number+"', designation='"+designation+"', \
                    auth_level='"+auth+"', ctc='"+ctc+"', address='"+address+"', status='"+status+"' where empid = '"+empid+"' ";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;

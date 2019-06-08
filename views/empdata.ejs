@@ -126,8 +126,13 @@
                             <td>Authorization Level</td>
                     <td>
                         <select name="auth" class="selectit" > 
-                         <option value="1">Super Admin</option>  
-                          <option value="2">Labor</option> 
+                          <% if(row.auth_level==1){ %>
+                            <option value="1" selected>Super Admin</option> 
+                         <option value="2">Labor</option>
+                         <% }else{ %> 
+                          <option value="1">Super Admin</option> 
+                          <option value="2" selected>Labor</option> 
+                          <% } %>
                         </select>
                         </td> </tr>
                         <td>
