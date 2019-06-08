@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+const fileUpload = require('express-fileupload');
 var path = require('path');
 var app = express();
 app.set('view engine', 'ejs');
@@ -10,6 +11,7 @@ app.use(session({
   resave : false,
   saveUninitialized: false
 }));
+app.use(fileUpload());
 // app.router.map(function()
 // {
 

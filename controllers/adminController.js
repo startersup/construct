@@ -29,9 +29,15 @@ module.exports = function(app){
             res.render('addemp');
         }
     });
-    app.post('/addemp',upload.single('EMP'),function(req,res){
-        var filename = req.file.filename;
-        var empid = filename.slice(0,-4);
+    app.post('/addemp',function(req,res){
+        var empid = "EMP"+Date.now();
+        var filename =  req.files.EMP.name ;
+        var ext = filename.substr(filename.length-4);
+        var EMP = req.files.EMP;
+        EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
+            if (err) throw err;
+          });
+        var photo = empid+ ext;
         var name =req.body.name;
         var mail = req.body.mail;
         var address =  req.body.address;
@@ -41,7 +47,7 @@ module.exports = function(app){
         var ctc = req.body.ctc;
         var joindate = req.body.joindate;
         var sql = "INSERT into employeedata(empid,name,mail,number,designation,auth_level,password,ctc,joining_date,address,photo,status) VALUES \
-                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"','"+filename+"','Active')";
+                    ('"+empid+"','"+name+"','"+mail+"','"+number+"','"+designation+"','"+auth+"','test','"+ctc+"','"+joindate+"','"+address+"','"+photo+"','Active')";
         connection.executeQuery(sql,function(err,result){
             if(err) throw err;
             res.render('addemp');
@@ -54,11 +60,15 @@ module.exports = function(app){
             res.render('empdata',{result : result});
         })
     });
-    app.post('/empdata',upload.single('EMP'), function(req,res){
-        var filename = req.file.filename;
+    app.post('/empdata', function(req,res){
+        var EMP = req.files.EMP;
         var empid = req.body.empid;
-        var photo = empid+filename.substr(filename.length-4);
-        console.log(photo);
+        var filename =  req.files.EMP.name ;
+        var ext = filename.substr(filename.length-4);
+        EMP.mv('./assets/emp_photo/'+ empid+ ext, function(err) {
+            if (err) throw err;
+          });
+        var photo = empid+ ext;
         var name =req.body.name;
         var mail = req.body.mail;
         var address =  req.body.address;
