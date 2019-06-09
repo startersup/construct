@@ -40,7 +40,9 @@ body{
 }
 .navbar-default .navbar-nav>li>a{
 color:#ffffff;
-font-family: 'Poppins', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 font-size:15px;
 letter-spacing:0.4px;
 }
@@ -78,12 +80,12 @@ letter-spacing: 0.8px;
   max-height:100vh;
       border-right:1px solid #f4f4f4;
     overflow-y: scroll !important;   
-  font-family: rubik, sans-serif;
+   font-family: rubik, sans-serif;
    font-weight: 400;
    font-style: normal;
     padding-top: 10px;
     border: none !important;
-    width: 255px;
+    width: 240px;
     z-index: 8;
         box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
     -webkit-transition: all 0.1s ease-in-out;
@@ -99,7 +101,7 @@ letter-spacing: 0.8px;
     display: block;
     padding: 13px 18px;
     text-align: left;
-    font-size:15px;
+    font-size:16px;
     text-decoration: none !important;
     font-weight: 500;
         border-right:1px solid #f4f4f4;
@@ -187,9 +189,20 @@ letter-spacing: 0.8px;
 
 .main-content {
     margin-top: 40px;
-    margin-left: 250px;
+    margin-left: 240px;
+     font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
     padding:20px 10px !important;
        
+}
+.main-content h4
+{
+     font-family: rubik, sans-serif;
+   font-weight: 600;
+    font-size:24px;
+    padding:10px 5px;
+   font-style: normal;
 }
 .input {
     width: 100%;
@@ -199,7 +212,9 @@ letter-spacing: 0.8px;
     color: #000000;
     box-sizing: border-box;
     background-color: #E2E2E2;
-    font-family: 'Poppins', sans-serif;
+    font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
 input[type="file"] {
     width: 100%;
@@ -210,7 +225,9 @@ input[type="file"] {
     color: #000000;
     box-sizing: border-box;
     background-color: #E2E2E2;
-    font-family: 'Poppins', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
 .controls {
     margin-top: 10px;
@@ -220,7 +237,9 @@ input[type="file"] {
     -moz-box-sizing: border-box;
     height: 40px;
     outline: none;
-     font-family: 'Poppins', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
 .textarea {
   width: 100%;
@@ -231,11 +250,15 @@ input[type="file"] {
   color: #000000;
   box-sizing: border-box;
   background-color: #E2E2E2;
-  font-family: 'Poppins', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
     .title
     {
-       font-family: 'Poppins', sans-serif;
+       font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 font-size:20px;
 letter-spacing: 0.8px;
 font-weight:600;
@@ -247,7 +270,9 @@ font-weight:600;
     margin: 8px 0;
     box-sizing: border-box;
     border:none !important;
-  font-family: 'Poppins', sans-serif;
+ font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
     background-color: #E2E2E2;
 }
 .collapsed + .main-content {
@@ -275,7 +300,9 @@ font-weight:600;
     color: #000000;
     box-sizing: border-box;
     background-color: #E2E2E2;
-    font-family: 'Open Sans', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
 .text {
     width: 100%;
@@ -297,7 +324,9 @@ font-weight:600;
   #myTable {
     border-collapse: collapse;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
+    font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
     font-size:14px;
      letter-spacing: 0.2px;
   }
@@ -312,13 +341,18 @@ padding-top:30px;
   #myTable th, #myTable td {
     text-align: left;
     padding: 10px;
-  font-family: 'Poppins', sans-serif;
+      line-height:25px;
+ font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
   }
    th
   {
       background-color:#f4f4f4;
-   font-family: 'Poppins', sans-serif;
-      font-size:15px;
+  font-family: rubik, sans-serif;
+   font-weight: 600;
+   font-style: normal;
+      font-size:16px;
       letter-spacing:0.5px;
       padding:10px;
   }
@@ -356,7 +390,9 @@ padding-top:30px;
   .tabbable-line > .nav-tabs > li {
     margin-right: 2px;
     font-size:15px;
-   font-family: 'Poppins', sans-serif;
+font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
   }
   .tabbable-line > .nav-tabs > li > a {
     border: 0;
@@ -450,11 +486,14 @@ padding-top:30px;
 	.modal-content {
 		border-radius: 0;
 		border: none;
+         font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 	}
 
 	.modal-header {
 		border-bottom-color: #EEEEEE;
-		background-color:#232F3E;
+		 background-image: linear-gradient(61deg,#401c5d,#51339f 49%,#6741ca);
         color:#ffffff;
 	}
 
@@ -588,7 +627,9 @@ font-weight:600;
     transition: 0.3s;
     width: 100%;
     padding:10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: rubik, sans-serif;
+   font-weight: 400;
+   font-style: normal;
 }
 
 .card:hover {
