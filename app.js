@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-const fileUpload = require('express-fileupload');
 var path = require('path');
 var app = express();
 app.set('view engine', 'ejs');
@@ -11,66 +10,9 @@ app.use(session({
   resave : false,
   saveUninitialized: false
 }));
-app.use(fileUpload());
-// app.router.map(function()
-// {
-
-// this.route('addemp');
-// }
-// )
-var taskController = require('./controllers/taskController');
-var adminController = require('./controllers/adminController');
-var credential = require('./credential');
-var connection = require('./connection');
+var db = require('./config/database');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-adminController(app);
-taskController(app);
-app.get('/login',function (req,res) {  
-  res.render('login') ;
-});
-app.get('/error',function (req,res) {  
-  res.render('error') ;
-});
-app.get('/logout',function (req,res) {  
-  req.session.destroy();
-  res.redirect('login') ;
-});
-app.get('/',function (req,res) {  
- if(credential.isAdmin(req)){
-     res.redirect('admin');
-     return;
- }
- else if(credential.isLabor(req)){
-    res.redirect('mytask');
-    return;
- }
-  res.redirect('/login') ;
-});
-app.post('/login',function (req,res) {  
-  var id=req.body.id;
-  var password =req.body.password;
-  var sql = "select empid,auth_level from employeedata where (empid ='"+id+"' OR number = '"+id+"' ) AND password = '"+password+"'";
-  connection.executeQuery(sql,function(err,result){
-    if (err){
-      console.log(err);
-      res.render('error');
-      return;
-    };
-    if(result.length > 0){
-      if(result[0].auth_level==1){
-      req.session.level=1;
-      res.redirect('admin') ;
-      return;
-      }
-      else if(result[0].auth_level==2){
-      req.session.level=2;
-      res.redirect('mytask');
-        return;
-      }
-    }
-    res.render('login');
-  });
-});
+
 console.log("Listening on 3000");
 app.listen(3000);
