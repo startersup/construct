@@ -1,0 +1,58 @@
+{
+  "name": "Department",
+  "plural": "departments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid",
+      "mysql": {
+        "columnName": "departmentId",
+        "dataType": "VARCHAR",
+        "dataLength": 256,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "departmentName",
+        "dataType": "VARCHAR",
+        "dataLength": 100,
+        "nullable": "N"
+      }
+    },
+    "description": {
+      "type": "string",
+      "mysql": {
+        "columnName": "description",
+        "dataType": "VARCHAR",
+        "dataLength": 256,
+        "nullable": "T"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "users": {
+      "type": "hasMany",
+      "model": "UserInfo",
+      "foreignKey": "department"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

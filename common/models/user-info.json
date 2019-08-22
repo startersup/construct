@@ -1,0 +1,86 @@
+{
+  "name": "UserInfo",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid",
+      "mysql": {
+        "columnName": "userId",
+        "dataType": "VARCHAR",
+        "dataLength": 256,
+        "nullable": "N"
+      }
+    },
+    "first_name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "firstName",
+        "dataType": "VARCHAR",
+        "dataLength": 100,
+        "nullable": "N"
+      }
+    },
+    "last_name": {
+      "type": "string",
+      "mysql": {
+        "columnName": "lastName",
+        "dataType": "VARCHAR",
+        "dataLength": 100,
+        "nullable": "T"
+      }
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "salary": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "realm": false,
+    "username": false
+  },
+  "validations": [],
+  "relations": {
+    "departments": {
+      "type": "belongsTo",
+      "model": "Department",
+      "foreignKey": "department"
+    },
+    "sites": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "site"
+    },
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "PurchaseOrder",
+      "foreignKey": "createdBy"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

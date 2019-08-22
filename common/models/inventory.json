@@ -1,0 +1,81 @@
+{
+  "name": "Inventory",
+  "plural": "products",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid",
+      "mysql": {
+        "columnName": "itemId",
+        "dataType": "VARCHAR",
+        "dataLength": 256,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "itemName",
+        "dataType": "VARCHAR",
+        "dataLength": 100,
+        "nullable": "N"
+      }
+    },
+    "total": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "dataType": "FLOAT"
+      }
+    },
+    "gst": {
+      "type": "number",
+      "mysql": {
+        "columnName": "gst",
+        "dataType": "FLOAT"
+      }
+    },
+    "cgst": {
+      "type": "number",
+      "mysql": {
+        "columnName": "cgst",
+        "dataType": "FLOAT"
+      }
+    },
+    "count": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sites": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "site"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "PurchaseOrder",
+      "foreignKey": "orderId",
+      "keyThrough": "itemId",
+      "through": "PurchaseItemInfo"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

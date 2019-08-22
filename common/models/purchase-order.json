@@ -1,0 +1,109 @@
+{
+  "name": "PurchaseOrder",
+  "plural": "purchase_order",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid",
+      "mysql": {
+        "columnName": "orderId",
+        "dataType": "VARCHAR",
+        "dataLength": 256,
+        "nullable": "N"
+      }
+    },
+    "order_no": {
+      "type": "number",
+      "generated": "true",
+      "mysql": {
+        "columnName": "orderNo",
+        "dataType": "BIGINT",
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "mysql": {
+        "columnName": "orderName",
+        "dataType": "VARCHAR",
+        "dataLength": 256
+      }
+    },
+    "date_ordered": {
+      "type": "date",
+      "id": true,
+      "defaultFn": "uuid",
+      "mysql": {
+        "columnName": "dateOrdered",
+        "dataType": "TIMESTAMP"
+      }
+    },
+    "date_requested": {
+      "type": "date",
+      "mysql": {
+        "columnName": "dateRequested",
+        "dataType": "TIMESTAMP",
+        "default": "CURRENT_TIMESTAMP"
+      }
+    },
+    "date_recieved": {
+      "type": "date",
+      "mysql": {
+        "columnName": "dateRecieved",
+        "dataType": "TIMESTAMP"
+      }
+    },
+    "comments": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sites": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "site"
+    },
+    "vendors": {
+      "type": "belongsTo",
+      "model": "Vendor",
+      "foreignKey": "vendor"
+    },
+    "created_by": {
+      "type": "belongsTo",
+      "model": "UserInfo",
+      "foreignKey": "createdBy",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "products": {
+      "type": "hasMany",
+      "model": "Inventory",
+      "foreignKey": "itemId",
+      "keyThrough": "orderId",
+      "through": "PurchaseItemInfo"
+    },
+    "status": {
+      "type": "belongsTo",
+      "model": "PurchaseStatus",
+      "foreignKey": "status"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

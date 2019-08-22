@@ -1,0 +1,52 @@
+{
+  "name": "PurchaseItemInfo",
+  "plural": "purchase_items",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "quantity": {
+      "type": "number",
+      "required": true
+    },
+    "unit_price": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "unitPrice",
+        "dataType": "FLOAT"
+      }
+    },
+    "total": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "dataType": "FLOAT"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "orders": {
+      "type": "belongsTo",
+      "model": "PurchaseOrder",
+      "foreignKey": "orderId"
+    },
+    "products": {
+      "type": "belongsTo",
+      "model": "Inventory",
+      "foreignKey": "itemId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
