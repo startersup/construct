@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Proconst | A Smart Construction Management Software.</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../assets/js/fonticon.js"></script>
+     <script src="../assets/js/ref.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+                <a class="navbar-brand hidden-xs" href="#"><span>Add Employee
+          </span> </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                        </div>
+                        <div id="newsite" class="dropdown-content">
+                            <a href="../add/employee.html">Add Employee</a>
+                            <a href="#">Add Vendors</a>
+                            <a href="#">Add Tasks</a>
+                            <a href="#">Add Bills</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saicharan</a>
+                        <ul class="dropdown-menu">
+
+                            <ul id="pro">
+                                <li><a href="">Profile</a>
+                                </li>
+                                <li><a href="">Settings</a>
+                                </li>
+                                <li><a href="">logout</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+        <div class="logo">
+            <img src="../assets/images/logo.png" class="shape">
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <center><a data-toggle="tooltip" data-placement="right" title="Analytics" href="../index.html"><i class="fas fa-chart-area icons"></i>
+                    </a></center>
+                </li>
+                <li>
+                    <center><a data-toggle="tooltip" data-placement="right" title="Ongoing Sites" href="../sites/"><i class="fas fa-building icons"></i>
+                   </a> </center>
+                </li>
+                <li >
+                    <center><a data-toggle="tooltip" data-placement="right" title="Current Stocks" href="../stocks/"><i class="fas fa-warehouse icons" ></i></a>
+                    </center>
+                </li>
+                 <li  class="active">
+                    <center><a data-toggle="tooltip" data-placement="right" title="Company" href="../company/"><i class="fas fa-desktop icons" ></i></a>
+                    </center>
+                </li>
+            </ul>
+        </div>
+    </div>
+ <div class="employeediv">
+     <div class="container2">
+         <div class="row">
+              <h3>Employee Details</h3>
+             <div class="col-md-6">
+                                <div class="top">
+                                    <form>
+                                    <input class="controls name" type="text" id="nameinput" oninput="namefunc()" placeholder="Enter Employee Name">
+
+                                    <input class="controls" type="text" id="mailinput" oninput="mailfunc()" placeholder="Enter Employee  Email Address">
+
+                                 <input class="controls" type="number" id="numinput" oninput="numfunc()" placeholder="Enter Employee Contact Number">
+
+                                    <input class="controls" type="text" id="descinput" oninput="descfunc()" placeholder="Enter Employee Designation">
+                                    
+                                       <select id="levelinput" oninput="levelfunc()" class="selectit controls" name="pass">
+                                        <option value="">Employee Authorization Level</option>
+                                        <option value="superadmin">Superadmin Level</option>
+                                        <option value="admin">Admin Level</option>
+                                    </select>
+                                    
+                                    <input class="controls" id="ctcinput" oninput="ctcfunc()" type="number" name="ctc" placeholder="Enter Employee CTC">
+                                     
+                                    <textarea class="controls textarea" id="addinput" oninput="addfunc()" type="text" placeholder="Enter Employee Full Address" name="drop" required autocomplete="off"></textarea>
+                                    
+                                    
+                                    
+                                    <button data-toggle="tab" href="#menu1" class="buttonadd full">Add Employeee</button>
+                                    </form>                      
+    </div>
+ </div>
+             <div class="col-md-6">
+                 <img src="../assets/images/addemp.png" class="static">
+<!--
+             <div class="preview">
+                 <h3>Live Preview</h3>
+                 <div class="top">
+                     <p>Employee Name : <span class="spancolor" id="name"></span></p>
+                      <p>Employee Email : <span class="spancolor" id="mail"></span></p>
+                     <p>Employee Number : <span class="spancolor" id="number"></span></p>
+                     <p>Employee Designation : <span class="spancolor" id="desc"></span></p>
+                     <p>Employee Access Level : <span class="spancolor" id="level"></span></p>
+                      <p>Employee CTC : <span class="spancolor" id="ctc"></span></p>
+                     <p>Employee Address : <span class="spancolor" id="add"></span></p>
+                     </div>
+                 </div>
+-->
+             </div>       
+         </div></div></div> 
+</body>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<script>
+    function myFunction() {
+        document.getElementById("newsite").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+        if (!event.target.matches('.buttonnew')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+
+</html>

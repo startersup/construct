@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Proconst | A Smart Construction Management Software.</title>
+  <meta charset="utf-8">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand hidden-xs" href="#"><span>Sri Venkatachalapathy & Co
+          </span> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">    
+      <ul class="nav navbar-nav navbar-right">
+          <li><button class="buttonnew"><i class="fa fa-plus"></i> New</button></li>
+                                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saicharan</a>
+                        <ul class="dropdown-menu">
+                            
+                                    <ul id="pro">
+                                       <li><a href="">Profile</a></li>
+                                        <li><a href="">Settings</a></li>
+                                        <li><a href="">logout</a></li>
+                                    </ul>
+                           </ul></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div id="sidebar">
+    <div class="logo">
+			<img src="./assets/images/logo.png" class="shape">
+		</div>
+    <div class="sidebar-menu">
+     <ul class="taber" id="myTab">
+   <li class="active" data-toggle="tab" href="#new"><center><img class="shape" data-toggle="tooltip" data-placement="right" title="Add New Credentials" src="./assets/images/addit.png"></center></li>
+ <li data-toggle="tab" href="#saved"><center><img class="shape" data-toggle="tooltip" data-placement="right" title="saved Passwords" src="./assets/images/safebox.png"></center></li> 
+ <li data-toggle="tab" href="#cluster"><center><img class="shape" data-toggle="tooltip" data-placement="right" title="password Cluster" src="./assets/images/clust.png"></center></li>   <li><center><img class="shape" data-toggle="tooltip" data-placement="right" title="Need Help?" src="./assets/images/help.png"></center></li>
+</ul>
+</div>
+    </div>
+  <div class="main"><div class="tab-content">
+      <div id="new" class="tab-pane fade in active">
+       <h3>Add New +</h3>
+      <p>Add a new credential with setting up your own intent for retrieving back the password.</p>
+          <form>
+          <input class="controls" type="text" placeholder="Enter Username" name="name" required ><br>       
+          <input class="controls" type="password" placeholder="Enter Password" name="name" required ><br>
+          <input class="controls" type="text" placeholder="Set Intent ( Eg: Amazon )" name="name" required > <br>   
+              <button class="buttonadd">Add Credential</button>
+          </form>
+      </div>
+       <div id="saved" class="tab-pane fade in ">
+       <h3>Saved Password</h3>
+            <br>    
+            <input type="text" id="myInput" class="controls" onkeyup="myFunction()" placeholder="Search for Saved Credentials....." style="width:30%;margin-bottom:10px;" >
+           <table class="table">
+                      <thead class="header">
+                        <tr><th>Pass Id</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Trigger Intent</th>
+                            <th>Action</th>
+                      </tr></thead>
+                      <tbody id="myTable">
+                      <tr>
+                          <td>PV3425</td>
+                          <td>Saicharg@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>Amazon</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                        <tr>
+                          <td>PV3425</td>
+                          <td>alagu@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>Flipkart</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                     
+                             <tr>
+                          <td>PV3425</td>
+                          <td>Saicharg@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>Google</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                     
+                             <tr>
+                          <td>PV3425</td>
+                          <td>Saicharg@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>snapdeal</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                     
+                             <tr>
+                          <td>PV3425</td>
+                          <td>Saicharg@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>Amazon</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                     
+                             <tr>
+                          <td>PV3425</td>
+                          <td>Saicharg@amazon.com</td>
+                          <td  class="hidetext">saicharan</td>
+                          <td>Amazon</td>
+                          <td><button data-toggle="modal" data-target="#myModal2" class="buttonedit">Edit</button></td>
+                        </tr>
+                     
+                      
+                          </tbody>      </table>
+      </div>
+        <div id="cluster" class="tab-pane fade in ">
+      <h3>Password Cluster</h3>
+      <p>Note: Clustering the same kind of password and setting up a common instance will make the passwords even more secured with alexa.</p>
+      </div></div>
+    </div>
+    
+    
+    <!--right modal-content starts here-->
+
+  <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title title" id="myModalLabel2">Edit Credentials</h4>
+          </div>
+  
+          <div class="modal-body">
+              <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td class="first">Username :</td>
+                      <td class="first"><div contenteditable="true">saicharg@amazon.com</div></td>
+                    </tr>
+                   <tr>
+                      <td class="first">Password :</td>
+                      <td class="first"><div class="hidetext" contenteditable="true">saicharg@amazon.com</div></td>
+                    </tr>
+                       <tr>
+                      <td class="first">Intent :</td>
+                      <td class="first"><div contenteditable="true">Amazon</div></td>
+                    </tr>
+                    
+                  </tbody></table>
+           <center><button  class="buttonadd">Update</button></center> 
+            </div> 
+   
+              
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+      </div><!-- modal -->
+    
+    
+    
+    
+    
+    
+</body>
+     <script>
+                              $(document).ready(function(){
+                                $("#myInput").on("keyup", function() {
+                                  var value = $(this).val().toLowerCase();
+                                  $("#myTable tr").filter(function() {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                  });
+                                });
+                              });
+                              </script>
+    <script type="text/javascript">
+$('#myTab a').click(function(e) {
+  e.preventDefault();
+  $(this).tab('show');
+});
+
+// store the currently selected tab in the hash value
+$("ul.taber > li > a").on("shown.bs.tab", function(e) {
+  var id = $(e.target).attr("href").substr(1);
+  window.location.hash = id;
+});
+
+// on load of the page: switch to the currently selected tab
+var hash = window.location.hash;
+$('#myTab a[href="' + hash + '"]').tab('show');
+</script>
+    <script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    <style>
+    .table
+        {
+            background-color:#ffffff !important;
+            width:70%;
+        }
+    </style>
+</html>
