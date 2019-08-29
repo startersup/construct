@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Proconst | A Smart Construction Management Software.</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="./assets/js/fonticon.js"></script>
+     <script src="./assets/js/ref.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <%- include('mynav.ejs') %>
+        <%- include('mysidebar.ejs') %>
+        <%- include('mycustomjs.ejs') %>
+ <div class="employeediv">
+     <div class="container2">
+         <div class="row">
+              <h3>Employee Details</h3>
+             <div class="col-md-6">
+                                <div class="top">
+                                    <form id="mydata">
+                                   
+                                     <input class="controls name" type="text" id="mydata__first_name"  placeholder="Enter First Name">
+                                    <input class="controls" type="text" id="mydata__last_name"  placeholder="Enter Last Name">
+                                  <input class="controls" type="text" id="mydata__email"  placeholder="Enter Email Address">
+
+                                    <input class="controls" type="number" id="mydata__phone"  placeholder="Enter Contact Number">
+                                    
+                                       <select id="levelinput" class="selectit controls" name="pass">
+                                        <option value="superadmin">Superadmin Level</option>
+                                        <option value="admin">Admin Level</option>
+                                        <option value="">Employee Authorization Level</option>
+                                    </select>
+                                    
+                                    <input class="controls" id="mydata__salary"  type="number" name="ctc" placeholder="Enter Employee CTC">
+                                     
+                                    <textarea class="controls textarea" id="mydata__address"  type="text" placeholder="Enter Employee Full Address" name="drop" required autocomplete="off"></textarea>
+                                
+                                     </form>   
+                                     
+                                     <button class="buttonadd full" onclick="func_postdata();" >Add Employeee</button>
+                                    
+                                                     
+    </div>
+ </div>
+             <div class="col-md-6">
+                 <img src="../assets/images/addemp.png" class="static">
+<!--
+             <div class="preview">
+                 <h3>Live Preview</h3>
+                 <div class="top">
+                     <p>Employee Name : <span class="spancolor" id="name"></span></p>
+                      <p>Employee Email : <span class="spancolor" id="mail"></span></p>
+                     <p>Employee Number : <span class="spancolor" id="number"></span></p>
+                     <p>Employee Designation : <span class="spancolor" id="desc"></span></p>
+                     <p>Employee Access Level : <span class="spancolor" id="level"></span></p>
+                      <p>Employee CTC : <span class="spancolor" id="ctc"></span></p>
+                     <p>Employee Address : <span class="spancolor" id="add"></span></p>
+                     </div>
+                 </div>
+-->
+             </div>       
+         </div></div></div> 
+</body>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<script>
+    function myFunction() {
+        document.getElementById("newsite").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+        if (!event.target.matches('.buttonnew')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+
+</html>

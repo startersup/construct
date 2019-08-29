@@ -14,5 +14,8 @@ module.exports = function(server) {
       loginFailed: false
     });
   });
+  router.get('/employee', function(req, res) {
+    res.render('./employee');
+  });
   server.use(router);
 };

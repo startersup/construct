@@ -1,0 +1,54 @@
+<script>
+
+
+function func_postdata()
+{
+    var formid="myform";
+    var apiurl="http://localhost:3000/api/Roles";
+    var myform = document.getElementById(formid);
+    
+    var fd = JSON.stringify(setparam(formid));
+  console.log(fd);
+    $.ajax({
+        url: apiurl,
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'POST',
+        success: function (dataofconfirm) {
+            // do something with the result
+            alert(dataofconfirm);
+        },
+        error: function(xhr, status, error) {
+
+            alert("fail");
+                 
+}
+    });
+}
+
+function setparam(formid)
+{
+    var obj = {};
+    var strsplit=formid+"__";
+    
+    var c = document.getElementById(formid).children;
+  var txt = "";
+  var i;
+  
+  for (i = 0; i < c.length; i++) {
+   var txt = c[i].id ;
+  
+   var strvalue = document.getElementById(txt).value;
+   txt= txt.split(strsplit);
+
+   // var strkey='"'+txt[1]+'"';
+   var strkey=txt[1];
+    obj[ strkey ] = strvalue;
+  }
+
+return(obj);
+}
+
+</script>
