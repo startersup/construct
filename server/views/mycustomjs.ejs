@@ -1,16 +1,18 @@
 <script>
 
 
-function func_postdata()
+function func_postdata(formid)
 {
-    var formid="myform";
-    var apiurl="http://localhost:3000/api/Roles";
+    
+    
     var myform = document.getElementById(formid);
+    var apiurl="http://localhost:3000/"+myform.name;
+    console.log(apiurl);
     
     var fd = JSON.stringify(setparam(formid));
   console.log(fd);
     $.ajax({
-        url: apiurl,
+        url: apiurl,  
         data: fd,
         cache: false,
         processData: false,
@@ -18,10 +20,12 @@ function func_postdata()
         type: 'POST',
         success: function (dataofconfirm) {
             // do something with the result
-            alert(dataofconfirm);
+            modal_success();
         },
         error: function(xhr, status, error) {
 
+          modal_success();
+            console.log(xhr.responseText);
             alert("fail");
                  
 }

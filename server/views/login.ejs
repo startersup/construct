@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login | A Smart Construction Management Software.</title>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script rel="preload" src="./assets/js/fonticon.js" as="script"></script>
+     <script src="./assets/js/ref.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+<body class="loginbody">
+<div class="row">
+<div class="col-md-5 nopad hidden-xs">
+<div class="gray">
+        <h2>Builder Desk</h2>
+        <p>All-in-one Smart Construction Management Desk</p>
+        <img class="logimage" src="./assets/images/fresh.png">   
+</div>
+    </div>
+    <div class="col-md-7 nopad">
+            <div class="form-container">
+             
+              <div class="tab-content">
+                    <div id="login" class="tab-pane fade in active">
+                <form>
+                        <h3>Login to your Account</h3>
+                        <input id="UserName" class="controls" type="text"  required placeholder="Enter Email Address">
+                        <input id="Password" class="controls" type="password" required placeholder="Enter Password">
+                        <button class="buttonfull" onclick="func_login();"> Login Now</button>
+                        <br>
+                        <div class="left">
+                            <a data-toggle="pill" href="#forgot"><p>forgot password?</p></a>
+                        </div>
+                </form>
+                </div>  
+            <div id="forgot" class="tab-pane fade"> 
+                    <h3>Forgot your Password?</h3>
+                    <input class="controls" type="text"  required placeholder="Enter Email Address">
+                    <button class="buttonfull" onclick="func_login();"> Reset Password</button>
+                    <div class="left">
+                            <a data-toggle="pill" href="#login"><p>Back to login</p></a>
+                        </div>
+                </div>
+            </div>
+  </div>
+
+  <script>
+  
+  function func_login()
+  {
+
+    var apiurl="http://localhost:3000//users/login";
+    var obj = {};
+    obj["name"] = document.getElementById("UserName").value;
+    obj["password"] =  document.getElementById("Password").value;
+
+    var postdata = JSON.stringify(obj);
+
+    $.ajax({
+        url: apiurl,
+        data: postdata,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'POST',
+        success: function (dataofconfirm) {
+            // do something with the result
+            alert(dataofconfirm);
+        },
+        error: function(xhr, status, error) {
+
+            alert("fail");
+                 
+}
+    });
+
+
+  }
+  
+  </script>
+</div>
+</body>
+</html>

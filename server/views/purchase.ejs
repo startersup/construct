@@ -2,22 +2,24 @@
 <html lang="en">
 
 <head>
-    <title>Proconst | A Smart Construction Management Software.</title>
+    <title>Purchase Order | A Smart Construction Management Software.</title>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="../assets/images/logo.png">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <script src="../assets/js/fonticon.js"></script>
-    <script src="../assets/js/todo.js"></script>
+    <script src="./assets/js/fonticon.js"></script>
+    <script src="./assets/js/todo.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="func_onload();">
+
+
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -67,47 +69,11 @@
             <ul class="nav navbar-nav botnav">
                 <li class="active"><a href="">Purchase Order</a></li>
                 <li><a href="">Purchase Requests</a></li>
-                 <li><a href="">Purchase History</a></li> 
+                 <li><a href="/purchase-history">Purchase History</a></li> 
             </ul>
         </div>
     </div>
-       <div id="sidebar">
-        <div class="logo">
-            <img src="../assets/images/logo.png" class="shape">
-        </div>
- <div class="sidebar-menu">
-            <ul>
-                <li class="active">
-                    <center><a data-toggle="tooltip" data-placement="right" title="Analytics" href="index.html"><i class="fas fa-chart-area icons"></i>
-                    </a></center>
-                </li>
-                <li>
-                    <center><a data-toggle="tooltip" data-placement="right" title="Ticketing System" href="../sites/"><i class="fas fa-ticket-alt icons"></i>
-                   </a> </center>
-                </li>
-                 <li>
-                    <center><a data-toggle="tooltip" data-placement="right" title="Purchase Order" href="../sites/"><i class="fas fa-cash-register icons"></i>
-                   </a> </center>
-                </li>
-                <li >
-                    <center><a data-toggle="tooltip" data-placement="right" title="Inventory" href="../stocks/"><i class="fas fa-warehouse icons" ></i></a>
-                    </center>
-                </li>
-                 <li >
-                    <center><a data-toggle="tooltip" data-placement="right" title="Organization" href="../company/"><i class="fas fa-sitemap icons" ></i></a>
-                    </center>
-                </li>
-                  <li >
-                    <center><a data-toggle="tooltip" data-placement="right" title="Finance Panel" href="../company/"><i class="fas fa-percentage icons" ></i></a>
-                    </center>
-                </li>
-                 <li >
-                    <center><a data-toggle="tooltip" data-placement="right" title="Settings" href="../company/"><i class="fas fa-cog icons" ></i></a>
-                    </center>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <%- include('mysidebar.ejs') %>
     
    <div class="porderdiv">
        <div class="container3">
@@ -115,23 +81,23 @@
        <div class="row">
      <div class="col-md-3">
        <label>Vendor Name</label>    
-         <select  class="purchaseselect controls" name="pass">
-           <option value="">Venkatachalapathy Hardware</option>
-           <option value="superadmin">Vishnupriya Hardwares</option>
-           <option value="admin">Baba Hardwares</option>
-          <option value="admin">Vidhya Hardwares</option>      
-             <option value="admin">Coimbatore Hardwares</option> 
+         <select onchange="func_getvendor();" class="purchaseselect controls" name="pass" id="VendorList">
+           <option >--select--</option>
       </select>
     </div> 
      <div class="col-md-3">
         <label>Vendor Email</label>   
-         <input type="text" class="purchaseinput controls"  placeholder="Email Address of Vendor" >
+         <input type="text" class="purchaseinput controls" id="VendorEmail" placeholder="Vendor Email Address" >
     </div>
-       <div class="col-md-3">
+       <div class="col-md-2">
          <label>Vendor Contact</label>  
-         <input type="text" class="purchaseinput controls"  placeholder="Contact Number of Vendor" >  
+         <input type="text" class="purchaseinput controls" id="VendorPhone"  placeholder="Contact Number" >  
     </div>
-     <div class="col-md-3">
+    <div class="col-md-2">
+            <label>Purchase Site</label>  
+            <input type="text" class="purchaseinput controls" id="VendorPhone"  placeholder="Site Location" >  
+       </div>
+     <div class="col-md-2">
          <p><span>Order No : </span> 5</p>
           <p><span>Order Date :</span> 14/09/2019</p>
          <p><span>Order Id :</span> #908789</p>   
@@ -154,17 +120,17 @@
                     
             </table>
                <div class="purchaseright">
-                   <table>
+                   <table class="purchasingtable">
                    <tr>
-                    <td><p>Net Total :</p></td> 
+                    <td class="first"><p>Net Total </p></td> 
                        <td> <input type="number" name="price" class="editedcontrol" disabled value="0" id="nettotal" placeholder=""></td>
                     </tr>
                        <tr>
-                       <td><p>GST Total :</p></td>
+                       <td class="first"><p>GST Total </p></td>
                            <td><input type="number" name="price" class="editedcontrol" disabled value="0" id="gsttotal" placeholder=""></td>
                        </tr>
                        <tr>
-                       <td><p>Grand Total :</p></td>
+                       <td class="first"><p>Grand Total </p></td>
                            <td> <input type="number" name="price" class="editedcontrol" disabled value="0" id="grandtotal" placeholder=""></td>
                        </tr>
                    </table>
@@ -212,6 +178,59 @@
     }
 </script>
      <script>
+         var strjson;
+         function func_onload()
+         {
+
+            $.ajax({
+        url: "http://localhost:3000/api/vendors",
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'GET',
+        success: function (dataofconfirm) {
+            // do something with the result
+            setparam(dataofconfirm);
+        },
+        error: function(xhr, status, error) {
+
+            alert("fail");
+                 
+    }
+    });
+            
+         }
+
+         function setparam(json)
+         {
+            strjson=json;
+            var x = document.getElementById("VendorList");
+            for(var i = 0; i < json.length; i++) {
+            var obj = json[i];
+
+            
+            var option = document.createElement("option");
+            option.text =obj.name;
+            option.value = obj.id;
+            x.add(option);
+            }
+         }
+
+         function func_getvendor()
+         {
+            var strid = document.getElementById("VendorList").value;
+            
+            for(var i = 0; i < strjson.length; i++) {
+            var obj = strjson[i];
+                if(obj.id == strid)
+                {
+                    document.getElementById("VendorEmail").value=obj.email;
+                    document.getElementById("VendorPhone").value=obj.phone;
+                }
+
+            }
+
+         }
          
          function passjson()
          {
@@ -356,7 +375,7 @@ return data;
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> 
-<script src="../assets/js/todo.js"></script> 
+<script src="./assets/js/todo.js"></script> 
 <script type="text/javascript">
 			$("#datepicker").datepicker();
 			$("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");

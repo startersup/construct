@@ -18,7 +18,41 @@
 </head>
 
 <body>
-        <%- include('mynav.ejs') %>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+                <a class="navbar-brand hidden-xs" href="#"><span>Analytics Dashboard </span> </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                        </div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#">Department</a>
+                            <a href="/employee">Employee</a>
+                            <a href="/vendor">Vendor</a>
+                            <a href="#">Site</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><img src="../assets/images/avatar.png" alt="user" class="avatar"></a>
+                        <ul id="myDropdown" class="dropdown-content">
+                         <li>Profile</li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
         <%- include('mysidebar.ejs') %>
  
     

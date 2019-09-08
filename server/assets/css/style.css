@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 /*navbar*/
 body
 {
         background-color: #ebeef0;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -22,6 +23,10 @@ body
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+#logo
+{
+    background-image: url(../images/logo.png);
 }
 .navbar-fixed-top
 {
@@ -167,6 +172,9 @@ ul#pro li a:hover{
 .dropdown-content a {
   color: black;
   padding: 8px 15px;
+  font-size:16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight:600;
   text-decoration: none;
   display: block;
 }
@@ -174,64 +182,6 @@ ul#pro li a:hover{
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
-.dropdown-menu
-{
-   transition: transform .3s,width .3s,height .3s,-webkit-transform .3s;
-    width:100%;
-    min-width: 100px;
-    padding:10px;
-    box-shadow: 0 0 50px rgba(0,0,0,.10);
-}
-.dropdown-menu>li>a {
-    display: block;
-    padding: 10px 20px;
-    clear: both;
-    font-size:16px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-}
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;    
- z-index: 300;
-    left: -10%;
-    top: 50px;
-    margin-left:60px;
-    border:none;
-    opacity: 1;
-    font-size:16px;
-    -ms-transform: translateX(-50%) translateY(0);
-    transform: translateX(-50%) translateY(0);
-    max-height: none;
-    overflow: visible;
-}
-.dropdown-menu:before {
-     content: '';
-    position: absolute;
-    width: 14px;
-    height: 0;
-    border: 7px solid transparent;
-    border-bottom: 7px solid #fff;
-    top: -14px;
-    left: 60%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
-.dropdown-menu:after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 0;
-    border: 7px solid transparent;
-    border-bottom: 7px solid #fff;
-    top: -14px;
-    left: 60%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
 /*navbar ended*/
 
 /*sidebar*/
@@ -285,6 +235,72 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 /*sidebar ended*/
 
+/*login*/
+.loginbody
+{
+    background-color: #ffffff;
+}
+.gray
+{
+background-color: #f7f9fa;
+height:100vh;
+padding:20px;
+}
+
+.gray h2{
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight:900;
+    font-size:40px;
+    line-height:30px;
+}
+.gray p{
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight:400;
+    letter-spacing: 0.5px;
+    font-size:16px;
+    color:#000000;
+}
+.logimage
+{
+   max-width:800px;
+   width:100%; 
+}
+.form-container {
+    position: absolute;
+    margin-top: 300px;
+    left: 50%;
+    max-width: 500px;
+    width:100%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    height: auto;
+    text-align: center;
+}
+.form-container h3{
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight:900;
+    line-height:30px; 
+}
+.left
+{
+    float:left;
+margin-left:30px;
+padding:10px 20px;
+    font-family: 'Nunito', sans-serif;
+    color:#00C97D;
+}
+.left a{
+    color:#00C97D;
+}
+.right{
+    float:right;
+}
+
+
+
 /*buttons*/
 .buttonadd {
   background-color:#00c97d; 
@@ -298,6 +314,20 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   font-size: 17px;
     font-weight:700;
 }
+.buttonfull {
+    background-color:#00c97d; 
+    border: none;
+     margin-top:8px;
+    color: white;
+    padding:10px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+      font-weight:700;
+      width:80%;
+  }
 .addbutton {
   background-color:#00c97d; 
   border: none;
@@ -521,7 +551,7 @@ padding:2px 10px;
      font-family: 'Nunito', sans-serif;  
     min-width: 800px;
 }
-.ticketdiv, .porderdiv
+.ticketdiv, .porderdiv, .phistorydiv
 {
  margin-top:-5px !important;
     margin-left:63px;
@@ -642,6 +672,13 @@ padding:2px 10px;
 .botnav li.active{
      border-bottom:2px solid #00c97d;
 }
+.avatar {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-top:-10px;
+    border-radius: 50%;
+  }
 .comicon
 {
     max-width:60px;
@@ -698,6 +735,10 @@ padding:2px 10px;
    padding: 2px !important;
    margin: 0px;
 }
+.nopad {
+    padding: 0px !important;
+    margin: 0px !important;
+ }
 .main h3
 {
   font-family: 'Nunito', sans-serif;  
@@ -742,6 +783,7 @@ input[type=checkbox]
 }
 .editcontrol
 {
+    width:100%;
      margin-top: 10px;
     border: none !important;
     background-color:transparent;
@@ -753,7 +795,7 @@ input[type=checkbox]
 }
 .editedcontrol
 {
-    width:80% !important;
+    width:100% !important;
      margin-top: 10px;
     border: none !important;
     background-color:transparent;
@@ -782,6 +824,28 @@ input[type=checkbox]
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
     background-color: #ffffff;
+}
+ input[type=number].editedcontrol {
+    width: 100%;
+    padding: 12px 20px;
+    min-height: 20px !important;
+    margin: 8px 0;
+    color: #000000;
+    border: 1px solid #DBDFE3;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+}
+input[type=text].editcontrol {
+    width: 100%;
+    padding: 12px 20px;
+    min-height: 20px !important;
+    margin: 8px 0;
+    color: #000000;
+    border: 1px solid #DBDFE3;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-family: 'Nunito', sans-serif;
 }
 .purchaseselect {
     width: 100%;
@@ -846,19 +910,21 @@ label {
     display: inline-block;
     max-width: 100%;
    margin-top:10px;
-    font-size:13px;
+    font-size:16px;
     margin-bottom: 0;
     font-weight: 700;
 }
 .pcard p span
 {
     color:#00C97D;
+    font-weight:800 !important;
 }
 .pcard p
 {
-    font-weight:800;
+    font-weight:500;
      font-family: 'Nunito', sans-serif;
     line-height:20px;
+    letter-spacing: 0.5px;
 }
 .top
 {
@@ -962,10 +1028,15 @@ label {
 {
     position:fixed;
 }
+.vendorimg
+{
+    max-width:500px;
+}
 .lesstop
 {
     margin-top:-10px;
 }
+
 <!--chartcss-->
 
 table {
@@ -1001,11 +1072,30 @@ table {
     font-size:14px;
      letter-spacing: 0.2px;
 }
+
 .purchaseright
 {
     float:right;
     margin-top:20px;
     margin-left:50px;
+}
+.purchasingtable
+{
+    border:1px solid #f4f4f4;
+   font-weight:400 !important;
+}
+.purchasingtable td{
+padding:0px 10px;
+border:1px solid #f4f4f4;
+}
+.first{
+    background-color:#56606b;
+    color:#ffffff;
+    letter-spacing: 0.5px;
+    
+}
+td.first{
+    border:1px solid #5c6772 !important;
 }
 #tickettable td
 {
@@ -1085,6 +1175,31 @@ padding-top:30px;
     font-weight:500;
  font-family: 'Nunito', sans-serif;
   }
+
+
+  .purchasetable
+{
+    border-collapse: collapse;
+    max-width:1200px;
+    width:100% !important;
+     margin-top:40px;
+    font-family: 'Nunito', sans-serif;
+   font-size:14px;
+    letter-spacing: 0.2px;  
+}
+.purchasetable td{
+    border:none;
+}
+.purchasetable tr{
+    border-bottom:1px solid #dedfe0;
+}
+.purchasetable th
+{
+    font-size: 15px;
+    line-height:22px;
+    letter-spacing: 0.5px;  
+}
+
 .addcontrol input[type=text]  {
     width: 100%;
     padding: 5px 20px;
@@ -1321,49 +1436,47 @@ letter-spacing:0.2px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-@media screen and (max-width: 1081px) { 
- 
-   body
-    {
-        display:none;
-        background-color:#f4f4f4;
-    }
-    
-    html
-    {
-        background-color:#f4f4f4;
-        content: "Sorry this content cannot be viewed in Tablets or Mobile Phones."
-    }
-    
+/*modals*/
+.modalpos
+{
+    top:70%;
+    left:50%;
 }
-*/
+.modicon
+{
+    max-width:50px;
+}
+.successmodal
+{
+    padding:20px;
+    text-align: center;
+
+}
+.suc {
+    border-radius: 0;
+    border: none;
+    max-width:300px;
+    width:100%;
+    font-family: 'Nunito', sans-serif;
+}
+.successmodal p{
+    font-family: 'Nunito', sans-serif;
+    font-size:20px !important;
+    font-weight:800;
+    letter-spacing: 0.8px;
+    line-height: 28px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

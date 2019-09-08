@@ -14,8 +14,23 @@ module.exports = function(server) {
       loginFailed: false
     });
   });
+  router.get('/ticket', function(req, res) {
+    res.render('./ticket');
+  });
   router.get('/employee', function(req, res) {
     res.render('./employee');
+  });
+  router.get('/login', function(req, res) {
+    res.render('./login');
+  });
+  router.get('/vendor', function(req, res) {
+    res.render('./vendor');
+  });
+  router.get('/purchase', function(req, res) {
+    res.render('./purchase');
+  });
+  router.get('/purchase-history', function(req, res) {
+    res.render('./purchase-history');
   });
   server.use(router);
 };
