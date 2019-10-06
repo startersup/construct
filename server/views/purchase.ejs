@@ -114,6 +114,7 @@
                      <th>GST </th>
                       <th>GST Amount</th>
                       <th>Total Amount</th>
+                      <th>Action</th>
                 </tr>
                       
                 </tbody>
@@ -159,6 +160,11 @@
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    $('input[type="button"]').click(function(e){
+   $(this).closest('tr').remove()
+})
+    
 </script>
 <script>
     function newfun() {
@@ -247,7 +253,10 @@ var rowcount = document.getElementById("tickettable").rows.length;
                                  
     var row= document.createElement("tr");
                                  row.id=rowcount;
+
+    
     console.log(row);
+
     var td1 = document.createElement("td");
     var td2 = document.createElement("td");
     var td3 = document.createElement("td");    
@@ -255,6 +264,7 @@ var rowcount = document.getElementById("tickettable").rows.length;
     var td5 = document.createElement("td"); 
     var td6 = document.createElement("td"); 
     var td7 = document.createElement("td"); 
+    var td8 = document.createElement("td"); 
                                  
     var x1 = document.getElementById("item").value;
     var x2 = document.getElementById("rate").value;
@@ -264,8 +274,7 @@ var rowcount = document.getElementById("tickettable").rows.length;
     
                                  var netamount=x2*x3;
                                  
-                                 
-    
+                                     
    
                                  
     td1.innerHTML = '<input  class="editcontrol" type="text" id="'+rowcount+'itemid'+'" name="'+rowcount+'itemid'+'" value="'+x1+'"  >';
@@ -282,7 +291,7 @@ var rowcount = document.getElementById("tickettable").rows.length;
                                  
     td7.innerHTML='<input  class="editcontrol" disabled type="text" id="'+rowcount+'totalamountid'+'" name="'+rowcount+'totalamountid'+'" value="'+parseFloat((netamount+((netamount/100)*x4)).toFixed(2))+'"  >';
     
-
+     td8.innerHTML='<td><input type="button" value="Delete Row" onclick="SomeDeleteRowFunction()"></td>'
     row.appendChild(td1);
     row.appendChild(td2);
     row.appendChild(td3);
@@ -291,11 +300,16 @@ var rowcount = document.getElementById("tickettable").rows.length;
                                  
                                  row.appendChild(td6);
                                  row.appendChild(td7);
+                                 row.appendChild(td8);
                                  
                                  
 
     table.children[0].appendChild(row);
                                  
+    var result_style = document.getElementById(rowcount).style;
+    alert(result_style.display);
+    result_style.display = 'table-row';
+    
                                  document.getElementById("item").value="";
 document.getElementById("rate").value="";
 document.getElementById("quantity").value="";

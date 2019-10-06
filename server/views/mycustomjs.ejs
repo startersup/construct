@@ -55,4 +55,27 @@ function setparam(formid)
 return(obj);
 }
 
+function setparam_purchase(formid)
+{
+    var obj = {};
+    var strsplit=formid+"__";
+    
+    var c = document.getElementById(formid).children;
+  var txt = "";
+  var i;
+  
+  for (i = 0; i < c.length; i++) {
+   var txt = c[i].id ;
+  
+   var strvalue = document.getElementById(txt).value;
+   txt= txt.split(strsplit);
+
+   // var strkey='"'+txt[1]+'"';
+   var strkey=txt[1];
+    obj[ strkey ] = strvalue;
+  }
+
+return(obj);
+}
+
 </script>

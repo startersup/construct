@@ -1048,10 +1048,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-.tickettable
-{
-    max-width:1200px;
-    width:100% !important;
+.tickettable {
+    max-width: 1425px;
+    width: 100% !important;
 }
 .tickettable td
 {
