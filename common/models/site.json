@@ -10,32 +10,14 @@
     "id": {
       "type": "string",
       "id": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "siteId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "name": {
       "type": "string",
-      "required": true,
-      "mysql": {
-        "columnName": "siteName",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "N"
-      }
+      "required": true
     },
     "location": {
-      "type": "string",
-      "mysql": {
-        "columnName": "siteLocation",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "T"
-      }
+      "type": "string"
     }
   },
   "validations": [],

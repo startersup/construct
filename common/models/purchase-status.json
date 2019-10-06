@@ -11,42 +11,22 @@
       "type": "string",
       "id": true,
       "required": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "statusId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "name": {
       "type": "string",
-      "required": true,
-      "mysql": {
-        "columnName": "statusName",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "N"
-      }
+      "required": true
     },
     "is_pending": {
       "type": "boolean",
       "required": true,
       "mysql": {
-        "columnName": "isPending",
         "dataType": "TINYINT",
-        "dataLength": 1,
-        "nullable": "N"
+        "dataLength": 1
       }
     },
     "description": {
-      "type": "string",
-      "mysql": {
-        "columnName": "description",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "T"
-      }
+      "type": "string"
     }
   },
   "validations": [],

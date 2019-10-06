@@ -2,7 +2,6 @@
   "name": "PurchaseItemInfo",
   "plural": "purchase_items",
   "base": "PersistedModel",
-  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
@@ -14,6 +13,20 @@
       "type": "number",
       "mysql": {
         "columnName": "unitPrice",
+        "dataType": "FLOAT"
+      }
+    },
+    "gst": {
+      "type": "number",
+      "mysql": {
+        "columnName": "gst",
+        "dataType": "FLOAT"
+      }
+    },
+    "cgst": {
+      "type": "number",
+      "mysql": {
+        "columnName": "cgst",
         "dataType": "FLOAT"
       }
     },
@@ -29,12 +42,12 @@
     "orders": {
       "type": "belongsTo",
       "model": "PurchaseOrder",
-      "foreignKey": "orderId"
+      "foreignKey": "order_id"
     },
     "products": {
       "type": "belongsTo",
       "model": "Inventory",
-      "foreignKey": "itemId"
+      "foreignKey": "item_id"
     }
   },
   "acls": [
