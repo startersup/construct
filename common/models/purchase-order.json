@@ -59,8 +59,8 @@
     "products": {
       "type": "hasMany",
       "model": "Inventory",
-      "foreignKey": "item_id",
-      "keyThrough": "order_id",
+      "foreignKey": "order_id",
+      "keyThrough": "item_id",
       "through": "PurchaseItemInfo"
     },
     "status": {
