@@ -2,7 +2,6 @@
   "name": "PurchaseOrder",
   "plural": "purchase_order",
   "base": "PersistedModel",
-  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
@@ -10,44 +9,24 @@
     "id": {
       "type": "string",
       "id": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "orderId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "order_no": {
-      "type": "number",
-      "generated": "true",
-      "mysql": {
-        "columnName": "orderNo",
-        "dataType": "BIGINT",
-        "nullable": "N"
-      }
+      "type": "Number",
+      "required":true
     },
     "name": {
-      "type": "string",
-      "mysql": {
-        "columnName": "orderName",
-        "dataType": "VARCHAR",
-        "dataLength": 256
-      }
+      "type": "string"
     },
     "date_ordered": {
       "type": "date",
-      "id": true,
-      "defaultFn": "uuid",
       "mysql": {
-        "columnName": "dateOrdered",
         "dataType": "TIMESTAMP"
       }
     },
     "date_requested": {
       "type": "date",
       "mysql": {
-        "columnName": "dateRequested",
         "dataType": "TIMESTAMP",
         "default": "CURRENT_TIMESTAMP"
       }
@@ -55,13 +34,15 @@
     "date_recieved": {
       "type": "date",
       "mysql": {
-        "columnName": "dateRecieved",
         "dataType": "TIMESTAMP"
       }
     },
     "comments": {
       "type": "string"
     }
+  },
+  "mixins": {
+    "CreatedModifiedInjection": true
   },
   "validations": [],
   "relations": {
@@ -75,20 +56,11 @@
       "model": "Vendor",
       "foreignKey": "vendor"
     },
-    "created_by": {
-      "type": "belongsTo",
-      "model": "UserInfo",
-      "foreignKey": "createdBy",
-      "options": {
-        "validate": true,
-        "forceId": false
-      }
-    },
     "products": {
       "type": "hasMany",
       "model": "Inventory",
-      "foreignKey": "itemId",
-      "keyThrough": "orderId",
+      "foreignKey": "item_id",
+      "keyThrough": "order_id",
       "through": "PurchaseItemInfo"
     },
     "status": {

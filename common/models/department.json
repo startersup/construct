@@ -10,32 +10,14 @@
     "id": {
       "type": "string",
       "id": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "departmentId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "name": {
       "type": "string",
-      "required": true,
-      "mysql": {
-        "columnName": "departmentName",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "N"
-      }
+      "required": true
     },
     "description": {
-      "type": "string",
-      "mysql": {
-        "columnName": "description",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "T"
-      }
+      "type": "string"
     }
   },
   "validations": [],

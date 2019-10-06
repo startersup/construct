@@ -1,16 +1,14 @@
 'use strict';
 
 module.exports = function(Purchaseorder) {
-    Purchaseorder.afterRemote('prototype.__create__products', function(ctx, inst, next) {
+    Purchaseorder.afterRemote('create', function(ctx, inst, next) {
         let PurchaseItemInfo = Purchaseorder.app.models.PurchaseItemInfo;
-         if(!(inst instanceof Array)){
-            let order = ctx.instance.id;
-            let item = inst.id;
-            PurchaseItemInfo.find({where: {and: [{orderId: order}, {itemId: item}]}},function(err,Items) {
-                if(err)throw err;
-                let itemInfo = inst.purchase_items;
-                PurchaseItemInfo.update({where:{id:Items[0].id}},{quantity:itemInfo.quantity,unit_price:itemInfo.unit_price,total:itemInfo.total},function(err,ctx){
-                    console.log(ctx.data);
+         if((inst.purchase_items)&&(inst.purchase_items instanceof Array)){
+            let order = inst.id;
+            inst.purchase_items.forEach(purchase_items => {
+                let item = purchase_items.id;
+                PurchaseItemInfo.create({order_id:order,item_id:item,quantity:purchase_items.quantity,unit_price:purchase_items.unit_price,gst:purchase_items.gst,cgst:purchase_items.cgst,total:purchase_items.total},function(err,ctx){
+                    console.log("----->>>Purchase Added");
                 });
             });
         }

@@ -10,23 +10,11 @@
     "id": {
       "type": "string",
       "id": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "vendorId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "name": {
       "type": "string",
-      "required": true,
-      "mysql": {
-        "columnName": "vendorName",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "required": true
     },
     "email": {
       "type": "string"

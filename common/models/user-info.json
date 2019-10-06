@@ -10,32 +10,14 @@
     "id": {
       "type": "string",
       "id": true,
-      "defaultFn": "uuid",
-      "mysql": {
-        "columnName": "userId",
-        "dataType": "VARCHAR",
-        "dataLength": 256,
-        "nullable": "N"
-      }
+      "defaultFn": "uuid"
     },
     "first_name": {
       "type": "string",
-      "required": true,
-      "mysql": {
-        "columnName": "firstName",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "N"
-      }
+      "required": true
     },
     "last_name": {
-      "type": "string",
-      "mysql": {
-        "columnName": "lastName",
-        "dataType": "VARCHAR",
-        "dataLength": 100,
-        "nullable": "T"
-      }
+      "type": "string"
     },
     "phone": {
       "type": "string",
@@ -67,11 +49,6 @@
       "model": "Role",
       "foreignKey": "principalId",
       "through": "RoleMapping"
-    },
-    "orders": {
-      "type": "hasMany",
-      "model": "PurchaseOrder",
-      "foreignKey": "createdBy"
     }
   },
   "acls": [
