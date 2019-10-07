@@ -1,5 +1,5 @@
 
 module.exports = async function (app) {
-   await app.dataSources.db.automigrate();
+   await app.dataSources.db.autoupdate();
     console.log("Performed automigration.");
  }

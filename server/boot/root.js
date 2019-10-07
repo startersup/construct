@@ -32,5 +32,12 @@ module.exports = function(server) {
   router.get('/purchase-history', function(req, res) {
     res.render('./purchase-history');
   });
+  router.get('/purchase-request', function(req, res) {
+    res.render('./purchase-request');
+  });
+  router.get('/mytest', function(req, res) {
+    res.render('./mytest');
+  }); 
+ 
   server.use(router);
 };
