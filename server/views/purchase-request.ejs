@@ -136,14 +136,68 @@
 
     }
 
+
+    function getcall()
+    {
+
+        
+        $.ajax({
+        url: "http://localhost:3000/api/purchase_orders",
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'GET',
+        success: function (dataofconfirm) {
+            // do something with the result
+            return(dataofconfirm);
+            
+        },
+        error: function(xhr, status, error) {
+
+            alert("fail");
+                 
+    }
+    });
+
+    }
+
+
     function setpurchase(obj)
 
     {
+        var table = document.getElementById("tickettable");
         var len = obj.length;
         for(var i=0; i<len ; i++ )
         {
+            var row= document.createElement("tr");
+            var vendor='';
+            var vendor_phone='';
+                row.id= obj[i].id;
             
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");    
+                var td4 = document.createElement("td"); 
+                var td5 = document.createElement("td"); 
+                var td6 = document.createElement("td"); 
+                var td7 = document.createElement("td"); 
+                var td8 = document.createElement("td"); 
+
+                td1.innerHTML='<input type="checkbox" class="checkthis" id="checkthis" />';
+                td2.innerHTML=obj[i].id;
+                td3.innerHTML=obj[i].created_by;
+
+                getvendor(obj[i].vendor);
+
         }
+    }
+
+    function getvendor(strid)
+    {
+        var myurl = 'http://localhost:3000/api/vendors/'+strid;
+        var obj = getcall(myurl);
+
+        
     }
 
                 function addRow() {
