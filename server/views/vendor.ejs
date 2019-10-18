@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="run();">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -63,10 +63,12 @@
                                 <div class="top">
                                     <form id="mydata2" name="api/vendors">
                                    
-                                     <input class="controls name" type="text" id="mydata2__name"  placeholder="Enter Vendor Name">
-                                  <input class="controls" type="text" id="mydata2__email"  placeholder="Enter Email Address">
-                                    <input class="controls" type="number" id="mydata2__phone"  placeholder="Enter Contact Number">
-                                    <textarea class="controls textarea" id="mydata2__location"  type="text" placeholder="Enter Vendor Full Address" name="drop" required autocomplete="off"></textarea>
+                                     <input class="controls name" type="text" id="name"  placeholder="Enter Vendor Name">
+                                   <!---- <p style="color : red">** Required</p> -->
+                                  <input class="controls" type="text" id="email"  placeholder="Enter Email Address">
+                                    <input class="controls" type="text" id="phone"  placeholder="Enter Contact Number">
+                                    <input class="controls" type="text" id="state"  placeholder="Enter the State">
+                                    <textarea class="controls textarea" id="location"  type="text" placeholder="Enter Vendor Full Address" name="drop" required autocomplete="off"></textarea>
                                 
                                      </form>   
                                      
@@ -102,6 +104,20 @@
                 }
             }
         }
+    }
+
+    function run()
+    {
+        var parent = document.getElementById("mydata2__name");
+        var child=document.createElement("p");
+            child.style.color="red";
+            child.innerHTML="haiii";
+            // document.getElementById("mydata2__name").appendChild(child);
+
+            document.body.insertBefore(child,parent);
+
+            document.
+    
     }
 </script>
 </html>
