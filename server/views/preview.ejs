@@ -223,5 +223,11 @@
         <center> <button class="draft-button" >Send Email</button>
     <button class="order-button" onclick="setparam_purchase();">Print Order</button></center> </div>
 </div>
-
+<script type='text/javascript'>
+  $(function() {
+  $("#printable").find('.print').on('click', function() {
+  $.print("#printable");
+  });
+  });
+  </script>
 </body></html>
