@@ -1,81 +1,108 @@
 <script>
 
+  var HostName = window.location.host;
+  var Protocol = window.location.protocol;
+  var LocationUrl = "";
+  LocationUrl = Protocol + "//" + HostName + "/";
+  console.log(LocationUrl);
 
-function func_postdata(formid)
-{
-    
-    
+  function subUrl() {
+    var a = window.location.pathname; console.log(a[a.length - 1]);
+    a = window.location.pathname; var y = a.substring(1, a.length); var x = y.split('/'); console.log(x);
+  }
+
+
+
+  $('.MaskedDecimal').on('input', function (event) {
+    var num = $(this).attr("maskedFormat").toString().split(',');
+    var regex = new RegExp("^\\d{0," + num[0] + "}(\\.\\d{0," + num[1] + "})?$");
+    if (!regex.test(this.value)) {
+      this.value = this.value.substring(0, this.value.length - 1);
+    }
+  });
+
+  $('.MaskedNumber').on('input', function (event) {
+    var num = $(this).attr("maskedFormat").toString();
+    var regex = new RegExp("^\\d{0," + num[0] + "}?$");
+    if (!regex.test(this.value)) {
+      this.value = this.value.substring(0, this.value.length - 1);
+    }
+  });
+
+
+
+  function func_postdata(formid) {
+
+
     var myform = document.getElementById(formid);
-    var apiurl="http://localhost:3000/"+myform.name;
+    var apiurl = "http://localhost:3000/" + myform.name;
     console.log(apiurl);
-    
+
     var fd = JSON.stringify(setparam(formid));
-  console.log(fd);
+    console.log(fd);
     $.ajax({
-        url: apiurl,  
-        data: fd,
-        cache: false,
-        processData: false,
-        contentType: 'application/json',
-        type: 'POST',
-        success: function (dataofconfirm) {
-            // do something with the result
-            modal_success();
-        },
-        error: function(xhr, status, error) {
+      url: apiurl,
+      data: fd,
+      cache: false,
+      processData: false,
+      contentType: 'application/json',
+      type: 'POST',
+      success: function (dataofconfirm) {
+        // do something with the result
+        modal_success();
+      },
+      error: function (xhr, status, error) {
 
-          modal_success();
-            console.log(xhr.responseText);
-            alert("fail");
-                 
-}
+        modal_success();
+        console.log(xhr.responseText);
+        alert("fail");
+
+      }
     });
-}
-
-function setparam(formid)
-{
-    var obj = {};
-    var strsplit=formid+"__";
-    
-    var c = document.getElementById(formid).children;
-  var txt = "";
-  var i;
-  
-  for (i = 0; i < c.length; i++) {
-   var txt = c[i].id ;
-  
-   var strvalue = document.getElementById(txt).value;
-   txt= txt.split(strsplit);
-
-   // var strkey='"'+txt[1]+'"';
-   var strkey=txt[1];
-    obj[ strkey ] = strvalue;
   }
 
-return(obj);
-}
-
-function setparam_purchase(formid)
-{
+  function setparam(formid) {
     var obj = {};
-    var strsplit=formid+"__";
-    
-    var c = document.getElementById(formid).children;
-  var txt = "";
-  var i;
-  
-  for (i = 0; i < c.length; i++) {
-   var txt = c[i].id ;
-  
-   var strvalue = document.getElementById(txt).value;
-   txt= txt.split(strsplit);
+    var strsplit = formid + "__";
 
-   // var strkey='"'+txt[1]+'"';
-   var strkey=txt[1];
-    obj[ strkey ] = strvalue;
+    var c = document.getElementById(formid).children;
+    var txt = "";
+    var i;
+
+    for (i = 0; i < c.length; i++) {
+      var txt = c[i].id;
+
+      var strvalue = document.getElementById(txt).value;
+      txt = txt.split(strsplit);
+
+      // var strkey='"'+txt[1]+'"';
+      var strkey = txt[1];
+      obj[strkey] = strvalue;
+    }
+
+    return (obj);
   }
 
-return(obj);
-}
+  function setparam_purchase(formid) {
+    var obj = {};
+    var strsplit = formid + "__";
+
+    var c = document.getElementById(formid).children;
+    var txt = "";
+    var i;
+
+    for (i = 0; i < c.length; i++) {
+      var txt = c[i].id;
+
+      var strvalue = document.getElementById(txt).value;
+      txt = txt.split(strsplit);
+
+      // var strkey='"'+txt[1]+'"';
+      var strkey = txt[1];
+      obj[strkey] = strvalue;
+    }
+
+    return (obj);
+  }
 
 </script>

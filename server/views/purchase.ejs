@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand hidden-xs" href="#"><span>Purchase Management  </span> </a>
+                <a class="navbar-brand hidden-xs" href="#"><span>Purchase Management </span> </a>
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -69,283 +69,299 @@
             <ul class="nav navbar-nav botnav">
                 <li class="active"><a href="">Purchase Order</a></li>
                 <li><a href="/purchase-request">Purchase Requests</a></li>
-                 <li><a href="/purchase-history">Purchase History</a></li>
+                <li><a href="/purchase-history">Purchase History</a></li>
             </ul>
         </div>
     </div>
     <%- include('mysidebar.ejs') %>
     <%- include('mytest.ejs') %>
-   <div class="porderdiv">
-       <div class="container3">
-    <div class="pcard">
-       <div class="row">
-     <div class="col-md-3">
-       <label>Vendor Name</label>
-         <select onchange="func_getvendor();" class="purchaseselect controls" name="pass" id="VendorList">
-           <option >--select--</option>
-      </select>
+    <div class="porderdiv">
+        <div class="container3">
+            <div class="pcard">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Vendor Name</label>
+                        <select onchange="func_getvendor();" class="purchaseselect controls" name="pass"
+                            id="VendorList">
+                            <option>--select--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Vendor Email</label>
+                        <input type="text" class="purchaseinput controls" id="VendorEmail"
+                            placeholder="Vendor Email Address">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Vendor Contact</label>
+                        <input type="text" class="purchaseinput controls" id="VendorPhone" placeholder="Contact Number">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Purchase Site</label>
+                        <input type="text" class="purchaseinput controls" id="site" placeholder="Site Location">
+
+                        <input type="hidden" id="id" value="">
+                        <input type="hidden" id="order_no" value="1">
+                        <input type="hidden" id="name" value="admin">
+                        <input type="hidden" id="created_by" value="admin">
+                        <input type="hidden" id="updated_by" value="admin">
+                        <input type="hidden" id="date_ordered" value="">
+                        <input type="hidden" id="comments" value="ok">
+                    </div>
+                    <div class="col-md-2">
+                        <p><span>Order No : </span> 5</p>
+                        <p id="curr"> </p>
+                        <p id="ordid"></p>
+                    </div>
+
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+
+
+
+                    <script>
+                        var ordid = "";
+                        var today;
+                        function func_load() {
+                            today = new Date();
+                            var dd = String(today.getDate()).padStart(2, '0');
+                            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            var yyyy = today.getFullYear();
+
+                            today = dd + '/' + mm + '/' + yyyy;
+                            document.getElementById("date_ordered").value = today;
+                            document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today;
+                            ordid = Math.floor(Math.random() * 100000001);
+                            document.getElementById("ordid").innerHTML = "<span  >Order Id :</span> #" + ordid;
+                            document.getElementById("id").value = ordid;
+                        }
+
+                    </script>
+                    <script>
+                        function func_postdata(obj) {
+
+                            console.log(obj);
+
+                            var apiurl = "http://localhost:3000/api/purchase_order";
+                            console.log(apiurl);
+
+                            var fd = JSON.stringify(obj);
+                            console.log(fd);
+                            $.ajax({
+                                url: apiurl,
+                                data: fd,
+                                cache: false,
+                                processData: false,
+                                contentType: 'application/json',
+                                type: 'POST',
+                                success: function (dataofconfirm) {
+                                    // do something with the result
+                                    modal_success();
+                                },
+                                error: function (xhr, status, error) {
+
+
+                                    console.log(xhr.responseText);
+                                    alert("fail");
+
+                                }
+                            });
+                        }
+
+                        function modal_success() {
+                            func_load();
+                            func_onload();
+                            document.getElementById('VendorEmail').value = "";
+                            document.getElementById('VendorPhone').value = "";
+                            document.getElementById('site').value = "";
+
+                            document.getElementById('nettotal').value = "";
+                            document.getElementById('gsttotal').value = "";
+                            document.getElementById('grandtotal').value = "";
+
+                            document.getElementById("tickettable").innerHTML = '<tr class="header"> <th style="width:30%;">Item Name</th> <th>Rate</th> <th>Quantity</th> <th>Net Amount</th> <th>GST </th> <th>GST Amount</th> <th>Total Amount</th> <th>Action</th> </tr> </tbody>';
+                            document.getElementById("modal_suc").click();
+                        }
+
+                        function setparam_purchase(sts) {
+                            var obj = {};
+
+                            obj["id"] = String(ordid);
+                            obj["order_no"] = 1;
+                            obj["name"] = "";
+                            obj["date_ordered"] = today;
+                            obj["date_requested"] = today;
+                            obj["date_recieved"] = today;
+                            obj["comments"] = "";
+                            obj["site"] = document.getElementById('site').value;
+                            obj["status"] = sts;
+                            obj["created_by"] = "admin";
+                            obj["updated_by"] = ""
+                            obj["created_date"] = today;
+                            obj["updated_date"] = today;
+                            obj["vendor"] = document.getElementById('VendorList').value;
+                            obj["purchase_items"] = passjson();
+
+                            func_postdata(obj);
+
+                        }
+
+                    </script>
+                    <div class="col-md-10">
+                        <button data-toggle="modal" data-target="#successmodal" id="modal_suc"
+                            style="display : none;">Click</button>
+                        <table class="tickettable purchase-table" id="tickettable">
+
+                            <tbody>
+                                <tr class="header">
+                                    <th style="width:30%;">Item Name</th>
+                                    <th>Rate</th>
+                                    <th>Quantity</th>
+                                    <th>Net Amount</th>
+                                    <th>GST %</th>
+                                    <th>GST Amount</th>
+                                    <th>Total Amount</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <div class="purchaseright">
+                            <table class="purchasingtable">
+                                <tr>
+                                    <td class="first">
+                                        <p>Net Total </p>
+                                    </td>
+                                    <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
+                                            id="nettotal" placeholder=""></td>
+                                </tr>
+                                <tr>
+                                    <td class="first">
+                                        <p>GST Total </p>
+                                    </td>
+                                    <td><input type="number" name="price" class="editedcontrol" disabled value="0"
+                                            id="gsttotal" placeholder=""></td>
+                                </tr>
+                                <tr>
+                                    <td class="first">
+                                        <p>Grand Total </p>
+                                    </td>
+                                    <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
+                                            id="grandtotal" placeholder=""></td>
+                                </tr>
+                            </table>
+                            <button class="draft-button">Save as Draft</button>
+                            <button class="order-button" onclick="setparam_purchase();">Place Order</button>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2 addcontrol">
+                        <label>Add Items</label>
+                        <input type="text" name="item" class="controls" placeholder="Enter Item Name" id="item"
+                            onkeyup="showResult(this.value)">
+                        <div id="livesearch"></div>
+                        <input type="number" name="quantity" class="controls" id="rate"
+                            placeholder="Enter Net Rate"><br />
+                        <input type="number" name="price" class="controls" id="quantity"
+                            placeholder="Enter Item quantity">
+                        <input type="number" name="price" class="controls" id="gst" placeholder="Enter GST Percentage">
+
+                        <input type="hidden" name="price" class="controls" id="hiddenitemid"
+                            placeholder="Enter GST Percentage">
+
+
+                        <script>
+
+                            function showResult(val) {
+                                var myurl = "http://localhost:3000/api/products?filter=%7B%22where%22%3A%7B%22name%22%3A+%7B%22like%22%3A%22%25" + val + "%25%22%7D%7D%2C%22limit%22%3A10%2C%22fields%22%3A%5B%22id%22%2C%22name%22%2C%22unit%22%5D%2C%22include%22%3A%5B%22orders%22%5D%7D";
+
+
+
+                                $.ajax({
+                                    url: myurl,
+                                    cache: false,
+                                    processData: false,
+                                    contentType: 'application/json',
+                                    type: 'GET',
+                                    success: function (dataofconfirm) {
+                                        // do something with the result
+                                        livesearch(dataofconfirm);
+
+                                    },
+                                    error: function (xhr, status, error) {
+
+                                        alert("fail");
+
+                                    }
+                                });
+
+
+                            }
+
+                            function livesearch(data) {
+
+                                var strlen = data.length;
+
+                                if (strlen > 0) {
+                                    document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
+                                    document.getElementById("livesearch").style.padding = "5px 15px";
+                                }
+                                if (strlen == 0) {
+
+                                    document.getElementById("livesearch").style.border = "";
+                                    document.getElementById("livesearch").style.padding = "";
+                                }
+                                var strlist = "";
+                                for (var i = 0; i < strlen; i++) {
+                                    strlist = strlist + '<p onclick="setlivedata(this)" id="' + data[i].id + '">' + data[i].name + "<br>";
+
+                                }
+                                document.getElementById("livesearch").innerHTML = strlist;
+                            }
+
+
+                            function setlivedata(ele) {
+                                var newstring = ele.innerHTML.replace('<br>', '');
+
+                                document.getElementById('hiddenitemid').value = ele.id;
+                                document.getElementById('item').value = newstring;
+                                document.getElementById("livesearch").innerHTML = "";
+                                document.getElementById("livesearch").style.border = "";
+                                document.getElementById("livesearch").style.padding = "";
+                            }
+
+                        </script>
+
+
+                        <input type="button" value="Add Product +" class="addbutton" onclick="addRow()" id="add">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
-     <div class="col-md-3">
-        <label>Vendor Email</label>
-         <input type="text" class="purchaseinput controls" id="VendorEmail" placeholder="Vendor Email Address" >
-    </div>
-       <div class="col-md-2">
-         <label>Vendor Contact</label>
-         <input type="text" class="purchaseinput controls" id="VendorPhone"  placeholder="Contact Number" >
-    </div>
-    <div class="col-md-2">
-            <label>Purchase Site</label>
-            <input type="text" class="purchaseinput controls" id="site"  placeholder="Site Location" >
-       </div>
-     <div class="col-md-2">
-         <p><span>Order No : </span> 5</p>
-          <p id="curr" > </p>
-         <p id="ordid" ></p>
-    </div>
-
-    <div class="col-md-2">
-
-   </div>
-   <div class="col-md-2">
-
-</div>
-
-
-
-<script>
-var ordid="";
-var today;
-function func_load()
-{
-    today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = dd + '/' + mm + '/' + yyyy;
-    document.getElementById('curr').innerHTML="<span  >Order Date :</span>"+today;
-    ordid=Math.floor(Math.random() * 100000001);
-    document.getElementById("ordid").innerHTML = "<span  >Order Id :</span> #"+ordid;
-
-}
-
-</script>
-    <script>
-    function func_postdata(obj)
-{
-
-    console.log(obj);
-
-    var apiurl="http://localhost:3000/api/purchase_order";
-    console.log(apiurl);
-
-     var fd = JSON.stringify(obj);
-     console.log(fd);
-    $.ajax({
-        url: apiurl,
-        data: fd,
-        cache: false,
-        processData: false,
-        contentType: 'application/json',
-        type: 'POST',
-        success: function (dataofconfirm) {
-            // do something with the result
-            modal_success();
-        },
-        error: function(xhr, status, error) {
-
-
-            console.log(xhr.responseText);
-            alert("fail");
-
-}
-    });
-}
-
-function modal_success()
-{
-    func_load();
-    func_onload();
-    document.getElementById('VendorEmail').value="";
-    document.getElementById('VendorPhone').value="";
-    document.getElementById('site').value="";
-
-    document.getElementById('nettotal').value="";
-    document.getElementById('gsttotal').value="";
-    document.getElementById('grandtotal').value="";
-
-    document.getElementById("tickettable").innerHTML = '<tr class="header"> <th style="width:30%;">Item Name</th> <th>Rate</th> <th>Quantity</th> <th>Net Amount</th> <th>GST </th> <th>GST Amount</th> <th>Total Amount</th> <th>Action</th> </tr> </tbody>';
-    document.getElementById("modal_suc").click();
-}
-
-    function setparam_purchase(sts)
-{
-    var obj = {};
-
-    obj[ "id" ] = String (ordid);
-    obj[ "order_no" ] = 1;
-    obj["name"] ="";
-    obj["date_ordered"] = today;
-    obj["date_requested"] =today;
-    obj["date_recieved"] =today ;
-    obj["comments"] ="";
-    obj["site"] =document.getElementById('site').value;
-    obj["status"] =sts;
-    obj["created_by"] ="admin";
-    obj["updated_by"] =""
-    obj["created_date"] =today;
-    obj["updated_date"] =today;
-    obj["vendor"] =document.getElementById('VendorList').value;
-    obj["purchase_items"]=passjson();
-
-    func_postdata(obj);
-
-}
-
-    </script>
-           <div class="col-md-10">
-              <button data-toggle="modal" data-target="#successmodal" id="modal_suc" style="display : none;">Click</button>
-                       <table class="tickettable purchase-table" id="tickettable">
-
-                <tbody >
-               <tr class="header">
-                    <th style="width:30%;">Item Name</th>
-                    <th>Rate</th>
-                    <th>Quantity</th>
-                     <th>Net Amount</th>
-                     <th>GST %</th>
-                      <th>GST Amount</th>
-                      <th>Total Amount</th>
-                      <th>Action</th>
-                </tr>
-
-                </tbody>
-
-            </table>
-               <div class="purchaseright">
-                   <table class="purchasingtable">
-                   <tr>
-                    <td class="first"><p>Net Total </p></td>
-                       <td> <input type="number" name="price" class="editedcontrol" disabled value="0" id="nettotal" placeholder=""></td>
-                    </tr>
-                       <tr>
-                       <td class="first"><p>GST Total </p></td>
-                           <td><input type="number" name="price" class="editedcontrol" disabled value="0" id="gsttotal" placeholder=""></td>
-                       </tr>
-                       <tr>
-                       <td class="first"><p>Grand Total </p></td>
-                           <td> <input type="number" name="price" class="editedcontrol" disabled value="0" id="grandtotal" placeholder=""></td>
-                       </tr>
-                   </table>
-                   <button class="draft-button">Save as Draft</button>
-                   <button class="order-button" onclick="setparam_purchase();">Place Order</button>
-
-               </div>
-           </div>
-           <div class="col-md-2 addcontrol">
-               <label>Add Items</label>
-               <input type="text" name="item" class="controls" placeholder="Enter Item Name" id="item" onkeyup="showResult(this.value)">
-               <div id="livesearch"></div>
-<input type="number" name="quantity" class="controls" id="rate" placeholder="Enter Net Rate"><br />
-<input type="number" name="price" class="controls" id="quantity" placeholder="Enter Item quantity">
- <input type="number" name="price" class="controls" id="gst" placeholder="Enter GST Percentage">
-
- <input type="hidden" name="price" class="controls" id="hiddenitemid" placeholder="Enter GST Percentage">
-
-
-              <script>
-
-                  function showResult(val)
-                  {
-                    var myurl="http://localhost:3000/api/products?filter=%7B%22where%22%3A%7B%22name%22%3A+%7B%22like%22%3A%22%25"+val+"%25%22%7D%7D%2C%22limit%22%3A10%2C%22fields%22%3A%5B%22id%22%2C%22name%22%2C%22unit%22%5D%2C%22include%22%3A%5B%22orders%22%5D%7D";
-
-
-
-                    $.ajax({
-                        url: myurl,
-                        cache: false,
-                        processData: false,
-                        contentType: 'application/json',
-                        type: 'GET',
-                        success: function (dataofconfirm) {
-                            // do something with the result
-                            livesearch(dataofconfirm);
-
-                        },
-                        error: function(xhr, status, error) {
-
-                            alert("fail");
-
-                    }
-                    });
-
-
-                  }
-
-                 function livesearch(data)
-                 {
-
-                    var strlen = data.length;
-
-                    if(strlen >0)
-                    {
-                        document.getElementById("livesearch").style.border="1px solid #A5ACB2";
-                        document.getElementById("livesearch").style.padding="5px 15px";
-                    }
-                    if(strlen==0)
-                    {
-
-                        document.getElementById("livesearch").style.border="";
-                        document.getElementById("livesearch").style.padding="";
-                    }
-                    var strlist="";
-                    for(var i =0; i<strlen ;i++ )
-                    {
-                        strlist=strlist+'<p onclick="setlivedata(this)" id="'+data[i].id+'">'+data[i].name+"<br>";
-
-                    }
-                    document.getElementById("livesearch").innerHTML=strlist;
-                 }
-
-
-                function setlivedata(ele)
-                 {
-                    var newstring = ele.innerHTML.replace('<br>', '');
-
-                    document.getElementById('hiddenitemid').value=ele.id;
-                    document.getElementById('item').value=newstring;
-                    document.getElementById("livesearch").innerHTML="";
-                    document.getElementById("livesearch").style.border="";
-                    document.getElementById("livesearch").style.padding="";
-                 }
-
-              </script>
-
-
-<input type="button" value="Add Product +" class="addbutton" onclick="addRow()" id="add">
-           </div>
-    </div>
-
-    </div>
-
-</div></div>
 
 </body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    $('input[type="button"]').click(function(e){
-   $(this).closest('tr').remove()
-})
+    $('input[type="button"]').click(function (e) {
+        $(this).closest('tr').remove()
+    })
 
 </script>
 <script>
     function newfun() {
         document.getElementById("newsite").classList.toggle("show");
     }
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.buttonnew')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -358,264 +374,257 @@ function modal_success()
         }
     }
 </script>
-     <script>
-         var strjson;
-         function func_onload()
-         {
+<script>
+    var strjson;
+    function func_onload() {
 
-            $.ajax({
-        url: "http://localhost:3000/api/vendors",
-        cache: false,
-        processData: false,
-        contentType: 'application/json',
-        type: 'GET',
-        success: function (dataofconfirm) {
-            // do something with the result
-            setparam(dataofconfirm);
-            func_load();
-        },
-        error: function(xhr, status, error) {
+        $.ajax({
+            url: "http://localhost:3000/api/vendors",
+            cache: false,
+            processData: false,
+            contentType: 'application/json',
+            type: 'GET',
+            success: function (dataofconfirm) {
+                // do something with the result
+                setparam(dataofconfirm);
+                func_load();
+            },
+            error: function (xhr, status, error) {
 
-            alert("fail");
+                alert("fail");
+
+            }
+        });
 
     }
-    });
 
-         }
-
-         function setparam(json)
-         {
-            strjson=json;
-            var x = document.getElementById("VendorList");
-            for(var i = 0; i < json.length; i++) {
+    function setparam(json) {
+        strjson = json;
+        var x = document.getElementById("VendorList");
+        for (var i = 0; i < json.length; i++) {
             var obj = json[i];
 
 
             var option = document.createElement("option");
-            option.text =obj.name;
+            option.text = obj.name;
             option.value = obj.id;
             x.add(option);
-            }
-         }
+        }
+    }
 
-         function func_getvendor()
-         {
-            var strid = document.getElementById("VendorList").value;
+    function func_getvendor() {
+        var strid = document.getElementById("VendorList").value;
 
-            for(var i = 0; i < strjson.length; i++) {
+        for (var i = 0; i < strjson.length; i++) {
             var obj = strjson[i];
-                if(obj.id == strid)
-                {
-                    document.getElementById("VendorEmail").value=obj.email;
-                    document.getElementById("VendorPhone").value=obj.phone;
-                }
-
+            if (obj.id == strid) {
+                document.getElementById("VendorEmail").value = obj.email;
+                document.getElementById("VendorPhone").value = obj.phone;
             }
 
-         }
+        }
 
-         function passjson()
-         {
-            var rlength= document.getElementById("tickettable").rows.length;
+    }
 
-            var tableobj = [];
-            var sid;
-            for(var i = 1 ; i < rlength ; i++)
-            {
-                var result_style = document.getElementById(i).style;
-                var data={};
-                if(result_style.display == 'table-row')
-                {
-                    sid=i+'quantityid';
+    function passjson() {
+        var rlength = document.getElementById("tickettable").rows.length;
 
-                    data["quantity"] = parseInt(document.getElementById(sid).value);
-                    sid=i+'rateid';
-                    data["unit_price"] = parseInt(document.getElementById(sid).value);
-                    sid=i+'gstid';
-                    data["gst"] =parseInt(document.getElementById(sid).value);
-                    sid=i+'gstamountid';
-                    data["cgst"]= parseInt(document.getElementById(sid).value);
-                    sid = i+'totalamountid';
-                    data["total"]= parseInt(document.getElementById(sid).value);
-                    sid = i+'hiddenitemid' ;
+        var tableobj = [];
+        var sid;
+        for (var i = 1; i < rlength; i++) {
+            var result_style = document.getElementById(i).style;
+            var data = {};
+            if (result_style.display == 'table-row') {
+                sid = i + 'quantityid';
 
-                    data["id"] =document.getElementById(sid).value;
+                data["quantity"] = parseInt(document.getElementById(sid).value);
+                sid = i + 'rateid';
+                data["unit_price"] = parseInt(document.getElementById(sid).value);
+                sid = i + 'gstid';
+                data["gst"] = parseInt(document.getElementById(sid).value);
+                sid = i + 'gstamountid';
+                data["cgst"] = parseInt(document.getElementById(sid).value);
+                sid = i + 'totalamountid';
+                data["total"] = parseInt(document.getElementById(sid).value);
+                sid = i + 'hiddenitemid';
 
-                    tableobj.push(data);
-                }
+                data["id"] = document.getElementById(sid).value;
 
-
-
+                tableobj.push(data);
             }
 
 
-           return(tableobj);
 
-         }
-
-         function addRow() {
-
-   "use strict";
-var rowcount = document.getElementById("tickettable").rows.length;
-    var table = document.getElementById("tickettable");
-
-     //
-
-    var row= document.createElement("tr");
-                                 row.id=rowcount;
+        }
 
 
+        return (tableobj);
 
+    }
 
-    var td1 = document.createElement("td");
-    var td2 = document.createElement("td");
-    var td3 = document.createElement("td");
-    var td4 = document.createElement("td");
-    var td5 = document.createElement("td");
-    var td6 = document.createElement("td");
-    var td7 = document.createElement("td");
-    var td8 = document.createElement("td");
+    function addRow() {
 
-    var x1 = document.getElementById("item").value;
-    var x2 = document.getElementById("rate").value;
-    var x3 = document.getElementById("quantity").value;
+        "use strict";
+        var rowcount = document.getElementById("tickettable").rows.length;
+        var table = document.getElementById("tickettable");
 
-    var x4 = document.getElementById("gst").value;
+        //
 
-                                 var netamount=x2*x3;
-
-    var strhidden = document.getElementById("hiddenitemid").value;
+        var row = document.createElement("tr");
+        row.id = rowcount;
 
 
 
 
-    td1.innerHTML = '<input  class="editcontrol" type="text" id="'+rowcount+'itemid'+'" name="'+rowcount+'itemid'+'" value="'+x1+'"  >' + '<input  class="editcontrol" type="hidden" id="'+rowcount+'hiddenitemid'+'" name="'+rowcount+'itemid'+'" value="'+strhidden+'"  >' ;
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+        var td8 = document.createElement("td");
 
-    td2.innerHTML = '<input onchange="updaterow('+rowcount+');" class="editcontrol" type="text" name="'+rowcount+'rateid'+'" id="'+rowcount+'rateid'+'" value="'+x2+'"  >';
+        var x1 = document.getElementById("item").value;
+        var x2 = document.getElementById("rate").value;
+        var x3 = document.getElementById("quantity").value;
 
-    td3.innerHTML = '<input onchange="updaterow('+rowcount+');" class="editcontrol" type="text" name="'+rowcount+'quantityid'+'" id="'+rowcount+'quantityid'+'" value="'+x3+'" >';
+        var x4 = document.getElementById("gst").value;
 
-    td4.innerHTML = '<input  class="editcontrol" disabled type="text" id="'+rowcount+'netamountid'+'" name="'+rowcount+'netamount'+'" value="'+netamount+'"  >';
+        var netamount = x2 * x3;
 
-    td5.innerHTML = '<input onchange="updaterow('+rowcount+');" class="editcontrol" type="text" name="'+rowcount+'gstid'+'" id="'+rowcount+'gstid'+'" value="'+x4+'" >';
-
-    td6.innerHTML = '<input  class="editcontrol" disabled type="text" id="'+rowcount+'gstamountid'+'" name="'+rowcount+'gstamount'+'" value="'+parseFloat(((netamount/100)*x4).toFixed(2))+'"  >';
-
-    td7.innerHTML='<input  class="editcontrol" disabled type="text" id="'+rowcount+'totalamountid'+'" name="'+rowcount+'totalamountid'+'" value="'+parseFloat((netamount+((netamount/100)*x4)).toFixed(2))+'"  >';
-
-     td8.innerHTML='<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction('+rowcount+')"></td>'
-    row.appendChild(td1);
-    row.appendChild(td2);
-    row.appendChild(td3);
-                                 row.appendChild(td4);
-                                 row.appendChild(td5);
-
-                                 row.appendChild(td6);
-                                 row.appendChild(td7);
-                                 row.appendChild(td8);
+        var strhidden = document.getElementById("hiddenitemid").value;
 
 
 
-    table.children[0].appendChild(row);
 
-    var result_style = document.getElementById(rowcount).style;
+        td1.innerHTML = '<input  class="editcontrol" type="text" id="' + rowcount + 'itemid' + '" name="' + rowcount + 'itemid' + '" value="' + x1 + '"  >' + '<input  class="editcontrol" type="hidden" id="' + rowcount + 'hiddenitemid' + '" name="' + rowcount + 'itemid' + '" value="' + strhidden + '"  >';
 
-    result_style.display = 'table-row';
+        td2.innerHTML = '<input onchange="updaterow(' + rowcount + ');" class="editcontrol" type="text" name="' + rowcount + 'rateid' + '" id="' + rowcount + 'rateid' + '" value="' + x2 + '"  >';
 
-                                 document.getElementById("item").value="";
-document.getElementById("rate").value="";
-document.getElementById("quantity").value="";
+        td3.innerHTML = '<input onchange="updaterow(' + rowcount + ');" class="editcontrol" type="text" name="' + rowcount + 'quantityid' + '" id="' + rowcount + 'quantityid' + '" value="' + x3 + '" >';
 
-document.getElementById("gst").value="";
+        td4.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'netamountid' + '" name="' + rowcount + 'netamount' + '" value="' + netamount + '"  >';
 
-                                 var tot = document.getElementById("grandtotal").value;
-                                 tot=parseFloat(tot)+parseFloat (netamount)+parseFloat ((netamount/100)*x4);
-                                 document.getElementById("grandtotal").value=parseFloat(tot.toFixed(2));
+        td5.innerHTML = '<input onchange="updaterow(' + rowcount + ');" class="editcontrol" type="text" name="' + rowcount + 'gstid' + '" id="' + rowcount + 'gstid' + '" value="' + x4 + '" >';
 
-                                 tot = document.getElementById("nettotal").value;
-                                 tot=parseFloat(tot)+parseFloat (netamount);
-                                 document.getElementById("nettotal").value=parseFloat(tot.toFixed(2));
+        td6.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'gstamountid' + '" name="' + rowcount + 'gstamount' + '" value="' + parseFloat(((netamount / 100) * x4).toFixed(2)) + '"  >';
 
-                                  tot = document.getElementById("gsttotal").value;
-                                 tot=parseFloat(tot)+parseFloat (((netamount/100)*x4));
-                                 document.getElementById("gsttotal").value=parseFloat(tot.toFixed(2));
+        td7.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'totalamountid' + '" name="' + rowcount + 'totalamountid' + '" value="' + parseFloat((netamount + ((netamount / 100) * x4)).toFixed(2)) + '"  >';
 
+        td8.innerHTML = '<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction(' + rowcount + ')"></td>'
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+        row.appendChild(td4);
+        row.appendChild(td5);
 
-
-};
-
-         function SomeDeleteRowFunction(rowcount)
-         {
-            var result_style = document.getElementById(rowcount).style;
-
-            result_style.display = 'none';
-
-         }
-         function updaterow(rowcount)
-         {
+        row.appendChild(td6);
+        row.appendChild(td7);
+        row.appendChild(td8);
 
 
-             var x1 = document.getElementById(rowcount+"rateid").value;
-             var x2 = document.getElementById(rowcount+"quantityid").value;
-             var x3 = document.getElementById(rowcount+"gstid").value;
+
+        table.children[0].appendChild(row);
+
+        var result_style = document.getElementById(rowcount).style;
+
+        result_style.display = 'table-row';
+
+        document.getElementById("item").value = "";
+        document.getElementById("rate").value = "";
+        document.getElementById("quantity").value = "";
+
+        document.getElementById("gst").value = "";
+
+        var tot = document.getElementById("grandtotal").value;
+        tot = parseFloat(tot) + parseFloat(netamount) + parseFloat((netamount / 100) * x4);
+        document.getElementById("grandtotal").value = parseFloat(tot.toFixed(2));
+
+        tot = document.getElementById("nettotal").value;
+        tot = parseFloat(tot) + parseFloat(netamount);
+        document.getElementById("nettotal").value = parseFloat(tot.toFixed(2));
+
+        tot = document.getElementById("gsttotal").value;
+        tot = parseFloat(tot) + parseFloat(((netamount / 100) * x4));
+        document.getElementById("gsttotal").value = parseFloat(tot.toFixed(2));
 
 
-             var x4 =document.getElementById(rowcount+"totalamountid").value;
-             var x5 =document.getElementById("grandtotal").value;
 
-           //  var diffval = ((x1*x2)+(((x1*x2)/100)*x3)) - (x4);
+    };
 
-             x5= (x5 - x4) +((x1*x2)+(((x1*x2)/100)*x3)) ;
-          //   console.log("diff => "+diffval);
+    function SomeDeleteRowFunction(rowcount) {
+        var result_style = document.getElementById(rowcount).style;
 
-                tot = document.getElementById("nettotal").value;
-                tot=parseFloat(tot)-parseFloat (document.getElementById(rowcount+"netamountid").value);
-                document.getElementById("nettotal").value=parseFloat(tot.toFixed(2)) + parseFloat(x1*x2);
+        result_style.display = 'none';
 
-                tot = document.getElementById("gsttotal").value;
-                tot=parseFloat(tot)- parseFloat (document.getElementById(rowcount+"gstamountid").value);
-                document.getElementById("gsttotal").value=parseFloat(tot.toFixed(2))+ parseFloat ((x1*x2)+(((x1*x2)/100)*x3));
+    }
+    function updaterow(rowcount) {
 
 
-             document.getElementById("grandtotal").value=x5;
-
-             document.getElementById(rowcount+"netamountid").value=x1*x2;
-             document.getElementById(rowcount+"gstamountid").value=(((x1*x2)/100)*x3);
-             document.getElementById(rowcount+"totalamountid").value=(x1*x2)+(((x1*x2)/100)*x3);
-
-         }
+        var x1 = document.getElementById(rowcount + "rateid").value;
+        var x2 = document.getElementById(rowcount + "quantityid").value;
+        var x3 = document.getElementById(rowcount + "gstid").value;
 
 
-         function tableToJson(table) {
-var data = [];
-var headers = [];
-var myid=["itemid","rateid","quantityid","netamountid","gstid","gstamountid","totalamountid"];
-for (var i=0; i<table.rows[0].cells.length; i++) {
- headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
-}
+        var x4 = document.getElementById(rowcount + "totalamountid").value;
+        var x5 = document.getElementById("grandtotal").value;
 
-for (var i=1; i<table.rows.length; i++) {
-var tableRow = table.rows[i]; var rowData = {};
-for (var j=0; j<tableRow.cells.length; j++) {
+        //  var diffval = ((x1*x2)+(((x1*x2)/100)*x3)) - (x4);
 
-rowData[ headers[j] ] = document.getElementById(i+myid[j]).value;
-} data.push(rowData);
-}
-return data;
-}
-                              </script>
+        x5 = (x5 - x4) + ((x1 * x2) + (((x1 * x2) / 100) * x3));
+        //   console.log("diff => "+diffval);
+
+        tot = document.getElementById("nettotal").value;
+        tot = parseFloat(tot) - parseFloat(document.getElementById(rowcount + "netamountid").value);
+        document.getElementById("nettotal").value = parseFloat(tot.toFixed(2)) + parseFloat(x1 * x2);
+
+        tot = document.getElementById("gsttotal").value;
+        tot = parseFloat(tot) - parseFloat(document.getElementById(rowcount + "gstamountid").value);
+        document.getElementById("gsttotal").value = parseFloat(tot.toFixed(2)) + parseFloat((x1 * x2) + (((x1 * x2) / 100) * x3));
+
+
+        document.getElementById("grandtotal").value = x5;
+
+        document.getElementById(rowcount + "netamountid").value = x1 * x2;
+        document.getElementById(rowcount + "gstamountid").value = (((x1 * x2) / 100) * x3);
+        document.getElementById(rowcount + "totalamountid").value = (x1 * x2) + (((x1 * x2) / 100) * x3);
+
+    }
+
+
+    function tableToJson(table) {
+        var data = [];
+        var headers = [];
+        var myid = ["itemid", "rateid", "quantityid", "netamountid", "gstid", "gstamountid", "totalamountid"];
+        for (var i = 0; i < table.rows[0].cells.length; i++) {
+            headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
+        }
+
+        for (var i = 1; i < table.rows.length; i++) {
+            var tableRow = table.rows[i]; var rowData = {};
+            for (var j = 0; j < tableRow.cells.length; j++) {
+
+                rowData[headers[j]] = document.getElementById(i + myid[j]).value;
+            } data.push(rowData);
+        }
+        return data;
+    }
+</script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="./assets/js/todo.js"></script>
 <script type="text/javascript">
-			$("#datepicker").datepicker();
-			$("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
-      todo.init();
+    $("#datepicker").datepicker();
+    $("#datepicker").datepicker("option", "dateFormat", "dd/mm/yy");
+    todo.init();
 
-		</script>
+</script>
 <style>
-.modal-backdrop {background: none;}
+    .modal-backdrop {
+        background: none;
+    }
 </style>
 
 </html>
