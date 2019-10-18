@@ -12,17 +12,17 @@ body
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 #logo
 {
@@ -76,7 +76,7 @@ font-size:20px;
 font-weight:700;
 }
 .navbar-brand span
-{ 
+{
     color:#00c97d;
      font-weight:800;
 }
@@ -102,7 +102,7 @@ font-size:16px;
 ul#pro li
 {
    list-style: none;
-    margin-left:-30px !important;  
+    margin-left:-30px !important;
       padding:8px 0px !important;
 }
 ul#pro li a
@@ -139,7 +139,7 @@ ul#pro li a:hover{
 .dropdown {
   position: relative;
   display: inline-block;
-   
+
 }
 .leftmargin
 {
@@ -265,7 +265,7 @@ padding:20px;
 .logimage
 {
    max-width:800px;
-   width:100%; 
+   width:100%;
 }
 .form-container {
     position: absolute;
@@ -282,7 +282,7 @@ padding:20px;
     text-align: center;
     font-family: 'Nunito', sans-serif;
     font-weight:900;
-    line-height:30px; 
+    line-height:30px;
 }
 .left
 {
@@ -303,7 +303,7 @@ padding:10px 20px;
 
 /*buttons*/
 .buttonadd {
-  background-color:#00c97d; 
+  background-color:#00c97d;
   border: none;
    margin-top:8px;
   color: white;
@@ -315,7 +315,7 @@ padding:10px 20px;
     font-weight:700;
 }
 .buttonfull {
-    background-color:#00c97d; 
+    background-color:#00c97d;
     border: none;
      margin-top:8px;
     color: white;
@@ -328,8 +328,32 @@ padding:10px 20px;
       font-weight:700;
       width:80%;
   }
+  .draft-button
+  {
+    border-radius: 2px;
+    background-color:#183247;
+    padding: 10px 14px;
+    margin:10px 0px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    color:#ffffff;
+    border: none;
+  }
+  .order-button {
+    border-radius: 2px;
+    background-color:#ff3184;
+    box-shadow: 0 2px 4px 0 #f4f4f4;
+    padding: 10px 14px;
+    margin:10px 0px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    color:#ffffff;
+    border: none;
+}
 .addbutton {
-  background-color:#00c97d; 
+  background-color:#00c97d;
   border: none;
    margin-top:8px;
   color: white;
@@ -341,7 +365,7 @@ padding:10px 20px;
     font-weight:400;
 }
 .featurebutton {
-  background-color:#ffffff; 
+  background-color:#ffffff;
   border-radius:2px;
    margin:4px 0px;
     border: 1px solid #e7e7e7;
@@ -356,7 +380,7 @@ font-family: 'Nunito', sans-serif;
 }
 .exportbutton
 {
-    background-color:#ffffff; 
+    background-color:#ffffff;
   border-radius:2px;
    margin:0px 0px 2px 0px;
     margin-right:5px;
@@ -383,9 +407,9 @@ font-family: 'Nunito', sans-serif;
 }
 .buttonedit
 {
-padding:2px 10px; 
+padding:2px 10px;
     background-color: white;
-    border: 1px solid #00c97d; 
+    border: 1px solid #00c97d;
 }
 .activestatus, .openedstatus {
     border: 1px solid #58c989;
@@ -412,7 +436,7 @@ padding:2px 10px;
 }
 .endedstatus, .closedstatus
 {
-  border: 1px solid #ffa8b2;  
+  border: 1px solid #ffa8b2;
   background-color: #fff2f6;
     color: #ff0026;
     font-size: 12px;
@@ -420,7 +444,7 @@ padding:2px 10px;
     padding: 1px 3px;
     display: inline-block;
     min-width: 58px;
-    text-align: center;  
+    text-align: center;
 }
 
 /*button ended*/
@@ -433,17 +457,17 @@ padding:2px 10px;
 }
 .smallimg
 {
-  max-width:150px;  
+  max-width:150px;
 }
 .smallest
 {
-  font-size:12px; 
+  font-size:12px;
 }
 /*icon sizes ended*/
 
 #features
 {
-  margin:8px 10px;  
+  margin:8px 10px;
 }
 .right
 {
@@ -499,7 +523,13 @@ padding:2px 10px;
   margin: -100px 0 0 -100px;
   /* is width and height divided by two */
 }
-
+.Purchase-delete
+{
+  background-color: #39b2c2;
+  border-color: #39b2c2;
+  color:#ffffff;
+  box-shadow: 0 4px 4px rgba(57,178,194,.3)!important;
+}
 
 #successmodal
 {
@@ -515,11 +545,11 @@ padding:2px 10px;
 }
 #successmodal .modal-body
 {
-    border-left:5px solid #00C97D;  
+    border-left:5px solid #00C97D;
 }
 #successmodal .fade
 {
-    background-color:transparent !important;   
+    background-color:transparent !important;
 }
 
 /*preloader ended*/
@@ -540,7 +570,7 @@ padding:2px 10px;
     margin-left:64px;
     overflow: auto;
     background-color: #ebeef0;
-     font-family: 'Nunito', sans-serif;  
+     font-family: 'Nunito', sans-serif;
     min-width: 800px;
 }
 .sitesdiv, .stockdiv, .companydiv, .employeediv
@@ -555,7 +585,7 @@ padding:2px 10px;
     overflow: auto;
     background-color: #ebeef0;
     color:#33475B;
-     font-family: 'Nunito', sans-serif;  
+     font-family: 'Nunito', sans-serif;
     min-width: 800px;
 }
 .erecdiv
@@ -569,7 +599,7 @@ padding:2px 10px;
     top: 51px;
     overflow: auto;
     background-color: #ebeef0;
-     font-family: 'Nunito', sans-serif;  
+     font-family: 'Nunito', sans-serif;
     min-width: 800px;
 }
 .ticketdiv, .porderdiv, .phistorydiv
@@ -584,8 +614,8 @@ padding:2px 10px;
     overflow: auto;
     background-color: #ebeef0;
     color:#33475B;
-     font-family: 'Nunito', sans-serif;  
-    min-width: 800px;   
+     font-family: 'Nunito', sans-serif;
+    min-width: 800px;
 }
 .site-card, .stock-card{
     background-color: #fff;
@@ -607,7 +637,7 @@ padding:2px 10px;
      width:100%;
     position: relative;
     box-shadow: 0 1px 2px 1px rgba(24,24,24,.02);
-    cursor: pointer;   
+    cursor: pointer;
 }
 .spancolor
 {
@@ -672,7 +702,7 @@ padding:2px 10px;
 }
 .botnav>li>a
 {
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
     font-weight:600;
     color: rgba(0,0,0,.54);
     letter-spacing: 0.2px;
@@ -762,7 +792,7 @@ padding:2px 10px;
  }
 .main h3
 {
-  font-family: 'Nunito', sans-serif;  
+  font-family: 'Nunito', sans-serif;
     font-weight:700;
     color:#33475B;
     font-size:26px;
@@ -790,7 +820,7 @@ input[type=checkbox]
     box-sizing: border-box;
     padding:5px;
     background-color: #ffffff !important;
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
 }
 .controls {
     margin-top: 10px;
@@ -910,7 +940,7 @@ input[type=text].editcontrol {
    font-family: 'Nunito', sans-serif;
  border: 1px solid transparent !important;
     box-sizing: border-box;
-    background-color: #ffffff;   
+    background-color: #ffffff;
 }
 .dot {
   height: 10px;
@@ -983,7 +1013,7 @@ label {
     border:1px solid #eaeaea;
     box-shadow: 0 1px 2px 1px rgba(24,24,24,.02);
     margin-bottom: 15px;
-    cursor: pointer;  
+    cursor: pointer;
 }
 .compcard a
 {
@@ -992,18 +1022,18 @@ label {
 }
 .newcard h4, .compcard h4
 {
- font-family: 'Nunito', sans-serif;   
+ font-family: 'Nunito', sans-serif;
  font-size:20px;
-     letter-spacing: 0.2px;   
+     letter-spacing: 0.2px;
     margin: 0;
     font-weight: 700;
     line-height: 25px;
 }
 .taskcard h4
 {
- font-family: 'Nunito', sans-serif;   
+ font-family: 'Nunito', sans-serif;
  font-size:22px;
-     letter-spacing: 0.2px;   
+     letter-spacing: 0.2px;
     margin: 0;
     margin-bottom:20px;
     font-weight: 700;
@@ -1018,32 +1048,32 @@ label {
 }
 .metricscard p
 {
-   font-family: 'Nunito', sans-serif;   
+   font-family: 'Nunito', sans-serif;
  font-size:18px;
-     letter-spacing: 0.2px;   
+     letter-spacing: 0.2px;
     margin: 0;
     margin-bottom:20px;
     font-weight: 700;
     line-height: 25px;
-    color:#000; 
+    color:#000;
 }
 .metricscard h3
 {
- font-family: 'Nunito', sans-serif;   
+ font-family: 'Nunito', sans-serif;
  font-size:26px;
-     letter-spacing: 0.2px;   
+     letter-spacing: 0.2px;
     margin: 0;
     font-weight: 700;
     line-height: 25px;
-    color:#00c97d;   
+    color:#00c97d;
 }
 .newcard h4:hover
 {
-   color:#00c97d; 
+   color:#00c97d;
 }
 .compcard h4:hover
 {
-   color:#00c97d; 
+   color:#00c97d;
 }
 .static
 {
@@ -1072,6 +1102,11 @@ table {
 .tickettable {
     max-width: 1425px;
     width: 100% !important;
+}
+.purchase-table tbody
+{
+  max-height:300px !important;
+  overflow-y: scroll;
 }
 .tickettable td
 {
@@ -1112,7 +1147,7 @@ border:1px solid #f4f4f4;
     background-color:#56606b;
     color:#ffffff;
     letter-spacing: 0.5px;
-    
+
 }
 td.first{
     border:1px solid #5c6772 !important;
@@ -1127,7 +1162,7 @@ td.first{
     border:1px solid #f4f4f4;
     font-size:13px;
     font-weight:500;
- font-family: 'Nunito', sans-serif; 
+ font-family: 'Nunito', sans-serif;
 }
 #tickettable th
 {
@@ -1140,7 +1175,7 @@ td.first{
     border:1px solid #f4f4f4;
     font-size:14px;
     font-weight:700;
- font-family: 'Nunito', sans-serif; 
+ font-family: 'Nunito', sans-serif;
 }
   #myTable {
     border-collapse: collapse;
@@ -1205,7 +1240,7 @@ padding-top:30px;
      margin-top:40px;
     font-family: 'Nunito', sans-serif;
    font-size:14px;
-    letter-spacing: 0.2px;  
+    letter-spacing: 0.2px;
 }
 .purchasetable td{
     border:none;
@@ -1217,7 +1252,7 @@ padding-top:30px;
 {
     font-size: 15px;
     line-height:22px;
-    letter-spacing: 0.5px;  
+    letter-spacing: 0.5px;
 }
 
 .addcontrol input[type=text]  {
@@ -1241,7 +1276,7 @@ padding-top:30px;
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
     background-color: #e4e4e4;
-    font-family: 'Nunito', sans-serif; 
+    font-family: 'Nunito', sans-serif;
 }
 .totaltable input[type=number]
 {
@@ -1254,7 +1289,7 @@ padding-top:30px;
     box-sizing: border-box;
     background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
-}    
+}
 
 #tickettable .controls {
     width: 100% !important;
@@ -1267,14 +1302,14 @@ padding-top:30px;
     background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
 }
-  
+
 .hidetext { -webkit-text-security: none; }
 .hidetext { -webkit-text-security: circle; }
 .hidetext { -webkit-text-security: square; }
   #myTable tr {
     border-bottom: 1px solid #f2f2f2;
   }
- 
+
 
 
 <!---modal-right-->
@@ -1300,11 +1335,11 @@ padding-top:30px;
       height: 100%;
       overflow-y: auto;
   }
-  
+
   .modal.left .modal-body,
   .modal.right .modal-body {
       padding: 15px 15px 80px;
-  } 
+  }
 /*Right*/
   .modal.right.fade .modal-dialog {
       right: -500px;
@@ -1313,7 +1348,7 @@ padding-top:30px;
            -o-transition: opacity 0.3s linear, right 0.3s ease-out;
               transition: opacity 0.3s linear, right 0.3s ease-out;
   }
-  
+
   .modal.right.fade.in .modal-dialog {
       right: 0;
   }
@@ -1394,7 +1429,7 @@ padding-top:30px;
   .portlet .tabbable-line > .tab-content {
     padding-bottom: 0;
   }
-  
+
   .table-user-information > tbody > tr > td {
     border-top: 0;
     padding:8px 5px;
@@ -1419,11 +1454,11 @@ padding-top:30px;
 		height: 100%;
 		overflow-y: auto;
 	}
-	
+
 	.modal.left .modal-body,
 	.modal.right .modal-body {
 		padding: 15px 15px 80px;
-	} 
+	}
 /*Right*/
 	.modal.right.fade .modal-dialog {
 		right: -400px;
@@ -1432,7 +1467,7 @@ padding-top:30px;
 		     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
 		        transition: opacity 0.3s linear, right 0.3s ease-out;
 	}
-	
+
 	.modal.right.fade.in .modal-dialog {
 		right: 0;
 	}
