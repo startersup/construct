@@ -17,7 +17,7 @@ module.exports= async function(app){
       });
     });
     var POStatus = app.models.PurchaseStatus;
-    var status = [{name:"Draft",is_pending:1},{name:"Requested",is_pending:1},{name:"Recieved",is_pending:0},{name:"Cancelled",is_pending:0}];
+    var status = [{name:"Draft",is_pending:1},{name:"Requested",is_pending:1},{name:"Confirmed",is_pending:1},{name:"Partially Recieved",is_pending:1},{name:"Recieved",is_pending:0},{name:"Cancelled",is_pending:0}];
     await POStatus.create(status,function(err,status){
         if (err) throw err;
         console.log("----->>>PO Status Popuplated");

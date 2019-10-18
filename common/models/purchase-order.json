@@ -61,7 +61,7 @@
       "model": "Inventory",
       "foreignKey": "order_id",
       "keyThrough": "item_id",
-      "through": "PurchaseItemInfo"
+      "through": "PurchaseOrderInfo"
     },
     "status": {
       "type": "belongsTo",

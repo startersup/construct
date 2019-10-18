@@ -35,7 +35,7 @@
       "model": "PurchaseOrder",
       "foreignKey": "item_id",
       "keyThrough": "order_id",
-      "through": "PurchaseItemInfo"
+      "through": "PurchaseOrderInfo"
     }
   },
   "acls": [

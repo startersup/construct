@@ -1,5 +1,5 @@
 {
-  "name": "PurchaseItemInfo",
+  "name": "PurchaseOrderInfo",
   "plural": "purchase_items",
   "base": "PersistedModel",
   "options": {

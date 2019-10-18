@@ -65,7 +65,7 @@
     "dataSource": "db",
     "public": true
   },
-  "PurchaseItemInfo": {
+  "PurchaseOrderInfo": {
     "dataSource": "db",
     "public": true
   },
