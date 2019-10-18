@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Purchase Order | A Smart Construction Management Software.</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="./assets/js/fonticon.js"></script>
+    <script src="./assets/js/todo.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body onload="func_onload();">
+
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hidden-xs" href="#"><span>Purchase Preview  </span> </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="newfun()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                        </div>
+                        <div id="newsite" class="dropdown-content">
+                            <a href="../add/employee.html">Add Employee</a>
+                            <a href="#">Add Vendors</a>
+                            <a href="#">Add Tasks</a>
+                            <a href="#">Add Bills</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saicharan</a>
+                        <ul class="dropdown-menu">
+
+                            <ul id="pro">
+                                <li><a href="">Profile</a>
+                                </li>
+                                <li><a href="">Settings</a>
+                                </li>
+                                <li><a href="">logout</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <%- include('mysidebar.ejs') %>
+    <%- include('mytest.ejs') %>
+<div class="previewdiv">
+    <div class="container3">
+        <div class="top">
+            <div class="invoice-box" id="preview-export">
+                <table cellpadding="0" cellspacing="0">
+                  <tr class="top">
+                    <td colspan="4">
+                      <table>
+                        <tr>
+                          <td class="title">
+                            <img src="../assets/images/svc.jpg" style="width:100%; max-width:100px;">
+                          </td>
+
+                          <td>
+                            Invoice #: 123<br> Created: January 1, 2015<br> Due: February 1, 2015
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr class="information">
+                    <td colspan="4">
+                      <table>
+                        <tr>
+                          <td>
+                            Srimathi Traders.<br> 12345 Sunny Road<br> Thiruvanmiyur, chennai-600064
+                          </td>
+
+                          <td>
+                            Sri Venkatachalapathy & co.<br> Saicharan<br> saicharan14996@gmail.com
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+</table>
+<table class="tickettable purchase-table" id="tickettable">
+    <tbody >
+   <tr class="header">
+       <th>Item No</th>
+        <th style="width:30%;">Item Name</th>
+        <th>Rate</th>
+        <th>Quantity</th>
+         <th>Net Amount</th>
+         <th>GST %</th>
+          <th>GST Amount</th>
+          <th>Total Amount</th>
+    </tr>
+<tr>
+<td>1</td>
+<td>sembattai</td>
+<td>20</td>
+<td>10</td>
+<td>120</td>
+<td>10</td>
+<td>5</td>
+<td>1200</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>sembattai</td>
+    <td>20</td>
+    <td>10</td>
+    <td>120</td>
+    <td>10</td>
+    <td>5</td>
+    <td>1200</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>sembattai</td>
+        <td>20</td>
+        <td>10</td>
+        <td>120</td>
+        <td>10</td>
+        <td>5</td>
+        <td>1200</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>sembattai</td>
+            <td>20</td>
+            <td>10</td>
+            <td>120</td>
+            <td>10</td>
+            <td>5</td>
+            <td>1200</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sembattai</td>
+                <td>20</td>
+                <td>10</td>
+                <td>120</td>
+                <td>10</td>
+                <td>5</td>
+                <td>1200</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>sembattai</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>120</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>sembattai</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>120</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>1200</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>sembattai</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td>120</td>
+                            <td>10</td>
+                            <td>5</td>
+                            <td>1200</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>sembattai</td>
+                                <td>20</td>
+                                <td>10</td>
+                                <td>120</td>
+                                <td>10</td>
+                                <td>5</td>
+                                <td>1200</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>sembattai</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>120</td>
+                                    <td>10</td>
+                                    <td>5</td>
+                                    <td>1200</td>
+                                    </tr>
+    </tbody>
+</table>
+    <button class="draft-button" onclick="javascript:demoFromHTML();">Save as PDF</button>
+    <button class="order-button" onclick="setparam_purchase();">Print Order</button>
+
+
+         </div>
+          </div></div>
+</div>
+
+</body></html>

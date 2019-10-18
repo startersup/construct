@@ -8,7 +8,7 @@
 module.exports = function(server) {
   // Install a `/` route that returns server status
   var router = server.loopback.Router();
-  
+
   router.get('/', function(req, res) {
     res.render('index', {
       loginFailed: false
@@ -37,7 +37,9 @@ module.exports = function(server) {
   });
   router.get('/mytest', function(req, res) {
     res.render('./mytest');
-  }); 
- 
+  });
+  router.get('/preview', function(req, res) {
+    res.render('./preview');
+  });
   server.use(router);
 };
