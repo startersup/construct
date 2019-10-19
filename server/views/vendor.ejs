@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="./assets/js/fonticon.js"></script>
-     <script src="./assets/js/ref.js"></script>
+    <script src="./assets/js/ref.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
@@ -22,7 +22,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> 
+                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand hidden-xs" href="#"><span>Vendor Details </span> </a>
             </div>
@@ -40,9 +40,10 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><img src="../assets/images/avatar.png" alt="user" class="avatar"></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown"><img src="../assets/images/avatar.png"
+                                alt="user" class="avatar"></a>
                         <ul id="myDropdown" class="dropdown-content">
-                         <li>Profile</li>
+                            <li>Profile</li>
                         </ul>
                     </li>
 
@@ -50,42 +51,65 @@
             </div>
         </div>
     </nav>
-        <%- include('mysidebar.ejs') %>
-        <%- include('mycustomjs.ejs') %>
- <div class="employeediv">
-     <div class="container2">
+    <%- include('mysidebar.ejs') %>
+    <%- include('mycustomjs.ejs') %>
+    <div class="employeediv">
+        <div class="container2">
             <div id="preloader">
-                    <div id="preloaderdiv">&nbsp;</div>
-                  </div>
-         <div class="row">
-              <h3>Add Vendor</h3>
-             <div class="col-md-6">
-                                <div class="top">
-                                    <form id="mydata2" name="api/vendors">
-                                   
-                                     <input class="controls name" type="text" id="name"  placeholder="Enter Vendor Name">
-                                   <!---- <p style="color : red">** Required</p> -->
-                                  <input class="controls" type="text" id="email"  placeholder="Enter Email Address">
-                                    <input class="controls" type="text" id="phone"  placeholder="Enter Contact Number">
-                                    <input class="controls" type="text" id="state"  placeholder="Enter the State">
-                                    <textarea class="controls textarea" id="location"  type="text" placeholder="Enter Vendor Full Address" name="drop" required autocomplete="off"></textarea>
-                                
-                                     </form>   
-                                     
-                                     <button class="buttonadd full" onclick="func_postdata('mydata2');" >Add Vendor</button>
-                                    
-                                                     
-    </div>
- </div>
-             <div class="col-md-6">
-                 <img src="../assets/images/vendor.png" class="vendorimg static">
+                <div id="preloaderdiv">&nbsp;</div>
+            </div>
+            <div class="row">
+                <h3>Add Vendor</h3>
+                <div class="col-md-6">
+                    <div class="top">
+                        <form id="mydata2" name="api/vendors">
+                            <div id="alertid" style="color: red;" ></div>
+                            <input class="controls name" type="text" style="" id="name" placeholder="Enter Vendor Name">
+                            <!---- <p style="color : red">** Required</p> -->
+                            <input class="controls" type="text" id="email" placeholder="Enter Email Address">
+                            <input class="controls" type="text" id="gstNumber" placeholder="Enter GST Number">
+                            <input class="controls" type="text" id="phone" placeholder="Enter Contact Number">
+                            <select class="controls name selectit" id="state">
+                                <option value="">--Select--</option>
+                                <option value="TamilNadu">TamilNadu</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                            </select>
+                            <textarea class="controls textarea" id="location" type="text"
+                                placeholder="Enter Vendor Full Address" name="drop" required
+                                autocomplete="off"></textarea>
 
-             </div>       
-         </div></div></div> 
-        
+                        </form>
+
+                        <button class="buttonadd full" onclick="mysubmit();">Add Vendor</button>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="../assets/images/vendor.png" class="vendorimg static">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 <script>
-    $(document).ready(function() {
+
+function mysubmit()
+{
+    var temp = subUrl();
+    console.log(temp);
+    func_submit(temp);
+}
+
+</script>
+<script>
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
@@ -93,7 +117,7 @@
     function empFunction() {
         document.getElementById("empDropdown").classList.toggle("show");
     }
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (!event.target.matches('.buttonnew')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -106,19 +130,17 @@
         }
     }
 
-    function run()
-    {
+    function run() {
         var parent = document.getElementById("mydata2__name");
-        var child=document.createElement("p");
-            child.style.color="red";
-            child.innerHTML="haiii";
-            // document.getElementById("mydata2__name").appendChild(child);
+        var child = document.createElement("p");
+        child.style.color = "red";
+        child.innerHTML = "haiii";
+        // document.getElementById("mydata2__name").appendChild(child);
 
-            document.body.insertBefore(child,parent);
+        document.body.insertBefore(child, parent);
 
-            document.
-    
+
     }
 </script>
+
 </html>
- 

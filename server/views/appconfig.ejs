@@ -7,9 +7,9 @@
         },
         "vendor":
         {
-            "api": "api/vendor",
-            "arr_req": ["name", "phone", "address", "location"],
-            "arr_form": ["name", "email", "phone", "location", "state"]
+            "api": "api/vendors",
+            "arr_req": ["name", "phone", "state", "location","gstNumber"],
+            "arr_form": ["name", "email", "phone", "state", "location","gstNumber"]
         },
         "vendor1":
         {
@@ -21,14 +21,21 @@
         {
             "api": "api/users",
             "arr_req": ["first_name", "last_name", "phone", "role","salary","address"],
-            "arr_form": ["first_name", "last_name", "email", "phone", "role","salary","address"]
+            "arr_form": ["first_name", "last_name", "email", "phone", "role","salary","address","password"]
         },
         "purchase":
         {
             "api": "api/purchase_order",
-            "arr_req": ["first_name", "last_name", "", ""],
-            "arr_form": ["first_name", "last_name", "email", "phone", "role","salary","address"]
+            "arr_req": [],
+            "arr_form": ["id","order_no","name","date_ordered","date_requested","comments","site","status","created_by","updated_by","created_date","updated_date","vendor","purchase_items"]
+        },
+        "purchaseadd":
+        {
+            "api": "api/purchase_order",
+            "arr_req": ["rate", "quantity", "item"],
+            "arr_form": []
         }
+        
         
         
     };
