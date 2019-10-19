@@ -82,7 +82,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <label>Vendor Name</label>
-                        <select onchange="func_getvendor();" class="purchaseselect controls" name="pass" id="VendorList">
+                        <select onchange="func_getvendor();" class="purchaseselect controls" name="pass" id="vendor">
                             <option>--select--</option>
                         </select>
                     </div>
@@ -105,14 +105,19 @@
                         <input type="text" class="purchaseinput controls" id="site" placeholder="Site Location">
 
                         <input type="hidden" id="id" value="">
-                        <input type="hidden" id="order_no" value="1">
+                        <input type="hidden" id="order_no" value="">
                         <input type="hidden" id="name" value="admin">
                         <input type="hidden" id="created_by" value="admin">
                         <input type="hidden" id="updated_by" value="admin">
                         <input type="hidden" id="date_ordered" value="">
+                        <input type="hidden" id="date_requested" value="">
+                        <input type="hidden" id="status" value="requested">
                         <input type="hidden" id="created_date" value="">
                         <input type="hidden" id="updated_date" value="">
                         <input type="hidden" id="comments" value="ok">
+                        <input type="hidden" id="date_recieved" value="">
+                        <input type="hidden" id="purchase_items" value="">
+                        
                     </div>
 
                     <div class="col-md-2">
@@ -132,20 +137,27 @@
                     <script>
                         var ordid = "";
                         var today;
+                        var today1;
                         function func_load() {
                             today = new Date();
+                            today1 = new Date();
                             var dd = String(today.getDate()).padStart(2, '0');
                             var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                             var yyyy = today.getFullYear();
 
-                            today = dd + '/' + mm + '/' + yyyy;
+                            today1 = dd + '/' + mm + '/' + yyyy;
+                            today =  yyyy + '-' + mm + '-' + dd;
+
                             document.getElementById("date_ordered").value = today;
                             document.getElementById("created_date").value = today;
                             document.getElementById("updated_date").value = today;
-                            document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today;
-                            ordid = Math.floor(Math.random() * 100000001);
+                            document.getElementById("updated_date").value = today; 
+                            document.getElementById("date_requested").value = today;
+                            document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today1;
+                            ordid = Math.floor(Math.random() * 100001);
                             document.getElementById("ordid").innerHTML = "<span  >Order No :</span> #" + ordid;
-                            document.getElementById("id").value = ordid;
+                            document.getElementById("id").value = ordid; 
+                            document.getElementById("order_no").value = ordid; 
                         }
 
                     </script>
@@ -211,7 +223,7 @@
                             obj["updated_by"] = ""
                             obj["created_date"] = today;
                             obj["updated_date"] = today;
-                            obj["vendor"] = document.getElementById('VendorList').value;
+                            obj["vendor"] = document.getElementById('vendor').value;
                             obj["purchase_items"] = passjson();
 
                             func_postdata(obj);
@@ -227,7 +239,7 @@
                             <tbody>
                                 <tr class="header">
                                     <th>S.No</th>
-                                    <th style="width:30%;">Item Name</th>
+                                    <th style="width:20%;">Item Name</th>
                                     <th>Quantity</th>
                                     <th>Unit</th>
                                     <th>Rate</th>
@@ -266,7 +278,7 @@
                                 </tr>
                             </table>
                             <button class="draft-button">Save as Draft</button>
-                            <button class="order-button" onclick="setparam_purchase();">Place Order</button>
+                            <button class="order-button" onclick="passjson();">Place Order</button>
 
                         </div>
                     </div>
@@ -428,7 +440,7 @@
 
     function setparam(json) {
         strjson = json;
-        var x = document.getElementById("VendorList");
+        var x = document.getElementById("vendor");
         for (var i = 0; i < json.length; i++) {
             var obj = json[i];
 
@@ -441,7 +453,7 @@
     }
 
     function func_getvendor() {
-        var strid = document.getElementById("VendorList").value;
+        var strid = document.getElementById("vendor").value;
 
         for (var i = 0; i < strjson.length; i++) {
             var obj = strjson[i];
@@ -460,19 +472,30 @@
 
         var tableobj = [];
         var sid;
-        for (var i = 1; i < rlength; i++) {
-            var result_style = document.getElementById(i).style;
-            var data = {};
-            if (result_style.display == 'table-row') {
-                sid = i + 'quantityid';
 
+        var table = document.getElementById("tickettable");
+       
+           
+            
+        for (var j = 1; j < rlength; j++) {
+
+            var row = table.rows[j];  //Table Row Number
+            var i =  row.id; 
+           
+            var data = {};
+            
+                sid = i + 'quantityid';
                 data["quantity"] = parseInt(document.getElementById(sid).value);
+
                 sid = i + 'rateid';
                 data["unit_price"] = parseInt(document.getElementById(sid).value);
+
                 sid = i + 'gstid';
                 data["gst"] = parseInt(document.getElementById(sid).value);
+
                 sid = i + 'gstamountid';
                 data["cgst"] = parseInt(document.getElementById(sid).value);
+
                 sid = i + 'totalamountid';
                 data["total"] = parseInt(document.getElementById(sid).value);
                 sid = i + 'hiddenitemid';
@@ -480,24 +503,38 @@
                 data["id"] = document.getElementById(sid).value;
 
                 tableobj.push(data);
-            }
+            
 
 
 
         }
-
-
-        return (tableobj);
+        console.log(tableobj);
+        document.getElementById("purchase_items").value = JSON.stringify(tableobj); 
+        mysubmit();
+       
 
     }
+
+    function mysubmit()
+{
+    var temp = subUrl();
+    console.log(temp);
+    func_submit(temp);
+}
 
     function validate()
     {
 
     }
 
+    function seperategst(gst,gstamount)
+    {
+
+    }
+
     function addRow() {
 
+        
         "use strict";
         var res = func_validate('purchaseadd');
         if(res == 1)
@@ -539,6 +576,7 @@
 
         var strhidden = document.getElementById("hiddenitemid").value;
 
+        seperategst(gst,parseFloat(((netamount / 100) * gst).toFixed(2)));
 
         td0.innerHTML=rowcounter;
         td0.id=rowcount+'sno';
@@ -610,9 +648,10 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
         document.getElementById('tickettable').deleteRow(rowcount);
 
         var rowlength = document.getElementById("tickettable").rows.length;
+        var table = document.getElementById("tickettable");
         for(var i=1 ; i<rowlength ; i++ )
         {
-            var table = document.getElementById("tickettable"); // Tabli Id
+            // Tabli Id
             var row = table.rows[i];  //Table Row Number
             var temp =  row.id+'sno'; 
             document.getElementById(temp).innerHTML=i;
