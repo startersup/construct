@@ -14,7 +14,16 @@
 <body onload="func_onload();" style="background-color: #ebeef0;
     overflow-x: hidden !important;">
 
+<style>
 
+    @media print {
+      tr.header {
+          background-color: #f4f4f4 !important;
+          -webkit-print-color-adjust: exact !important;
+      }
+  }
+
+  </style>
 
 
 <div class="previewdiv" style="margin-left:auto;
@@ -151,10 +160,13 @@
 
     document.body.innerHTML = originalContents;
 }</script>
+
+
+
+
+
+
+
 </body>
-<style>
-@media print {
-  #tickettable .header {background-color:#f4f4f4 !important; }
-}
-</style>
+
 </html>
