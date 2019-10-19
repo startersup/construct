@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-md-2">
                         <label>Vendor State</label>
-                        <input type="text" class="purchaseinput controls" id="VendorState"
+                        <input type="text" class="purchaseinput controls" id="VendorState" placeholder="Vendor State"
                             placeholder="">
                     </div>
                     <div class="col-md-2">
@@ -144,7 +144,7 @@
                             document.getElementById("updated_date").value = today;
                             document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today;
                             ordid = Math.floor(Math.random() * 100000001);
-                            document.getElementById("ordid").innerHTML = "<span  >Order Id :</span> #" + ordid;
+                            document.getElementById("ordid").innerHTML = "<span  >Order No :</span> #" + ordid;
                             document.getElementById("id").value = ordid;
                         }
 
@@ -541,26 +541,26 @@
 
 
         td0.innerHTML=rowcounter;
-
+        td0.id=rowcount+'sno';
         td1.innerHTML = '<input  class="editcontrol" type="text" id="' + rowcount + 'itemid' + '" name="' + rowcount + 'itemid' + '" value="' + x1 + '"  >' + '<input  class="editcontrol" type="hidden" id="' + rowcount + 'hiddenitemid' + '" name="' + rowcount + 'itemid' + '" value="' + strhidden + '"  >';
 
-td2.innerHTML = '<input onchange="updaterow(\'' + rowcount + '\');" class="editcontrol" type="text" name="' + rowcount + 'quantityid' + '" id="' + rowcount + 'quantityid' + '" value="' + x3 + '" >';
+td2.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'quantityid' + '" id="' + rowcount + 'quantityid' + '" value="' + x3 + '" >';
 
 td3.innerHTML = document.getElementById('hiddenitemunit').value;
 
-        td4.innerHTML = '<input onchange="updaterow(\'' + rowcount + '\');" class="editcontrol" type="text" name="' + rowcount + 'rateid' + '" id="' + rowcount + 'rateid' + '" value="' + x2 + '"  >';
+        td4.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'rateid' + '" id="' + rowcount + 'rateid' + '" value="' + x2 + '"  >';
 
         
 
         td5.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'netamountid' + '" name="' + rowcount + 'netamount' + '" value="' + netamount + '"  >';
 
-        td6.innerHTML = '<input onchange="updaterow(\'' + rowcount + '\');" class="editcontrol" type="text" name="' + rowcount + 'gstid' + '" id="' + rowcount + 'gstid' + '" value="' + gst + '" >';
+        td6.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'gstid' + '" id="' + rowcount + 'gstid' + '" value="' + gst + '" >';
 
         td7.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'gstamountid' + '" name="' + rowcount + 'gstamount' + '" value="' + parseFloat(((netamount / 100) * gst).toFixed(2)) + '"  >';
 
         td8.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'totalamountid' + '" name="' + rowcount + 'totalamountid' + '" value="' + parseFloat((netamount + ((netamount / 100) * gst)).toFixed(2)) + '"  >';
 
-        td9.innerHTML = '<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction(' + rowcount + ')"></td>'
+        td9.innerHTML = '<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction(\'' + rowcounter + '\')"></td>'
 
         row.appendChild(td0);
         row.appendChild(td1);
@@ -607,17 +607,57 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
     };
 
     function SomeDeleteRowFunction(rowcount) {
-        var result_style = document.getElementById(rowcount).style;
+        document.getElementById('tickettable').deleteRow(rowcount);
 
-        result_style.display = 'none';
+        var rowlength = document.getElementById("tickettable").rows.length;
+        for(var i=1 ; i<rowlength ; i++ )
+        {
+            var table = document.getElementById("tickettable"); // Tabli Id
+            var row = table.rows[i];  //Table Row Number
+            var temp =  row.id+'sno'; 
+            document.getElementById(temp).innerHTML=i;
+        }
+        updatetotal();
 
+    }
+
+    function updatetotal()
+    {
+        var rowlength = document.getElementById("tickettable").rows.length;
+        var v="0";
+        var grandnet=parseFloat(v);
+        var grandgst =parseFloat(v);
+        var grandtot =parseFloat(v);
+        for(var i=1 ; i<rowlength ; i++ )
+        {
+            var table = document.getElementById("tickettable"); // Tabli Id
+            var row = table.rows[i];  //Table Row Number
+            var temp =  row.id
+
+            var x1 = document.getElementById(temp + "rateid").value;
+            var x2 = document.getElementById(temp + "quantityid").value;
+            var x3 = document.getElementById(temp + "gstid").value;
+
+            var netvalue = parseFloat(x1) * parseFloat(x2);
+            grandnet = grandnet + netvalue;
+            var gstvalue = (parseFloat(netvalue)/100) * parseFloat(x3);
+            grandgst=grandgst+gstvalue;
+            var total = netvalue + gstvalue;
+            grandtot=grandtot+total;
+            
+            document.getElementById(temp + "netamountid").value =netvalue;
+            document.getElementById(temp + "gstamountid").value = gstvalue;
+            document.getElementById(temp + "totalamountid").value = total;
+        }
+
+        document.getElementById("nettotal").value =grandnet;
+        document.getElementById("gsttotal").value =grandgst;
+        document.getElementById("grandtotal").value =grandtot;
     }
     function updaterow(rowcount) {
 
 
-        var x1 = document.getElementById(rowcount + "rateid").value;
-        var x2 = document.getElementById(rowcount + "quantityid").value;
-        var x3 = document.getElementById(rowcount + "gstid").value;
+        
 
 
         var x4 = document.getElementById(rowcount + "totalamountid").value;
