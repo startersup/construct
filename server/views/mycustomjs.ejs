@@ -33,6 +33,16 @@
     }
   });
 
+function randomString()
+{
+  var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < 20; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result
+}
   function func_submit(load) {
     var val = func_validate(load);
     if (val == 1) {
@@ -41,6 +51,7 @@
       func_post(apiUrl, apiJson);
     }
   }
+  
   function func_validate(load) {
     var ret = 1;
     var loop = config[load]["arr_req"].length;
