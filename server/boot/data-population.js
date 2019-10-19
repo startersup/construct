@@ -1,4 +1,11 @@
+const fs = require('fs')
+const path = require('path');
 module.exports= async function(app){
+  let dbWork = JSON.parse(fs.readFileSync(path.join(__dirname, '/../db-work.json'),'utf-8'));
+  if(dbWork.populated==true){
+    console.log("----->Modules Already Populated");
+    return;
+  }
     var User = app.models.UserInfo;
     var Role = app.models.Role;
     var RoleMapping = app.models.RoleMapping;
@@ -28,4 +35,6 @@ module.exports= async function(app){
         if (err) throw err;
         console.log("----->>>Inventory Products Popuplated");
     });
+    dbWork.populated=true;
+    fs.writeFileSync(path.join(__dirname, '/../db-work.json'), JSON.stringify(dbWork));
 }
