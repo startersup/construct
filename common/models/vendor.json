@@ -24,6 +24,12 @@
     },
     "location": {
       "type": "string"
+    },
+    "gstNumber": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
     }
   },
   "validations": [],

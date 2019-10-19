@@ -81,8 +81,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label>Vendor Name</label>
-                        <select onchange="func_getvendor();" class="purchaseselect controls" name="pass"
-                            id="VendorList">
+                        <select onchange="func_getvendor();" class="purchaseselect controls" name="pass" id="vendor">
                             <option>--select--</option>
                         </select>
                     </div>
@@ -105,8 +104,11 @@
                         <input type="hidden" id="created_by" value="admin">
                         <input type="hidden" id="updated_by" value="admin">
                         <input type="hidden" id="date_ordered" value="">
+                        <input type="hidden" id="created_date" value="">
+                        <input type="hidden" id="updated_date" value="">
                         <input type="hidden" id="comments" value="ok">
                     </div>
+
                     <div class="col-md-2">
                         <p><span>Order No : </span> 5</p>
                         <p id="curr"> </p>
@@ -133,6 +135,8 @@
 
                             today = dd + '/' + mm + '/' + yyyy;
                             document.getElementById("date_ordered").value = today;
+                            document.getElementById("created_date").value = today;
+                            document.getElementById("updated_date").value = today;
                             document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today;
                             ordid = Math.floor(Math.random() * 100000001);
                             document.getElementById("ordid").innerHTML = "<span  >Order Id :</span> #" + ordid;
@@ -217,9 +221,11 @@
 
                             <tbody>
                                 <tr class="header">
+                                    <th>S.No</th>
                                     <th style="width:30%;">Item Name</th>
-                                    <th>Rate</th>
                                     <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Rate</th>
                                     <th>Net Amount</th>
                                     <th>GST %</th>
                                     <th>GST Amount</th>
@@ -268,14 +274,19 @@
                             placeholder="Enter Net Rate"><br />
                         <input type="number" name="price" class="controls" id="quantity"
                             placeholder="Enter Item quantity">
-                        <input type="number" name="price" class="controls" id="gst" placeholder="Enter GST Percentage">
-
+                        <input type="number" name="price" class="controls" id="cgst" placeholder="Enter CGST Percentage">
+                        <input type="number" name="price" class="controls" id="sgst" placeholder="Enter SGST Percentage">
+                        <input type="number" name="price" class="controls" style="display : none;" id="igst" placeholder="Enter IGST Percentage">
                         <input type="hidden" name="price" class="controls" id="hiddenitemid"
                             placeholder="Enter GST Percentage">
 
 
                         <script>
-
+                            function mysubmit() {
+                                var temp = subUrl();
+                                console.log(temp);
+                                func_submit(temp);
+                            }
                             function showResult(val) {
                                 var myurl = "http://localhost:3000/api/products?filter=%7B%22where%22%3A%7B%22name%22%3A+%7B%22like%22%3A%22%25" + val + "%25%22%7D%7D%2C%22limit%22%3A10%2C%22fields%22%3A%5B%22id%22%2C%22name%22%2C%22unit%22%5D%2C%22include%22%3A%5B%22orders%22%5D%7D";
 

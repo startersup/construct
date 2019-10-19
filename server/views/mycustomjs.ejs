@@ -1,3 +1,4 @@
+<%- include('appconfig.ejs') %>
 <script>
 
   var HostName = window.location.host;
@@ -7,8 +8,11 @@
   console.log(LocationUrl);
 
   function subUrl() {
-    var a = window.location.pathname; console.log(a[a.length - 1]);
-    a = window.location.pathname; var y = a.substring(1, a.length); var x = y.split('/'); console.log(x);
+    // var a = window.location.pathname; console.log(a[a.length - 1]);
+    a = window.location.pathname;
+    var y = a.substring(1, a.length);
+    //var x = y.split('/'); console.log(x);
+    return y;
   }
 
 
@@ -29,19 +33,52 @@
     }
   });
 
+  function func_submit(load) {
+    var val = func_validate(load);
+    if (val == 1) {
+      var apiJson = func_createJson(load);
+      var apiUrl = LocationUrl + config[load]["api"];
+      func_post(apiUrl, apiJson);
+    }
+  }
+  function func_validate(load) {
+    var ret = 1;
+    var loop = config[load]["arr_req"].length;
+    for (var i = 0; i < loop; i++) {
+      var myid = config[load]["arr_req"][i];
+      if (ret == 1) {
+        if (document.getElementById(myid).value == '') {
+          document.getElementById(myid).style = 'border: 2px solid red;';
+          document.getElementById('alertid').innerHTML = 'Please Fill The Mandatory Feilds';
+          ret = 0;
+        }
+        else {
+          document.getElementById(myid).style = '';
+          document.getElementById('alertid').innerHTML = '';
+
+        }
+      }
+    }
+    return ret;
+  }
+
+  function func_createJson(load) {
+    var loop = config[load]["arr_form"].length;
+    var obj = {};
+    for (var i = 0; i < loop; i++) {
+      var myid = config[load]["arr_form"][i];
+      obj[myid] = document.getElementById(myid).value;
+    }
+    return (obj);
+  }
 
 
-  function func_postdata(formid) {
-
-
-    var myform = document.getElementById(formid);
-    var apiurl = "http://localhost:3000/" + myform.name;
-    console.log(apiurl);
-
-    var fd = JSON.stringify(setparam(formid));
+  function func_post(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    console.log(apiUrl);
     console.log(fd);
     $.ajax({
-      url: apiurl,
+      url: apiUrl,
       data: fd,
       cache: false,
       processData: false,
@@ -49,6 +86,7 @@
       type: 'POST',
       success: function (dataofconfirm) {
         // do something with the result
+        alert("success");
         modal_success();
       },
       error: function (xhr, status, error) {
@@ -61,48 +99,50 @@
     });
   }
 
-  function setparam(formid) {
-    var obj = {};
-    var strsplit = formid + "__";
+  function func_get(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    console.log(apiUrl);
+    console.log(fd);
+    $.ajax({
+      url: apiUrl,
+      data: fd,
+      cache: false,
+      processData: false,
+      contentType: 'application/json',
+      type: 'POST',
+      success: function (dataofconfirm) {
+        // do something with the result
 
-    var c = document.getElementById(formid).children;
-    var txt = "";
-    var i;
+      },
+      error: function (xhr, status, error) {
 
-    for (i = 0; i < c.length; i++) {
-      var txt = c[i].id;
 
-      var strvalue = document.getElementById(txt).value;
-      txt = txt.split(strsplit);
+        console.log(xhr.responseText);
+        alert("fail");
 
-      // var strkey='"'+txt[1]+'"';
-      var strkey = txt[1];
-      obj[strkey] = strvalue;
-    }
+      }
+    });
+   }
+  // function setparam_purchase(formid) {
+  //   var obj = {};
+  //   var strsplit = formid + "__";
 
-    return (obj);
-  }
+  //   var c = document.getElementById(formid).children;
+  //   var txt = "";
+  //   var i;
 
-  function setparam_purchase(formid) {
-    var obj = {};
-    var strsplit = formid + "__";
+  //   for (i = 0; i < c.length; i++) {
+  //     var txt = c[i].id;
 
-    var c = document.getElementById(formid).children;
-    var txt = "";
-    var i;
+  //     var strvalue = document.getElementById(txt).value;
+  //     txt = txt.split(strsplit);
 
-    for (i = 0; i < c.length; i++) {
-      var txt = c[i].id;
+  //     // var strkey='"'+txt[1]+'"';
+  //     var strkey = txt[1];
+  //     obj[strkey] = strvalue;
+  //   }
 
-      var strvalue = document.getElementById(txt).value;
-      txt = txt.split(strsplit);
-
-      // var strkey='"'+txt[1]+'"';
-      var strkey = txt[1];
-      obj[strkey] = strvalue;
-    }
-
-    return (obj);
-  }
+  //   return (obj);
+  // }
 
 </script>
