@@ -252,7 +252,7 @@
                                 </tr>
                                 <tr>
                                     <td class="first">
-                                        <p>Net Total </p>
+                                        <p>12% </p>
                                     </td>
                                     <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
                                             id="nettotal" placeholder=""></td>
@@ -262,7 +262,7 @@
                                 </tr>
                                 <tr>
                                     <td class="first">
-                                        <p>GST Total </p>
+                                        <p>10% </p>
                                     </td>
                                     <td><input type="number" name="price" class="editedcontrol" disabled value="0"
                                             id="gsttotal" placeholder=""></td>
@@ -272,7 +272,7 @@
                                 </tr>
                                 <tr>
                                     <td class="first">
-                                        <p>Grand Total </p>
+                                        <p>15% </p>
                                     </td>
                                     <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
                                             id="grandtotal" placeholder=""></td>
@@ -648,7 +648,7 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
         {
             var table = document.getElementById("tickettable"); // Tabli Id
             var row = table.rows[i];  //Table Row Number
-            var temp =  row.id+'sno'; 
+            var temp =  row.id+'sno';
             document.getElementById(temp).innerHTML=i;
         }
         updatetotal();
@@ -678,7 +678,7 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
             grandgst=grandgst+gstvalue;
             var total = netvalue + gstvalue;
             grandtot=grandtot+total;
-            
+
             document.getElementById(temp + "netamountid").value =netvalue;
             document.getElementById(temp + "gstamountid").value = gstvalue;
             document.getElementById(temp + "totalamountid").value = total;
@@ -691,7 +691,7 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
     function updaterow(rowcount) {
 
 
-        
+
 
 
         var x4 = document.getElementById(rowcount + "totalamountid").value;
