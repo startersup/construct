@@ -8,7 +8,7 @@
 module.exports = function(server) {
   // Install a `/` route that returns server status
   var router = server.loopback.Router();
-  const appRoutes = require('../routes/purchase.routes')(router);
+  const appRoutes = require('../routes/purchase.routes')(router,server);
   router.get('/', function(req, res) {
     res.render('index', {
       loginFailed: false

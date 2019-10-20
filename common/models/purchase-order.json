@@ -63,7 +63,7 @@
       "keyThrough": "item_id",
       "through": "PurchaseOrderInfo"
     },
-    "status": {
+    "purchase_status": {
       "type": "belongsTo",
       "model": "PurchaseStatus",
       "foreignKey": "status"

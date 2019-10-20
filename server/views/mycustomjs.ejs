@@ -77,8 +77,18 @@ function randomString()
     var loop = config[load]["arr_form"].length;
     var obj = {};
     for (var i = 0; i < loop; i++) {
+
       var myid = config[load]["arr_form"][i];
-      obj[myid] = document.getElementById(myid).value;
+      console.log(myid);
+      if(myid == "purchase_items")
+      {
+        var temp = document.getElementById(myid).value;
+        obj[myid]= JSON.parse(temp);
+      }
+      else{
+        obj[myid] = document.getElementById(myid).value;
+      }
+     
     }
     return (obj);
   }
