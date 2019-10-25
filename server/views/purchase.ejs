@@ -254,7 +254,7 @@
 
                         </table>
 <div class="purchasingleft">
-                                  <table class="purchasingtable" style="display:block">
+                                  <table class="purchasingtable" style="display:none" id="GstTable">
                                 <tr>
                                   <th>Taxable Value</th>
                                  <th>CGST %</th>
@@ -277,7 +277,7 @@
                             </table>
                           </div>
                           <div class="purchasingleft">
-                              <table class="purchasingtable" style="display:block">
+                              <table class="purchasingtable" style="display:none" id="IgstTable">
                                   <tr>
                                     <th>Taxable Value</th>
                                   <th>IGST %</th>
@@ -305,13 +305,13 @@
                         <input type="text" name="item" class="controls" placeholder="Enter Item Name" id="item"
                             onkeyup="showResult(this.value)" onblur="">
                         <div id="livesearch"></div>
-                        <input type="number" name="quantity" class="controls" id="rate"
+                        <input type="text" onkeyup="MaskedDecimal(this,'8','2');"  name="quantity" class="controls" id="rate"
                             placeholder="Enter Net Rate"><br />
-                        <input type="number" name="price" class="controls" id="quantity"
-                            placeholder="Enter Item quantity">
-                        <input type="number" name="price" class="controls" value="0" id="cgst" placeholder="Enter CGST Percentage">
-                        <input type="number" name="price" class="controls" value="0" id="sgst" placeholder="Enter SGST Percentage">
-                        <input type="number" name="price" class="controls" value="0" style="" id="igst" placeholder="Enter IGST Percentage">
+                        <input type="text" onkeyup="MaskedNumber(this,'8');" name=Item quantity">
+                        <inp"price" class="controls" id="quantity"
+                            type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="cgst" placeholder="Enter GST Percentage">
+                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="sgst" placeholder="Enter SGST Percentage">
+                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  style="" id="igst" placeholder="Enter IGST Percentage">
                         <input type="hidden" name="price" class="controls" id="hiddenitemid"
                             placeholder="Enter GST Percentage">
                             <input type="hidden" name="price" class="controls" id="hiddenitemunit"
@@ -412,6 +412,11 @@
         $(this).closest('tr').remove()
     })
 
+var gstFlag='';
+var arrcgst=[];
+var arrsgst=[];
+var arrigst=[];
+var arrtaxableValue=[];
 </script>
 <script>
     function newfun() {
@@ -477,6 +482,35 @@
                 document.getElementById("VendorEmail").value = obj.email;
                 document.getElementById("VendorPhone").value = obj.phone;
                 document.getElementById("VendorState").value = obj.state;
+
+                if((obj.state == 'TamilNadu') || (obj.state == 'Tamil Nadu')){
+                  gstFlag="TN";
+
+                  document.getElementById("IgstTable").style.display='none';
+                  document.getElementById("GstTable").style.display='block';
+
+                  document.getElementById("igst").type='hidden';
+
+                  document.getElementById("cgst").type='text';
+                  document.getElementById("sgst").type='text';
+
+
+                }else if((obj.state == '') || (obj.state == null)){
+                  document.getElementById("IgstTable").style.display='none';
+                  document.getElementById("GstTable").style.display='none';
+                  document.getElementById("igst").type='hidden';
+                  document.getElementById("cgst").type='hidden';
+                  document.getElementById("sgst").type='hidden';
+
+                }else{
+                  gstFlag="OT";
+                  document.getElementById("GstTable").style.display='none';
+                  document.getElementById("IgstTable").style.display='block';
+
+                  document.getElementById("igst").type='text';
+                  document.getElementById("cgst").type='hidden';
+                  document.getElementById("sgst").type='hidden';
+                }
             }
 
         }
