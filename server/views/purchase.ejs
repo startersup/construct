@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body onload="func_onload();">
+<body style="background-color:#ffffff;" onload="func_onload();">
 
 
 
@@ -117,7 +117,7 @@
                         <input type="hidden" id="comments" value="ok">
                         <input type="hidden" id="date_recieved" value="">
                         <input type="hidden" id="purchase_items" value="">
-                        
+
                     </div>
 
                     <div class="col-md-2">
@@ -151,13 +151,13 @@
                             document.getElementById("date_ordered").value = today;
                             document.getElementById("created_date").value = today;
                             document.getElementById("updated_date").value = today;
-                            document.getElementById("updated_date").value = today; 
+                            document.getElementById("updated_date").value = today;
                             document.getElementById("date_requested").value = today;
                             document.getElementById('curr').innerHTML = "<span  >Order Date :</span>" + today1;
                             ordid = Math.floor(Math.random() * 100001);
                             document.getElementById("ordid").innerHTML = "<span  >Order No :</span> #" + ordid;
-                            document.getElementById("id").value = ordid; 
-                            document.getElementById("order_no").value = ordid; 
+                            document.getElementById("id").value = ordid;
+                            document.getElementById("order_no").value = ordid;
                         }
 
                     </script>
@@ -253,72 +253,51 @@
                             </tbody>
 
                         </table>
-                        <div class="purchaseright">
-                            <table class="purchasingtable">
+<div class="purchasingleft">
+                                  <table class="purchasingtable" style="display:block">
                                 <tr>
-                                 <th>GST %</th>
+                                  <th>Taxable Value</th>
                                  <th>CGST %</th>
+                                 <th>Amount</th>
                                 <th>SGST %</th>
-                                <th>IGST %</th>
-                                 <th>Total Amount</th>
+                                <th>Amount</th>
+                                <th>Net %</th>
+                                <th>Amount</th>
                                 </tr>
                                 <tr>
-                                    <td class="first">
-                                        <p>12% </p>
-                                    </td>
-                                    <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
-                                            id="nettotal" placeholder=""></td>
-                                            <td>20</td>
-                                            <td>20</td>
-                                            <td>2030</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">
-                                        <p>10% </p>
-                                    </td>
-                                    <td><input type="number" name="price" class="editedcontrol" disabled value="0"
-                                            id="gsttotal" placeholder=""></td>
-                                            <td>20</td>
-                                            <td>20</td>
-                                            <td>2030</td>
-                                </tr>
-                                <tr>
-                                    <td class="first">
-                                        <p>15% </p>
-                                    </td>
-                                    <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
-                                            id="grandtotal" placeholder=""></td>
-                                            <td>20</td>
-                                            <td>20</td>
-                                            <td>2030</td>
-                                </tr>
-                            </table>
-                                         <table class="purchasingtable">
-                                <tr>
-                                 <th>GST %</th>
-                                 <th>CGST %</th>
-                                <th>SGST %</th>
-                                <th>IGST %</th>
-                                 <th>Grand Total</th>
-                                </tr>
-                                <tr>
-                                    <td class="first">
-                                        <p>Grand Total </p>
-                                    </td>
-                                    <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
-                                            id="nettotal" placeholder=""></td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
                                 </tr>
 
                             </table>
-                            <button class="draft-button">Save as Draft</button>
-                            <button class="order-button" onclick="passjson();">Place Order</button>
+                          </div>
+                          <div class="purchasingleft">
+                              <table class="purchasingtable" style="display:block">
+                                  <tr>
+                                    <th>Taxable Value</th>
+                                  <th>IGST %</th>
+                                  <th>Amount</th>
+                                  <th>Net %</th>
+                                  <th>Amount</th>
+                                  </tr>
+                                  <tr>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                  </tr>
+
+                              </table>
+                          </div>
 
                         </div>
-                    </div>
+
                     <div class="col-md-2 addcontrol">
 
                         <label>Add Items</label>
@@ -419,7 +398,10 @@
 
         </div>
     </div>
-
+    <div class="purchase-fixed-bottom">
+        <button class="draft-button">Save as Draft</button>
+                            <button class="order-button" onclick="passjson();">Place Order</button>
+      </div>
 </body>
 <script>
     $(document).ready(function () {
@@ -508,16 +490,16 @@
         var sid;
 
         var table = document.getElementById("tickettable");
-       
-           
-            
+
+
+
         for (var j = 1; j < rlength; j++) {
 
             var row = table.rows[j];  //Table Row Number
-            var i =  row.id; 
-           
+            var i =  row.id;
+
             var data = {};
-            
+
                 sid = i + 'quantityid';
                 data["quantity"] = parseInt(document.getElementById(sid).value);
 
@@ -537,15 +519,15 @@
                 data["id"] = document.getElementById(sid).value;
 
                 tableobj.push(data);
-            
+
 
 
 
         }
         console.log(tableobj);
-        document.getElementById("purchase_items").value = JSON.stringify(tableobj); 
+        document.getElementById("purchase_items").value = JSON.stringify(tableobj);
         mysubmit();
-       
+
 
     }
 
@@ -568,7 +550,7 @@
 
     function addRow() {
 
-        
+
         "use strict";
         var res = func_validate('purchaseadd');
         if(res == 1)

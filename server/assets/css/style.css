@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 /*navbar*/
 body
 {
@@ -331,7 +332,7 @@ padding:10px 20px;
   .draft-button
   {
     border-radius: 2px;
-    background-color:#183247;
+    background-color:#1592CA;
     padding: 10px 14px;
     margin:10px 0px;
     font-weight: 700;
@@ -343,7 +344,6 @@ padding:10px 20px;
   .order-button {
     border-radius: 2px;
     background-color:#ff3184;
-    box-shadow: 0 2px 4px 0 #f4f4f4;
     padding: 10px 14px;
     margin:10px 0px;
     font-weight: 700;
@@ -612,7 +612,7 @@ padding:2px 10px;
     bottom: 0;
     top: 51px;
     overflow: auto;
-    background-color: #ebeef0;
+    background-color: #ffffff;
     color:#33475B;
      font-family: 'Nunito', sans-serif;
     min-width: 800px;
@@ -652,7 +652,7 @@ padding:2px 10px;
     margin-left:-15px;
      width:100%;
     position: relative;
-    box-shadow: 0 1px 2px 1px rgba(24,24,24,.02);
+    /* box-shadow: 0 1px 2px 1px rgba(24,24,24,.02); */
     cursor: pointer;
 }
 .spancolor
@@ -899,23 +899,13 @@ input[type=checkbox]
     outline: none;
     font-family: 'Nunito', sans-serif;
 }
-.editedcontrol
-{
-    width:100% !important;
-     margin-top: 10px;
-    border: none !important;
-    background-color:transparent;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 10px !important;
-    outline: none;
-    font-family: 'Nunito', sans-serif;
-}
+
 .selectit {
     width: 80%;
     min-height: 45px;
     padding: 12px 20px;
     margin: 8px 0;
+
    font-family: 'Nunito', sans-serif;
  border: 1px solid #DBDFE3;
     box-sizing: border-box;
@@ -926,6 +916,7 @@ input[type=checkbox]
     min-height: 10px;
     padding: 5px 10px;
     margin: 8px 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     font-family: 'Nunito', sans-serif;
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
@@ -937,7 +928,6 @@ input[type=checkbox]
     min-height: 20px !important;
     margin: 8px 0;
     color: #000000;
-    border: 1px solid #DBDFE3;
     box-sizing: border-box;
     background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
@@ -950,6 +940,7 @@ input[type=text].editcontrol {
     color: #000000;
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
 }
@@ -1195,7 +1186,7 @@ table {
    font-weight:400 !important;
 }
 .purchasingtable td{
-padding:0px 10px;
+padding:5px 10px;
 border:1px solid #f4f4f4;
 }
 .first{
@@ -1252,7 +1243,7 @@ th {
     white-space: nowrap;
     color: #183247;
      font-family: 'Nunito', sans-serif;
-    background-color: #F7F9FA;
+    background-color: #ebeef0 ;
 }
 
   .first
@@ -1308,7 +1299,22 @@ padding-top:30px;
     line-height:22px;
     letter-spacing: 0.5px;
 }
+.purchasingleft
+{
+  margin-top:100px;
+  float:left;
+}
 
+.purchase-fixed-bottom
+{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
 .addcontrol input[type=text]  {
     width: 100%;
     padding: 5px 20px;
