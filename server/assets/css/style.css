@@ -605,7 +605,7 @@ padding:2px 10px;
 .ticketdiv, .porderdiv, .phistorydiv
 {
  margin-top:-5px !important;
-    margin-left:68px;
+ margin-left: 62px;
     padding:5px 20px;
     width:100%;
     right: 0;
@@ -949,7 +949,6 @@ input[type=text].editcontrol {
     color: #000000;
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
 }
