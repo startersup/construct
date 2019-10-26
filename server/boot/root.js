@@ -24,7 +24,7 @@ module.exports = function(server) {
     res.render('./login');
   });
   router.get('/mobile/login', function(req, res) {
-    res.render('./login');
+    res.render('./mobile/login');
   });
   router.get('/vendor', function(req, res) {
     res.render('./vendor');
