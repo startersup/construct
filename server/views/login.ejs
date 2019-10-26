@@ -33,7 +33,7 @@
                         <h3>Login to your Account</h3>
                         <input id="UserName" class="controls" type="text"  required placeholder="Enter Email Address">
                         <input id="Password" class="controls" type="password" required placeholder="Enter Password">
-                        <button class="buttonfull" onclick="func_login();"> Login Now</button>
+                        <button class="buttonfull" type="button" onclick="func_login();"> Login Now</button>
                         <br>
                         <div class="left">
                             <a data-toggle="pill" href="#forgot"><p>forgot password?</p></a>
@@ -56,7 +56,7 @@
   function func_login()
   {
 
-    var apiurl="http://localhost:3000/users/login";
+    var apiurl="http://localhost:3000/api/users/login";
     var obj = {};
     obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;
@@ -70,6 +70,7 @@
         type: 'POST',
         success: function (dataofconfirm) {
             // do something with the result
+            debugger;
             alert(dataofconfirm);
         },
         error: function(xhr, status, error) {
