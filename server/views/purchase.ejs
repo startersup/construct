@@ -266,7 +266,7 @@
                                 <th>Amount</th>
                                 </tr>
                                 <tr>
-                                   
+
                                 </tr>
 
                             </table>
@@ -602,7 +602,7 @@ var arrtaxableValue=[];
     }
     function func_insertgst()
     {
-        
+
         var gst ;
         if(gstFlag == 'OT')
         {
@@ -611,14 +611,14 @@ var arrtaxableValue=[];
         else if(gstFlag == 'TN')
         {
              gst = parseFloat(document.getElementById("cgst").value);
-            
+
         }
-       
+
         var taxableValue=  parseFloat(document.getElementById("rate").value) * parseFloat(document.getElementById("quantity").value);
-               
+
         var gstamt = parseFloat(gst) * (parseFloat(taxableValue/100));
-        
-        if (arrgst.length > 0)  
+
+        if (arrgst.length > 0)
         {
             if(arrgst.indexOf(gst) >= 0)
             {
@@ -637,10 +637,10 @@ var arrtaxableValue=[];
             arrgst.push(gst);
             arrgstamt.push(gstamt);
             arrtaxableValue.push(taxableValue);
-            
+
         }
 
-        
+
 //console.log(arrgst+"<>"+arrgstamt+"<>"+arrtaxableValue+"<>")
         func_creategst();
     }
@@ -650,16 +650,16 @@ var arrtaxableValue=[];
         alert("creat");
         if(gstFlag == 'TN')
         {
-           
+
         var table = document.getElementById("GstTable");
-            table.innerHTML ='<tr>                    '  
-+'<th>Taxable Value</th> '  
-+'<th>CGST %</th>        '      
-+'<th>Amount</th>        '  
-+'<th>SGST %</th>        '  
-+'<th>Amount</th>        '  
-+'<th>Net %</th>         '  
-+'<th>Amount</th>        '                   
+            table.innerHTML ='<tr>                    '
++'<th>Taxable Value</th> '
++'<th>CGST %</th>        '
++'<th>Amount</th>        '
++'<th>SGST %</th>        '
++'<th>Amount</th>        '
++'<th>Net %</th>         '
++'<th>Amount</th>        '
 +'</tr>             '
 +'<tr>                   '               ;
         var len = arrgst.length;
@@ -667,7 +667,7 @@ var arrtaxableValue=[];
         for(var i=0;i<len;i++)
         {
         var row = document.createElement("tr");
-       
+
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
         var td3 = document.createElement("td");
@@ -677,9 +677,9 @@ var arrtaxableValue=[];
         var td7 = document.createElement("td");
 
         td1.innerHTML=arrtaxableValue[i];
-        td2.innerHTML=(arrgst[i] /2).toFixed(2); 
+        td2.innerHTML=(arrgst[i] /2).toFixed(2);
         td3.innerHTML=(arrgstamt[i] /2).toFixed(2);
-        td4.innerHTML=(arrgst[i] /2).toFixed(2); 
+        td4.innerHTML=(arrgst[i] /2).toFixed(2);
         td5.innerHTML=(arrgstamt[i] /2).toFixed(2);
         td6.innerHTML=arrgst[i];
         td7.innerHTML=arrgstamt[i];

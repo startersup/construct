@@ -1,6 +1,6 @@
 {
-  "name": "Department",
-  "plural": "departments",
+  "name": "PriorityDefinition",
+  "plural": "priority",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,9 +10,14 @@
     "id": {
       "type": "string",
       "id": true,
+      "required": true,
       "defaultFn": "uuid"
     },
     "name": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
       "type": "string",
       "required": true
     },
@@ -22,24 +27,12 @@
   },
   "validations": [],
   "relations": {
-    "users": {
-      "type": "hasMany",
-      "model": "UserInfo",
-      "foreignKey": "department"
-    },
     "requests": {
       "type": "hasMany",
       "model": "Request",
-      "foreignKey": "department"
+      "foreignKey": "priority"
     }
   },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    }
-  ],
+  "acls": [],
   "methods": {}
 }

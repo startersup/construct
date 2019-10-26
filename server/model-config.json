@@ -72,5 +72,17 @@
   "Vendor": {
     "dataSource": "db",
     "public": true
+  },
+  "Request": {
+    "dataSource": "db",
+    "public": true
+  },
+  "RequestStatus": {
+    "dataSource": "db",
+    "public": true
+  },
+  "PriorityDefinition": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -1,7 +1,8 @@
 {
-  "name": "PurchaseStatus",
-  "plural": "purchase_status",
+  "name": "RequestStatus",
+  "plural": "request_status",
   "base": "PersistedModel",
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
@@ -18,11 +19,7 @@
     },
     "is_pending": {
       "type": "boolean",
-      "required": true,
-      "mysql": {
-        "dataType": "TINYINT",
-        "dataLength": 1
-      }
+      "required": true
     },
     "description": {
       "type": "string"
@@ -30,19 +27,12 @@
   },
   "validations": [],
   "relations": {
-    "orders": {
+    "requests": {
       "type": "hasMany",
-      "model": "PurchaseOrder",
+      "model": "Request",
       "foreignKey": "status"
     }
   },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    }
-  ],
+  "acls": [],
   "methods": {}
 }

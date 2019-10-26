@@ -1,0 +1,52 @@
+{
+  "name": "Request",
+  "plural": "requests",
+  "base": "PersistedModel",
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "CreatedModifiedInjection": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "dataType": "longtext",      
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sites": {
+      "type": "belongsTo",
+      "model": "Site",
+      "foreignKey": "site"
+    },
+    "request_status": {
+      "type": "belongsTo",
+      "model": "RequestStatus",
+      "foreignKey": "status"
+    },
+    "priority": {
+      "type": "belongsTo",
+      "model": "PriorityDefinition",
+      "foreignKey": "priority"
+    },
+    "department": {
+      "type": "belongsTo",
+      "model": "Department",
+      "foreignKey": "department"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
