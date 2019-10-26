@@ -5,8 +5,9 @@
 
 
 
-<body>
         <button data-toggle="modal" data-target="#successmodal" id="modal_suc" style="display : none;">Click</button>
+
+        <button data-toggle="modal" data-target="#failmodal" id="modal_fail" style="display : none;">Click</button>
 
            <!-- Modal -->
 
@@ -18,7 +19,7 @@
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" onclick="func_refresh();" class="close" data-dismiss="modal">&times;</button>
               <p>Sucessfully Created !</p>
             </div>
 
@@ -27,4 +28,19 @@
         </div>
       </div>
 
-</body>
+      <div class="modal fade" id="failmodal" role="dialog">
+          <div class="modal-dialog">
+  
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p>Failed to raise Purchase !</p>
+              </div>
+  
+            </div>
+  
+          </div>
+        </div>
+
+

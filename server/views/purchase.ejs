@@ -146,7 +146,7 @@
                             var yyyy = today.getFullYear();
 
                             today1 = dd + '/' + mm + '/' + yyyy;
-                            today =  yyyy + '-' + mm + '-' + dd;
+                            today = yyyy + '-' + mm + '-' + dd;
 
                             document.getElementById("date_ordered").value = today;
                             document.getElementById("created_date").value = today;
@@ -186,25 +186,19 @@
 
 
                                     console.log(xhr.responseText);
-                                    alert("fail");
+
 
                                 }
                             });
                         }
 
-                        function modal_success() {
-                            func_load();
-                            func_onload();
-                            document.getElementById('VendorEmail').value = "";
-                            document.getElementById('VendorPhone').value = "";
-                            document.getElementById('site').value = "";
-
-                            document.getElementById('nettotal').value = "";
-                            document.getElementById('gsttotal').value = "";
-                            document.getElementById('grandtotal').value = "";
-
-                            document.getElementById("tickettable").innerHTML = '<tr class="header"> <th style="width:30%;">Item Name</th> <th>Rate</th> <th>Quantity</th> <th>Net Amount</th> <th>GST </th> <th>GST Amount</th> <th>Total Amount</th> <th>Action</th> </tr> </tbody>';
-                            document.getElementById("modal_suc").click();
+                        function modal_success(res) {
+                            if (res == 'suc') {
+                                document.getElementById("modal_suc").click();
+                            }
+                            else {
+                                document.getElementById("modal_fail").click();
+                            }
                         }
 
                         function setparam_purchase(sts) {
@@ -232,8 +226,8 @@
 
                     </script>
                     <div class="col-md-10">
-                        <button data-toggle="modal" data-target="#successmodal" id="modal_suc"
-                            style="display : none;">Click</button>
+                        <!-- <button data-toggle="modal" data-target="#successmodal" id="modal_suc"
+                            style="display : none;">Click</button> -->
                         <table class="tickettable purchase-table" id="tickettable">
 
                             <tbody>
@@ -254,83 +248,84 @@
 
 
                         </table>
-<div class="purchasingleft">
-                                  <table class="purchasingtable" style="display:none" id="GstTable">
+                        <div class="purchasingleft">
+                            <table class="purchasingtable" style="display:none" id="GstTable">
                                 <tr>
-                                  <th>Taxable Value</th>
-                                 <th>CGST %</th>
-                                 <th>Amount</th>
-                                <th>SGST %</th>
-                                <th>Amount</th>
-                                <th>Net %</th>
-                                <th>Amount</th>
+                                    <th>Taxable Value</th>
+                                    <th>CGST %</th>
+                                    <th>Amount</th>
+                                    <th>SGST %</th>
+                                    <th>Amount</th>
+                                    <th>Net %</th>
+                                    <th>Amount</th>
                                 </tr>
                                 <tr>
 
                                 </tr>
 
                             </table>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">               <div class="purchasingleft">
-                                <table class="purchasingtable" style="display:none" id="IgstTable">
-                                    <tr>
-                                      <th>Taxable Value</th>
-                                    <th>IGST %</th>
-                                    <th>Amount</th>
-                                    <th>Net %</th>
-                                    <th>Amount</th>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-
-                                </table>
-                            </div></div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                          <div class="purchaseright">
-                              <table class="purchasingtable" style="display:block">
-                                  <tr>
-                                      <th>Net Total</th>
-                                    <th>GST Total</th>
-                                    <th>Grand Total</th>
-                                    </tr>
-                                  <tr>
-                                      <td>
-                                          <input type="text" class="editcontrol" value ="0" disabled id="nettotal" >
-                                      </td>
-                                      <td> <input type="text" class="editcontrol" value="0" disabled id="gsttotal" > </td>
-                                      <td><input type="text" class="editcontrol" value="0" disabled id="grandtotal" ></th>
-                                  </tr>
+                                <div class="purchasingleft">
+                                    <table class="purchasingtable" style="display:none" id="IgstTable">
+                                        <tr>
+                                            <th>Taxable Value</th>
+                                            <th>IGST %</th>
+                                            <th>Amount</th>
 
-                              </table>
-                          </div>
-                        </div>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="purchaseright">
+                                    <table class="purchasingtable" style="display:block">
+                                        <tr>
+                                            <th>Net Total</th>
+                                            <th>GST Total</th>
+                                            <th>Grand Total</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="editcontrol" value="0" disabled id="nettotal">
+                                            </td>
+                                            <td> <input type="text" class="editcontrol" value="0" disabled
+                                                    id="gsttotal"> </td>
+                                            <td><input type="text" class="editcontrol" value="0" disabled
+                                                    id="grandtotal"></th>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
 
                         </div>
-                      </div>
+                    </div>
                     <div class="col-md-2 addcontrol">
 
                         <label>Add Items</label>
-                        <div id="alertid" style="color: red;" ></div>
+                        <div id="alertid" style="color: red;"></div>
                         <input type="text" name="item" class="controls" placeholder="Enter Item Name" id="item"
                             onkeyup="showResult(this.value)" onblur="">
                         <div id="livesearch"></div>
-                        <input type="text" onkeyup="MaskedDecimal(this,'8','2');"  name="rate" class="controls" id="rate"
+                        <input type="text" onkeyup="MaskedDecimal(this,'8','2');" name="rate" class="controls" id="rate"
                             placeholder="Enter Net Rate"><br />
-                        <input type="text" placeholder="Enter the Quantity" onkeyup="MaskedNumber(this,'8');" name="quantity"  class="controls" id="quantity" >
+                        <input type="text" placeholder="Enter the Quantity" onkeyup="MaskedNumber(this,'8');"
+                            name="quantity" class="controls" id="quantity">
 
 
-                          <input  type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="cgst" placeholder="Enter GST Percentage">
-                        <input type="hidden" value="0" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="sgst" placeholder="Enter SGST Percentage">
-                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  style="" id="igst" placeholder="Enter IGST Percentage">
+                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"
+                            id="cgst" placeholder="Enter GST Percentage">
+                        <input type="hidden" value="0" name="price" onkeyup="MaskedDecimal(this,'2','2');"
+                            class="controls" id="sgst" placeholder="Enter SGST Percentage">
+                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls" style=""
+                            id="igst" placeholder="Enter IGST Percentage">
                         <input type="hidden" name="price" class="controls" id="hiddenitemid"
                             placeholder="Enter GST Percentage">
-                            <input type="hidden" name="price" class="controls" id="hiddenitemunit"
+                        <input type="hidden" name="price" class="controls" id="hiddenitemunit"
                             placeholder="Enter GST Percentage">
                         <script>
                             function mysubmit() {
@@ -364,9 +359,8 @@
 
                             }
 
-                            function hideResult()
-                            {
-                              document.getElementById("livesearch").innerHTML = "";
+                            function hideResult() {
+                                document.getElementById("livesearch").innerHTML = "";
                                 document.getElementById("livesearch").style.border = "";
                                 document.getElementById("livesearch").style.padding = "";
                             }
@@ -416,8 +410,8 @@
     </div>
     <div class="purchase-fixed-bottom">
         <button class="draft-button">Save as Draft</button>
-                            <button class="order-button" onclick="passjson();">Place Order</button>
-      </div>
+        <button class="order-button" onclick="passjson();">Place Order</button>
+    </div>
 </body>
 <script>
     $(document).ready(function () {
@@ -427,13 +421,13 @@
     $('input[type="button"]').click(function (e) {
         $(this).closest('tr').remove()
     })
-// GlobalParams
-var gstFlag='';
-var arrcgst=[];
-var arrsgst=[];
-var arrgst=[];
-var arrgstamt =[];
-var arrtaxableValue=[];
+    // GlobalParams
+    var gstFlag = '';
+    var arrcgst = [];
+    var arrsgst = [];
+    var arrgst = [];
+    var arrgstamt = [];
+    var arrtaxableValue = [];
 </script>
 <script>
     function newfun() {
@@ -500,35 +494,35 @@ var arrtaxableValue=[];
                 document.getElementById("VendorPhone").value = obj.phone;
                 document.getElementById("VendorState").value = obj.state;
 
-                if((obj.state == 'TamilNadu') || (obj.state == 'Tamil Nadu')){
-                  gstFlag="TN";
+                if ((obj.state == 'TamilNadu') || (obj.state == 'Tamil Nadu')) {
+                    gstFlag = "TN";
 
-                  document.getElementById("IgstTable").style.display='none';
-                  document.getElementById("GstTable").style.display='block';
+                    document.getElementById("IgstTable").style.display = 'none';
+                    document.getElementById("GstTable").style.display = 'block';
 
-                  document.getElementById("igst").type='hidden';
-                  document.getElementById("igst").value = 0;
-                  document.getElementById("cgst").type='text';
-                  document.getElementById("cgst").value='';
-
-
-                }else if((obj.state == '') || (obj.state == null)){
-                  document.getElementById("IgstTable").style.display='none';
-                  document.getElementById("GstTable").style.display='none';
-                  document.getElementById("igst").type='hidden';
-                  document.getElementById("cgst").type='hidden';
+                    document.getElementById("igst").type = 'hidden';
+                    document.getElementById("igst").value = 0;
+                    document.getElementById("cgst").type = 'text';
+                    document.getElementById("cgst").value = '';
 
 
+                } else if ((obj.state == '') || (obj.state == null)) {
+                    document.getElementById("IgstTable").style.display = 'none';
+                    document.getElementById("GstTable").style.display = 'none';
+                    document.getElementById("igst").type = 'hidden';
+                    document.getElementById("cgst").type = 'hidden';
 
-                }else{
-                  gstFlag="OT";
-                  document.getElementById("GstTable").style.display='none';
-                  document.getElementById("IgstTable").style.display='block';
 
-                  document.getElementById("igst").type='text';
-                  document.getElementById("igst").value='';
-                  document.getElementById("cgst").type='hidden';
-                  document.getElementById("cgst").value=0;
+
+                } else {
+                    gstFlag = "OT";
+                    document.getElementById("GstTable").style.display = 'none';
+                    document.getElementById("IgstTable").style.display = 'block';
+
+                    document.getElementById("igst").type = 'text';
+                    document.getElementById("igst").value = '';
+                    document.getElementById("cgst").type = 'hidden';
+                    document.getElementById("cgst").value = 0;
                 }
             }
 
@@ -549,29 +543,29 @@ var arrtaxableValue=[];
         for (var j = 1; j < rlength; j++) {
 
             var row = table.rows[j];  //Table Row Number
-            var i =  row.id;
+            var i = row.id;
 
             var data = {};
 
-                sid = i + 'quantityid';
-                data["quantity"] = parseInt(document.getElementById(sid).value);
+            sid = i + 'quantityid';
+            data["quantity"] = parseInt(document.getElementById(sid).value);
 
-                sid = i + 'rateid';
-                data["unit_price"] = parseInt(document.getElementById(sid).value);
+            sid = i + 'rateid';
+            data["unit_price"] = parseInt(document.getElementById(sid).value);
 
-                sid = i + 'gstid';
-                data["gst"] = parseInt(document.getElementById(sid).value);
+            sid = i + 'gstid';
+            data["gst"] = parseInt(document.getElementById(sid).value);
 
-                sid = i + 'gstamountid';
-                data["cgst"] = parseInt(document.getElementById(sid).value);
+            sid = i + 'gstamountid';
+            data["cgst"] = parseInt(document.getElementById(sid).value);
 
-                sid = i + 'totalamountid';
-                data["total"] = parseInt(document.getElementById(sid).value);
-                sid = i + 'hiddenitemid';
+            sid = i + 'totalamountid';
+            data["total"] = parseInt(document.getElementById(sid).value);
 
-                data["id"] = document.getElementById(sid).value;
+            sid = i + 'hiddenitemid';
+            data["id"] = document.getElementById(sid).value;
 
-                tableobj.push(data);
+            tableobj.push(data);
 
 
 
@@ -584,56 +578,51 @@ var arrtaxableValue=[];
 
     }
 
-    function mysubmit()
-{
-    var temp = subUrl();
-    console.log(temp);
-    func_submit(temp);
-}
+    function mysubmit() {
+        var temp = subUrl();
+        console.log(temp);
+        func_submit(temp);
+    }
 
-    function validate()
-    {
+    function validate() {
 
     }
 
-    function seperategst(gst,gstamount)
-    {
+    function seperategst(gst, gstamount) {
 
     }
-    function func_insertgst()
-    {
+    function func_insertgst() {
 
-        var gst ;
-        if(gstFlag == 'OT')
-        {
+        var gst;
+        
+        if (gstFlag == 'OT') {
             gst = parseFloat(document.getElementById("igst").value);
         }
-        else if(gstFlag == 'TN')
-        {
-             gst = parseFloat(document.getElementById("cgst").value);
+        else if (gstFlag == 'TN') {
+            gst = parseFloat(document.getElementById("cgst").value);
 
         }
 
-        var taxableValue=  parseFloat(document.getElementById("rate").value) * parseFloat(document.getElementById("quantity").value);
+        var taxableValue = parseFloat(document.getElementById("rate").value) * parseFloat(document.getElementById("quantity").value);
 
-        var gstamt = parseFloat(gst) * (parseFloat(taxableValue/100));
+        var gstamt = parseFloat(gst) * (parseFloat(taxableValue / 100));
 
-        if (arrgst.length > 0)
-        {
-            if(arrgst.indexOf(gst) >= 0)
-            {
-            var idx =arrgst.indexOf(gst);
-            arrgstamt[idx] =parseFloat(arrgstamt[idx]) + gstamt;
-            arrtaxableValue[idx]=parseFloat(arrtaxableValue[idx]) + taxableValue;
+        if (arrgst.length > 0) {
+            if (arrgst.indexOf(gst) >= 0) {
+                
+                var idx = arrgst.indexOf(gst);
+                arrgstamt[idx] = parseFloat(arrgstamt[idx]) + gstamt;
+                arrtaxableValue[idx] = parseFloat(arrtaxableValue[idx]) + taxableValue;
             }
-            else{
+            else {
+                alert(gst);
                 arrgst.push(gst);
-            arrgstamt.push(gstamt);
-            arrtaxableValue.push(taxableValue);
+                arrgstamt.push(gstamt);
+                arrtaxableValue.push(taxableValue);
             }
 
 
-        }else{
+        } else {
             arrgst.push(gst);
             arrgstamt.push(gstamt);
             arrtaxableValue.push(taxableValue);
@@ -641,62 +630,83 @@ var arrtaxableValue=[];
         }
 
 
-//console.log(arrgst+"<>"+arrgstamt+"<>"+arrtaxableValue+"<>")
+        //console.log(arrgst+"<>"+arrgstamt+"<>"+arrtaxableValue+"<>")
         func_creategst();
     }
 
-    function func_creategst ()
-    {
-        alert("creat");
-        if(gstFlag == 'TN')
-        {
+    function func_creategst() {
 
-        var table = document.getElementById("GstTable");
-            table.innerHTML ='<tr>                    '
-+'<th>Taxable Value</th> '
-+'<th>CGST %</th>        '
-+'<th>Amount</th>        '
-+'<th>SGST %</th>        '
-+'<th>Amount</th>        '
-+'<th>Net %</th>         '
-+'<th>Amount</th>        '
+        if (gstFlag == 'TN') {
+
+            var table = document.getElementById("GstTable");
+           table.innerHTML = '<tr>                    '  
++'<th>Taxable Value</th> '  
++'<th>CGST %</th>         '      
++'<th>Amount</th>        '  
++'<th>SGST %</th>        '  
++'<th>Amount</th>        '  
++'<th>Net %</th>         '  
++'<th>Amount</th>        '                   
 +'</tr>             '
-+'<tr>                   '               ;
-        var len = arrgst.length;
-        alert(len);
-        for(var i=0;i<len;i++)
-        {
-        var row = document.createElement("tr");
++'<tr>                   '   ;            
+            var len = arrgst.length;
 
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-        var td5 = document.createElement("td");
-        var td6 = document.createElement("td");
-        var td7 = document.createElement("td");
+            for (var i = 0; i < len; i++) {
+                var row = document.createElement("tr");
 
-        td1.innerHTML=arrtaxableValue[i];
-        td2.innerHTML=(arrgst[i] /2).toFixed(2);
-        td3.innerHTML=(arrgstamt[i] /2).toFixed(2);
-        td4.innerHTML=(arrgst[i] /2).toFixed(2);
-        td5.innerHTML=(arrgstamt[i] /2).toFixed(2);
-        td6.innerHTML=arrgst[i];
-        td7.innerHTML=arrgstamt[i];
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                var td4 = document.createElement("td");
+                var td5 = document.createElement("td");
+                var td6 = document.createElement("td");
+                var td7 = document.createElement("td");
 
-        row.appendChild(td1);
-        row.appendChild(td2);
-        row.appendChild(td3);
-        row.appendChild(td4);
-        row.appendChild(td5);
-        row.appendChild(td6);
-        row.appendChild(td7);
-        table.children[0].appendChild(row);
+                td1.innerHTML = arrtaxableValue[i];
+                td2.innerHTML = (arrgst[i] / 2).toFixed(2);
+                td3.innerHTML = (arrgstamt[i] / 2).toFixed(2);
+                td4.innerHTML = (arrgst[i] / 2).toFixed(2);
+                td5.innerHTML = (arrgstamt[i] / 2).toFixed(2);
+                td6.innerHTML = arrgst[i];
+                td7.innerHTML = arrgstamt[i];
 
-        }
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                row.appendChild(td4);
+                row.appendChild(td5);
+                row.appendChild(td6);
+                row.appendChild(td7);
+                table.children[0].appendChild(row);
 
-        }else  if(gstFlag == 'OT')
-        {
+            }
+
+        } else if (gstFlag == 'OT') {
+            var table = document.getElementById("IgstTable");
+            table.innerHTML = '<tr>                    '  
++'<th>Taxable Value</th> '  
++'<th>IGST %</th>         '      
++'<th>Amount</th>        '  
+            var len = arrgst.length;
+
+            for (var i = 0; i < len; i++) {
+                var row = document.createElement("tr");
+
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+
+                td1.innerHTML = arrtaxableValue[i];
+                td2.innerHTML = arrgst[i];
+                td3.innerHTML = arrgstamt[i];
+
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+
+                table.children[0].appendChild(row);
+
+            }
 
         }
 
@@ -707,110 +717,109 @@ var arrtaxableValue=[];
         "use strict";
         func_insertgst();
         var res = func_validate('purchaseadd');
-        if(res == 1)
-        {
-        var rowcounter = document.getElementById("tickettable").rows.length;
-        var table = document.getElementById("tickettable");
-        var rowcount = randomString();
-        //
+        if (res == 1) {
+            var rowcounter = document.getElementById("tickettable").rows.length;
+            var table = document.getElementById("tickettable");
+            var rowcount = randomString();
+            //
 
-        var row = document.createElement("tr");
-        row.id = rowcount;
-
-
-
-        var td0= document.createElement("td");
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-        var td5 = document.createElement("td");
-        var td6 = document.createElement("td");
-        var td7 = document.createElement("td");
-        var td8 = document.createElement("td");
-        var td9 = document.createElement("td");
-
-        var x1 = document.getElementById("item").value;
-        var x2 = document.getElementById("rate").value;
-        var x3 = document.getElementById("quantity").value;
-
-        var cgst = parseFloat(document.getElementById("cgst").value);
-        var sgst = parseFloat(document.getElementById("sgst").value);
-        var igst = parseFloat(document.getElementById("igst").value);
-
-        var gst = cgst+sgst+igst;
-        gst =parseFloat(gst);
-
-        var netamount = parseFloat(x2) * parseFloat(x3);
-        netamount =parseFloat(netamount);
-
-        var strhidden = document.getElementById("hiddenitemid").value;
-
-        seperategst(gst,parseFloat(((netamount / 100) * gst).toFixed(2)));
-
-        td0.innerHTML=rowcounter;
-        td0.id=rowcount+'sno';
-        td1.innerHTML = '<input  class="editcontrol" type="text" id="' + rowcount + 'itemid' + '" name="' + rowcount + 'itemid' + '" value="' + x1 + '"  >' + '<input  class="editcontrol" type="hidden" id="' + rowcount + 'hiddenitemid' + '" name="' + rowcount + 'itemid' + '" value="' + strhidden + '"  >';
-
-td2.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'quantityid' + '" id="' + rowcount + 'quantityid' + '" value="' + x3 + '" >';
-
-td3.innerHTML = document.getElementById('hiddenitemunit').value;
-
-        td4.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'rateid' + '" id="' + rowcount + 'rateid' + '" value="' + x2 + '"  >';
+            var row = document.createElement("tr");
+            row.id = rowcount;
 
 
 
-        td5.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'netamountid' + '" name="' + rowcount + 'netamount' + '" value="' + netamount + '"  >';
+            var td0 = document.createElement("td");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+            var td6 = document.createElement("td");
+            var td7 = document.createElement("td");
+            var td8 = document.createElement("td");
+            var td9 = document.createElement("td");
 
-        td6.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'gstid' + '" id="' + rowcount + 'gstid' + '" value="' + gst + '" >';
+            var x1 = document.getElementById("item").value;
+            var x2 = document.getElementById("rate").value;
+            var x3 = document.getElementById("quantity").value;
 
-        td7.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'gstamountid' + '" name="' + rowcount + 'gstamount' + '" value="' + parseFloat(((netamount / 100) * gst).toFixed(2)) + '"  >';
+            var cgst = parseFloat(document.getElementById("cgst").value);
+            var sgst = parseFloat(document.getElementById("sgst").value);
+            var igst = parseFloat(document.getElementById("igst").value);
 
-        td8.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'totalamountid' + '" name="' + rowcount + 'totalamountid' + '" value="' + parseFloat((netamount + ((netamount / 100) * gst)).toFixed(2)) + '"  >';
+            var gst = cgst + sgst + igst;
+            gst = parseFloat(gst);
 
-        td9.innerHTML = '<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction(\'' + rowcounter + '\')"></td>'
+            var netamount = parseFloat(x2) * parseFloat(x3);
+            netamount = parseFloat(netamount);
 
-        row.appendChild(td0);
-        row.appendChild(td1);
-        row.appendChild(td2);
-        row.appendChild(td3);
-        row.appendChild(td4);
-        row.appendChild(td5);
-        row.appendChild(td6);
-        row.appendChild(td7);
-        row.appendChild(td8);
-        row.appendChild(td9);
+            var strhidden = document.getElementById("hiddenitemid").value;
 
+            seperategst(gst, parseFloat(((netamount / 100) * gst).toFixed(2)));
 
-        table.children[0].appendChild(row);
+            td0.innerHTML = rowcounter;
+            td0.id = rowcount + 'sno';
+            td1.innerHTML = '<input  class="editcontrol" type="text" id="' + rowcount + 'itemid' + '" name="' + rowcount + 'itemid' + '" value="' + x1 + '"  >' + '<input  class="editcontrol" type="hidden" id="' + rowcount + 'hiddenitemid' + '" name="' + rowcount + 'itemid' + '" value="' + strhidden + '"  >';
 
-        var result_style = document.getElementById(rowcount).style;
+            td2.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'quantityid' + '" id="' + rowcount + 'quantityid' + '" value="' + x3 + '" >';
 
-        result_style.display = 'table-row';
+            td3.innerHTML = document.getElementById('hiddenitemunit').value;
 
-        document.getElementById("item").value = "";
-        document.getElementById("rate").value = "";
-        document.getElementById("quantity").value = "";
-
-        document.getElementById("cgst").value = "0";
-        document.getElementById("sgst").value = "0";
-
-        document.getElementById("igst").value = "0";
+            td4.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'rateid' + '" id="' + rowcount + 'rateid' + '" value="' + x2 + '"  >';
 
 
-        var tot = document.getElementById("grandtotal").value;
-        tot = parseFloat(tot) + parseFloat(netamount) + parseFloat((netamount / 100) * gst);
-        document.getElementById("grandtotal").value = parseFloat(tot.toFixed(2));
 
-        tot = document.getElementById("nettotal").value;
-        tot = parseFloat(tot) + parseFloat(netamount);
-        document.getElementById("nettotal").value = parseFloat(tot.toFixed(2));
+            td5.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'netamountid' + '" name="' + rowcount + 'netamount' + '" value="' + netamount + '"  >';
 
-        tot = document.getElementById("gsttotal").value;
-        tot = parseFloat(tot) + parseFloat(((netamount / 100) * gst));
-        document.getElementById("gsttotal").value = parseFloat(tot.toFixed(2));
+            td6.innerHTML = '<input onchange="updatetotal();" class="editcontrol" type="text" name="' + rowcount + 'gstid' + '" id="' + rowcount + 'gstid' + '" value="' + gst + '" >';
 
-    }
+            td7.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'gstamountid' + '" name="' + rowcount + 'gstamount' + '" value="' + parseFloat(((netamount / 100) * gst).toFixed(2)) + '"  >';
+
+            td8.innerHTML = '<input  class="editcontrol" disabled type="text" id="' + rowcount + 'totalamountid' + '" name="' + rowcount + 'totalamountid' + '" value="' + parseFloat((netamount + ((netamount / 100) * gst)).toFixed(2)) + '"  >';
+
+            td9.innerHTML = '<td><input type="button" class="Purchase-delete" value="X" onclick="SomeDeleteRowFunction(\'' + rowcounter + '\')"></td>'
+
+            row.appendChild(td0);
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+            row.appendChild(td4);
+            row.appendChild(td5);
+            row.appendChild(td6);
+            row.appendChild(td7);
+            row.appendChild(td8);
+            row.appendChild(td9);
+
+
+            table.children[0].appendChild(row);
+
+            var result_style = document.getElementById(rowcount).style;
+
+            result_style.display = 'table-row';
+
+            document.getElementById("item").value = "";
+            document.getElementById("rate").value = "";
+            document.getElementById("quantity").value = "";
+
+            document.getElementById("cgst").value = "0";
+            document.getElementById("sgst").value = "0";
+
+            document.getElementById("igst").value = "0";
+
+
+            var tot = document.getElementById("grandtotal").value;
+            tot = parseFloat(tot) + parseFloat(netamount) + parseFloat((netamount / 100) * gst);
+            document.getElementById("grandtotal").value = parseFloat(tot.toFixed(2));
+
+            tot = document.getElementById("nettotal").value;
+            tot = parseFloat(tot) + parseFloat(netamount);
+            document.getElementById("nettotal").value = parseFloat(tot.toFixed(2));
+
+            tot = document.getElementById("gsttotal").value;
+            tot = parseFloat(tot) + parseFloat(((netamount / 100) * gst));
+            document.getElementById("gsttotal").value = parseFloat(tot.toFixed(2));
+
+        }
 
     };
 
@@ -819,29 +828,26 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
 
         var rowlength = document.getElementById("tickettable").rows.length;
         var table = document.getElementById("tickettable");
-        for(var i=1 ; i<rowlength ; i++ )
-        {
+        for (var i = 1; i < rowlength; i++) {
             // Tabli Id
             var row = table.rows[i];  //Table Row Number
-            var temp =  row.id+'sno';
-            document.getElementById(temp).innerHTML=i;
+            var temp = row.id + 'sno';
+            document.getElementById(temp).innerHTML = i;
         }
         updatetotal();
 
     }
 
-    function updatetotal()
-    {
+    function updatetotal() {
         var rowlength = document.getElementById("tickettable").rows.length;
-        var v="0";
-        var grandnet=parseFloat(v);
-        var grandgst =parseFloat(v);
-        var grandtot =parseFloat(v);
-        for(var i=1 ; i<rowlength ; i++ )
-        {
+        var v = "0";
+        var grandnet = parseFloat(v);
+        var grandgst = parseFloat(v);
+        var grandtot = parseFloat(v);
+        for (var i = 1; i < rowlength; i++) {
             var table = document.getElementById("tickettable"); // Tabli Id
             var row = table.rows[i];  //Table Row Number
-            var temp =  row.id
+            var temp = row.id
 
             var x1 = document.getElementById(temp + "rateid").value;
             var x2 = document.getElementById(temp + "quantityid").value;
@@ -849,19 +855,19 @@ td3.innerHTML = document.getElementById('hiddenitemunit').value;
 
             var netvalue = parseFloat(x1) * parseFloat(x2);
             grandnet = grandnet + netvalue;
-            var gstvalue = (parseFloat(netvalue)/100) * parseFloat(x3);
-            grandgst=grandgst+gstvalue;
+            var gstvalue = (parseFloat(netvalue) / 100) * parseFloat(x3);
+            grandgst = grandgst + gstvalue;
             var total = netvalue + gstvalue;
-            grandtot=grandtot+total;
+            grandtot = grandtot + total;
 
-            document.getElementById(temp + "netamountid").value =netvalue;
+            document.getElementById(temp + "netamountid").value = netvalue;
             document.getElementById(temp + "gstamountid").value = gstvalue;
             document.getElementById(temp + "totalamountid").value = total;
         }
 
-        document.getElementById("nettotal").value =grandnet;
-        document.getElementById("gsttotal").value =grandgst;
-        document.getElementById("grandtotal").value =grandtot;
+        document.getElementById("nettotal").value = grandnet;
+        document.getElementById("gsttotal").value = grandgst;
+        document.getElementById("grandtotal").value = grandtot;
     }
     function updaterow(rowcount) {
 

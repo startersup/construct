@@ -129,17 +129,24 @@ function randomString()
       type: 'POST',
       success: function (dataofconfirm) {
         // do something with the result
-        alert("success");
-        modal_success();
+        
+        modal_success('suc');
+       
+
       },
       error: function (xhr, status, error) {
 
-        modal_success();
+        modal_success('fail');
         console.log(xhr.responseText);
-        alert("fail");
+        
 
       }
     });
+  }
+
+  function func_refresh()
+  {
+    document.location.reload(true);
   }
 
   function func_get(apiUrl, apiJson) {

@@ -96,19 +96,7 @@
                 </tr>
                
 
-                    <tr>
-                        <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                        <td>345456</td>
-                        <td>Saicharan Govindaraj</td>
-                        <td>sai traders</td>
-                        <td>9551936390</td>
-                        <td>12,000</td>
-                        <td>12/10/2019</td>
-                        <td>Manapakkam</td>
-                        <td><span class="openedstatus">Requested</span></td>
-                        <td><button class="buttonnew" data-toggle="modal" data-target="#modal-request">View</button>
-                        </td>
-                    </tr>
+            
 
                 </tbody>
             </table>
@@ -236,9 +224,9 @@
 
                     var modalobj="";
                //     http://localhost:3000/api/purchase_order/54004/products
-                    var myurl = LocationUrl + 'api/purchase_order/' + strid +'/products/';
-                        console.log(myurl);
-
+               var filter='{"where":{"order_id":"'+strid+'"},"include":["products"]}';
+                    var myurl = LocationUrl + 'api/purchase_items?filter=' + filter ;
+                       
                         $.ajax({
                             url: myurl,
                             cache: false,
@@ -265,8 +253,7 @@
                     for(var i = 0;i<objlen;i++){
                         
                         var rowcount = document.getElementById("tickettable").rows.length;
-
-                    
+                       
 
                     var row = document.createElement("tr");
                     row.id = rowcount;
@@ -282,15 +269,25 @@
                  
                     
                     td1.innerHTML = rowcount ;
-                    td2.innerHTML =modalobj[i];
-                    // td3.innerHTML =
-                    // td4.innerHTML =
-                    // td5.innerHTML =
-                    // td6.innerHTML =
-                    // td7.innerHTML =
-                    // td8.innerHTML =
+                    td2.innerHTML = modalobj[i].products.name;
+                    td3.innerHTML = modalobj[i].unit_price;
+                    td4.innerHTML = modalobj[i].quantity;
+                    td5.innerHTML =  parseFloat(modalobj[i].unit_price) *  parseFloat(modalobj[i].quantity);
+                    td6.innerHTML = modalobj[i].gst;
+                    td7.innerHTML = modalobj[i].cgst;
+                    td8.innerHTML = modalobj[i].total;
 
+                    row.appendChild(td1);
+                    row.appendChild(td2);
+                    row.appendChild(td3);
+                    row.appendChild(td4);
+                    row.appendChild(td5);
 
+                    row.appendChild(td6);
+                    row.appendChild(td7);
+                    row.appendChild(td8);
+
+                    table.children[0].appendChild(row);
                     }
 
 
