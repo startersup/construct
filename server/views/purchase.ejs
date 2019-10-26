@@ -251,6 +251,21 @@
                                 </tr>
 
                             </tbody>
+                            <tfoot> 
+
+                                    <th colspan="4" ></th>
+                                    <th>Grand Total</th>
+                                    
+                                    <th>
+                                        <input type="text" class="controls" value ="0" disabled id="nettotal" >
+                                        
+                                    </th>
+                                    <th></th>
+                                    <th> <input type="text" class="controls" value="0" disabled id="gsttotal" > </th>
+                                    <th  ><input type="text" class="controls" value="0" disabled id="grandtotal" ></th>
+                                    <th></th>
+
+                            </tfoot>
 
                         </table>
 <div class="purchasingleft">
@@ -305,12 +320,12 @@
                         <input type="text" name="item" class="controls" placeholder="Enter Item Name" id="item"
                             onkeyup="showResult(this.value)" onblur="">
                         <div id="livesearch"></div>
-                        <input type="text" onkeyup="MaskedDecimal(this,'8','2');"  name="quantity" class="controls" id="rate"
+                        <input type="text" onkeyup="MaskedDecimal(this,'8','2');"  name="rate" class="controls" id="rate"
                             placeholder="Enter Net Rate"><br />
-                        <input type="text" onkeyup="MaskedNumber(this,'8');" name=Item quantity">
-                        <inp"price" class="controls" id="quantity"
-                            type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="cgst" placeholder="Enter GST Percentage">
-                        <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="sgst" placeholder="Enter SGST Percentage">
+                        <input type="text" placeholder="Enter the Quantity" onkeyup="MaskedNumber(this,'8');" name="quantity"  class="controls" id="quantity" >
+                      
+                          <input  type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="cgst" placeholder="Enter GST Percentage">
+                        <input type="hidden" value="0" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="sgst" placeholder="Enter SGST Percentage">
                         <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  style="" id="igst" placeholder="Enter IGST Percentage">
                         <input type="hidden" name="price" class="controls" id="hiddenitemid"
                             placeholder="Enter GST Percentage">
@@ -490,9 +505,9 @@ var arrtaxableValue=[];
                   document.getElementById("GstTable").style.display='block';
 
                   document.getElementById("igst").type='hidden';
-
+                  document.getElementById("igst").value = 0;
                   document.getElementById("cgst").type='text';
-                  document.getElementById("sgst").type='text';
+                  document.getElementById("cgst").value='';
 
 
                 }else if((obj.state == '') || (obj.state == null)){
@@ -500,7 +515,8 @@ var arrtaxableValue=[];
                   document.getElementById("GstTable").style.display='none';
                   document.getElementById("igst").type='hidden';
                   document.getElementById("cgst").type='hidden';
-                  document.getElementById("sgst").type='hidden';
+                 
+
 
                 }else{
                   gstFlag="OT";
@@ -508,8 +524,9 @@ var arrtaxableValue=[];
                   document.getElementById("IgstTable").style.display='block';
 
                   document.getElementById("igst").type='text';
+                  document.getElementById("igst").value='';
                   document.getElementById("cgst").type='hidden';
-                  document.getElementById("sgst").type='hidden';
+                  document.getElementById("cgst").value=0;
                 }
             }
 
