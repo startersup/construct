@@ -56,18 +56,16 @@
   function func_login()
   {
 
-    var apiurl="http://localhost:3000//users/login";
+    var apiurl="http://localhost:3000/users/login";
     var obj = {};
-    obj["name"] = document.getElementById("UserName").value;
+    obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;
 
     var postdata = JSON.stringify(obj);
-
+    console.log(postdata);
     $.ajax({
         url: apiurl,
         data: postdata,
-        cache: false,
-        processData: false,
         contentType: 'application/json',
         type: 'POST',
         success: function (dataofconfirm) {
