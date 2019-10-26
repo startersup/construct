@@ -426,11 +426,12 @@
     $('input[type="button"]').click(function (e) {
         $(this).closest('tr').remove()
     })
-
+// GlobalParams
 var gstFlag='';
 var arrcgst=[];
 var arrsgst=[];
-var arrigst=[];
+var arrgst=[];
+var arrgstamt =[];
 var arrtaxableValue=[];
 </script>
 <script>
@@ -598,11 +599,89 @@ var arrtaxableValue=[];
     {
 
     }
+    function func_insertgst()
+    {
+        var gst ;
+        if(gstFlag == 'OT')
+        {
+            gst = parseFloat(document.getElementById("igst").value);
+        }
+        else if(gstFlag == 'TN')
+        {
+             gst = parseFloat(document.getElementById("cgst").value);
+        }
+       
+        var taxableValue=  parseFloat(document.getElementById("rate").value) * parseFloat(document.getElementById("quantity").value);
+               
+        var gstamt = (gst * taxableValue).toFixed(2);
+        if( (arrgst.length > 0) || (arrgst.indexOf(gst) < 0))
+        {
+            var idx =arrgst.indexOf(gst);
+            arrgstamt[idx] =parseFloat(arrgstamt[idx]) + gstamt;
+            arrtaxableValue[idx]=parseFloat(arrtaxableValue[idx]) + taxableValue;
 
+
+        }else{
+            arrgst.push(gst);
+            arrgstamt.push(gstamt);
+            arrtaxableValue.push(taxableValue);
+        }
+
+        
+
+        func_creategst();
+    }
+
+    function func_creategst ()
+    {
+        if(gstFlag == 'TN')
+        {
+           
+        var table = document.getElementById("Gsttable");
+
+        var len = arrgst.length;
+        for(var i=0;i<len;i++)
+        {
+        var row = document.createElement("tr");
+       
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+
+        td1.innerHTML=arrtaxableValue[i];
+        td2.innerHTML=(arrgst[i] /2).toFixed(2); 
+        td3.innerHTML=(arrgstamt[i] /2).toFixed(2);
+        td4.innerHTML=(arrgst[i] /2).toFixed(2); 
+        td5.innerHTML=(arrgstamt[i] /2).toFixed(2);
+        td6.innerHTML=arrgst[i];
+        td7.innerHTML=arrgstamt[i];
+
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+        row.appendChild(td4);
+        row.appendChild(td5);
+        row.appendChild(td6);
+        row.appendChild(td7);
+        table.children[0].appendChild(row);
+
+        }
+
+        }else  if(gstFlag == 'OT')
+        {
+
+        }
+
+    }
     function addRow() {
 
 
         "use strict";
+        func_insertgst();
         var res = func_validate('purchaseadd');
         if(res == 1)
         {
