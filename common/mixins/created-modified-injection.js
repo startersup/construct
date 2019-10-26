@@ -1,7 +1,7 @@
 module.exports = function(Model, options) {
     'use strict';
-    Model.defineProperty('created_by', {type: String});
-    Model.defineProperty('updated_by', {type: String});
+    Model.belongsTo('UserInfo',{as:'created_by',foreignKey:'created_by'});
+    Model.belongsTo('UserInfo',{as:'updated_by',foreignKey:'updated_by'});
     Model.defineProperty('created_date', {type: Date});
     Model.defineProperty('updated_date', {type: Date});    
     Model.observe('before save', function event(ctx, next) {

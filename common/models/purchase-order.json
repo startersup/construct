@@ -5,6 +5,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "CreatedModifiedInjection": true
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -13,7 +16,7 @@
     },
     "order_no": {
       "type": "Number",
-      "required":true
+      "required": true
     },
     "name": {
       "type": "string"
@@ -40,9 +43,6 @@
     "comments": {
       "type": "string"
     }
-  },
-  "mixins": {
-    "CreatedModifiedInjection": true
   },
   "validations": [],
   "relations": {
