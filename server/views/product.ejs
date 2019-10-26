@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Proconst | A Smart Construction Management Software.</title>
+    <title>Add Product | Proconstruct</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="./assets/images/logo.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand hidden-xs" href="#"><span>Vendor Details </span> </a>
+                <a class="navbar-brand hidden-xs" href="#"><span>Add Product </span> </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -32,7 +32,7 @@
                         <div class="dropdown">
                             <button onclick="empFunction()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
                         </div>
-                        <div id="newsite" class="dropdown-content">
+                        <div id="empDropdown" class="dropdown-content">
                             <a href="./employee">Add Employee</a>
                             <a href="./vendor">Add Vendors</a>
                             <a href="./product.ejs">Add Product</a>
@@ -59,28 +59,16 @@
                 <div id="preloaderdiv">&nbsp;</div>
             </div>
             <div class="row">
-                <h3>Add Vendor</h3>
+                <h3>Add Product</h3>
                 <div class="col-md-6">
                     <div class="top">
                         <form id="mydata2" name="api/vendors">
                             <div id="alertid" style="color: red;" ></div>
-                            <input class="controls name" type="text" style="" id="name" placeholder="Enter Vendor Name">
+                            <input class="controls name" type="text" style="" id="pname" placeholder="Enter Product Name">
+                            <input class="controls" type="text" id="pbrand" placeholder="Enter Product Brand">
                             <!---- <p style="color : red">** Required</p> -->
-                            <input class="controls" type="text" id="email" placeholder="Enter Email Address">
-                            <input class="controls" type="text" id="gstNumber" placeholder="Enter GST Number">
-                            <input class="controls" type="text" id="phone" placeholder="Enter Contact Number">
-                            <select class="controls name selectit" id="state">
-                                <option value="">--Select--</option>
-                                <option value="TamilNadu">TamilNadu</option>
-                                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Kerala">Kerala</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                            </select>
-                            <textarea class="controls textarea" id="location" type="text"
-                                placeholder="Enter Vendor Full Address" name="drop" required
-                                autocomplete="off"></textarea>
-
+                            <input class="controls" type="text" id="punit" placeholder="Enter Product Unit">
+                            <input class="controls" type="text" id="pValue" placeholder="Enter Product Value">
                         </form>
 
                         <button class="buttonadd full" onclick="mysubmit();">Add Vendor</button>
@@ -89,7 +77,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="../assets/images/vendor.png" class="vendorimg static">
+                    <img src="../assets/images/add-product.png" class="vendorimg static">
 
                 </div>
             </div>

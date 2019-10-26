@@ -38,5 +38,8 @@ module.exports = function(server) {
   router.get('/preview', function(req, res) {
     res.render('./preview');
   });
+  router.get('/product', function(req, res) {
+    res.render('./product');
+  });
   server.use(router);
 };

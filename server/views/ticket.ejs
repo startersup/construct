@@ -16,14 +16,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="white-bg">
         <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                            <span class="icon-bar"></span> 
+                            <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand hidden-xs" href="#"><span>Ticketing System </span> </a>
                     </div>
@@ -46,7 +46,7 @@
                                  <li>Profile</li>
                                 </ul>
                             </li>
-        
+
                         </ul>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <button class="featurebutton"><i class="far fa-trash-alt smallicon"></i> Delete</button>
                     </div>
                 </li>
-                
+
             </ul>
             <ul class="nav navbar-nav navbar-right"><li>
                 <div class="middle">
@@ -76,7 +76,7 @@
                 </li></ul>
         </div>
     </div>
-    
+
  <div class="ticketdiv">
     <div id="preloader">
   <div id="preloaderdiv">&nbsp;</div>
@@ -166,8 +166,8 @@
       <div class="col-md-2 col-xs-2 lesstop nopadding">
       <div class="filters">
           <h4>Apply Filters</h4>
-          
-          
+
+
           <label>Status</label>
           <select  class="filterselect controls" name="pass">
                                         <option value="">Opened</option>
@@ -205,7 +205,7 @@
                                     </select>
       </div>
       </div>
-     </div>  
+     </div>
     </div>
 
 
@@ -233,9 +233,9 @@
         }
     </script>
      <script>
-        $(window).on('load', function() { // makes sure the whole site is loaded 
-            $('#preloaderdiv').fadeOut(); // will first fade out the loading animation 
-            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+        $(window).on('load', function() { // makes sure the whole site is loaded
+            $('#preloaderdiv').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
             $('body').delay(400).css({
                 'overflow': 'visible'
             });
@@ -261,5 +261,5 @@
         });
     });</script>
 -->
-   
+
 </html>
