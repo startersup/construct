@@ -21,12 +21,12 @@
 <div class="gray">
         <h2>Builder Desk</h2>
         <p>All-in-one Smart Construction Management Desk</p>
-        <img class="logimage" src="./assets/images/fresh.png">   
+        <img class="logimage" src="./assets/images/fresh.png">
 </div>
     </div>
     <div class="col-md-7 nopad">
             <div class="form-container">
-             
+
               <div class="tab-content">
                     <div id="login" class="tab-pane fade in active">
                 <form>
@@ -39,8 +39,8 @@
                             <a data-toggle="pill" href="#forgot"><p>forgot password?</p></a>
                         </div>
                 </form>
-                </div>  
-            <div id="forgot" class="tab-pane fade"> 
+                </div>
+            <div id="forgot" class="tab-pane fade">
                     <h3>Forgot your Password?</h3>
                     <input class="controls" type="text"  required placeholder="Enter Email Address">
                     <button class="buttonfull" onclick="func_login();"> Reset Password</button>
@@ -52,7 +52,7 @@
   </div>
 
   <script>
-  
+
   function func_login()
   {
 
@@ -60,12 +60,14 @@
     var obj = {};
     obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;
-
+    alert(obj);
     var postdata = JSON.stringify(obj);
-    console.log(postdata);
+    alert(postdata);
     $.ajax({
         url: apiurl,
         data: postdata,
+        cache: false,
+        processData: false,
         contentType: 'application/json',
         type: 'POST',
         success: function (dataofconfirm) {
@@ -75,13 +77,13 @@
         error: function(xhr, status, error) {
 
             alert("fail");
-                 
+
 }
     });
 
 
   }
-  
+
   </script>
 </div>
 </body>
