@@ -23,7 +23,9 @@ module.exports = function(server) {
   router.get('/login', function(req, res) {
     res.render('./login');
   });
-
+  router.get('/mobile/login', function(req, res) {
+    res.render('./login');
+  });
   router.get('/vendor', function(req, res) {
     res.render('./vendor');
   });
