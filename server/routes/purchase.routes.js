@@ -8,4 +8,13 @@ module.exports = function(route,app){
     route.get('/request_purchase/:id',function(req,res){
          purchaseController.requestPurchaseOrder(req,res,purchaseOrderInfo);
     });
+    router.get('/purchase-history', function(req, res) {
+        res.render('./purchase-history');
+      });
+      router.get('/purchase-request', function(req, res) {
+        res.render('./purchase-request');
+      });
+      router.get('/preview', function(req, res) {
+        res.render('./preview');
+      });
 }
