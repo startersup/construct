@@ -251,21 +251,7 @@
                                 </tr>
 
                             </tbody>
-                            <tfoot> 
 
-                                    <th colspan="4" ></th>
-                                    <th>Grand Total</th>
-                                    
-                                    <th>
-                                        <input type="text" class="controls" value ="0" disabled id="nettotal" >
-                                        
-                                    </th>
-                                    <th></th>
-                                    <th> <input type="text" class="controls" value="0" disabled id="gsttotal" > </th>
-                                    <th  ><input type="text" class="controls" value="0" disabled id="grandtotal" ></th>
-                                    <th></th>
-
-                            </tfoot>
 
                         </table>
 <div class="purchasingleft">
@@ -291,28 +277,48 @@
 
                             </table>
                           </div>
-                          <div class="purchasingleft">
-                              <table class="purchasingtable" style="display:none" id="IgstTable">
+                          <div class="row">
+                            <div class="col-md-6">               <div class="purchasingleft">
+                                <table class="purchasingtable" style="display:none" id="IgstTable">
+                                    <tr>
+                                      <th>Taxable Value</th>
+                                    <th>IGST %</th>
+                                    <th>Amount</th>
+                                    <th>Net %</th>
+                                    <th>Amount</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+
+                                </table>
+                            </div></div>
+                            <div class="col-md-6">
+                          <div class="purchaseright">
+                              <table class="purchasingtable" style="display:block">
                                   <tr>
-                                    <th>Taxable Value</th>
-                                  <th>IGST %</th>
-                                  <th>Amount</th>
-                                  <th>Net %</th>
-                                  <th>Amount</th>
-                                  </tr>
+                                      <th>Net Total</th>
+                                    <th>GST Total</th>
+                                    <th>Grand Total</th>
+                                    </tr>
                                   <tr>
-                                      <td>0</td>
-                                      <td>0</td>
-                                      <td>0</td>
-                                      <td>0</td>
-                                      <td>0</td>
+                                      <td>
+                                          <input type="text" class="editcontrol" value ="0" disabled id="nettotal" >
+                                      </td>
+                                      <td> <input type="text" class="editcontrol" value="0" disabled id="gsttotal" > </td>
+                                      <td><input type="text" class="editcontrol" value="0" disabled id="grandtotal" ></th>
                                   </tr>
 
                               </table>
                           </div>
-
                         </div>
 
+                        </div>
+                      </div>
                     <div class="col-md-2 addcontrol">
 
                         <label>Add Items</label>
@@ -323,7 +329,8 @@
                         <input type="text" onkeyup="MaskedDecimal(this,'8','2');"  name="rate" class="controls" id="rate"
                             placeholder="Enter Net Rate"><br />
                         <input type="text" placeholder="Enter the Quantity" onkeyup="MaskedNumber(this,'8');" name="quantity"  class="controls" id="quantity" >
-                      
+
+
                           <input  type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="cgst" placeholder="Enter GST Percentage">
                         <input type="hidden" value="0" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  id="sgst" placeholder="Enter SGST Percentage">
                         <input type="text" name="price" onkeyup="MaskedDecimal(this,'2','2');" class="controls"  style="" id="igst" placeholder="Enter IGST Percentage">
@@ -515,7 +522,7 @@ var arrtaxableValue=[];
                   document.getElementById("GstTable").style.display='none';
                   document.getElementById("igst").type='hidden';
                   document.getElementById("cgst").type='hidden';
-                 
+
 
 
                 }else{
