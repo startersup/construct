@@ -60,9 +60,7 @@
     var obj = {};
     obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;
-    alert(obj);
     var postdata = JSON.stringify(obj);
-    alert(postdata);
     $.ajax({
         url: apiurl,
         data: postdata,
@@ -72,7 +70,7 @@
         type: 'POST',
         success: function (dataofconfirm) {
             // do something with the result
-            alert(dataofconfirm);
+            location.reload(true);
         },
         error: function(xhr, status, error) {
 

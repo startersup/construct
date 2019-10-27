@@ -14,7 +14,7 @@ module.exports = function(server) {
   const requestRoutes = require('../routes/requests.routes')(router,server);
   const inventoryRoutes = require('../routes/requests.routes')(router,server);
   router.get('/', function(req, res) {
-    res.render('./login');
+    res.render('./index');
   });
   router.get('/mytest', function(req, res) {
     res.render('./mytest');
