@@ -5,13 +5,14 @@
 
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
-var express = require("express");
-var app = module.exports = loopback();
-var bodyParser = require('body-parser');
-var path = require('path');
-
+const loopback = require('loopback');
+const boot = require('loopback-boot');
+const express = require("express");
+const app = module.exports = loopback();
+const bodyParser = require('body-parser');
+const path = require('path');
+const userAuth = require('./middleware/user-auth');
+const cookieParser = require('cookie-parser');
 app.middleware('initial', bodyParser.urlencoded({ extended: true }));
 
 // Bootstrap the application, configure models, datasources and middleware.
@@ -28,7 +29,7 @@ boot(app, __dirname, function(err) {
 app.set('view engine', 'ejs'); 
 app.set('json spaces', 2); // format json responses for easier viewing
 
-var cookieParser = require('cookie-parser');
+
 app.use(cookieParser('12345'));
 app.set('views', path.resolve(__dirname, 'views'));
 app.use('/assets',express.static(path.resolve(__dirname, 'assets')))
@@ -40,7 +41,7 @@ app.use(loopback.token({
   headers: ['access_token', 'X-Access-Token'],
   params: ['access_token']
 }));
-
+app.use(/\/((?!login|assets|explorer|api).)*/, userAuth);
 app.start = function() {
   // start the web server
   return app.listen(function() {

@@ -3,13 +3,12 @@ module.exports= async function(app){
    User.afterRemote('login', function(context, accessToken, next) {
         let res = context.res;
         let req = context.req;
-        console.log(req.signedCookies);
         if (accessToken != null) {
           if (accessToken.id != null) {
-            res.cookie('access_token', accessToken.id, {
+            res.cookie('access_token', accessToken.id.toString(), {
               signed: req.signedCookies ? true : false,
               maxAge: 1000 * accessToken.ttl,
-              secret: '1235'
+              secret: '12345'
             });
             res.cookie('userId', accessToken.userId.toString(), {
               signed:  false,
