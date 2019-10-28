@@ -10,10 +10,12 @@ module.exports = function(Model, options) {
         let date = new Date();
         if (ctx.instance) {
             if (ctx.isNewInstance) {
-                ctx.instance.created_by   = ctx.instance.created_by || userId;
+                ctx.instance.created_by   =  userId;
                 ctx.instance.created_date   = date;
+                ctx.instance.updated_by   =  userId;
+                ctx.instance.updated_date   = date;
             }else{
-                ctx.instance.updated_by   = ctx.instance.updated_by || userId;
+                ctx.instance.updated_by   =  userId;
                 ctx.instance.updated_date   = date;
             }
         }
