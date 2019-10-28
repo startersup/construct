@@ -32,7 +32,8 @@ app.set('json spaces', 2); // format json responses for easier viewing
 
 app.use(cookieParser('12345'));
 app.set('views', path.resolve(__dirname, 'views'));
-app.use('/assets',express.static(path.resolve(__dirname, 'assets')))
+app.use('/assets',express.static(path.resolve(__dirname, 'assets')));
+app.use('/js',express.static(path.resolve(__dirname, '../client')))
 app.use(loopback.token({  
   model: app.models.accessToken,
   currentUserLiteral: 'me',
