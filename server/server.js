@@ -43,6 +43,7 @@ app.use(loopback.token({
   params: ['access_token']
 }));
 app.use(/\/((?!login|assets|explorer|api).)*/, userAuth);
+//|mobile\/login
 app.start = function() {
   // start the web server
   return app.listen(function() {
