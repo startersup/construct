@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body class="loginbody">
+    <%- include('mycustomjs.ejs') %>
 <div class="row">
 <div class="col-md-5 nopad hidden-xs">
 <div class="gray">
@@ -29,7 +30,7 @@
 
               <div class="tab-content">
                     <div id="login" class="tab-pane fade in active">
-                <form>
+
                         <h3>Login to your Account</h3>
                         <input id="UserName" class="controls" type="text"  required placeholder="Enter Email Address">
                         <input id="Password" class="controls" type="password" required placeholder="Enter Password">
@@ -38,7 +39,7 @@
                         <div class="left">
                             <a data-toggle="pill" href="#forgot"><p>forgot password?</p></a>
                         </div>
-                </form>
+
                 </div>
             <div id="forgot" class="tab-pane fade">
                     <h3>Forgot your Password?</h3>
@@ -56,7 +57,8 @@
   function func_login()
   {
 
-    var apiurl="http://localhost:3000/users/login";
+    var apiurl=LocationUrl+"api/users/login";
+    alert(apiurl);
     var obj = {};
     obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;

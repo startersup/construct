@@ -27,11 +27,19 @@ body
     background-color:#f1f4f2 !important;
 }
 
-
+@media screen and (min-width: 768px){
 .navbar-default {
   background-color: #ffffff !important;
   border-color: #e7e7e7;
   height:60px;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #555;
+  background-color: transparent;
+}
+.navbar-nav>li a
+{
+  margin:5px 10px;
 }
   .logo
   {
