@@ -41,7 +41,6 @@ module.exports= async function(app){
       if (err) throw err;
       console.log("----->>>Priority Definition Populated");
   });
-<<<<<<< HEAD
   var priorityDef = app.models.PriorityDefinition;
   var priority = [{name:"High",color:1},{name:"Low",color:1},{name:"Normal",color:1},{name:"Immediate",color:0}]
   await priorityDef.create(priority,function(err,priority){
@@ -56,16 +55,5 @@ module.exports= async function(app){
     });
     dbWork.populated=true;
     fs.writeFileSync(path.join(__dirname, '/../db-work.json'), JSON.stringify(dbWork));
-}
-=======
-      var Inventory = app.models.Inventory;
-      var InventoryData = require("../data-dictionary/product-dictionary.json");
-      await Inventory.create(InventoryData,function(err,data){
-          if (err) throw err;
-          console.log("----->>>Inventory Products Populated");
-      });
-      dbWork.populated=true;
-      fs.writeFileSync(path.join(__dirname, '/../db-work.json'), JSON.stringify(dbWork));
   }
 }
->>>>>>> 8c7e81c32d66b9daf8010e460ad8cad2e25cc5b6
