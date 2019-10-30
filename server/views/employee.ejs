@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="./assets/js/fonticon.js"></script>
     <script src="./assets/js/ref.js"></script>
+    <script src="./js/custom.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
@@ -52,7 +53,7 @@
         </div>
     </nav>
     <%- include('mysidebar.ejs') %>
-    <%- include('mycustomjs.ejs') %>
+    <%- include('mymodal.ejs') %>
     <div class="employeediv">
         <div class="container2">
             <div id="preloader">
@@ -72,6 +73,7 @@
                             <input class="controls" type="number" id="phone" placeholder="Enter Contact Number">
 
                             <select id="role" class="selectit controls" name="pass">
+                                    <option value="">--Select--</option>
                                 <option value="superadmin">Superadmin Level</option>
                                 <option value="admin">Admin Level</option>
                                 <option value="">Employee Authorization Level</option>
@@ -86,7 +88,7 @@
 
                         </form>
 
-                        <button class="buttonadd full" onclick="mysubmit();" >Add Employeee</button>
+                        <button class="buttonadd full" id="Add_Employee" onclick="func_btnClick(this);" >Add Employeee</button>
 
 
                     </div>
@@ -127,9 +129,6 @@
     }
 </script>
 
-
-
-<%- include('modal.ejs') %>
 
 
 

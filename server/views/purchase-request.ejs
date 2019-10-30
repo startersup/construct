@@ -14,14 +14,16 @@
     <script src="./assets/js/fonticon.js"></script>
     <script src="./assets/js/todo.js"></script>
 
-    <script src="./js/custom.js"></script>
-    
+    <!-- <script src="./js/custom.js"></script> -->
+        
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body onload="func_onload();">
-    <%- include('mycustomjs.ejs') %>
+<body onload="func_onload1();">
+        <%- include('mymodal.ejs') %>
+        <%- include('mycustomjs.ejs') %>
    
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -92,7 +94,7 @@
                         <td>Raised by</td>
                         <td>Vendor</td>
                         <td>Contact Number</td>
-                        <td>Purchase Value</td>
+                        <!-- <td>Purchase Value</td> -->
                         <td>Due Date</td>
                         <td>Location</td>
                         <td>Status</td>
@@ -104,10 +106,10 @@
 
                 </tbody>
             </table>
-            <button onclick="func_123();">jhgjhgjhgjk</button>
+           
             <script>
 
-                function func_onload() {
+                function func_onload1() {
                     var myurl = LocationUrl + "api/purchase_order/";
 
                     $.ajax({
@@ -163,7 +165,7 @@
                             },
                             error: function (xhr, status, error) {
 
-                                alert("fail");
+                               
 
                             }
                         });
@@ -188,14 +190,41 @@
                         var td10 = document.createElement("td");
 
                         td1.innerHTML = '<input type="checkbox" class="checkthis" id="' + obj[i].id + '" onchange="" />';
-                        td2.innerHTML = obj[i].id;
-                        td3.innerHTML = obj[i].created_by;
+                        td2.innerHTML = obj[i].order_no;
+
+
+                        var userobj = "";
+
+                        var myurl = LocationUrl + 'api/users/' + obj[i].created_by;
+                        
+
+                        $.ajax({
+                            url: myurl,
+                            cache: false,
+                            processData: false,
+                            async: false,
+                            contentType: 'application/json',
+                            type: 'GET',
+                            success: function (dataofconfirm) {
+                                // do something with the result
+                                console.log(dataofconfirm);
+                                userobj = dataofconfirm ;
+
+                            },
+                            error: function (xhr, status, error) {
+
+                               
+
+                            }
+                        });
+
+                        td3.innerHTML = userobj.first_name;
 
                         td7.innerHTML = obj[i].date_recieved;
                         td8.innerHTML = obj[i].site;
 
                       
-                        console.log("vendorobj => " + vendorobj);
+                       
                         td4.innerHTML = vendorobj.name;
                         td5.innerHTML = vendorobj.phone;
                         
@@ -209,7 +238,7 @@
                     row.appendChild(td4);
                     row.appendChild(td5);
 
-                    row.appendChild(td6);
+                    // row.appendChild(td6);
                     row.appendChild(td7);
                     row.appendChild(td8);
 
@@ -228,6 +257,7 @@
 
                     var modalobj="";
                //     http://localhost:3000/api/purchase_order/54004/products
+               //{"where":{"order_id":"strid"},"include":["products"]}
                var filter='{"where":{"order_id":"'+strid+'"},"include":["products"]}';
                     var myurl = LocationUrl + 'api/purchase_items?filter=' + filter ;
                        
@@ -250,8 +280,23 @@
 
                             }
                         });
-                    var table = document.getElementById("tickettable");
 
+
+                    var table = document.getElementById("tickettable");
+                    table.innerHTML = ' <tbody>                                                                  '
++'                            <tr class="header">                          '
++'                                <th>S.No</th>                            '
++'                                <th style="width:20%;">Item Name</th>    '
++'                                <th>Rate</th>                            '
++'                                <th>Quantity</th>                        '
++'                                <th>Net Amount</th>                      '
++'                                <th>GST </th>                            '
++'                                <th>GST Amount</th>                      '
++'                                <th>Total Amount</th>                    '
++'                                                                         '
++'                            </tr>                                        '
++'                                                                         '
++'                        </tbody>                                         ';
                     var objlen =modalobj.length;
 
                     for(var i = 0;i<objlen;i++){

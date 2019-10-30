@@ -1,0 +1,40 @@
+{
+
+    "ini":
+    {
+        "OrderNo" : 6
+    },
+    "vendor":
+    {
+        "api": "api/vendors",
+        "arr_req": ["name", "phone", "state", "location","gstNumber"],
+        "arr_form": ["name", "email", "phone", "state", "location","gstNumber"]
+    },
+    "vendor1":
+    {
+        "api": "",
+        "arr_req": ["", "", "", ""],
+        "arr_form": ["", "", "", "", ""]
+    },
+    "employee":
+    {
+        "api": "api/users",
+        "arr_req": ["first_name", "last_name", "phone", "role","salary","address"],
+        "arr_form": ["first_name", "last_name", "email", "phone", "role","salary","address","password"]
+    },
+    "purchase":
+    {
+        "api": "api/purchase_order",
+        "arr_req": [],
+        "arr_form": ["order_no","comments","site","status","vendor","purchase_items"]
+    },
+    "purchaseadd":
+    {
+        "api": "api/purchase_order",
+        "arr_req": ["rate", "quantity", "item"],
+        "arr_form": []
+    }
+    
+    
+    
+}
