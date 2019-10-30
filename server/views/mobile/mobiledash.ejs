@@ -39,7 +39,7 @@
              <div class="row positionfixed"><div class="col-xs-12 col-md-12"><input type="text"  class="controls"  placeholder="Search for Purchase order..." required></div></div>
                 <div class="purchaselist row">
                     <div class="col-md-3">
-               <div class="purchasecard" data-toggle="modal" data-target="#modal-fullscreen">
+               <div class="purchasecard" data-toggle="modal" data-target="#modal-purchase">
                    <div class="topbar">
                <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
                    <div class="orderdesc">
@@ -96,10 +96,55 @@
             </div>
             </div>
             </div>
+ <!-- Modal Fullscreen -->
+ <div class="modal fade modal-fullscreen" id="modalsupport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Support Options</h4>
+      </div>
+      <div class="modal-body option-tab">
+ <div class="row">
+<div class="col-md-4 col-sm-6 col-xs-6">
+<div class="supportcard ">
+ <center> <img src="../../assets/mobile/images/request.png"></img></center>
+<p>Purchase Request</p>
+</div>
+</div>
+<div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="supportcard ">
+        <center> <img src="../../assets/mobile/images/complaint.png"></img></center>
+       <p>Raise Complaint</p>
+       </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="supportcard ">
+        <center> <img src="../../assets/mobile/images/status.png"></img></center>
+    <p>Request Status</p>
+    </div>
+    </div>
+ </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<div class="footer hidden-lg">
+ <ul class="inline-icons">
+      <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
+     <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
+      <li><a href="#"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
+     <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
+    </ul>
+</div>
+    </div>
+
+    <!--modal-support ends-->
 
             <!-- Modal Fullscreen -->
-<div class="modal fade modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade modal-fullscreen" id="modal-purchase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -161,10 +206,15 @@
  <ul class="inline-icons">
       <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
      <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
-      <li><a href="#"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
+      <li><a data-toggle="modal" data-target="#modalsupport"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
      <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
     </ul>
 </div>
     </div>
+
+
+
+
+
     </body>
 </html>
