@@ -729,6 +729,7 @@ padding:2px 10px;
     color: rgba(0,0,0,.54);
     letter-spacing: 0.2px;
     line-height:20px;
+    line-height: 15px;
 }
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
@@ -736,7 +737,7 @@ padding:2px 10px;
 }
 .botnav
 {
-    margin-top:-10px;
+    margin-top:-5px;
     padding:0px 15px;
 }
 .botnav a:hover{

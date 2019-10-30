@@ -56,8 +56,11 @@
 
   function func_login()
   {
-
-    var apiurl="http://localhost:3000/api/users/login";
+    var HostName = window.location.host;
+  var Protocol = window.location.protocol;
+  var LocationUrl = "";
+  LocationUrl = Protocol + "//" + HostName + "/";
+    var apiurl=LocationUrl+"api/users/login";
     var obj = {};
     obj["email"] = document.getElementById("UserName").value;
     obj["password"] =  document.getElementById("Password").value;
