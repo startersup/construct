@@ -298,7 +298,9 @@
 +'                                                                         '
 +'                        </tbody>                                         ';
                     var objlen =modalobj.length;
-
+                    var nettotal=0;
+                    var gsttotal=0;
+                    var grandtotal=0;
                     for(var i = 0;i<objlen;i++){
                         
                         var rowcount = document.getElementById("tickettable").rows.length;
@@ -322,8 +324,12 @@
                     td3.innerHTML = modalobj[i].unit_price;
                     td4.innerHTML = modalobj[i].quantity;
                     td5.innerHTML =  parseFloat(modalobj[i].unit_price) *  parseFloat(modalobj[i].quantity);
+                    nettotal = nettotal + parseFloat(modalobj[i].unit_price) *  parseFloat(modalobj[i].quantity);
                     td6.innerHTML = modalobj[i].gst;
                     td7.innerHTML = modalobj[i].cgst;
+                    gsttotal =gsttotal + parseFloat(modalobj[i].cgst);
+                    grandtotal=grandtotal + parseFloat(modalobj[i].total);
+
                     td8.innerHTML = modalobj[i].total;
 
                     row.appendChild(td1);
@@ -338,6 +344,9 @@
 
                     table.children[0].appendChild(row);
                     }
+                    document.getElementById("nettotal").value=nettotal;
+                    document.getElementById("gsttotal").value=gsttotal;
+                    document.getElementById("grandtotal").value=grandtotal;
 
 
                 }
@@ -474,29 +483,23 @@
 
                     </table>
                     <div class="purchaseright">
-                        <table class="purchasingtable">
-                            <tr>
-                                <td class="first">
-                                    <p>Net Total </p>
-                                </td>
-                                <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
-                                        id="nettotal" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td class="first">
-                                    <p>GST Total </p>
-                                </td>
-                                <td><input type="number" name="price" class="editedcontrol" disabled value="0"
-                                        id="gsttotal" placeholder=""></td>
-                            </tr>
-                            <tr>
-                                <td class="first">
-                                    <p>Grand Total </p>
-                                </td>
-                                <td> <input type="number" name="price" class="editedcontrol" disabled value="0"
-                                        id="grandtotal" placeholder=""></td>
-                            </tr>
-                        </table>
+                            <table class="purchasingtable" style="display:block">
+                                    <tr>
+                                        <th>Net Total</th>
+                                        <th>GST Total</th>
+                                        <th>Grand Total</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="editcontrol" value="0" disabled id="nettotal">
+                                        </td>
+                                        <td> <input type="text" class="editcontrol" value="0" disabled
+                                                id="gsttotal"> </td>
+                                        <td><input type="text" class="editcontrol" value="0" disabled
+                                                id="grandtotal"></th>
+                                    </tr>
+
+                                </table>
 
                     </div>
                 </div>

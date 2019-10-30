@@ -16,8 +16,8 @@
   <script src="./js/custom.js"></script>
 </head>
 
-<body>
-  
+<body onload="MobileDashLoad();" >
+    <%- include('mycustomjs.ejs') %>
   <div class="visibility">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -45,23 +45,10 @@
           <div class="col-xs-12 col-md-12"><input type="text" class="controls"
               placeholder="Search for Purchase order..." required></div>
         </div>
-        <div class="purchaselist row">
+        <div class="purchaselist row" id="Purchse_Row">
 
 
-          <div class="col-md-3">
-            <div class="purchasecard" data-toggle="modal" data-target="#modal-fullscreen">
-              <div class="topbar">
-                <p class="orderid">#2342561</p>
-                <p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p>
-              </div>
-              <div class="orderdesc">
-                <p><span>Vendor: </span>Vishnu priya Traders</p>
-                <p><span>Site Location: </span> Vandaloor</p>
-                <p><span>Purchase Value: </span> ₹400000</p>
-
-              </div>
-            </div>
-          </div>
+          
 
 
         </div>
@@ -86,34 +73,8 @@
               <tr class="header">
                 <th style="width:10%;">S.No</th>
                 <th style="width:60%;">Item Name</th>
-                <th style="width:30%;">Quantity</th>
-
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>12 inch pipe</td>
-                <td>20</td>
-              </tr>
-              <td>2</td>
-              <td>12 inch pipe</td>
-              <td>20</td>
-              </tr>
-              <td>3</td>
-              <td>12 inch pipe</td>
-              <td>20</td>
-              </tr>
-              <td>4</td>
-              <td>12 inch pipe</td>
-              <td>20</td>
-              </tr>
-              <td>5</td>
-              <td>12 inch pipe</td>
-              <td>20</td>
-              </tr>
-              <td>6</td>
-              <td>12 inch pipe</td>
-              <td>20</td>
-              </tr>
+                <th style="width:30%;">Quantity</th>    
+              
             </tbody>
 
           </table>
@@ -165,9 +126,76 @@
 
     }
 
+    function setmodal(strid) {
+
+var modalobj="";
+//     http://localhost:3000/api/purchase_order/54004/products
+//{"where":{"order_id":"strid"},"include":["products"]}
+var filter='{"where":{"order_id":"'+strid+'"},"include":["products"]}';
+var myurl = LocationUrl + 'api/purchase_items?filter=' + filter ;
+   
+    $.ajax({
+        url: myurl,
+        cache: false,
+        processData: false,
+        async: false,
+        contentType: 'application/json',
+        type: 'GET',
+        success: function (dataofconfirm) {
+            // do something with the result
+            console.log(dataofconfirm);
+            modalobj = dataofconfirm ;
+
+        },
+        error: function (xhr, status, error) {
+
+            alert("fail");
+
+        }
+    });
+
+
+var table = document.getElementById("tickettable");
+table.innerHTML = '<tbody>'
++'              <tr class="header">                                   '
++'                <th style="width:10%;">S.No</th>                    '
++'                <th style="width:60%;">Item Name</th>               '
++'                <th style="width:30%;">Quantity</th>                '
++'                                                                    '
++'            </tbody>                                                ';
+var objlen =modalobj.length;
+
+for(var i = 0;i<objlen;i++){
+    
+    var rowcount = document.getElementById("tickettable").rows.length;
+   
+
+var row = document.createElement("tr");
+row.id = rowcount;
+
+var td1 = document.createElement("td");
+var td2 = document.createElement("td");
+var td3 = document.createElement("td");
+
+
+
+td1.innerHTML = rowcount ;
+td2.innerHTML = modalobj[i].products.name;
+td3.innerHTML = modalobj[i].quantity;
+
+
+row.appendChild(td1);
+row.appendChild(td2);
+row.appendChild(td3);
+
+}
+
+
+}
+
     function setpurchase(obj) {
       console.log(obj);
-      var table = document.getElementById("myTable");
+      
       var len = obj.length;
       for (var i = 0; i < len; i++) {
         var vendorobj = "";
@@ -197,53 +225,27 @@
 
 
 
-
-        var row = document.createElement("tr");
-        var vendor = '';
-        var vendor_phone = '';
-        row.id = obj[i].id;
-
-        var td1 = document.createElement("td");
-        var td2 = document.createElement("td");
-        var td3 = document.createElement("td");
-        var td4 = document.createElement("td");
-        var td5 = document.createElement("td");
-        var td6 = document.createElement("td");
-        var td7 = document.createElement("td");
-        var td8 = document.createElement("td");
-        var td9 = document.createElement("td");
-        var td10 = document.createElement("td");
-
-        td1.innerHTML = '<input type="checkbox" class="checkthis" id="' + obj[i].id + '" onchange="" />';
-        td2.innerHTML = obj[i].id;
-        td3.innerHTML = obj[i].created_by;
-
-        td7.innerHTML = obj[i].date_recieved;
-        td8.innerHTML = obj[i].site;
+       
 
 
-        console.log("vendorobj => " + vendorobj);
-        td4.innerHTML = vendorobj.name;
-        td5.innerHTML = vendorobj.phone;
+        var mydiv = '<div class="col-md-3">                                                                          '
++'            <div class="purchasecard" onclick= "setmodal(\''+obj[i].id+'\')" data-toggle="modal" data-target="#modal-fullscreen">      '
++'              <div class="topbar">                                                              '
++'                <p class="orderid">#'+obj[i].order_no+'</p>                                                 '
++'              <!--  <p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p>        -->           '
++'              </div>                                                                            '
++'              <div class="orderdesc">                                                           '
++'                <p><span>Vendor: </span>'+vendorobj.name+'</p>                                '
++'                <p><span>Site Location: </span> '+ obj[i].site+'</p>                                   '
++'               											                                      '
++'                                                                                                '
++'              </div>                                                                            '
++'            </div>                                                                              '
++'          </div>                                                                                '
 
 
-        td9.innerHTML = '<span class="openedstatus">Requested</span>';
-        td10.innerHTML = '<button onclick= "setmodal(\'' + obj[i].id + '\')" class="buttonnew" data-toggle="modal" data-target="#modal-request" id="' + obj[i].id + ' " > View</button> ';
+document.getElementById("Purchse_Row").innerHTML =  document.getElementById("Purchse_Row").innerHTML + mydiv; 
 
-        row.appendChild(td1);
-        row.appendChild(td2);
-        row.appendChild(td3);
-        row.appendChild(td4);
-        row.appendChild(td5);
-
-        row.appendChild(td6);
-        row.appendChild(td7);
-        row.appendChild(td8);
-
-        row.appendChild(td9);
-        row.appendChild(td10);
-
-        table.children[0].appendChild(row);
 
       }
 
