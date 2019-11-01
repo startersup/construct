@@ -14,7 +14,4 @@ module.exports = function(router,app){
       router.get('/purchase-request', function(req, res) {
         res.render('./purchase-request');
       });
-      router.get('/preview', function(req, res) {
-        res.render('./preview');
-      });
 }
