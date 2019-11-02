@@ -90,16 +90,43 @@
       </div>
     </div>
   </div>
-
-
-  <div class="footer hidden-lg">
-    <ul class="inline-icons">
-      <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
-      <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
-      <li><a href="#"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
-      <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
-    </ul>
+ <!-- Modal Fullscreen -->
+ <div class="modal fade modal-fullscreen" id="modalsupport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Support Options</h4>
+      </div>
+      <div class="modal-body option-tab">
+ <div class="row">
+<div class="col-md-4 col-sm-6 col-xs-6">
+  <a href="/mobile/irequest">
+<div class="supportcard ">
+ <center> <img src="../../assets/mobile/images/request.png"></img></center>
+<p>Purchase Request</p>
+</div>
+</a>
+</div>
+<div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="supportcard ">
+        <center> <img src="../../assets/mobile/images/complaint.png"></img></center>
+       <p>Raise Complaint</p>
+       </div>
   </div>
+  <div class="col-md-4 col-sm-6 col-xs-6">
+    <div class="supportcard ">
+        <center> <img src="../../assets/mobile/images/status.png"></img></center>
+    <p>Request Status</p>
+    </div>
+    </div>
+ </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--modal-support ends-->
+    <%- include('footer.ejs') %>
   </div>
   <script>
 

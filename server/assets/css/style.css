@@ -1341,6 +1341,12 @@ padding-top:30px;
     max-width:900px !important;
     width:100%;
 }
+.modal-footer {
+    padding: 0px;
+    text-align: center;
+    background-color:#1a1a1f;
+    border-top: 1px solid #e5e5e5;
+}
 .purchase-fixed-bottom
 {
   position: fixed;
