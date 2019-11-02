@@ -25,7 +25,7 @@
     "purchase":
     {
         "api": "api/purchase_order",
-        "arr_req": [],
+        "arr_req": ["site","vendor","purchase_items"],
         "arr_form": ["order_no","comments","site","status","vendor","purchase_items"]
     },
     "purchaseadd":
@@ -61,6 +61,18 @@
 
                   },
         "JsonObject":[""]     
+    },
+    "ticket":
+    {
+        "api": "api/requests",
+        "arr_req": ["subject" ,"description" ,"site" ,"department","priority"],
+        "arr_form": ["subject" ,"description" ,"site" ,"department","priority"]
+    },
+    "login":
+    {
+        "api": "api/users/login",
+        "arr_req": ["UserName", "Password"],
+        "arr_form": ["UserName", "Password"]
     }
     
     

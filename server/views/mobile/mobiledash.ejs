@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
-  <script src="./js/custom.js"></script>
+  <script src="../js/custom.js"></script>
 </head>
 
 <body onload="MobileDashLoad();" >
@@ -45,6 +45,7 @@
           <div class="col-xs-12 col-md-12"><input type="text" class="controls"
               placeholder="Search for Purchase order..." required></div>
         </div>
+        
         <div class="purchaselist row" id="Purchse_Row">
 
 
@@ -55,7 +56,7 @@
       </div>
     </div>
   </div>
-
+  <input type="file" name="file" class="controls file" capture="camera">  
 
   <!-- Modal Fullscreen -->
   <div class="modal fade modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog"
@@ -182,6 +183,7 @@ var td3 = document.createElement("td");
 td1.innerHTML = rowcount ;
 td2.innerHTML = modalobj[i].products.name;
 td3.innerHTML = modalobj[i].quantity;
+
 
 
 row.appendChild(td1);

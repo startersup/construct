@@ -52,41 +52,7 @@
             </div>
   </div>
 
-  <script>
 
-  function func_login()
-  {
-    var HostName = window.location.host;
-  var Protocol = window.location.protocol;
-  var LocationUrl = "";
-  LocationUrl = Protocol + "//" + HostName + "/";
-    var apiurl=LocationUrl+"api/users/login";
-    var obj = {};
-    obj["email"] = document.getElementById("UserName").value;
-    obj["password"] =  document.getElementById("Password").value;
-    var postdata = JSON.stringify(obj);
-    $.ajax({
-        url: apiurl,
-        data: postdata,
-        cache: false,
-        processData: false,
-        contentType: 'application/json',
-        type: 'POST',
-        success: function (dataofconfirm) {
-            // do something with the result
-            location.reload(true);
-        },
-        error: function(xhr, status, error) {
-
-            alert("fail");
-
-}
-    });
-
-
-  }
-
-  </script>
 </div>
 </body>
 </html>

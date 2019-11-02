@@ -1,9 +1,4 @@
 
-var config;
-$.getJSON('./js/configure.json')
-    .done(function (data) {
-        config = data;
-    });
 
 var HostName = window.location.host;
 var Protocol = window.location.protocol;
@@ -17,6 +12,13 @@ var arrsgst = [];
 var arrgst = [];
 var arrgstamt = [];
 var arrtaxableValue = [];
+
+
+var config;
+$.getJSON(LocationUrl+'js/configure.json')
+    .done(function (data) {
+        config = data;
+    });
 
 function subUrl() {
     a = window.location.pathname;
@@ -430,7 +432,12 @@ function PurchaseTableToJson() {
 
 
     }
-    document.getElementById("purchase_items").value = JSON.stringify(tableobj);
+
+    if(tableobj.length != 0)
+    {
+        document.getElementById("purchase_items").value = JSON.stringify(tableobj);
+    }
+   
 }
 
 function func_validate(load) {
@@ -442,6 +449,12 @@ function func_validate(load) {
             if (document.getElementById(myid).value == '') {
                 document.getElementById(myid).style = 'border: 2px solid red;';
                 document.getElementById('alertid').innerHTML = 'Please Fill The Mandatory Feilds';
+                
+                if(document.getElementById(myid).type == 'hidden')
+                {
+                    document.getElementById('alertid').innerHTML = 'Please Insert Atleast One item';
+                }
+
                 ret = 0;
             }
             else {
