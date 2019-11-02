@@ -24,7 +24,7 @@
 
 body
 {
-    background-color:#f1f4f2 !important;
+    background-color:#E6EEFA !important;
 }
 .irequest
 {
@@ -59,11 +59,12 @@ body
       margin:10px 20px;
 
   }
-  .navbar-brand span
+  .mobile-nav-head, .navbar-brand span
   {
       font-weight:900;
       font-family: 'Nunito', sans-serif;
       letter-spacing: 0.8px;
+      color:#00c97d !important;
       font-size:17px;
   }
   .login
@@ -85,7 +86,7 @@ body
   padding: 12px 20px;
   min-height: 45px;
   color: #000000;
-margin:20px auto;
+margin:15px auto;
   border: 1px solid #DBDFE3;
   box-sizing: border-box;
       text-align: center;
@@ -142,11 +143,10 @@ margin:20px auto;
     background: #00c97d;
     color: #fff!important;
     border: 1px solid #00c97d;
-    padding: 12px 20px;
+    padding: 5px 10px;
     border-radius: 0px;
     line-height: 13px;
-    margin-left: -22px;
-    margin-top: 20px;
+    float: right !important;
     -webkit-font-smoothing: initial!important;
   }
     .purchasecard
@@ -161,12 +161,12 @@ font-family: 'Nunito', sans-serif;
   }
   .purchaselist
   {
-      margin-top:100px;
+      margin-top:70px;
   }
   .positionfixed
   {
       position: fixed;
-      background-color:#f4f4f4;
+      background-color:#e6eefa;
       max-width:500px;
       width:100%;
       z-index:100;
@@ -233,10 +233,25 @@ color:#ffffff;
 .supportcard {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  padding:10px;
+  padding:20px 10px !important;
+  font-size:16px;
+  font-weight:800;
+  margin-top:15px !important;
+  font-family: 'Nunito', sans-serif;
+  border-bottom:4px solid #69e781;
+  background-color:#ffffff;
   width: 100%;
 }
-.tickettable
+.supportcard p{
+  text-decoration: none !important;
+}
+.tickettable 
+{
+  max-width:700px;
+  width:100%;
+  margin:auto;
+}
+#irequesttable
 {
   max-width:700px;
   width:100%;
@@ -246,7 +261,7 @@ color:#ffffff;
 {
   border:1px solid #f4f4f4;
 }
-#tickettable td
+#tickettable td, #irequesttable td
 {
   padding:4px 10px;
   text-align: left;
@@ -258,19 +273,25 @@ color:#ffffff;
   font-weight:500;
 font-family: 'Nunito', sans-serif;
 }
-#tickettable th
+#tickettable th,  #irequesttable th
 {
-  background-color:#ebeef0 !important;
+  background-color:#09B0E7 !important;
   padding:6px 10px;
   text-align: left;
   letter-spacing:0.5px;
    color:#000;
+   margin-top:10px;
    line-height:14px;
   border:1px solid #f4f4f4;
   font-size:14px;
   font-weight:700;
 font-family: 'Nunito', sans-serif;
 }
+#irequesttable thead
+{
+  border:1px solid #09B0E7;
+}
+
 #tickettable
 {
    border-collapse: collapse;
@@ -306,7 +327,7 @@ font-family: 'Nunito', sans-serif;
 }
 
 
-}
+
 
 
 
@@ -329,6 +350,7 @@ font-family: 'Nunito', sans-serif;
 }
   .buttonfilter {
   padding: 8px 15px;
+  float: right;
 }
    .white
   {
@@ -693,11 +715,18 @@ padding-left: 0px !important;
     {
         margin:20px 0px;
     }
+    #modalsupport .modal-dialog
+    {
+      background-color:#e6eefa !important;
+    }
     .option-tab
     {
       padding: 20px 30px 20px 10px !important;
-    }
 
+    }
+.option-tab a {
+text-decoration: none;
+}
     .supportcard {
     border:1px solid #f4f4f4;
     background-color:#f4f4f4;
@@ -729,7 +758,7 @@ font-weight:600;
     padding: 12px 20px;
     min-height: 45px;
     color: #000000;
-    margin:15px 0px;
+    margin:5px 0px;
     border: 1px solid #DBDFE3;
     box-sizing: border-box;
         text-align: center;
@@ -1006,6 +1035,7 @@ font-weight:600;
 .modal-body {
     position: relative;
     padding: 10px;
+    background-color:#e6eefa !important;
     min-height:90vh;
 }
   .modal-content {
@@ -1019,7 +1049,7 @@ font-weight:600;
 {
   padding-left: 0px !important;
 }
-}
+
 @media (max-width: 767px) {
   .modal-fullscreen-xs-down {
     @include modal-fullscreen();
