@@ -648,8 +648,8 @@ function func_post(apiUrl, apiJson) {
         type: 'POST',
         success: function (dataofconfirm) {
             // do something with the result
-            alert(dataofconfirm);
-            console.log("purchase : "+dataofconfirm);
+           // alert(dataofconfirm);
+            console.log("purchase : "+JSON.stringify(dataofconfirm));
             modal_success('suc');
 
 
@@ -687,6 +687,23 @@ function func_get(apiUrl, fnName, arg1) {
     });
 }
 
+function func_put(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    $.ajax({
+        url: apiUrl,
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'PATCH',
+        success: function (dataofconfirm) {
+            modal_success('suc');
+        },
+        error: function (xhr, status, error) {
+            modal_success('fail');
+        }
+    });
+}
 
 
 function func_onload() {
@@ -753,14 +770,19 @@ function LoadEmpoyeeTable(arg1,objJson)
 
         td1.innerHTML  =(i+1);
         td2.innerHTML  =objJson[i].first_name + ' '+objJson[i].last_name;
-        td2.contenteditable="true";
+        td2.contenteditable=true;
+        td2.setAttribute("contenteditable", "true");
         td3.innerHTML  =objJson[i].email ;
+        td3.setAttribute("contenteditable", "true");
         td4.innerHTML  =objJson[i].phone ;
+        td4.setAttribute("contenteditable", "true");
         td5.innerHTML  ='';
         td6.innerHTML  =objJson[i].salary;
+        td6.setAttribute("contenteditable", "true");
         td7.innerHTML  =objJson[i].address ;
+        td7.setAttribute("contenteditable", "true");
         td8.innerHTML  ='Active';
-        td9.innerHTML  ='<button onclick="" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
+        td9.innerHTML  ='<button onclick="EmployeeUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Update</button>';
 
         row.appendChild(td1);
         row.appendChild(td2);
@@ -777,6 +799,44 @@ function LoadEmpoyeeTable(arg1,objJson)
 
 }
 
+function EmployeeUpdate(EmpId)
+{
+    var myurl = LocationUrl+"api/users/"+EmpId;
+
+    var EmpObj={};
+   
+    var temp = document.getElementById(EmpId).cells[1].innerHTML;
+    var name= temp.split(' ');
+    
+    EmpObj["first_name"]=name[0];
+    EmpObj["last_name"]=name[1];
+    EmpObj["email"]=document.getElementById(EmpId).cells[2].innerHTML;
+    EmpObj["phone"]=document.getElementById(EmpId).cells[3].innerHTML;
+   // EmpObj["role"]=name[0];
+    EmpObj["salary"]=document.getElementById(EmpId).cells[5].innerHTML;
+    EmpObj["address"]=document.getElementById(EmpId).cells[6].innerHTML;
+    func_put(myurl,EmpObj);
+
+}
+
+function VendorUpdate(VendorId)
+{
+
+var myurl = LocationUrl+"api/vendors/"+VendorId;
+
+    var vendorObj={};
+
+    vendorObj["name"]=document.getElementById(VendorId).cells[1].innerHTML;
+   
+    vendorObj["email"]=document.getElementById(VendorId).cells[2].innerHTML;
+    vendorObj["phone"]=document.getElementById(VendorId).cells[3].innerHTML;
+    vendorObj["gstNumber"]=document.getElementById(VendorId).cells[4].innerHTML;
+    vendorObj["state"]=document.getElementById(VendorId).cells[5].innerHTML;
+    vendorObj["location"]=document.getElementById(VendorId).cells[6].innerHTML;
+  
+    func_put(myurl,vendorObj);
+
+}
 
 function LoadVendorTable(arg1,objJson)
 {
@@ -806,11 +866,17 @@ function LoadVendorTable(arg1,objJson)
         row.id = objJson[i].id;
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
+        td2.setAttribute("contenteditable", "true");
         var td3 = document.createElement("td");
+        td3.setAttribute("contenteditable", "true");
         var td4 = document.createElement("td");
+        td4.setAttribute("contenteditable", "true");
         var td5 = document.createElement("td");
+        td5.setAttribute("contenteditable", "true");
         var td6 = document.createElement("td");
+        td6.setAttribute("contenteditable", "true");
         var td7 = document.createElement("td");
+        td7.setAttribute("contenteditable", "true");
         var td8 = document.createElement("td");
         var td9 = document.createElement("td");
       
@@ -822,7 +888,7 @@ function LoadVendorTable(arg1,objJson)
         td6.innerHTML  =objJson[i].state;
         td7.innerHTML  =objJson[i].location ;
         td8.innerHTML  ='Active';
-        td9.innerHTML  ='<button onclick="" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
+        td9.innerHTML  ='<button onclick="VendorUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Update</button>';
 
         row.appendChild(td1);
         row.appendChild(td2);
