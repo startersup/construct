@@ -648,7 +648,8 @@ function func_post(apiUrl, apiJson) {
         type: 'POST',
         success: function (dataofconfirm) {
             // do something with the result
-
+            alert(dataofconfirm);
+            console.log("purchase : "+dataofconfirm);
             modal_success('suc');
 
 
@@ -740,7 +741,7 @@ function LoadEmpoyeeTable(arg1,objJson)
     {
         row = document.createElement("tr");
         row.id = objJson[i].id;
-        var td1 = document.createElement("td");
+        var td1 = document.createElement("td");        
         var td2 = document.createElement("td");
         var td3 = document.createElement("td");
         var td4 = document.createElement("td");
@@ -752,6 +753,7 @@ function LoadEmpoyeeTable(arg1,objJson)
 
         td1.innerHTML  =(i+1);
         td2.innerHTML  =objJson[i].first_name + ' '+objJson[i].last_name;
+        td2.contenteditable="true";
         td3.innerHTML  =objJson[i].email ;
         td4.innerHTML  =objJson[i].phone ;
         td5.innerHTML  ='';
@@ -793,7 +795,7 @@ function LoadVendorTable(arg1,objJson)
 
     for(var i=0 ; i<ColumnSize ; i++ )
     {
-        var td = document.createElement("td");
+        var td = document.createElement("th");
         td.innerHTML =config[currPage].table[tableId].heading[i];
         row.appendChild(td);
     }

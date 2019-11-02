@@ -12,11 +12,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script rel="preload" src="./assets/js/fonticon.js" as="script"></script>
      <script src="./assets/js/ref.js"></script>
+     <script src="./js/custom.js"></script>
+     <script src="./js/admin.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body class="loginbody">
-    <%- include('mycustomjs.ejs') %>
+   
 <div class="row">
 <div class="col-md-5 nopad hidden-xs">
 <div class="gray">
@@ -32,6 +34,7 @@
                     <div id="login" class="tab-pane fade in active">
 
                         <h3>Login to your Account</h3>
+                        <div id="alertid" style="color: red;" ></div>
                         <input id="UserName" class="controls" type="text"  required placeholder="Enter Email Address">
                         <input id="Password" class="controls" type="password" required placeholder="Enter Password">
                         <button class="buttonfull" type="button" onclick="func_login();"> Login Now</button>
@@ -44,7 +47,7 @@
             <div id="forgot" class="tab-pane fade">
                     <h3>Forgot your Password?</h3>
                     <input class="controls" type="text"  required placeholder="Enter Email Address">
-                    <button class="buttonfull" onclick="func_login();"> Reset Password</button>
+                    <button class="buttonfull" onclick=""> Reset Password</button>
                     <div class="left">
                             <a data-toggle="pill" href="#login"><p>Back to login</p></a>
                         </div>
