@@ -888,7 +888,7 @@ function LoadVendorTable(arg1,objJson)
         td6.innerHTML  =objJson[i].state;
         td7.innerHTML  =objJson[i].location ;
         td8.innerHTML  ='Active';
-        td9.innerHTML  ='<button onclick="VendorUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
+        td9.innerHTML  ='<button onclick="VendorUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Update</button>';
 
         row.appendChild(td1);
         row.appendChild(td2);
