@@ -1,7 +1,7 @@
 
   function func_login()
   {
-    var load = subUrl();
+    var load = "login";
     var val = func_validate(load);
     if (val == 1) {
     var apiurl=LocationUrl+"api/users/login";
