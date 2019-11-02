@@ -68,28 +68,33 @@
             </div>
         </div>
     </nav>
-
+    <div class="bottombar">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav botnav">
+                    <li class="active"><a href="/employee-view">Employee Database</a></li>
+                    <li ><a href="/vendor-view">Vendor Database</a></li>
+                   
+                </ul>
+            </div>
+        </div>
 
     <%- include('mysidebar.ejs') %>
-
-
-    <div class="employeeviewdiv">
-        <div class="container1">
-            <div id="preloader">
-                <div id="preloaderdiv">&nbsp;</div>
+    <div class="phistorydiv">
+            <div class="container1">
+                <div id="preloader">
+                    <div id="preloaderdiv">&nbsp;</div>
+                </div>
+                <table class="employee-viewtable" id="EmployeeViewTable">
+                        <tbody>
+                           
+        
+        
+        
+        
+                        </tbody>
+                    </table>
             </div>
-
-            <table class="employee-viewtable" id="EmployeeViewTable">
-                <tbody>
-                   
-
-
-
-
-                </tbody>
-            </table>
         </div>
-    </div>
 </body>
 
 

@@ -9,6 +9,9 @@
       router.get('/vendor', function(req, res) {
         res.render('./vendor');
       });
+      router.get('/company', function(req, res) {
+        res.render('./company');
+      });
       router.get('/employee-view', function(req, res) {
         res.render('./employee-view');
       });
