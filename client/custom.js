@@ -695,7 +695,7 @@ function func_put(apiUrl, apiJson) {
         cache: false,
         processData: false,
         contentType: 'application/json',
-        type: 'PUT',
+        type: 'PATCH',
         success: function (dataofconfirm) {
             modal_success('suc');
         },
@@ -819,6 +819,25 @@ function EmployeeUpdate(EmpId)
 
 }
 
+function VendorUpdate(VendorId)
+{
+
+var myurl = LocationUrl+"api/vendors/"+VendorId;
+
+    var vendorObj={};
+
+    vendorObj["name"]=document.getElementById(VendorId).cells[1].innerHTML;
+   
+    vendorObj["email"]=document.getElementById(VendorId).cells[2].innerHTML;
+    vendorObj["phone"]=document.getElementById(VendorId).cells[3].innerHTML;
+    vendorObj["gstNumber"]=document.getElementById(VendorId).cells[4].innerHTML;
+    vendorObj["state"]=document.getElementById(VendorId).cells[5].innerHTML;
+    vendorObj["location"]=document.getElementById(VendorId).cells[6].innerHTML;
+  
+    func_put(myurl,vendorObj);
+
+}
+
 function LoadVendorTable(arg1,objJson)
 {
 
@@ -847,11 +866,17 @@ function LoadVendorTable(arg1,objJson)
         row.id = objJson[i].id;
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
+        td2.setAttribute("contenteditable", "true");
         var td3 = document.createElement("td");
+        td3.setAttribute("contenteditable", "true");
         var td4 = document.createElement("td");
+        td4.setAttribute("contenteditable", "true");
         var td5 = document.createElement("td");
+        td5.setAttribute("contenteditable", "true");
         var td6 = document.createElement("td");
+        td6.setAttribute("contenteditable", "true");
         var td7 = document.createElement("td");
+        td7.setAttribute("contenteditable", "true");
         var td8 = document.createElement("td");
         var td9 = document.createElement("td");
       
@@ -863,7 +888,7 @@ function LoadVendorTable(arg1,objJson)
         td6.innerHTML  =objJson[i].state;
         td7.innerHTML  =objJson[i].location ;
         td8.innerHTML  ='Active';
-        td9.innerHTML  ='<button onclick="" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
+        td9.innerHTML  ='<button onclick="VendorUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
 
         row.appendChild(td1);
         row.appendChild(td2);
