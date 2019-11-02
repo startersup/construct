@@ -42,7 +42,7 @@
                     "id" : ["EmployeeViewTable"],
                     "EmployeeViewTable" : {
                                             "cols" : 9,
-                                            "heading":["S.No","Name","MailId","ContactNumber","AuthorizationLevel","CTCBand","Address","Status","Action"],
+                                            "heading":["S.No","Name","Mail Id","Contact Number","Authorization Level","CTC Band","Address","Status","Action"],
                                             "attributes" : ["","","","","","","","",""]                    }
 
                   },

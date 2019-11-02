@@ -731,7 +731,7 @@ function LoadEmpoyeeTable(arg1,objJson)
 
     for(var i=0 ; i<ColumnSize ; i++ )
     {
-        var td = document.createElement("td");
+        var td = document.createElement("th");
         td.innerHTML =config[currPage].table[tableId].heading[i];
         row.appendChild(td);
     }
