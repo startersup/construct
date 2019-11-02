@@ -1155,9 +1155,31 @@ table {
     border-spacing: 0;
 }
 .tickettable {
-  margin-top:100px;
+  margin-top:10px;
     max-width: 1425px;
     width: 100% !important;
+}
+.employeeviewdiv
+{
+    margin-left:75px;
+    font-family: 'Nunito', sans-serif !important;
+background-color:#ebeef0;}
+.employee-viewtable
+{
+    margin-top:80px;
+    max-width:1450px;
+    width:100%;
+}
+.employee-viewtable th{
+    background-color:#09B0E7 !important;
+    color:#ffffff;
+    letter-spacing: 0.5px;
+}
+.employee-viewtable td{
+    border:1px solid #f4f4f4;
+    padding:5px 10px;
+    background-color:#ffffff !important;
+border:1px solid #f4f4f4;
 }
 .purchase-table tbody
 {
@@ -1188,7 +1210,6 @@ table {
 {
     float:right;
     max-width:350px;
-
     margin-left:50px;
 }
 .purchasingtable
@@ -1201,7 +1222,7 @@ padding:5px 10px;
 border:1px solid #f4f4f4;
 }
 .first{
-    background-color:#56606b;
+    background-color:#09B0E7;
     color:#ffffff;
     letter-spacing: 0.5px;
 
@@ -1252,9 +1273,9 @@ th {
     max-width:min-content;
     padding:10px;
     white-space: nowrap;
-    color: #183247;
+    color: #ffffff;
      font-family: 'Nunito', sans-serif;
-    background-color: #ebeef0 ;
+    background-color: #09B0E7 ;
 }
 
   .first
@@ -1315,14 +1336,18 @@ padding-top:30px;
   margin-top:120px;
   float:left;
 }
-
+.previewmodal .modal-dialog
+{
+    max-width:900px !important;
+    width:100%;
+}
 .purchase-fixed-bottom
 {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #000000;
+  background-color: transparent;
   color: white;
   text-align: center;
 }
@@ -1383,10 +1408,9 @@ padding-top:30px;
 
 
 
-<!---modal-right-->
 
 
-<!--modal-css-->
+/*-----modal---*/
 
 
 .modal.left .modal-dialog,
