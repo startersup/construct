@@ -9,4 +9,7 @@
       router.get('/vendor', function(req, res) {
         res.render('./vendor');
       });
+      router.get('/employee-view', function(req, res) {
+        res.render('./employee-view');
+      });
   }

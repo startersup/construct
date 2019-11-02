@@ -9,6 +9,7 @@ var HostName = window.location.host;
 var Protocol = window.location.protocol;
 var LocationUrl = "";
 LocationUrl = Protocol + "//" + HostName + "/";
+var currPage;
 
 var gstFlag = '';
 var arrcgst = [];
@@ -676,21 +677,88 @@ function func_get(apiUrl, fnName, arg1) {
 
 function func_onload() {
 
-
-    var temp;
-    if (subUrl() == 'purchase') {
+    currPage = subUrl();
+    
+    if (currPage == 'purchase') {
         func_get(LocationUrl + 'api/vendors', 'JsonToDropdown', 'vendor');
 
         //       JsonToDropdown('vendor', json)
         LoadPurchasePage();
-    } else if (subUrl() == 'purchase-request')
+    } else if (currPage == 'purchase-request')
     {
         var myurl = LocationUrl + "api/purchase_order/";
-        func_get(myurl, 'JsonToDropdown', 'vendor');
+        func_get(myurl, 'setpurchase', '');
+    } else if (currPage == 'employee-view')
+    {
+        var myurl = LocationUrl + config[currPage].getapi;
+        func_get(myurl, 'LoadEmpoyeeTable', '');
     }
     
 
 }
+
+function LoadEmpoyeeTable(arg1,objJson)
+{
+
+    var tableId = config[currPage].table.id[0];
+    var table = document.getElementById(tableId);
+    var loop = objJson.length;
+    var ColumnSize = config[currPage].table[tableId].cols;
+
+    var rowid = randomString(20);
+    //
+
+    var row = document.createElement("tr");
+    row.id = rowid;
+    row.class = "header";
+
+    for(var i=0 ; i<ColumnSize ; i++ )
+    {
+        var td = document.createElement("td");
+        td.innerHTML =config[currPage].table[tableId].heading[i];
+        row.appendChild(td);
+    }
+
+    for (var i=0; i<loop ; i++)
+    {
+        row = document.createElement("tr");
+        row.id = objJson[i].id;
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+        var td8 = document.createElement("td");
+        var td9 = document.createElement("td");
+
+        td1.innerHTML  =(i+1);
+        td2.innerHTML  =objJson[i].first_name + ' '+objJson[i].last_name;
+        td3.innerHTML  =objJson[i].email ;
+        td4.innerHTML  =objJson[i].phone ;
+        td5.innerHTML  ='';
+        td6.innerHTML  =objJson[i].salary;
+        td7.innerHTML  =objJson[i].address ;
+        td8.innerHTML  ='Active';
+        td9.innerHTML  ='<button onclick="" class="buttonnew" id="'+objJson[i].id+' "> Edit</button>';
+
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+        row.appendChild(td4);
+        row.appendChild(td5);
+        row.appendChild(td6);
+        row.appendChild(td7);
+        row.appendChild(td8);
+        row.appendChild(td9);
+        table.children[0].appendChild(row);
+
+    }
+
+}
+
+
 
 function JsonToDropdown(ElementId, json) {
     var x = document.getElementById(ElementId);

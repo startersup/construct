@@ -33,6 +33,20 @@
         "api": "api/purchase_order",
         "arr_req": ["rate", "quantity", "item"],
         "arr_form": []
+    },
+    "employee-view":
+    {
+        "api": "api/users",
+        "getapi":["api/users"],
+        "table" : {
+                    "id" : ["EmployeeViewTable"],
+                    "EmployeeViewTable" : {
+                                            "cols" : 9,
+                                            "heading":["S.No","Name","MailId","ContactNumber","AuthorizationLevel","CTCBand","Address","Status","Action"],
+                                            "attributes" : ["","","","","","","","",""]                    }
+
+                  },
+        "JsonObject":[""]     
     }
     
     
