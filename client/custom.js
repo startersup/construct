@@ -801,13 +801,13 @@ function LoadEmpoyeeTable(arg1,objJson)
 
 function EmployeeUpdate(EmpId)
 {
-    var myurl = LocationUrl+"api/users";
+    var myurl = LocationUrl+"api/users/"+EmpId;
 
     var EmpObj={};
    
     var temp = document.getElementById(EmpId).cells[1].innerHTML;
     var name= temp.split(' ');
-    EmpObj["id"]=EmpId;
+    
     EmpObj["first_name"]=name[0];
     EmpObj["last_name"]=name[1];
     EmpObj["email"]=document.getElementById(EmpId).cells[2].innerHTML;
