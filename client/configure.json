@@ -47,6 +47,20 @@
 
                   },
         "JsonObject":[""]     
+    },
+    "vendor-view":
+    {
+        "api": "api/vendors",
+        "getapi":["api/vendors"],
+        "table" : {
+                    "id" : ["VendorViewTable"],
+                    "VendorViewTable" : {
+                                            "cols" : 9,
+                                            "heading":["S.No","Name","MailId","Contact Number","Gst Number","State","Address","Status","Action"],
+                                            "attributes" : ["","","","","","","","",""]                    }
+
+                  },
+        "JsonObject":[""]     
     }
     
     
