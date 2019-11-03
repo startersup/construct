@@ -14,6 +14,10 @@
       "id": true,
       "defaultFn": "uuid"
     },
+    "request_no":{
+        "type": "Number",
+        "required": true
+    },
     "subject": {
       "type": "string",
       "required": true
