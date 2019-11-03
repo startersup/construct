@@ -647,10 +647,12 @@ function func_post(apiUrl, apiJson) {
         contentType: 'application/json',
         type: 'POST',
         success: function (dataofconfirm) {
-            // do something with the result
-           // alert(dataofconfirm);
-            console.log("purchase : "+JSON.stringify(dataofconfirm));
+          
             modal_success('suc');
+            if(subUrl() == 'purchase')
+            {
+                openmodalpreview(dataofconfirm.id);
+            }
         },
         error: function (xhr, status, error) {
 
@@ -658,6 +660,24 @@ function func_post(apiUrl, apiJson) {
 
         }
     });
+}
+
+function openmodalpreview(pid)
+{
+   
+       
+        
+        document.getElementById('iframe').src = LocationUrl +'request_purchase/'+pid+'?action=print_preview';
+        document.getElementById('sendmail').name=  LocationUrl +'request_purchase/'+pid+'?action=send_mail';
+        
+        document.getElementById("mailmodal").click();
+    
+    
+}
+function demoFromHTML()
+{
+   var x=  document.getElementById('sendmail').name;
+   window.open(x);
 }
 
 function Refresh() {
@@ -931,6 +951,8 @@ function LoadPurchasePage() {
     document.getElementById("order_no").value = ordid;
 
 }
+
+
   // function setparam_purchase(formid) {
   //   var obj = {};
   //   var strsplit = formid + "__";

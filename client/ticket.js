@@ -38,3 +38,48 @@ function DeleteFromIndent(rowid)
         document.getElementById(temp).cells[0].innerHTML = (i+1);
     }
 }
+
+function LoadTicketInfoPage() {
+
+ 
+    var ticketId = Math.floor(Math.random() * 10000001);
+    document.getElementById("TicketId").innerHTML='Ticket Information ( #'+ticketId+' )';
+    document.getElementById("request_no").value=ticketId;
+    document.getElementById("IndentAddTable").innerHTML='';
+    document.getElementById("site").value='';
+    document.getElementById("subject").value='';
+    document.getElementById("description").value='';
+ 
+}
+function Ticket_submit() {
+    var load= subUrl();
+    var val = func_validate(load);
+    if (val == 1) {
+        var apiJson = func_createJson(load);
+        var apiUrl = LocationUrl + config[load]["api"];
+        Ticket_Post(apiUrl, apiJson);
+    }
+}
+
+function Ticket_Post(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    $.ajax({
+        url: apiUrl,
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'POST',
+        success: function (dataofconfirm) {
+            // do something with the result
+           // alert(dataofconfirm);
+            console.log("purchase : "+JSON.stringify(dataofconfirm));
+            modal_success('suc');
+        },
+        error: function (xhr, status, error) {
+
+            modal_success('fail');
+
+        }
+    });
+}

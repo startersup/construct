@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
 </head>
 
-<body onload="func_onload();">
+<body onload="LoadTicketInfoPage();">
     <%- include('mymodal.ejs') %>
 
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand hidden-xs" href="#"><span>Ticket Information ( #234256 )</span> </a>
+                <a class="navbar-brand hidden-xs" href="#"><span id="TicketId"></span> </a>
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -72,7 +72,7 @@
   
     <%- include('mysidebar.ejs') %>
     <div class="ticketinfodiv">
-<div class="container1">
+<div class="container1"><div id="alertid" style="color: red;"></div>
 <div class="ticketinfoform">
         <p>Subject:</p>
         <input type="text" class="controls" id="subject" placeholder="Enter the Subject" />
@@ -83,7 +83,8 @@ autocomplete="off"></textarea>
 <div class="row">
 <div class="col-md-3">
     <p>Status:</p>
-        <select id="role" class="selectit controls" id = "status" name="status">
+        <select  class="selectit controls" id="status" name="status">
+                <option value="">--Select--</option>
            <option value="Open">Open</option>
            <option value="Pending">Pending</option>
            <option value="Completed">Completed</option>
@@ -92,7 +93,7 @@ autocomplete="off"></textarea>
 </div>
 <div class="col-md-3">
         <p>Priority:</p>
-        <select id="role" class="selectit controls" id = "priority">
+        <select  class="selectit controls" id = "priority">
                 <option value="">--Select--</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
@@ -101,7 +102,7 @@ autocomplete="off"></textarea>
   </div>
     <div class="col-md-3">
         <p>Type:</p>
-            <select id="role" class="selectit controls" name="department" disabled>
+            <select  class="selectit controls" name="department" id="department" readonly="readonly">
                   
                 <option value="Indent">Indent</option>
                 
@@ -151,17 +152,14 @@ autocomplete="off"></textarea>
 
      </table>
 
-     <centre> <button class="draft-button" >Submit</button></centre>
+     <centre> <button class="draft-button" onclick ="Ticket_submit();" >Submit</button></centre>
 </div>
 </div>
     </div>
 </body>
 
 <script>
-window.onload = function() {
-  // var getInput = prompt("Hey type something here: ");
- //  localStorage.setItem("storageName",getInput);
-}
+
 </script>
 <script>
         $(document).ready(function() {

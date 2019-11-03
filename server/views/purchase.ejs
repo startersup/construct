@@ -246,7 +246,7 @@
         <button class="order-button" id = "Place_Order" onclick="func_btnClick(this);">Place Order</button>
     </div>
 </body>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<button id="mailmodal" style="display:none;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
 
   <!-- Modal -->
@@ -260,10 +260,10 @@
           <h4 class="modal-title">Purchase Preview</h4>
         </div>
         <div class="modal-body">
-                <iframe src="" style="height:400px;max-width:1000px;width:100%;border:none;"></iframe>
+                <iframe src="" id="iframe" style="height:400px;max-width:1000px;width:100%;border:none;"></iframe>
         </div>
         <div class="modal-footer">
-                <button class="draft-button" onclick="javascript:demoFromHTML();" style="border-radius: 2px;
+                <button class="draft-button" id="sendmail" name="" onclick="demoFromHTML();" style="border-radius: 2px;
                 background-color:#183247;
                 padding: 10px 14px;
                 margin:10px 0px;

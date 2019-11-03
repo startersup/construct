@@ -31,8 +31,8 @@
     "ticketinfo":
     {
         "api": "api/requests",
-        "arr_req": ["description","site","department","status","priority"],
-        "arr_form": ["description","site","department","status","priority"]
+        "arr_req": ["description","site","department","status","priority","request_no"],
+        "arr_form": ["description","site","department","status","priority","request_no"]
     },
     "purchaseadd":
     {
