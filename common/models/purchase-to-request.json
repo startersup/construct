@@ -16,7 +16,7 @@
     },
     "requests":{
       "type": "belongsTo",
-      "model": "PurchaseOrder",
+      "model": "Request",
       "foreignKey": "request_id"
     }
   },
