@@ -35,6 +35,9 @@
       "mysql": {
         "dataType": "FLOAT"
       }
+    },
+    "received_quantity":{
+      "type": "number"
     }
   },
   "validations": [],
