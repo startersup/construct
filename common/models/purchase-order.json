@@ -67,6 +67,23 @@
       "type": "belongsTo",
       "model": "PurchaseStatus",
       "foreignKey": "status"
+    },
+    "receiver": {
+      "type": "belongsTo",
+      "model": "UserInfo",
+      "foreignKey": "received_by"
+    },
+    "purchase_associations": {
+      "type": "hasMany",
+      "model": "PurchaseAssociation",
+      "foreignKey": "order_id"
+    },
+    "requests": {
+      "type": "hasMany",
+      "model": "Request",
+      "foreignKey": "order_id",
+      "keyThrough": "request_id",
+      "through": "PurchaseToRequest"
     }
   },
   "acls": [

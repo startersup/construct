@@ -84,5 +84,13 @@
   "PriorityDefinition": {
     "dataSource": "db",
     "public": true
+  },
+  "PurchaseAssociation": {
+    "dataSource": "db",
+    "public": true
+  },
+  "PurchaseToRequest": {
+    "dataSource": "db",
+    "public": true
   }
 }
