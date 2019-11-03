@@ -5,6 +5,7 @@
   "options": {
     "validateUpsert": true
   },
+  "idInjection": false,
   "properties": {
     "quantity": {
       "type": "number"
