@@ -45,6 +45,18 @@
       "type": "belongsTo",
       "model": "Department",
       "foreignKey": "department"
+    },
+    "purchase_associations": {
+      "type": "hasMany",
+      "model": "PurchaseAssociation",
+      "foreignKey": "request_id"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "PurchaseOrder",
+      "foreignKey": "request_id",
+      "keyThrough": "order_id",
+      "through": "PurchaseToRequest"
     }
   },
   "acls": [

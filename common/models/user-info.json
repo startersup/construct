@@ -49,6 +49,11 @@
       "model": "Role",
       "foreignKey": "principalId",
       "through": "RoleMapping"
+    },
+    "assigned_purchases": {
+      "type": "hasMany",
+      "model": "PurchaseOrder",
+      "foreignKey": "received_by"
     }
   },
   "acls": [
