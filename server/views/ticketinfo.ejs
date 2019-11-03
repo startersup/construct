@@ -14,7 +14,7 @@
     <script src="./assets/js/fonticon.js"></script>
     <script src="./assets/js/todo.js"></script>
     <script src="./js/custom.js"></script>
-
+    <script src="../js/ticket.js"></script>
     <!-- <script src="./js/custom.js"></script> -->
 
 
@@ -74,89 +74,95 @@
     <div class="ticketinfodiv">
 <div class="container1">
 <div class="ticketinfoform">
+        <p>Subject:</p>
+        <input type="text" class="controls" id="subject" placeholder="Enter the Subject" />
 <p>Description:</p>
-<textarea class="controls textarea" id="address" type="text"
+<textarea class="controls textarea" id="description" type="text"
 placeholder="Description of the Ticket" name="drop" required
 autocomplete="off"></textarea>
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-3">
     <p>Status:</p>
-        <select id="role" class="selectit controls" name="pass">
-           <option>Opened</option>
-           <option>Pending</option>
-           <option>closed</option>
-           <option>completed</option>
+        <select id="role" class="selectit controls" id = "status" name="status">
+           <option value="Open">Open</option>
+           <option value="Pending">Pending</option>
+           <option value="Completed">Completed</option>
+           <option value="Cancel">Cancel</option>
         </select>
 </div>
-<div class="col-md-4">
+<div class="col-md-3">
         <p>Priority:</p>
-        <select id="role" class="selectit controls" name="pass">
+        <select id="role" class="selectit controls" id = "priority">
                 <option value="">--Select--</option>
-            <option value="superadmin">Superadmin Level</option>
-            <option value="admin">Admin Level</option>
-            <option value="">Employee Authorization Level</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
         </select>
   </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <p>Type:</p>
-            <select id="role" class="selectit controls" name="pass">
-                    <option value="">--Select--</option>
-                <option value="superadmin">Superadmin Level</option>
-                <option value="admin">Admin Level</option>
-                <option value="">Employee Authorization Level</option>
+            <select id="role" class="selectit controls" name="department" disabled>
+                  
+                <option value="Indent">Indent</option>
+                
             </select>
      </div>
+     <div class="col-md-3">
+            <p>Site:</p>
+            <input type="text" class="controls" id="site" placeholder="Enter the Site" />
+                </select>
+         </div>
 </div>
-<div id="features" style="display:none;">
-        <button class="featurebutton"><i class="fas fa-reply-all smallicon"></i> Place Order</button>
-        </div>
-<table class="" id="irequesttable" style="overflow-x: scroll;margin-top:10px;">
+<div class="row">
+
+        <div class="col-md-12">
+                <p>Add Products:</p>
+            </div>
+
+</div>
+<div class="row" >
+
+        
+
+
+            <div class="col-md-4">
+                <input type="text" class="controls" id="itemname" placeholder="Enter the Item" />
+                <input type="hidden" class="controls" id="itemname" />
+            </div>
+            <div class="col-md-4">
+                    <input type="text" class="controls" id="quantity" placeholder="Enter the Quantity"/>
+              </div>
+                <div class="col-md-4">
+                        <button class="draft-button" onclick="AddIndent();" >ADD</button>
+                 </div>
+      
+</div>
+<table class="" id="mytable" style="overflow-x: scroll;margin-top:10px;">
         <thead>
            <tr class="header">
-           <th><input type="checkbox" id="checkthis" style=" zoom: 1.2;" onclick="toggle(this);" ></th>
            <th style="width:10%;">S.No</th>
            <th style="width:60%;">Item Name</th>
-           <th style="width:30%;">Quantity</th> 
+           <th style="width:30%;">Quantity</th>
+           <th style="width:30%;">Delete</th> 
            </tr>   
          </thead>
-         <tbody id="myTable">
-                <tr>
-                    <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                    <td>1</td>
-                    <td>Crowbar</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                        <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                        <td>1</td>
-                        <td>Crowbar</td>
-                        <td>10</td>
-                     
-                    </tr>
-                    <tr>
-                            <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                            <td>1</td>
-                            <td>Crowbar</td>
-                            <td>10</td>
-                         
-                        </tr>
-                        <tr>
-                                <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                                <td>1</td>
-                                <td>Crowbar</td>
-                                <td>10</td>
-                             
-                            </tr>
+         <tbody id="IndentAddTable">              
  </tbody>
 
      </table>
 
-     <center> <button class="draft-button" >Update</button></center>
+     <centre> <button class="draft-button" >Submit</button></centre>
 </div>
 </div>
     </div>
 </body>
 
+<script>
+window.onload = function() {
+  // var getInput = prompt("Hey type something here: ");
+ //  localStorage.setItem("storageName",getInput);
+}
+</script>
 <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();

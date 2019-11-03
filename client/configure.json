@@ -28,6 +28,12 @@
         "arr_req": ["site","vendor","purchase_items"],
         "arr_form": ["order_no","comments","site","status","vendor","purchase_items"]
     },
+    "ticketinfo":
+    {
+        "api": "api/requests",
+        "arr_req": ["description","site","department","status","priority"],
+        "arr_form": ["description","site","department","status","priority"]
+    },
     "purchaseadd":
     {
         "api": "api/purchase_order",
