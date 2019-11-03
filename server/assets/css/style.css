@@ -617,6 +617,34 @@ padding:2px 10px;
      font-family: 'Nunito', sans-serif;
     min-width: 800px;
 }
+.ticketinfodiv
+{
+    margin-top:60px !important;
+    margin-left:auto;
+    margin-right:auto;
+       padding:5px 20px;
+       max-width:550px;
+       width:100%;
+       right: 0;
+       bottom: 0;
+       top: 51px;
+       overflow: auto;
+       background-color: #ffffff;
+       color:#33475B;
+        font-family: 'Nunito', sans-serif;
+       min-width: 800px; 
+}
+.ticketinfoform
+{
+    font-family: 'Nunito', sans-serif;
+    padding:10px;
+    margin-right:50px;
+    background-color:#ffffff !important;
+}
+.ticketinfoform p{
+    font-size:20px;
+    font-weight:800;
+}
 .previewdiv
 {
 

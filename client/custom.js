@@ -651,8 +651,6 @@ function func_post(apiUrl, apiJson) {
            // alert(dataofconfirm);
             console.log("purchase : "+JSON.stringify(dataofconfirm));
             modal_success('suc');
-
-
         },
         error: function (xhr, status, error) {
 
