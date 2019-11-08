@@ -83,6 +83,9 @@ body
     font-family: 'Nunito', sans-serif;
     background-color:#ffffff;
   }
+  .request-form label{
+    font-size:16px;
+  }
   .request-form p span{
     font-weight:800;
     color:#000000;
