@@ -22,7 +22,7 @@
       <a class="navbar-brand mobile-nav-head" href="/mobile"><i class="fa fa-arrow-left" style="font-size:24px"></i> Intent Request</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav mnav">
           <li class="active">
             <a href="#">Home</a></li>
           <li><a href="#">Records</a></li>
@@ -35,30 +35,67 @@
 
 </nav>      <center>
             <div class="purchaseorder irequest">
-                <div class="container">
-
-             <div class="row positionfixed"><div class="col-xs-8 col-md-6 nopadding"><input type="text"  class="controls"  placeholder="Enter Product Name" required></div>
-              <div class="col-xs-4 col-md-3 nopadding">  <input class="controls" type="text" id="qty" placeholder="quantity"></div>
-             <div class="col-xs-12 col-md-3"><button class="buttonfilter">+ ADD</button></div>
-
-              <table class="tickettable" id="irequesttable" style="overflow-x: scroll;margin-top:110px;">
+                <div class="">
+                <div class="request-form">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                      <div class="form-group">
+                          <label for="Subject">Request id:</label>
+                        <p>#25272628</p>
+                        </div></div>
+                          <div class="col-md-6 col-xs-6">
+                              <div class="form-group">
+                                  <label for="Subject">Due Date:</label>
+                                  <p>12/11/2019</p>
+                          </div></div>
+                  </div>
+                 <div class="form-group">
+                    <label for="Subject">Subject:</label>
+                    <textarea class="form-control" rows="1" id="comment"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Subject">Description:</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea></div>
+                    <div class="row">
+                      <div class="col-md-6 col-xs-6">
+                    <div class="form-group">
+                        <label for="Subject">Request Type:</label>
+                        <select class="form-control" id="sel1">
+                          <option>Select</option>
+                            <option>Purchase Request</option>
+                            <option>Issue Check</option>
+                          </select></div></div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group">
+                                <label for="Subject">Priority:</label>
+                              <select class="form-control" id="sel1">
+                              <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                          </select>
+                        </div></div>
+                </div>
+              <center><button class="loginbutton">Submit</button></center>
+              </div>
+                <div class="display-tickets" style="display:none;">
+              <table class="tickettable" id="irequesttable" style="overflow-x: scroll;margin-top:10px;">
              <thead>
                 <tr class="header">
                 <th style="width:10%;">S.No</th>
                 <th style="width:60%;">Item Name</th>
-                <th style="width:30%;">Quantity</th> 
-                </tr>   
+                <th style="width:30%;">Quantity</th>
+                </tr>
               </thead>
-      
 
           </table>
+
         <div class="footer">
           <ul class="inline-icons">
             <li><button class="buttonissue">Order Issue</button></li>
             <li><button class="buttonsubmit">Received</button></li>
 
           </ul>
-        </div>         </div>
+        </div> </div>        </div>
                 </div></div>    </center>
             </div>
             </div>

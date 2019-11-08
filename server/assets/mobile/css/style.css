@@ -29,10 +29,15 @@ body
 .irequest
 {
 
-  max-width:400px !important;
+  max-width:600px;
   width:100%;
 }
-
+.mnav
+{
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.8px;
+  font-size:16px;
+}
 .navbar-default {
   background-color: #ffffff !important;
   border-color: #e7e7e7;
@@ -67,6 +72,21 @@ body
       color:#00c97d !important;
       font-size:17px;
   }
+  .request-form
+  {
+    margin-top:40px;
+    text-align: left;
+    padding:15px;
+    max-width:400px;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: 'Nunito', sans-serif;
+    background-color:#ffffff;
+  }
+  .request-form p span{
+    font-weight:800;
+    color:#000000;
+  }
   .login
   {
       padding:100px 20px;
@@ -92,6 +112,17 @@ margin:15px auto;
       text-align: center;
   background-color: #ffffff;
   font-family: 'Nunito', sans-serif;
+}
+.textarea {
+  width: 80%;
+  padding: 12px 20px;
+  min-height: 45px;
+  margin: 8px 0;
+  min-height: 100px;
+  color: #000000;
+  border: 1px solid #DBDFE3;
+  box-sizing: border-box;
+  background-color: #ffffff;
 }
   .controls {
   margin-top: 10px;
@@ -245,7 +276,7 @@ color:#ffffff;
 .supportcard p{
   text-decoration: none !important;
 }
-.tickettable 
+.tickettable
 {
   max-width:700px;
   width:100%;
@@ -428,6 +459,13 @@ padding-left: 0px !important;
   {
       margin-top:75px;
   }
+  .irequest
+{
+
+  max-width:400px !important;
+  width:100%;
+}
+
     .logo
     {
         max-width:30px;
@@ -438,8 +476,14 @@ padding-left: 0px !important;
     {
         max-width:40px;
         width:100%;
-        margin:10px 20px 10px 375px;
+        margin:10px 0px;
 
+    }
+    .mnav
+    {
+      font-family: 'Nunito', sans-serif;
+      letter-spacing: 0.8px;
+      font-size:15px;
     }
     .navbar-brand span
     {
