@@ -12,7 +12,7 @@ module.exports = function(server) {
   const mobileRoutes = require('../routes/mobile.routes')(router,server);
   const adminRoutes = require('../routes/admin.routes')(router,server);
   const requestRoutes = require('../routes/requests.routes')(router,server);
-  const inventoryRoutes = require('../routes/requests.routes')(router,server);
+  const inventoryRoutes = require('../routes/inventory.routes')(router,server);
   router.get('/', function(req, res) {
     res.render('./index');
   });

@@ -1,0 +1,198 @@
+
+<script>
+
+  var HostName = window.location.host;
+  var Protocol = window.location.protocol;
+  var LocationUrl = "";
+  LocationUrl = Protocol + "//" + HostName + "/";
+  console.log(LocationUrl);
+
+  function subUrl() {
+    // var a = window.location.pathname; console.log(a[a.length - 1]);
+    a = window.location.pathname;
+    var y = a.substring(1, a.length);
+    //var x = y.split('/'); console.log(x);
+    return y;
+  }
+
+
+
+
+  function MaskedDecimal (ele,wnum,dnum)
+  {
+
+    var regex = new RegExp("^\\d{0," +wnum + "}(\\.\\d{0," + dnum + "})?$");
+    if (!regex.test(ele.value)) {
+      ele.value = ele.value.substring(0, ele.value.length - 1);
+    }
+
+  }
+
+  function MaskedNumber (ele,num)
+  {
+
+    var regex = new RegExp("^\\d{0," + num + "}?$");
+    if (!regex.test(ele.value)) {
+      ele.value = ele.value.substring(0, ele.value.length - 1);
+    }
+
+  }
+
+
+  // $('.MaskedDecimal').on('input', function (event) {
+  //   var num = $(this).attr("maskedFormat").toString().split(',');
+  //   var regex = new RegExp("^\\d{0," + num[0] + "}(\\.\\d{0," + num[1] + "})?$");
+  //   if (!regex.test(this.value)) {
+  //     this.value = this.value.substring(0, this.value.length - 1);
+  //   }
+  // });
+
+  // $('.MaskedNumber').on('input', function (event) {
+  //   var num = $(this).attr("maskedFormat").toString();
+  //   var regex = new RegExp("^\\d{0," + num[0] + "}?$");
+  //   if (!regex.test(this.value)) {
+  //     this.value = this.value.substring(0, this.value.length - 1);
+  //   }
+  // });
+
+function randomString()
+{
+  var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < 20; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result
+}
+  function func_submit(load) {
+    var val = func_validate(load);
+    if (val == 1) {
+      var apiJson = func_createJson(load);
+      var apiUrl = LocationUrl + config[load]["api"];
+      func_post(apiUrl, apiJson);
+    }
+  }
+
+  function func_validate(load) {
+    var ret = 1;
+    var loop = config[load]["arr_req"].length;
+    for (var i = 0; i < loop; i++) {
+      var myid = config[load]["arr_req"][i];
+      if (ret == 1) {
+        if (document.getElementById(myid).value == '') {
+          document.getElementById(myid).style = 'border: 2px solid red;';
+          document.getElementById('alertid').innerHTML = 'Please Fill The Mandatory Feilds';
+          ret = 0;
+        }
+        else {
+          document.getElementById(myid).style = '';
+          document.getElementById('alertid').innerHTML = '';
+
+        }
+      }
+    }
+    return ret;
+  }
+
+  function func_createJson(load) {
+    var loop = config[load]["arr_form"].length;
+    var obj = {};
+    for (var i = 0; i < loop; i++) {
+
+      var myid = config[load]["arr_form"][i];
+      console.log(myid);
+      if(myid == "purchase_items")
+      {
+        var temp = document.getElementById(myid).value;
+        obj[myid]= JSON.parse(temp);
+      }
+      else{
+        obj[myid] = document.getElementById(myid).value;
+      }
+
+    }
+    return (obj);
+  }
+
+
+  function func_post(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    console.log(apiUrl);
+    console.log(fd);
+    $.ajax({
+      url: apiUrl,
+      data: fd,
+      cache: false,
+      processData: false,
+      contentType: 'application/json',
+      type: 'POST',
+      success: function (dataofconfirm) {
+        // do something with the result
+        
+        modal_success('suc');
+       
+
+      },
+      error: function (xhr, status, error) {
+
+        modal_success('fail');
+        console.log(xhr.responseText);
+        
+
+      }
+    });
+  }
+
+  function func_refresh()
+  {
+    document.location.reload(true);
+  }
+
+  function func_get(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    console.log(apiUrl);
+    console.log(fd);
+    $.ajax({
+      url: apiUrl,
+      data: fd,
+      cache: false,
+      processData: false,
+      contentType: 'application/json',
+      type: 'POST',
+      success: function (dataofconfirm) {
+        // do something with the result
+
+      },
+      error: function (xhr, status, error) {
+
+
+        console.log(xhr.responseText);
+        alert("fail");
+
+      }
+    });
+   }
+  // function setparam_purchase(formid) {
+  //   var obj = {};
+  //   var strsplit = formid + "__";
+
+  //   var c = document.getElementById(formid).children;
+  //   var txt = "";
+  //   var i;
+
+  //   for (i = 0; i < c.length; i++) {
+  //     var txt = c[i].id;
+
+  //     var strvalue = document.getElementById(txt).value;
+  //     txt = txt.split(strsplit);
+
+  //     // var strkey='"'+txt[1]+'"';
+  //     var strkey = txt[1];
+  //     obj[strkey] = strvalue;
+  //   }
+
+  //   return (obj);
+  // }
+
+</script>

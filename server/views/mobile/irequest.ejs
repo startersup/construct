@@ -19,7 +19,7 @@
       <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><p><img class="logo" src="../assets/mobile/images/logo.png"><span> Sri Venkatachalapathy & Co</span></p></a>
+      <a class="navbar-brand mobile-nav-head" href="/mobile"><i class="fa fa-arrow-left" style="font-size:24px"></i> Intent Request</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -39,25 +39,31 @@
 
              <div class="row positionfixed"><div class="col-xs-8 col-md-6 nopadding"><input type="text"  class="controls"  placeholder="Enter Product Name" required></div>
               <div class="col-xs-4 col-md-3 nopadding">  <input class="controls" type="text" id="qty" placeholder="quantity"></div>
-             <div class="col-xs-12 col-md-3"><center><button class="buttonfilter padtop">+ ADD</button></center></div>
-            </div>
+             <div class="col-xs-12 col-md-3"><button class="buttonfilter">+ ADD</button></div>
+
+              <table class="tickettable" id="irequesttable" style="overflow-x: scroll;margin-top:110px;">
+             <thead>
+                <tr class="header">
+                <th style="width:10%;">S.No</th>
+                <th style="width:60%;">Item Name</th>
+                <th style="width:30%;">Quantity</th> 
+                </tr>   
+              </thead>
+      
+
+          </table>
+        <div class="footer">
+          <ul class="inline-icons">
+            <li><button class="buttonissue">Order Issue</button></li>
+            <li><button class="buttonsubmit">Received</button></li>
+
+          </ul>
+        </div>         </div>
                 </div></div>    </center>
             </div>
             </div>
             </div>
-
-
-
-
-
-<div class="footer hidden-lg">
- <ul class="inline-icons">
-      <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
-     <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
-      <li><a data-toggle="modal" data-target="#modalsupport"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
-     <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
-    </ul>
-</div>
+<%- include('footer.ejs') %>
     </div>
 
 

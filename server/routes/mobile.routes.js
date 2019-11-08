@@ -1,5 +1,5 @@
 module.exports = function(router,app){
-  router.get('/mobile/mobiledash', function(req, res) {
+  router.get('/mobile/', function(req, res) {
     res.render('./mobile/mobiledash');
   });
   router.get('/mobile/irequest', function(req, res) {

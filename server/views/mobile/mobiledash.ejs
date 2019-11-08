@@ -2,100 +2,94 @@
 <html lang="en">
 
 <head>
-    <title>Dashboard | Proconstruct</title>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="../assets/mobile/images/logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/mobile/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+  <title>Dashboard | Proconstruct</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="../assets/mobile/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/mobile/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+  <script src="../js/custom.js"></script>
 </head>
-    <body>
-        <div class="visibility">
-      <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><p><img class="logo" src="../assets/mobile/images/logo.png"><span> Sri Venkatachalapathy & Co</span></p></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="#">Home</a></li>
-          <li><a href="#">Records</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Settings</a></li>
-        </ul>
-        <div class="right "><img class="navicon" src="" onerror="this.src='../assets/mobile/images/user.png';"></div>
+
+<body onload="MobileDashLoad();" >
+    <%- include('mycustomjs.ejs') %>
+  <div class="visibility">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <p><img class="logo" src="../assets/mobile/images/logo.png"><span> Sri Venkatachalapathy & Co</span></p>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#">Home</a></li>
+            <li><a href="#">Records</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+          <div class="right "><img class="navicon" src="" onerror="this.src='../assets/mobile/images/user.png';"></div>
+        </div>
       </div>
+
+    </nav>
+    <div class="purchaseorder">
+      <div class="container">
+        <center>
+        <div class="row positionfixed">
+          <div class="col-xs-12 col-md-12"><input type="text" class="controls"
+              placeholder="Search for Purchase order..." required></div>
+        </div></center>
+
+        <div class="purchaselist row" id="Purchse_Row">
+
+
+
+
+
+        </div>
+      </div>
+    </div>
   </div>
 
-</nav>
-            <div class="purchaseorder">
-                <div class="container">
-             <div class="row positionfixed"><div class="col-xs-12 col-md-12"><input type="text"  class="controls"  placeholder="Search for Purchase order..." required></div></div>
-                <div class="purchaselist row">
-                    <div class="col-md-3">
-               <div class="purchasecard" data-toggle="modal" data-target="#modal-purchase">
-                   <div class="topbar">
-               <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
-                   <div class="orderdesc">
-                   <p><span>Vendor: </span>Vishnu priya Traders</p>
-                    <p><span>Site Location: </span> Vandaloor</p>
-                    <p><span>Purchase Value: </span> ₹400000</p>
+  <!-- Modal Fullscreen -->
+  <div class="modal fade modal-fullscreen" id="modal-fullscreen" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Purchase Order Details</h4>
+        </div>
+        <div class="modal-body">
+          <table class="tickettable" id="tickettable" style="overflow-x: scroll;">
 
-                    </div>
-               </div>   </div>
-                     <div class="col-md-3">
-                     <div class="purchasecard">
-                   <div class="topbar">
-               <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
-                   <div class="orderdesc">
-                   <p><span>Vendor: </span>Vishnu priya Traders</p>
-                    <p><span>Site Location: </span> Vandaloor</p>
-                    <p><span>Purchase Value: </span> ₹400000</p>
+            <tbody>
+              <tr class="header">
+                <th style="width:10%;">S.No</th>
+                <th style="width:60%;">Item Name</th>
+                <th style="width:30%;">Quantity</th>
 
-                    </div>
-                         </div>     </div>
-                     <div class="col-md-3">
-                     <div class="purchasecard">
-                   <div class="topbar">
-               <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
-                   <div class="orderdesc">
-                   <p><span>Vendor: </span>Vishnu priya Traders</p>
-                    <p><span>Site Location: </span> Vandaloor</p>
-                    <p><span>Purchase Value: </span> ₹400000</p>
+            </tbody>
 
-                    </div>
-                         </div>     </div>
-                     <div class="col-md-3">
-                     <div class="purchasecard">
-                   <div class="topbar">
-               <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
-                   <div class="orderdesc">
-                   <p><span>Vendor: </span>Vishnu priya Traders</p>
-                    <p><span>Site Location: </span> Vandaloor</p>
-                    <p><span>Purchase Value: </span> ₹400000</p>
+          </table>
+        </div>
+        <div class="footer">
+          <ul class="inline-icons">
+            <li><button class="buttonissue">Order Issue</button></li>
+            <li><button class="buttonsubmit">Received</button></li>
 
-                    </div>
-                         </div>     </div>
-                     <div class="col-md-3">
-                     <div class="purchasecard">
-                   <div class="topbar">
-               <p class="orderid">#2342561</p><p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p></div>
-                   <div class="orderdesc">
-                   <p><span>Vendor: </span>Vishnu priya Traders</p>
-                    <p><span>Site Location: </span> Vandaloor</p>
-                    <p><span>Purchase Value: </span> ₹400000</p>
-
-                    </div>
-                         </div>   </div></div>
-            </div>
-            </div>
-            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
  <!-- Modal Fullscreen -->
  <div class="modal fade modal-fullscreen" id="modalsupport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -105,13 +99,15 @@
         <h4 class="modal-title" id="myModalLabel">Support Options</h4>
       </div>
       <div class="modal-body option-tab">
+        <center>
  <div class="row">
 <div class="col-md-4 col-sm-6 col-xs-6">
-  <a href="irequest.ejs">
+  <a href="/mobile/irequest">
 <div class="supportcard ">
  <center> <img src="../../assets/mobile/images/request.png"></img></center>
 <p>Purchase Request</p>
-</div></a>
+</div>
+</a>
 </div>
 <div class="col-md-4 col-sm-6 col-xs-6">
     <div class="supportcard ">
@@ -125,97 +121,169 @@
     <p>Request Status</p>
     </div>
     </div>
- </div>
+ </div></center>
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="footer hidden-lg">
- <ul class="inline-icons">
-      <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
-     <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
-      <li><a href="#"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
-     <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
-    </ul>
-</div>
-    </div>
-
     <!--modal-support ends-->
-
-            <!-- Modal Fullscreen -->
-<div class="modal fade modal-fullscreen" id="modal-purchase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Purchase Order Details</h4>
-      </div>
-      <div class="modal-body">
-         <table class="tickettable" id="tickettable" style="overflow-x: scroll;">
-
-                <tbody >
-               <tr class="header">
-                  <th style="width:10%;">S.No</th>
-                    <th style="width:60%;">Item Name</th>
-                    <th style="width:30%;">Quantity</th>
-
-                </tr>
-                     <tr>
-                       <td>1</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                    <td>2</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                    <td>3</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                    <td>4</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                    <td>5</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                    <td>6</td>
-                    <td>12 inch pipe</td>
-                    <td>20</td>
-                    </tr>
-                </tbody>
-
-            </table>
-      </div>
-      <div class="footer">
-       <ul class="inline-icons">
-        <li><button class="buttonissue">Order Issue</button></li>
-      <li><button class="buttonsubmit">Received</button></li>
-
-    </ul>
-      </div>
-    </div>
+    <%- include('footer.ejs') %>
   </div>
-</div>
+  <script>
 
 
-<div class="footer hidden-lg">
- <ul class="inline-icons">
-      <li class="active"><a href="#"><i class="fa fa-home white"></i><br>Home</a></li>
-     <li><i class="fa fa-envelope-o white"></i> <br>Records</li>
-      <li><a data-toggle="modal" data-target="#modalsupport"><i class="fa fa-commenting-o white"></i> <br>Support</a></li>
-     <li><a href="#"><i class="fa fa-gear white"></i><br> Settings</a></li>
-    </ul>
-</div>
-    </div>
+    function MobileDashLoad() {
+      var myurl = LocationUrl + "api/purchase_order/";
+
+      $.ajax({
+        url: myurl,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'GET',
+        success: function (dataofconfirm) {
+          // do something with the result
+          setpurchase(dataofconfirm);
+          // func_load();
+        },
+        error: function (xhr, status, error) {
+
+          alert("fail");
+
+        }
+      });
+
+    }
+
+    function setmodal(strid) {
+
+var modalobj="";
+//     http://localhost:3000/api/purchase_order/54004/products
+//{"where":{"order_id":"strid"},"include":["products"]}
+var filter='{"where":{"order_id":"'+strid+'"},"include":["products"]}';
+var myurl = LocationUrl + 'api/purchase_items?filter=' + filter ;
+
+    $.ajax({
+        url: myurl,
+        cache: false,
+        processData: false,
+        async: false,
+        contentType: 'application/json',
+        type: 'GET',
+        success: function (dataofconfirm) {
+            // do something with the result
+            console.log(dataofconfirm);
+            modalobj = dataofconfirm ;
+
+        },
+        error: function (xhr, status, error) {
+
+            alert("fail");
+
+        }
+    });
+
+
+var table = document.getElementById("tickettable");
+table.innerHTML = '<tbody>'
++'              <tr class="header">                                   '
++'                <th style="width:10%;">S.No</th>                    '
++'                <th style="width:60%;">Item Name</th>               '
++'                <th style="width:30%;">Quantity</th>                '
++'                                                                    '
++'            </tbody>                                                ';
+var objlen =modalobj.length;
+
+for(var i = 0;i<objlen;i++){
+
+    var rowcount = document.getElementById("tickettable").rows.length;
+
+
+var row = document.createElement("tr");
+row.id = rowcount;
+
+var td1 = document.createElement("td");
+var td2 = document.createElement("td");
+var td3 = document.createElement("td");
+
+
+
+td1.innerHTML = rowcount ;
+td2.innerHTML = modalobj[i].products.name;
+td3.innerHTML = modalobj[i].quantity;
+
+
+
+row.appendChild(td1);
+row.appendChild(td2);
+row.appendChild(td3);
+
+}
+
+
+}
+
+    function setpurchase(obj) {
+      console.log(obj);
+
+      var len = obj.length;
+      for (var i = 0; i < len; i++) {
+        var vendorobj = "";
+
+        var myurl = LocationUrl + 'api/vendors/' + obj[i].vendor;
+        console.log(myurl);
+
+        $.ajax({
+          url: myurl,
+          cache: false,
+          processData: false,
+          async: false,
+          contentType: 'application/json',
+          type: 'GET',
+          success: function (dataofconfirm) {
+            // do something with the result
+            console.log(dataofconfirm);
+            vendorobj = dataofconfirm;
+
+          },
+          error: function (xhr, status, error) {
+
+            alert("fail");
+
+          }
+        });
 
 
 
 
 
-    </body>
+
+        var mydiv = '<div class="col-md-3">                                                                          '
++'            <div class="purchasecard" onclick= "setmodal(\''+obj[i].id+'\')" data-toggle="modal" data-target="#modal-fullscreen">      '
++'              <div class="topbar">                                                              '
++'                <p class="orderid">#'+obj[i].order_no+'</p>                                                 '
++'              <!--  <p class="odate"><i class="fa fa-clock-o"></i> 2 days ago</p>        -->           '
++'              </div>                                                                            '
++'              <div class="orderdesc">                                                           '
++'                <p><span>Vendor: </span>'+vendorobj.name+'</p>                                '
++'                <p><span>Site Location: </span> '+ obj[i].site+'</p>                                   '
++'               											                                      '
++'                                                                                                '
++'              </div>                                                                            '
++'            </div>                                                                              '
++'          </div>                                                                                '
+
+
+document.getElementById("Purchse_Row").innerHTML =  document.getElementById("Purchse_Row").innerHTML + mydiv;
+
+
+      }
+
+
+
+    }
+
+  </script>
+</body>
+
 </html>

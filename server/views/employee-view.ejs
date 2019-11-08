@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Emplyee History </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="./assets/js/fonticon.js"></script>
+    <script src="./assets/js/todo.js"></script>
+    <script src="./js/custom.js"></script>
+
+    <!-- <script src="./js/custom.js"></script> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body onload="func_onload();">
+    <%- include('mymodal.ejs') %>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hidden-xs" href="#"><span>Employee Details </span> </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="newfun()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                        </div>
+                        <div id="newsite" class="dropdown-content">
+                            <a href="../add/employee.html">Add Employee</a>
+                            <a href="#">Add Vendors</a>
+                            <a href="#">Add Tasks</a>
+                            <a href="#">Add Bills</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saicharan</a>
+                        <ul class="dropdown-menu">
+
+                            <ul id="pro">
+                                <li><a href="">Profile</a>
+                                </li>
+                                <li><a href="">Settings</a>
+                                </li>
+                                <li><a href="">logout</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="bottombar">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav botnav">
+                    <li class="active"><a href="/employee-view">Employee Database</a></li>
+                    <li ><a href="/vendor-view">Vendor Database</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+
+    <%- include('mysidebar.ejs') %>
+    <div class="phistorydiv">
+            <div class="container1">
+                <div id="preloader">
+                    <div id="preloaderdiv">&nbsp;</div>
+                </div>
+                <table class="employee-viewtable" id="EmployeeViewTable">
+                        <tbody>
+                           
+        
+        
+        
+        
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+</body>
+
+
+
+
+</html>

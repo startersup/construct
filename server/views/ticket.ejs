@@ -84,9 +84,9 @@
   <div class="row">
      <div class="col-md-10 col-xs-9 nopadding">
        <div class="">
-                <table class="tickettable">
+                <table class="tickettable" style="margin-top:100px;">
                     <thead class="header">
-                        <th><input type="checkbox" id="checkthis" onclick="toggle(this);" ></th>
+                        <th><input type="checkbox" id="checkthis" style=" zoom: 1.2;" onclick="toggle(this);" ></th>
                         <th>Ticket Id</th>
                         <th>Raised by</th>
                         <th>Subject</th>
@@ -97,19 +97,19 @@
                         <th>Status</th>
                         <th>Action</th>
                     </thead>
-                    <tbody id="myTable">
-                    <tr>
-                        <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
-                        <td>345456</td>
-                        <td>Saicharan Govindaraj</td>
-                        <td>Issue in Concrete.</td>
-                        <td>Malfunction</td>
-                        <td><span><span class="dot"></span> High</span> </td>
-                        <td>Engineering</td>
-                        <td>Chennai</td>
-                    <td><span class="openedstatus">Opened</span></td>
-                        <td><button class="btn btn-default">View</button></td>
-                    </tr>
+                        <tbody id="myTable">
+                        <tr>
+                            <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
+                            <td>345456</td>
+                            <td>Saicharan Govindaraj</td>
+                            <td>Issue in Concrete.</td>
+                            <td>Malfunction</td>
+                            <td><span><span class="dot"></span> High</span> </td>
+                            <td>Engineering</td>
+                            <td>Chennai</td>
+                        <td><span class="openedstatus">Opened</span></td>
+                            <td><button class="btn btn-default">View</button></td>
+                        </tr>
                         <tr>
                         <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
                         <td>345456</td>
@@ -251,7 +251,7 @@
                                 });
                               });
                               </script>
-<!--
+
     <script>$(function () {
         $("#checkthis").click(function () {
             if ($(this).is(":checked")) {
@@ -260,6 +260,12 @@
                 $("#features").hide();            }
         });
     });</script>
--->
+<script>
+window.onload = function() {
+ 
+  var x = localStorage.getItem("storageName");
+  alert(x);
+}
 
+</script>
 </html>

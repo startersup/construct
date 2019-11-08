@@ -5,6 +5,7 @@ const path = require('path');
 let controller = {
     requestPurchaseOrder : function(req,res,purchaseOrderInfo){
         var id = req.params.id;
+        var action = req.query.action;
         var transporter = mailer.createTransport({
             service: 'gmail',
             auth: {
@@ -13,14 +14,16 @@ let controller = {
             }
           });
           var renderedResponse = "<html>ERROR</html>";
-          console.log(path.join(__dirname, '/../views/preview.ejs'));
           purchaseOrderInfo.find({where:{order_id:id},include:{orders:["vendors","purchase_status","products"]}},function(err,orderInfo){
-            console.log(orderInfo);
-            ejs.renderFile(path.join(__dirname, '/../views/preview.ejs'),{orderInfo:orderInfo[0].toJSON(),moment:moment},function(err,str){
+            if(action=="print_preview"){
+              res.render('./preview',{orderInfo:orderInfo[0].toJSON(),moment:moment,action:action})
+              return;
+            }
+            ejs.renderFile(path.join(__dirname, '/../views/preview.ejs'),{orderInfo:orderInfo[0].toJSON(),moment:moment,action:action},function(err,str){
                 if(err) throw err;
                 renderedResponse=str;
                 var mailOptions = {
-                    from: 'minicabee@gmail.com',
+                    from: 'svc@gmail.com',
                     to: 'mindtreeorg@gmail.com',
                     subject: 'Purchase Order From SVC',
                     html: renderedResponse

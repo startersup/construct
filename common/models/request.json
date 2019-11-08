@@ -14,6 +14,10 @@
       "id": true,
       "defaultFn": "uuid"
     },
+    "request_no":{
+        "type": "Number",
+        "required": true
+    },
     "subject": {
       "type": "string",
       "required": true
@@ -45,6 +49,18 @@
       "type": "belongsTo",
       "model": "Department",
       "foreignKey": "department"
+    },
+    "purchase_associations": {
+      "type": "hasMany",
+      "model": "PurchaseAssociation",
+      "foreignKey": "request_id"
+    },
+    "orders": {
+      "type": "hasMany",
+      "model": "PurchaseOrder",
+      "foreignKey": "request_id",
+      "keyThrough": "order_id",
+      "through": "PurchaseToRequest"
     }
   },
   "acls": [

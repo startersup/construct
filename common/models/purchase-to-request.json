@@ -1,0 +1,25 @@
+{
+  "name": "PurchaseToRequest",
+  "plural": "purchase_requests",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "orders": {
+      "type": "belongsTo",
+      "model": "PurchaseOrder",
+      "foreignKey": "order_id"
+    },
+    "requests":{
+      "type": "belongsTo",
+      "model": "Request",
+      "foreignKey": "request_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

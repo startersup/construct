@@ -5,6 +5,7 @@
   "options": {
     "validateUpsert": true
   },
+  "idInjection": false,
   "properties": {
     "quantity": {
       "type": "number"
@@ -35,6 +36,9 @@
       "mysql": {
         "dataType": "FLOAT"
       }
+    },
+    "received_quantity":{
+      "type": "number"
     }
   },
   "validations": [],

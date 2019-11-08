@@ -1,0 +1,86 @@
+{
+
+    "ini":
+    {
+        "OrderNo" : 6
+    },
+    "vendor":
+    {
+        "api": "api/vendors",
+        "arr_req": ["name", "phone", "state", "location","gstNumber"],
+        "arr_form": ["name", "email", "phone", "state", "location","gstNumber"]
+    },
+    "vendor1":
+    {
+        "api": "",
+        "arr_req": ["", "", "", ""],
+        "arr_form": ["", "", "", "", ""]
+    },
+    "employee":
+    {
+        "api": "api/users",
+        "arr_req": ["first_name", "last_name", "phone", "role","salary","address"],
+        "arr_form": ["first_name", "last_name", "email", "phone", "role","salary","address","password"]
+    },
+    "purchase":
+    {
+        "api": "api/purchase_order",
+        "arr_req": ["site","vendor","purchase_items"],
+        "arr_form": ["order_no","comments","site","status","vendor","purchase_items"]
+    },
+    "ticketinfo":
+    {
+        "api": "api/requests",
+        "arr_req": ["description","site","department","status","priority","request_no"],
+        "arr_form": ["description","site","department","status","priority","request_no"]
+    },
+    "purchaseadd":
+    {
+        "api": "api/purchase_order",
+        "arr_req": ["rate", "quantity", "item"],
+        "arr_form": []
+    },
+    "employee-view":
+    {
+        "api": "api/users",
+        "getapi":["api/users"],
+        "table" : {
+                    "id" : ["EmployeeViewTable"],
+                    "EmployeeViewTable" : {
+                                            "cols" : 9,
+                                            "heading":["S.No","Name","Mail Id","Contact Number","Authorization Level","CTC Band","Address","Status","Action"],
+                                            "attributes" : ["","","","","","","","",""]                    }
+
+                  },
+        "JsonObject":[""]     
+    },
+    "vendor-view":
+    {
+        "api": "api/vendors",
+        "getapi":["api/vendors"],
+        "table" : {
+                    "id" : ["VendorViewTable"],
+                    "VendorViewTable" : {
+                                            "cols" : 9,
+                                            "heading":["S.No","Name","MailId","Contact Number","Gst Number","State","Address","Status","Action"],
+                                            "attributes" : ["","","","","","","","",""]                    }
+
+                  },
+        "JsonObject":[""]     
+    },
+    "ticket":
+    {
+        "api": "api/requests",
+        "arr_req": ["subject" ,"description" ,"site" ,"department","priority"],
+        "arr_form": ["subject" ,"description" ,"site" ,"department","priority"]
+    },
+    "login":
+    {
+        "api": "api/users/login",
+        "arr_req": ["UserName", "Password"],
+        "arr_form": ["UserName", "Password"]
+    }
+    
+    
+    
+}
