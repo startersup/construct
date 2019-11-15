@@ -23,7 +23,7 @@
 
 
     <nav class="navbar navbar-default navbar-fixed-top">
-       
+
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -38,9 +38,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <div class="dropdown">
-                            <button onclick="newfun()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                            <button onclick="purchasefun()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
                         </div>
-                        <div id="newsite" class="dropdown-content">
+                        <div id="purchaseDropdown" class="dropdown-content">
                             <a href="./employee">Add Employee</a>
                             <a href="./vendor">Add Vendors</a>
                             <a href="#">Add Product</a>
@@ -126,8 +126,8 @@
 
 
 
-                 
-                  
+
+
                     <div class="col-md-10">
                         <!-- <button data-toggle="modal" data-target="#successmodal" id="modal_suc"
                             style="display : none;">Click</button> -->
@@ -230,7 +230,7 @@
                             placeholder="Enter GST Percentage">
                         <input type="hidden" name="price" class="controls" id="hiddenitemunit"
                             placeholder="Enter GST Percentage">
-                      
+
 
 
                         <input type="button" value="Add Product +" class="addbutton" onclick="PurchaseAddRow()" id="add">
@@ -252,7 +252,7 @@
   <!-- Modal -->
   <div class="modal fade previewmodal" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -284,7 +284,7 @@
                 border: none;">Print Order</button>
               </div>
       </div>
-      
+
     </div>
   </div>
 
@@ -299,6 +299,28 @@
     todo.init();
 
 </script>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<script>
+        function purchasefun() {
+            document.getElementById("purchaseDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.buttonnew')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
 <style>
     .modal-backdrop {
         background: none;
