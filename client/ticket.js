@@ -43,7 +43,7 @@ function LoadTicketInfoPage() {
 
  
     var ticketId = Math.floor(Math.random() * 10000001);
-    document.getElementById("TicketId").innerHTML='Ticket Information ( #'+ticketId+' )';
+    document.getElementById("TicketId").innerHTML='#'+ticketId;
     document.getElementById("request_no").value=ticketId;
     document.getElementById("IndentAddTable").innerHTML='';
     document.getElementById("site").value='';
@@ -82,4 +82,12 @@ function Ticket_Post(apiUrl, apiJson) {
 
         }
     });
+}
+
+function func_onload()
+{
+
+    requestid = Math.floor(Math.random() * 100001);
+    document.getElementById("requestid").innerHTML = " #" + requestid;
+
 }
