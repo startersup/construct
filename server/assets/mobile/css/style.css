@@ -99,6 +99,10 @@ body
   {
       margin:20px 0px;
   }
+  .wrap
+  {
+    display: flex;
+  }
   .right
   {
       float:right;
