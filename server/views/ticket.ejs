@@ -102,7 +102,7 @@
                             <td><input type="checkbox" class="checkthis" id="checkthis" /></td>
                             <td>345456</td>
                             <td>Saicharan Govindaraj</td>
-                            <td><div class="wrap"><p>Issue in Concrete. </p><a ><span>View More</span></a></div></td>
+                            <td><a data-toggle="modal" data-target="#dmodal" id="descmodal"><p>Issue in Concrete. </p></a></td>
                             <td>Malfunction</td>
                             <td><span><span class="dot"></span> High</span> </td>
                             <td>Engineering</td>
@@ -207,7 +207,18 @@
       </div>
      </div>
     </div>
+ <!-- Modal 1 -->
+ <div class="modal fade" id="dmodal" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-left">
+        <div class="modal-content">
 
+            <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            Some Demo For Modal 1 </div>
+        </div>
+    </div>
+</div>
 
 </body>
 <script>
@@ -259,6 +270,12 @@
             } else {
                 $("#features").hide();            }
         });
+    });</script>
+    <script>$("#descmodal").hover(function () {
+        $('#dmodal').modal({
+            show: true,
+            backdrop: false
+        })
     });</script>
 
 </html>

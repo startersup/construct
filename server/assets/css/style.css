@@ -1376,13 +1376,12 @@ color:#ffffff !important;
 .t-table td p{
   white-space: nowrap;
   width: 200px;
+  color:#000000;
   overflow: hidden;
+  cursor:pointer;
   text-overflow: ellipsis;
 }
-.t-table td span{
-  display:inline-block;
-  cursor:pointer;
-}
+
 .purchasingleft
 {
   margin-top:120px;
