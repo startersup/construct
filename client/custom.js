@@ -454,6 +454,7 @@ function func_validate(load) {
                 {
                     document.getElementById('alertid').innerHTML = 'Please Insert Atleast One item';
                 }
+ 
 
                 ret = 0;
             }

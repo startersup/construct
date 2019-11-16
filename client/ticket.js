@@ -11,7 +11,9 @@ function AddIndent()
        var tRow ='<tr id ="'+rowid+'">';
         tRow =  tRow    +'<td > '+(count+1)+'</td>';
         tRow =  tRow            +'<td contenteditable = "true">'+document.getElementById("item").value+' </td>';
-        tRow =  tRow            +'<td contenteditable = "true">1 </td>';
+        tRow =  tRow            +'<td contenteditable = "true" id="'+rowid+'itemquantity"'+'> 1</td>';
+        tRow =  tRow            +'<td><input type="hidden" id="'+rowid+"itemid"+'" value="'+document.getElementById("hiddenitemid").value+'" '; 
+        tRow =  tRow            +' </td> '             
         tRow =  tRow           +'<td><input type="button" class="Purchase-delete" value="X" onclick="DeleteFromIndent(\'' + rowid+ '\')"></td>'
 
         tRow =  tRow            +'</tr>';
@@ -51,7 +53,15 @@ function LoadTicketInfoPage() {
 }
 function Ticket_submit() {
     var load =subUrl();
-    load = load +"_"+ document.getElementById("type").value;
+    var rows=document.getElementById("IndentAddTable").rows.length;
+    if(rows > 0)
+    {
+        document.getElementById("IndentAddTableValue").value=rows;
+    }
+    else{
+        document.getElementById("IndentAddTableValue").value='';
+    }
+   // load = load +"_"+ document.getElementById("type").value;
     var val = func_validate(load);
     if (val == 1) {
         var apiJson = func_createJson(load);
@@ -72,7 +82,66 @@ function Ticket_Post(apiUrl, apiJson) {
         success: function (dataofconfirm) {
             // do something with the result
            // alert(dataofconfirm);
-            console.log("purchase : "+JSON.stringify(dataofconfirm));
+            upload_indent(dataofconfirm.id);
+           
+        },
+        error: function (xhr, status, error) {
+
+            modal_success('fail');
+
+        }
+    });
+}
+
+function upload_indent(TicketId)
+{
+    
+
+    var rlength = document.getElementById("IndentAddTable").rows.length;
+
+    var tableobj = [];
+    var sid;
+
+    var table = document.getElementById("IndentAddTable");
+
+
+
+    for (var j = 0; j < rlength; j++) {
+
+        var row = table.rows[j];  //Table Row Number
+        var i = row.id;
+
+        var data = {};
+
+        sid = i + 'itemquantity';
+        data["quantity"] = parseInt(document.getElementById(sid).innerHTML);
+
+        sid = i + 'itemid';
+        data["product_id"] = parseInt(document.getElementById(sid).value);
+
+
+        tableobj.push(data);
+
+    }
+    var load =subUrl();
+    var apiUrl = LocationUrl + config[load]["api"]+"/"+TicketId+"/purchase_associations";
+    Indent_submit(apiUrl, tableobj);
+    
+
+}
+
+
+function Indent_submit(apiUrl, apiJson) {
+    var fd = JSON.stringify(apiJson);
+    $.ajax({
+        url: apiUrl,
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: 'application/json',
+        type: 'POST',
+        success: function (dataofconfirm) {
+            
             modal_success('suc');
         },
         error: function (xhr, status, error) {
@@ -82,6 +151,7 @@ function Ticket_Post(apiUrl, apiJson) {
         }
     });
 }
+
 
 function func_onload()
 {

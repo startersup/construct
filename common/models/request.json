@@ -18,6 +18,10 @@
         "type": "Number",
         "required": true
     },
+    "due_date":{
+      "type": "Date",
+      "required": true
+  },
     "type":{
       "type": "string",
       "required": true

@@ -17,6 +17,7 @@
     <script src="../js/ticket.js"></script>
     
   </head>
+  <%- include('../mymodal.ejs') %>
     <body onload="LoadTicketInfoPage();">
         <div class="visibility">
       <nav class="navbar navbar-default navbar-fixed-top">
@@ -40,6 +41,7 @@
             <div class="purchaseorder irequest">
                 <div class="">
                 <div class="request-form">
+                    <div id="alertid" style="color: red;"></div>
                     <div class="row">
                         <div class="col-md-6 col-xs-6">
                       <div class="form-group">
@@ -49,7 +51,7 @@
                           <div class="col-md-6 col-xs-6">
                               <div class="form-group">
                                   <label for="Subject">Due Date:</label>
-                                  <input class="form-control" type="date">
+                                  <input class="form-control" id = "due_date" type="date">
 
                           </div></div>
                   </div>
@@ -70,10 +72,10 @@
                       <div class="col-md-6 col-xs-6">
                     <div class="form-group">
                         <label for="Subject">Request Type:</label>
-                        <select class="form-control" id="tickettype">
-                          <option>Select</option>
-                            <option value="purchase request">Purchase Request</option>
-                            <option value="issue check">Issue Check</option>
+                        <select class="form-control" id="type">
+                          <option value="">--Select--</option>
+                            <option value="PurchaseRequest">Purchase Request</option>
+                            <option value="IssueCheck">Issue Check</option>
                           </select></div></div>
                         <div class="col-md-6 col-xs-6">
                             <div class="form-group">
@@ -85,14 +87,17 @@
                           </select>
                         </div></div>
                 </div>
-              <centre><button class="loginbutton">Submit</button></centre>
+              <centre><button class="loginbutton" onclick="Ticket_submit();" >Submit</button></centre>
               </div>
               <div id="livesearch"></div>
                 <div class="display-tickets" >
                   <div class="wrap">
                       <input class="form-control"  onkeyup="showResult(this.value)" id ="item" type="text" placeholder="Enter Product Name...">
+                     
+                      <input class="form-control" id ="IndentAddTableValue" type="hidden">
+                      <input class="form-control" id ="hiddenitemunit" type="hidden"> 
                       <input class="form-control" id ="hiddenitemid" type="hidden">
-                      <input class="form-control" id ="hiddenitemunit" type="hidden">                      
+                      <input class="form-control" id ="status" value="open" type="hidden">                      
                        
                       <button class="btn bt-primary" onclick="AddIndent();">Add Item</button>
                 </div>

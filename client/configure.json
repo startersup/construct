@@ -28,11 +28,12 @@
         "arr_req": ["site","vendor","purchase_items"],
         "arr_form": ["order_no","comments","site","status","vendor","purchase_items"]
     },
-    "mobile/irequest_PurchaseRequest":
+    "mobile/irequest":
     {
         "api": "api/requests",
-        "arr_req": ["description","site","department","status","priority","request_no","tickettype"],
-        "arr_form": ["description","site","department","status","priority","request_no","tickettype"]
+        "arr_req": ["description","site","subject","priority","request_no","type","due_date","IndentAddTableValue"],
+        "arr_form": ["description","subject","site","status","priority","request_no","due_date","type"]
+        
     },
     "purchaseadd":
     {
