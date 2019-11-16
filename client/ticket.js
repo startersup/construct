@@ -10,16 +10,15 @@ function AddIndent()
 
        var tRow ='<tr id ="'+rowid+'">';
         tRow =  tRow    +'<td > '+(count+1)+'</td>';
-        tRow =  tRow            +'<td contenteditable = "true">'+document.getElementById("itemname").value+' </td>';
-        tRow =  tRow            +'<td contenteditable = "true">'+document.getElementById("quantity").value+' </td>';
+        tRow =  tRow            +'<td contenteditable = "true">'+document.getElementById("item").value+' </td>';
+        tRow =  tRow            +'<td contenteditable = "true">1 </td>';
         tRow =  tRow           +'<td><input type="button" class="Purchase-delete" value="X" onclick="DeleteFromIndent(\'' + rowid+ '\')"></td>'
 
         tRow =  tRow            +'</tr>';
 
         document.getElementById("IndentAddTable").innerHTML = document.getElementById("IndentAddTable").innerHTML
                                                                  + tRow;
-        document.getElementById("quantity").value='';
-        document.getElementById("itemname").value='';
+        document.getElementById("item").value='';
  
 
 }
@@ -40,8 +39,7 @@ function DeleteFromIndent(rowid)
 }
 
 function LoadTicketInfoPage() {
-
- 
+    
     var ticketId = Math.floor(Math.random() * 10000001);
     document.getElementById("TicketId").innerHTML='#'+ticketId;
     document.getElementById("request_no").value=ticketId;
@@ -52,7 +50,8 @@ function LoadTicketInfoPage() {
  
 }
 function Ticket_submit() {
-    var load= subUrl();
+    var load =subUrl();
+    load = load +"_"+ document.getElementById("type").value;
     var val = func_validate(load);
     if (val == 1) {
         var apiJson = func_createJson(load);

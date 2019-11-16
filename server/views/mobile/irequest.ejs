@@ -13,8 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
-    <script src="../js/ticket.js"></script>
     <script src="../js/custom.js"></script>
+    <script src="../js/ticket.js"></script>
+    
   </head>
     <body onload="LoadTicketInfoPage();">
         <div class="visibility">
@@ -71,25 +72,29 @@
                         <label for="Subject">Request Type:</label>
                         <select class="form-control" id="tickettype">
                           <option>Select</option>
-                            <option>Purchase Request</option>
-                            <option>Issue Check</option>
+                            <option value="purchase request">Purchase Request</option>
+                            <option value="issue check">Issue Check</option>
                           </select></div></div>
                         <div class="col-md-6 col-xs-6">
                             <div class="form-group">
                                 <label for="Subject">Priority:</label>
                               <select class="form-control" id="priority">
-                              <option>Low</option>
-                            <option>Medium</option>
-                            <option>High</option>
+                              <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
                           </select>
                         </div></div>
                 </div>
               <centre><button class="loginbutton">Submit</button></centre>
               </div>
+              <div id="livesearch"></div>
                 <div class="display-tickets" >
                   <div class="wrap">
-                      <input class="form-control" type="text" placeholder="Enter Product Name...">
-                  <button class="btn bt-primary" onclick="AddIndent();">Add Item</button>
+                      <input class="form-control"  onkeyup="showResult(this.value)" id ="item" type="text" placeholder="Enter Product Name...">
+                      <input class="form-control" id ="hiddenitemid" type="hidden">
+                      <input class="form-control" id ="hiddenitemunit" type="hidden">                      
+                       
+                      <button class="btn bt-primary" onclick="AddIndent();">Add Item</button>
                 </div>
               <table class="tickettable" id="irequesttable" style="overflow-x: scroll;margin-top:10px;">
              <thead>
