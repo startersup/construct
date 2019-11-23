@@ -160,3 +160,59 @@ function func_onload()
     document.getElementById("requestid").innerHTML = " #" + requestid;
 
 }
+
+function TicketViewLoad()
+{
+    var load =subUrl();
+    var apiUrl = LocationUrl + config[load]["api"];
+    func_get(apiUrl,'TicketTableLoad','');
+}
+
+function TicketTableLoad(dummy,objJson)
+{
+    var table = document.getElementById("TicketViewTable");
+    var loop = objJson.length;
+    for (var i=0; i<loop ; i++)
+    {
+        row = document.createElement("tr");
+        row.id = objJson[i].id;
+        var td1 = document.createElement("td");        
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        var td4 = document.createElement("td");
+        var td5 = document.createElement("td");
+        var td6 = document.createElement("td");
+        var td7 = document.createElement("td");
+        var td8 = document.createElement("td");
+        var td9 = document.createElement("td");
+
+        td1.innerHTML  =(i+1);
+        td2.innerHTML  =objJson[i].first_name + ' '+objJson[i].last_name;
+        td2.contenteditable=true;
+        td2.setAttribute("contenteditable", "true");
+        td3.innerHTML  =objJson[i].email ;
+        td3.setAttribute("contenteditable", "true");
+        td4.innerHTML  =objJson[i].phone ;
+        td4.setAttribute("contenteditable", "true");
+        td5.innerHTML  ='';
+        td6.innerHTML  =objJson[i].salary;
+        td6.setAttribute("contenteditable", "true");
+        td7.innerHTML  =objJson[i].address ;
+        td7.setAttribute("contenteditable", "true");
+        td8.innerHTML  ='Active';
+        td9.innerHTML  ='<button onclick="EmployeeUpdate(\''+objJson[i].id+'\');" class="buttonnew" id="'+objJson[i].id+' "> Update</button>';
+
+        row.appendChild(td1);
+        row.appendChild(td2);
+        row.appendChild(td3);
+        row.appendChild(td4);
+        row.appendChild(td5);
+        row.appendChild(td6);
+        row.appendChild(td7);
+        row.appendChild(td8);
+        row.appendChild(td9);
+        table.children[0].appendChild(row);
+
+    }
+
+}

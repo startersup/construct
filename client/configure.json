@@ -72,8 +72,7 @@
     "ticket":
     {
         "api": "api/requests",
-        "arr_req": ["subject" ,"description" ,"site" ,"department","priority"],
-        "arr_form": ["subject" ,"description" ,"site" ,"department","priority"]
+        "arr_form": ["id","request_no","due_date","type","subject","description","site","department","created_by","updated_by","created_date","updated_date","status","priority"]
     },
     "login":
     {
