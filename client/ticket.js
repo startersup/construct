@@ -186,7 +186,7 @@ function TicketTableLoad(dummy,objJson)
         var td8 = document.createElement("td");
         var td9 = document.createElement("td");
 
-        td1.innerHTML  =(i+1);
+        td1.innerHTML  ='<input type="checkbox" class="checkthis" id="checkthis" />';
         td2.innerHTML  =objJson[i].first_name + ' '+objJson[i].last_name;
         td2.contenteditable=true;
         td2.setAttribute("contenteditable", "true");
