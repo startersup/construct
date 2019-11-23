@@ -93,64 +93,71 @@
       <div class="container1">
         <div id="alertid" style="color: red;"></div>
         <div class="ticketinfoform">
-          <p>Subject:</p>
-          <input
-            type="text"
-            class="controls"
-            id="subject"
-            placeholder="Enter the Subject"
-          />
-          <p>Description:</p>
-          <textarea
-            class="controls textarea"
-            id="description"
-            type="text"
-            placeholder="Description of the Ticket"
-            name="drop"
-            required
-            autocomplete="off"
-          ></textarea>
           <div class="row">
-            <div class="col-md-3">
-              <p>Status:</p>
-              <select class="selectit controls" id="status" name="status">
-                <option value="">--Select--</option>
-                <option value="Open">Open</option>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-                <option value="Cancel">Cancel</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <p>Priority:</p>
-              <select class="selectit controls" id="priority">
-                <option value="">--Select--</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <p>Type:</p>
-              <select
-                class="selectit controls"
-                name="department"
-                id="department"
-                readonly="readonly"
-              >
-                <option value="Indent">Indent</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <p>Site:</p>
+            <div class="col-md-6">
+              <p>Subject:</p>
               <input
                 type="text"
                 class="controls"
-                id="site"
-                placeholder="Enter the Site"
+                id="subject"
+                placeholder="Enter the Subject"
               />
+              <div class="row">
+                <div class="col-md-6">
+                  <p>Status:</p>
+                  <select class="selectit controls" id="status" name="status">
+                    <option value="">--Select--</option>
+                    <option value="Open">Open</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancel">Cancel</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Priority:</p>
+                  <select class="selectit controls" id="priority">
+                    <option value="">--Select--</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Type:</p>
+                  <select
+                    class="selectit controls"
+                    name="department"
+                    id="department"
+                    readonly="readonly"
+                  >
+                    <option value="Indent">Indent</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <p>Site:</p>
+                  <input
+                    type="text"
+                    class="controls"
+                    id="site"
+                    placeholder="Enter the Site"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p>Description:</p>
+              <textarea
+                class="controls textarea"
+                id="description"
+                type="text"
+                placeholder="Description of the Ticket"
+                name="drop"
+                required
+                autocomplete="off"
+              ></textarea>
             </div>
           </div>
+
           <div class="row">
             <div class="col-md-12">
               <p>Intent List:</p>
