@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title >Ticket Information</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./assets/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="./assets/js/fonticon.js"></script>
+    <script src="./assets/js/todo.js"></script>
+    <script src="./js/custom.js"></script>
+    <script src="../js/ticket.js"></script>
+    <!-- <script src="./js/custom.js"></script> -->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Nunito:400,600,700&display=swap" rel="stylesheet">
+</head>
+
+<body onload="LoadTicketInfoPage();">
+    <%- include('mymodal.ejs') %>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hidden-xs" href="#"><span id="TicketId"></span> </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="buttonnew"><i class="fa fa-plus"></i> New</button>
+                        </div>
+                        <div id="infoDropdown" class="dropdown-content">
+                            <a href="../add/employee.html">Add Employee</a>
+                            <a href="#">Add Vendors</a>
+                            <a href="#">Add Tasks</a>
+                            <a href="#">Add Bills</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saicharan</a>
+                        <ul class="dropdown-menu">
+
+                            <ul id="pro">
+                                <li><a href="">Profile</a>
+                                </li>
+                                <li><a href="">Settings</a>
+                                </li>
+                                <li><a href="">logout</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  
+    <%- include('mysidebar.ejs') %>
+    <div class="ticketinfodiv">
+<div class="container1"><div id="alertid" style="color: red;"></div>
+<div class="ticketinfoform">
+        <p>Subject:</p>
+        <input type="text" class="controls" id="subject" placeholder="Enter the Subject" />
+<p>Description:</p>
+<textarea class="controls textarea" id="description" type="text"
+placeholder="Description of the Ticket" name="drop" required
+autocomplete="off"></textarea>
+<div class="row">
+<div class="col-md-3">
+    <p>Status:</p>
+        <select  class="selectit controls" id="status" name="status">
+                <option value="">--Select--</option>
+           <option value="Open">Open</option>
+           <option value="Pending">Pending</option>
+           <option value="Completed">Completed</option>
+           <option value="Cancel">Cancel</option>
+        </select>
+</div>
+<div class="col-md-3">
+        <p>Priority:</p>
+        <select  class="selectit controls" id = "priority">
+                <option value="">--Select--</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+  </div>
+    <div class="col-md-3">
+        <p>Type:</p>
+            <select  class="selectit controls" name="department" id="department" readonly="readonly">
+                  
+                <option value="Indent">Indent</option>
+                
+            </select>
+     </div>
+     <div class="col-md-3">
+            <p>Site:</p>
+            <input type="text" class="controls" id="site" placeholder="Enter the Site" />
+            <input type="text" class="controls" id="request_no" placeholder="Enter the Site" />
+         </div>
+</div>
+<div class="row">
+
+        <div class="col-md-12">
+                <p>Add Products:</p>
+            </div>
+
+</div>
+<div class="row" >
+
+        
+
+
+            <div class="col-md-4">
+                <input type="text" class="controls" id="itemname" placeholder="Enter the Item" />
+                <input type="hidden" class="controls" id="itemname" />
+
+            </div>
+            <div class="col-md-4">
+                    <input type="text" class="controls" id="quantity" placeholder="Enter the Quantity"/>
+              </div>
+                <div class="col-md-4">
+                        <button class="draft-button" onclick="AddIndent();" >ADD</button>
+                 </div>
+      
+</div>
+<table class="" id="mytable" style="overflow-x: scroll;margin-top:10px;">
+        <thead>
+           <tr class="header">
+           <th style="width:10%;">S.No</th>
+           <th style="width:60%;">Item Name</th>
+           <th style="width:30%;">Quantity</th>
+           <th style="width:30%;">Delete</th> 
+           </tr>   
+         </thead>
+         <tbody id="IndentAddTable">              
+ </tbody>
+
+     </table>
+
+     <centre> <button class="draft-button" onclick ="Ticket_submit();" >Submit</button></centre>
+</div>
+</div>
+    </div>
+</body>
+
+<script>
+
+</script>
+<script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+        <script>
+        function myFunction() {
+            document.getElementById("infoDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.buttonnew')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+<script>function toggle(source) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] != source)
+                checkboxes[i].checked = source.checked;
+        }
+    }</script>
+<script>$(function () {
+        $("#checkthis").click(function () {
+            if ($(this).is(":checked")) {
+                $("#features").show();
+            } else {
+                $("#features").hide();            }
+        });
+    });</script>
+
+</html>

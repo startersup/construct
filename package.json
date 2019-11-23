@@ -20,6 +20,7 @@
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mysql": "^5.4.2",
     "moment": "^2.24.0",
+    "node": "^13.1.0",
     "nodemon": "^1.19.1",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0",
