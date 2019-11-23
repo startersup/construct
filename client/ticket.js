@@ -188,14 +188,12 @@ function TicketTableLoad(dummy,objJson)
 
         td1.innerHTML  ='<input type="checkbox" class="checkthis" id="'+objJson[i].id+'_check" />';
         td2.innerHTML  =objJson[i].request_no ;
-        td2.contenteditable=true;
-        td2.setAttribute("contenteditable", "true");
-        td3.innerHTML  =objJson[i].email ;
-        td3.setAttribute("contenteditable", "true");
-        td4.innerHTML  =objJson[i].phone ;
-        td4.setAttribute("contenteditable", "true");
-        td5.innerHTML  ='';
-        td6.innerHTML  =objJson[i].salary;
+        td3.innerHTML  =objJson[i].created_by ;
+        td4.innerHTML  =objJson[i].subject +'<input type="hidden" id="'+objJson[i].id+'_desc" value="'+objJson[i].description+'" ';
+        td4.setAttribute("onclick", "SeeDesc(this);");
+        td4.setAttribute("name", objJson[i].id);
+        td5.innerHTML  =objJson[i].type;
+        td6.innerHTML  ='<span class="'+PrioritySet();+'"></span>'+objJson[i].priority+'</span> ';
         td6.setAttribute("contenteditable", "true");
         td7.innerHTML  =objJson[i].address ;
         td7.setAttribute("contenteditable", "true");
