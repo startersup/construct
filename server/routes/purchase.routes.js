@@ -14,4 +14,7 @@ module.exports = function(router,app){
       router.get('/purchase-request', function(req, res) {
         res.render('./purchase-request');
       });
+      router.get('/ticket-desc', function(req, res) {
+        res.render('./ticket-desc');
+      });
 }
